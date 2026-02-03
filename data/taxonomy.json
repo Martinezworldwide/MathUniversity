@@ -1,0 +1,108 @@
+{
+  "majorBranches": [
+    {
+      "name": "Foundations",
+      "description": "Fundamental concepts, logic, and set theory that underpin all of mathematics.",
+      "subBranches": [
+        {
+          "name": "Logic",
+          "description": "Study of reasoning and valid inference.",
+          "specialties": [
+            {"name": "Propositional Logic"},
+            {"name": "Predicate Logic"},
+            {"name": "Model Theory"}
+          ]
+        },
+        {
+          "name": "Set Theory",
+          "description": "Study of collections of objects.",
+          "specialties": [
+            {"name": "Naïve Set Theory"},
+            {"name": "Axiomatic Set Theory (ZFC)"},
+            {"name": "Cardinality"}
+          ]
+        },
+        {
+          "name": "Proof Theory",
+          "description": "Study of mathematical proofs as formal objects.",
+          "specialties": [
+            {"name": "Formal Systems"},
+            {"name": "Constructive Mathematics"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Algebra",
+      "description": "Study of mathematical symbols and the rules for manipulating these symbols.",
+      "subBranches": [
+        {
+          "name": "Abstract Algebra",
+          "description": "Study of algebraic structures such as groups, rings, fields, and modules.",
+          "specialties": [
+            {"name": "Group Theory"},
+            {"name": "Ring Theory"},
+            {"name": "Field Theory"},
+            {"name": "Module Theory"}
+          ]
+        },
+        {
+          "name": "Linear Algebra",
+          "description": "Study of vector spaces, linear transformations, and systems of linear equations.",
+          "specialties": [
+            {"name": "Vector Spaces"},
+            {"name": "Matrices"},
+            {"name": "Eigenvalues and Eigenvectors"}
+          ]
+        },
+        {
+          "name": "Number Theory",
+          "description": "Study of the properties and relationships of integers.",
+          "specialties": [
+            {"name": "Elementary Number Theory"},
+            {"name": "Analytic Number Theory"},
+            {"name": "Algebraic Number Theory"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Analysis",
+      "description": "Branch of mathematics dealing with continuity, limits, derivatives, integrals, and related concepts.",
+      "subBranches": [
+        {
+          "name": "Real Analysis",
+          "description": "Rigorous study of real numbers, sequences, series, and functions.",
+          "specialties": [
+            {"name": "Sequences and Series"},
+            {"name": "Continuity and Differentiability"},
+            {"name": "Measure Theory and Integration"}
+          ]
+        },
+        {
+          "name": "Complex Analysis",
+          "description": "Study of functions of complex variables.",
+          "specialties": [
+            {"name": "Complex Numbers"},
+            {"name": "Conformal Mappings"},
+            {"name": "Residue Theory"}
+          ]
+        },
+        {
+          "name": "Functional Analysis",
+          "description": "Study of vector spaces endowed with a limit-related structure and the linear operators acting upon these spaces.",
+          "specialties": [
+            {"name": "Hilbert Spaces"},
+            {"name": "Banach Spaces"},
+            {"name": "Operator Theory"}
+          ]
+        }
+      ]
+    }
+  ],
+  "rulesForExpansion": [
+    "New specialties must clearly fall under an existing Level 2 sub-branch.",
+    "New sub-branches should logically group related specialties and fall under an existing Level 1 major branch.",
+    "Adding a new Level 1 major branch requires demonstrating its distinct foundational concepts and broad scope within mathematics."
+  ]
+}
