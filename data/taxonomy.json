@@ -10,7 +10,8 @@
           "specialties": [
             {"name": "Propositional Logic"},
             {"name": "Predicate Logic"},
-            {"name": "Model Theory"}
+            {"name": "Model Theory"},
+            {"name": "Computability Theory"}
           ]
         },
         {
@@ -19,7 +20,8 @@
           "specialties": [
             {"name": "Naïve Set Theory"},
             {"name": "Axiomatic Set Theory (ZFC)"},
-            {"name": "Cardinality"}
+            {"name": "Cardinality"},
+            {"name": "Ordinal Numbers"}
           ]
         },
         {
@@ -27,7 +29,17 @@
           "description": "Study of mathematical proofs as formal objects.",
           "specialties": [
             {"name": "Formal Systems"},
-            {"name": "Constructive Mathematics"}
+            {"name": "Constructive Mathematics"},
+            {"name": "Type Theory"}
+          ]
+        },
+        {
+          "name": "Category Theory",
+          "description": "Abstract study of mathematical structures and the relationships between them.",
+          "specialties": [
+            {"name": "Categories and Functors"},
+            {"name": "Natural Transformations"},
+            {"name": "Adjoint Functors"}
           ]
         }
       ]
@@ -43,7 +55,8 @@
             {"name": "Group Theory"},
             {"name": "Ring Theory"},
             {"name": "Field Theory"},
-            {"name": "Module Theory"}
+            {"name": "Module Theory"},
+            {"name": "Galois Theory"}
           ]
         },
         {
@@ -52,7 +65,8 @@
           "specialties": [
             {"name": "Vector Spaces"},
             {"name": "Matrices"},
-            {"name": "Eigenvalues and Eigenvectors"}
+            {"name": "Eigenvalues and Eigenvectors"},
+            {"name": "Inner Product Spaces"}
           ]
         },
         {
@@ -61,7 +75,17 @@
           "specialties": [
             {"name": "Elementary Number Theory"},
             {"name": "Analytic Number Theory"},
-            {"name": "Algebraic Number Theory"}
+            {"name": "Algebraic Number Theory"},
+            {"name": "Diophantine Equations"}
+          ]
+        },
+        {
+          "name": "Commutative Algebra",
+          "description": "Study of commutative rings and their ideals and modules.",
+          "specialties": [
+            {"name": "Rings and Ideals"},
+            {"name": "Modules over Commutative Rings"},
+            {"name": "Algebraic Geometry Foundations"}
           ]
         }
       ]
@@ -76,7 +100,8 @@
           "specialties": [
             {"name": "Sequences and Series"},
             {"name": "Continuity and Differentiability"},
-            {"name": "Measure Theory and Integration"}
+            {"name": "Measure Theory and Integration"},
+            {"name": "Lebesgue Integration"}
           ]
         },
         {
@@ -85,7 +110,8 @@
           "specialties": [
             {"name": "Complex Numbers"},
             {"name": "Conformal Mappings"},
-            {"name": "Residue Theory"}
+            {"name": "Residue Theory"},
+            {"name": "Riemann Surfaces"}
           ]
         },
         {
@@ -94,7 +120,284 @@
           "specialties": [
             {"name": "Hilbert Spaces"},
             {"name": "Banach Spaces"},
-            {"name": "Operator Theory"}
+            {"name": "Operator Theory"},
+            {"name": "Spectral Theory"}
+          ]
+        },
+        {
+          "name": "Harmonic Analysis",
+          "description": "Study of the representation of functions or signals as the superposition of basic waves.",
+          "specialties": [
+            {"name": "Fourier Series"},
+            {"name": "Fourier Transforms"},
+            {"name": "Wavelets"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Geometry",
+      "description": "Study of shapes, sizes, relative positions of figures, and the properties of space.",
+      "subBranches": [
+        {
+          "name": "Euclidean Geometry",
+          "description": "Classical study of geometric properties in flat space.",
+          "specialties": [
+            {"name": "Axioms and Postulates"},
+            {"name": "Congruence and Similarity"},
+            {"name": "Geometric Constructions"}
+          ]
+        },
+        {
+          "name": "Differential Geometry",
+          "description": "Study of geometry using the tools of calculus and linear algebra.",
+          "specialties": [
+            {"name": "Curves and Surfaces"},
+            {"name": "Manifolds"},
+            {"name": "Riemannian Geometry"}
+          ]
+        },
+        {
+          "name": "Algebraic Geometry",
+          "description": "Study of geometric shapes arising from solutions of polynomial equations.",
+          "specialties": [
+            {"name": "Algebraic Varieties"},
+            {"name": "Schemes"},
+            {"name": "Intersection Theory"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Topology",
+      "description": "Study of properties of spaces that are preserved under continuous deformations.",
+      "subBranches": [
+        {
+          "name": "General Topology",
+          "description": "Fundamental concepts of open and closed sets, compactness, and connectedness.",
+          "specialties": [
+            {"name": "Topological Spaces"},
+            {"name": "Continuity and Homeomorphism"},
+            {"name": "Compactness and Connectedness"}
+          ]
+        },
+        {
+          "name": "Algebraic Topology",
+          "description": "Study of topological spaces using tools from abstract algebra.",
+          "specialties": [
+            {"name": "Homotopy Theory"},
+            {"name": "Homology Theory"},
+            {"name": "Knot Theory"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Discrete Mathematics",
+      "description": "Study of discrete structures, often used in computer science.",
+      "subBranches": [
+        {
+          "name": "Combinatorics",
+          "description": "Study of counting, arrangement, and combination.",
+          "specialties": [
+            {"name": "Enumerative Combinatorics"},
+            {"name": "Graph Theory"},
+            {"name": "Design Theory"}
+          ]
+        },
+        {
+          "name": "Graph Theory",
+          "description": "Study of graphs, which are mathematical structures used to model pairwise relations between objects.",
+          "specialties": [
+            {"name": "Paths and Cycles"},
+            {"name": "Trees"},
+            {"name": "Coloring Problems"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Probability",
+      "description": "Study of random phenomena.",
+      "subBranches": [
+        {
+          "name": "Foundations of Probability",
+          "description": "Axioms, events, and basic probability calculations.",
+          "specialties": [
+            {"name": "Probability Spaces"},
+            {"name": "Random Variables"},
+            {"name": "Conditional Probability"}
+          ]
+        },
+        {
+          "name": "Stochastic Processes",
+          "description": "Study of collections of random variables evolving over time.",
+          "specialties": [
+            {"name": "Markov Chains"},
+            {"name": "Martingales"},
+            {"name": "Brownian Motion"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Statistics",
+      "description": "Science of collecting, analyzing, interpreting, and presenting data.",
+      "subBranches": [
+        {
+          "name": "Inferential Statistics",
+          "description": "Drawing conclusions and making predictions from data.",
+          "specialties": [
+            {"name": "Hypothesis Testing"},
+            {"name": "Confidence Intervals"},
+            {"name": "Regression Analysis"}
+          ]
+        },
+        {
+          "name": "Bayesian Statistics",
+          "description": "Statistical inference based on Bayes' theorem.",
+          "specialties": [
+            {"name": "Bayes' Theorem"},
+            {"name": "Prior and Posterior Distributions"},
+            {"name": "Markov Chain Monte Carlo (MCMC)"}
+          ]
+        },
+        {
+          "name": "Machine Learning Foundations",
+          "description": "Statistical and algorithmic foundations of machine learning.",
+          "specialties": [
+            {"name": "Supervised Learning Models"},
+            {"name": "Unsupervised Learning Models"},
+            {"name": "Model Evaluation"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Optimization",
+      "description": "Process of finding the best solution from all feasible solutions.",
+      "subBranches": [
+        {
+          "name": "Linear Optimization",
+          "description": "Optimization of a linear objective function subject to linear equality and inequality constraints.",
+          "specialties": [
+            {"name": "Simplex Method"},
+            {"name": "Duality Theory"},
+            {"name": "Network Flow Problems"}
+          ]
+        },
+        {
+          "name": "Nonlinear Optimization",
+          "description": "Optimization of objective functions or constraints that are nonlinear.",
+          "specialties": [
+            {"name": "Gradient Descent"},
+            {"name": "Convex Optimization"},
+            {"name": "Karush-Kuhn-Tucker (KKT) Conditions"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Numerical Analysis",
+      "description": "Study of algorithms that use numerical approximation for the problems of mathematical analysis.",
+      "subBranches": [
+        {
+          "name": "Numerical Linear Algebra",
+          "description": "Numerical methods for solving problems in linear algebra.",
+          "specialties": [
+            {"name": "Solving Linear Systems"},
+            {"name": "Eigenvalue Algorithms"},
+            {"name": "Singular Value Decomposition"}
+          ]
+        },
+        {
+          "name": "Numerical Differential Equations",
+          "description": "Numerical methods for solving ordinary and partial differential equations.",
+          "specialties": [
+            {"name": "Euler's Method"},
+            {"name": "Runge-Kutta Methods"},
+            {"name": "Finite Difference Methods"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Dynamical Systems",
+      "description": "Study of systems whose state evolves over time.",
+      "subBranches": [
+        {
+          "name": "Ordinary Differential Equations (ODEs)",
+          "description": "Study of equations involving an unknown function of one independent variable and its derivatives.",
+          "specialties": [
+            {"name": "First-Order ODEs"},
+            {"name": "Systems of ODEs"},
+            {"name": "Stability Theory"}
+          ]
+        },
+        {
+          "name": "Chaos Theory",
+          "description": "Study of complex, unpredictable behavior in dynamical systems.",
+          "specialties": [
+            {"name": "Strange Attractors"},
+            {"name": "Fractals"},
+            {"name": "Lyapunov Exponents"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mathematical Physics",
+      "description": "Application of mathematical methods to problems in physics.",
+      "subBranches": [
+        {
+          "name": "Classical Mechanics",
+          "description": "Mathematical formulation of Newtonian mechanics.",
+          "specialties": [
+            {"name": "Lagrangian Mechanics"},
+            {"name": "Hamiltonian Mechanics"},
+            {"name": "Continuum Mechanics"}
+          ]
+        },
+        {
+          "name": "Quantum Mechanics",
+          "description": "Mathematical foundations of quantum theory.",
+          "specialties": [
+            {"name": "Schrödinger Equation"},
+            {"name": "Hilbert Spaces in Quantum Mechanics"},
+            {"name": "Quantum Field Theory Foundations"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Information, Coding & Cryptography",
+      "description": "Mathematical theories underpinning information processing, secure communication, and data compression.",
+      "subBranches": [
+        {
+          "name": "Information Theory",
+          "description": "Quantification, storage, and communication of information.",
+          "specialties": [
+            {"name": "Entropy"},
+            {"name": "Channel Capacity"},
+            {"name": "Data Compression"}
+          ]
+        },
+        {
+          "name": "Coding Theory",
+          "description": "Study of the properties of codes and their respective fitness for specific applications.",
+          "specialties": [
+            {"name": "Error-Correcting Codes"},
+            {"name": "Source Coding"},
+            {"name": "Channel Coding"}
+          ]
+        },
+        {
+          "name": "Cryptography",
+          "description": "Techniques for secure communication in the presence of adversarial behavior.",
+          "specialties": [
+            {"name": "Symmetric-Key Cryptography"},
+            {"name": "Public-Key Cryptography"},
+            {"name": "Hash Functions"}
           ]
         }
       ]
