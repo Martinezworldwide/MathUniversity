@@ -1,0 +1,22 @@
+{
+  "degreeTracks": [
+    {
+      "name": "Bachelor of Science in Mathematics (BS Math)",
+      "id": "BS_MATH",
+      "totalCredits": null,
+      "description": "A rigorous undergraduate program providing a strong foundation in pure mathematics.",
+      "requiredCourses": [],
+      "electiveGroups": [],
+      "prerequisitesOverview": "Core foundational courses in Calculus, Linear Algebra, and Proofs are essential.",
+      "capstone": {
+        "type": "Project or Thesis",
+        "description": "An independent research project or thesis on an advanced mathematical topic, demonstrating mastery of research and presentation skills."
+      },
+      "masteryExam": {
+        "format": "Comprehensive Written and Oral Examination",
+        "topics": "Covers core areas of Analysis, Algebra, and Topology.",
+        "passCriteria": "Demonstration of deep conceptual understanding and problem-solving abilities."
+      }
+    }
+  ]
+}
