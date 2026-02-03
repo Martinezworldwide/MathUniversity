@@ -26,7 +26,11 @@
           "name": "Advanced Pure Mathematics Electives",
           "description": "Choose 2 courses from advanced topics in Algebra, Analysis, or Geometry.",
           "credits": 6,
-          "options": []
+          "options": [
+            "MATH501: Group Theory II",
+            "MATH502: Measure Theory",
+            "MATH503: Differential Geometry"
+          ]
         },
         {
           "name": "Applied Mathematics Electives",
