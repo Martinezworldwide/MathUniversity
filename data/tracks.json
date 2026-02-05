@@ -1,0 +1,70 @@
+{
+  "degreeTracks": [
+    {
+      "name": "Bachelor of Science in Mathematics (BS Math)",
+      "id": "BS_MATH",
+      "totalCredits": 120,
+      "description": "A rigorous undergraduate program providing a strong foundation in pure mathematics, preparing students for graduate studies or quantitative careers.",
+      "requiredCourses": [
+        "MATH101: Calculus I",
+        "MATH102: Calculus II",
+        "MATH201: Calculus III (Multivariable Calculus)",
+        "MATH202: Differential Equations",
+        "MATH203: Linear Algebra",
+        "MATH204: Discrete Mathematics",
+        "MATH301: Introduction to Proofs",
+        "MATH302: Abstract Algebra I",
+        "MATH303: Real Analysis I",
+        "MATH304: Complex Analysis",
+        "MATH305: Topology",
+        "MATH401: Abstract Algebra II",
+        "MATH402: Real Analysis II",
+        "MATH403: Functional Analysis",
+        "MATH490: Capstone Seminar"
+      ],
+      "electiveGroups": [
+        {
+          "name": "Advanced Pure Mathematics Electives",
+          "description": "Choose 2 courses (6 credits) from advanced topics in Algebra, Analysis, Geometry, or Topology, beyond required core courses.",
+          "credits": 6,
+          "options": [
+            "MATH501: Group Theory II",
+            "MATH502: Measure Theory",
+            "MATH503: Differential Geometry",
+            "MATH504: Algebraic Topology I",
+            "MATH505: Advanced Number Theory"
+          ]
+        },
+        {
+          "name": "Applied Mathematics & Statistics Electives",
+          "description": "Choose 2 courses (6 credits) from Numerical Analysis, Optimization, Probability, or Statistics.",
+          "credits": 6,
+          "options": [
+            "MATH510: Numerical Methods",
+            "MATH511: Optimization Theory",
+            "STAT301: Probability Theory",
+            "STAT302: Mathematical Statistics I",
+            "MATH512: Mathematical Modeling"
+          ]
+        },
+        {
+          "name": "General Electives",
+          "description": "Additional 12 credits of mathematics electives at 300-level or higher.",
+          "credits": 12,
+          "options": []
+        }
+      ],
+      "prerequisitesOverview": "A strong foundation in multivariable calculus, linear algebra, and proof-based mathematics is essential. Specific prerequisites are enforced per course to ensure a logical learning progression.",
+      "capstone": {
+        "type": "Senior Thesis or Research Project",
+        "description": "An independent research project culminating in a written thesis and oral presentation, demonstrating advanced mathematical thinking and communication skills.",
+        "credits": 3
+      },
+      "masteryExam": {
+        "format": "Comprehensive Written and Oral Examination",
+        "topics": "Covers core undergraduate areas including Real Analysis, Abstract Algebra, and Topology.",
+        "passCriteria": "Demonstration of deep conceptual understanding, advanced problem-solving abilities, and coherent explanation of foundational theories."
+      }
+    }
+  ]
+}
