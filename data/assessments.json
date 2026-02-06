@@ -1,0 +1,156 @@
+{
+  "MATH101": {
+    "quizzes": 4,
+    "midterm": true,
+    "final": true,
+    "project": false,
+    "mastery_rubric": "To pass, students must demonstrate proficiency in calculating limits, derivatives, and basic integrals. A strong understanding of the Fundamental Theorem of Calculus and applications of derivatives (e.g., optimization) is required. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH102": {
+    "quizzes": 4,
+    "midterm": true,
+    "final": true,
+    "project": false,
+    "mastery_rubric": "To pass, students must master various integration techniques and their applications, especially in calculating volumes and arc lengths. A solid grasp of convergence tests for sequences and series, and the ability to work with power, Taylor, and Maclaurin series, is essential. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH201": {
+    "quizzes": 5,
+    "midterm": true,
+    "final": true,
+    "project": false,
+    "mastery_rubric": "To pass, students must demonstrate a comprehensive understanding of multivariable functions, partial differentiation, and multiple integration. Proficiency in vector calculus, including line and surface integrals, and the application of Green's, Stokes', and Divergence Theorems is required. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH202": {
+    "quizzes": 6,
+    "midterm": true,
+    "final": true,
+    "project": false,
+    "mastery_rubric": "To pass, students must be able to solve various types of first- and second-order differential equations, apply Laplace transforms, and find series solutions. A clear understanding of modeling real-world phenomena with differential equations is crucial. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH203": {
+    "quizzes": 6,
+    "midterm": true,
+    "final": true,
+    "project": false,
+    "mastery_rubric": "To pass, students must demonstrate strong computational skills in solving linear systems, matrix operations, and finding determinants. A conceptual understanding of vector spaces, linear transformations, eigenvalues, and eigenvectors is crucial. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH301": {
+    "quizzes": 6,
+    "midterm": true,
+    "final": true,
+    "project": false,
+    "mastery_rubric": "To pass, students must demonstrate a rigorous understanding of the foundational concepts of real analysis, including epsilon-delta proofs for limits and continuity, properties of sequences and series, and the theory of differentiation and Riemann integration. The ability to construct formal mathematical proofs is paramount. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH302": {
+    "quizzes": 6,
+    "midterm": true,
+    "final": true,
+    "project": false,
+    "mastery_rubric": "To pass, students must demonstrate a conceptual understanding of groups, subgroups, and homomorphisms, and be able to construct proofs related to these structures. Proficiency in working with cosets, normal subgroups, and factor groups is essential. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH303": {
+    "quizzes": 6,
+    "midterm": true,
+    "final": true,
+    "project": false,
+    "mastery_rubric": "To pass, students must demonstrate a strong understanding of complex numbers, analytic functions, and the Cauchy-Riemann equations. Proficiency in complex integration, residue theory, and applications to evaluating real integrals is required. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH304": {
+    "quizzes": 6,
+    "midterm": true,
+    "final": true,
+    "project": false,
+    "mastery_rubric": "To pass, students must develop a rigorous understanding of topological spaces, continuous functions, and homeomorphisms. The ability to prove properties related to compactness, connectedness, and the various separation axioms is crucial. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH350": {
+    "quizzes": 5,
+    "midterm": true,
+    "final": true,
+    "project": true,
+    "mastery_rubric": "To pass, students must understand fundamental numerical methods for solving mathematical problems, including error analysis. Proficiency in implementing and analyzing algorithms for root finding, interpolation, differentiation, and integration is required. The ability to analyze the stability and convergence of numerical schemes is crucial. Final course grade must be 70% or higher, with at least 60% on the final exam or project."
+  },
+  "MATH351": {
+    "quizzes": 5,
+    "midterm": true,
+    "final": true,
+    "project": true,
+    "mastery_rubric": "To pass, students must demonstrate proficiency in advanced numerical techniques for solving complex mathematical problems, including iterative methods for linear systems, eigenvalue computation, and the numerical solution of differential equations. The ability to select appropriate methods and analyze their convergence and error properties is crucial. Final course grade must be 70% or higher, with at least 60% on the final exam or project."
+  },
+  "MATH401": {
+    "quizzes": 5,
+    "midterm": true,
+    "final": true,
+    "project": false,
+    "mastery_rubric": "To pass, students must demonstrate a broad and deep understanding of advanced mathematical concepts and their interconnections, suitable for graduate studies. The ability to synthesize knowledge from various branches of mathematics and engage with abstract theoretical arguments is essential. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH410": {
+    "quizzes": 4,
+    "midterm": true,
+    "final": true,
+    "project": false,
+    "mastery_rubric": "To pass, students must demonstrate a thorough understanding of ring theory, including ideals, factor rings, and polynomial rings. The ability to construct proofs related to ring properties, irreducibility, and field extensions is crucial. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH411": {
+    "quizzes": 3,
+    "midterm": true,
+    "final": true,
+    "project": false,
+    "mastery_rubric": "To pass, students must demonstrate a deep understanding of Galois theory, including its fundamental theorem and applications to the solvability of polynomials. The ability to compute Galois groups and apply the theory to specific examples is essential. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH412": {
+    "quizzes": 3,
+    "midterm": true,
+    "final": true,
+    "project": false,
+    "mastery_rubric": "To pass, students must demonstrate a foundational understanding of algebraic number theory, including algebraic integers, number fields, and the unique factorization of ideals. The ability to work with class groups and apply Dirichlet's Unit Theorem is crucial. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH420": {
+    "quizzes": 3,
+    "midterm": true,
+    "final": true,
+    "project": false,
+    "mastery_rubric": "To pass, students must demonstrate a rigorous understanding of measure theory and Lebesgue integration, including the construction of Lebesgue measure and integral, and the various convergence theorems. The ability to work with Lp spaces and apply the theoretical concepts to advanced problems is essential. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH421": {
+    "quizzes": 3,
+    "midterm": true,
+    "final": true,
+    "project": false,
+    "mastery_rubric": "To pass, students must demonstrate a strong understanding of normed spaces, Banach spaces, and Hilbert spaces, along with linear operators and functionals. The ability to apply the fundamental theorems of functional analysis (Hahn-Banach, Uniform Boundedness, Open Mapping, Closed Graph) is crucial. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH430": {
+    "quizzes": 3,
+    "midterm": true,
+    "final": true,
+    "project": false,
+    "mastery_rubric": "To pass, students must demonstrate a firm grasp of the differential geometry of curves and surfaces, including the calculation of curvature, torsion, and fundamental forms. The ability to apply the Frenet-Serret formulas and understand Gaussian and Mean curvature is essential. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH431": {
+    "quizzes": 3,
+    "midterm": true,
+    "final": true,
+    "project": false,
+    "mastery_rubric": "To pass, students must demonstrate a conceptual understanding of homotopy, the fundamental group, and covering spaces. The ability to compute the fundamental group for basic spaces and an introduction to the principles of homology theory are required. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH498": {
+    "quizzes": 0,
+    "midterm": false,
+    "final": false,
+    "project": true,
+    "mastery_rubric": "To pass, students must successfully complete an independent research project or an in-depth analysis of an advanced mathematical topic. This includes formulating a clear research question, conducting thorough research, applying appropriate mathematical methods, and presenting findings in a well-structured written report and an oral defense. The project must demonstrate a high level of mathematical maturity and independent thought. A panel of faculty will evaluate the project and presentation."
+  },
+  "STAT301": {
+    "quizzes": 5,
+    "midterm": true,
+    "final": true,
+    "project": false,
+    "mastery_rubric": "To pass, students must demonstrate a strong understanding of fundamental probability concepts, including conditional probability, random variables, and various probability distributions (discrete and continuous). Proficiency in calculating expected values, variances, and applying limit theorems is essential. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "STAT302": {
+    "quizzes": 6,
+    "midterm": true,
+    "final": true,
+    "project": false,
+    "mastery_rubric": "To pass, students must demonstrate a strong understanding of statistical inference, including point and interval estimation, and various hypothesis testing procedures. Proficiency in applying likelihood methods and interpreting statistical results is essential. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  }
+}

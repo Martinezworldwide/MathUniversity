@@ -1,70 +1,53 @@
 {
-  "degreeTracks": [
-    {
-      "name": "Bachelor of Science in Mathematics (BS Math)",
-      "id": "BS_MATH",
-      "totalCredits": 120,
-      "description": "A rigorous undergraduate program providing a strong foundation in pure mathematics, preparing students for graduate studies or quantitative careers.",
-      "requiredCourses": [
-        "MATH101: Calculus I",
-        "MATH102: Calculus II",
-        "MATH201: Calculus III (Multivariable Calculus)",
-        "MATH202: Differential Equations",
-        "MATH203: Linear Algebra",
-        "MATH204: Discrete Mathematics",
-        "MATH301: Introduction to Proofs",
-        "MATH302: Abstract Algebra I",
-        "MATH303: Real Analysis I",
-        "MATH304: Complex Analysis",
-        "MATH305: Topology",
-        "MATH401: Abstract Algebra II",
-        "MATH402: Real Analysis II",
-        "MATH403: Functional Analysis",
-        "MATH490: Capstone Seminar"
-      ],
-      "electiveGroups": [
-        {
-          "name": "Advanced Pure Mathematics Electives",
-          "description": "Choose 2 courses (6 credits) from advanced topics in Algebra, Analysis, Geometry, or Topology, beyond required core courses.",
-          "credits": 6,
-          "options": [
-            "MATH501: Group Theory II",
-            "MATH502: Measure Theory",
-            "MATH503: Differential Geometry",
-            "MATH504: Algebraic Topology I",
-            "MATH505: Advanced Number Theory"
-          ]
-        },
-        {
-          "name": "Applied Mathematics & Statistics Electives",
-          "description": "Choose 2 courses (6 credits) from Numerical Analysis, Optimization, Probability, or Statistics.",
-          "credits": 6,
-          "options": [
-            "MATH510: Numerical Methods",
-            "MATH511: Optimization Theory",
-            "STAT301: Probability Theory",
-            "STAT302: Mathematical Statistics I",
-            "MATH512: Mathematical Modeling"
-          ]
-        },
-        {
-          "name": "General Electives",
-          "description": "Additional 12 credits of mathematics electives at 300-level or higher.",
-          "credits": 12,
-          "options": []
-        }
-      ],
-      "prerequisitesOverview": "A strong foundation in multivariable calculus, linear algebra, and proof-based mathematics is essential. Specific prerequisites are enforced per course to ensure a logical learning progression.",
-      "capstone": {
-        "type": "Senior Thesis or Research Project",
-        "description": "An independent research project culminating in a written thesis and oral presentation, demonstrating advanced mathematical thinking and communication skills.",
-        "credits": 3
+  "BS_MATH": {
+    "track_id": "BS_MATH",
+    "title": "Bachelor of Science in Mathematics",
+    "total_credits": 120,
+    "required_courses": [
+      "MATH101", "MATH102", "MATH201", "MATH202", "MATH203", "MATH301", "MATH302", "MATH303", "MATH304", "MATH401", "MATH498"
+    ],
+    "elective_groups": {
+      "Advanced Pure Mathematics": {
+        "description": "Choose 9 credits (3 courses) from advanced Algebra, Analysis, Geometry, or Topology.",
+        "course_options": ["MATH410", "MATH411", "MATH412", "MATH420", "MATH421", "MATH430", "MATH431"]
       },
-      "masteryExam": {
-        "format": "Comprehensive Written and Oral Examination",
-        "topics": "Covers core undergraduate areas including Real Analysis, Abstract Algebra, and Topology.",
-        "passCriteria": "Demonstration of deep conceptual understanding, advanced problem-solving abilities, and coherent explanation of foundational theories."
+      "Applied Mathematics/Statistics": {
+        "description": "Choose 6 credits (2 courses) from Numerical Analysis, Optimization, Probability, or Statistics.",
+        "course_options": ["MATH350", "MATH351", "STAT301", "STAT302"]
       }
+    },
+    "prerequisites": {
+      "MATH102": ["MATH101"],
+      "MATH201": ["MATH102"],
+      "MATH202": ["MATH201"],
+      "MATH203": ["MATH102"],
+      "MATH301": ["MATH202"],
+      "MATH302": ["MATH201", "MATH203"],
+      "MATH303": ["MATH202"],
+      "MATH304": ["MATH202", "MATH203"],
+      "MATH350": ["MATH202", "MATH203"],
+      "MATH351": ["MATH350"],
+      "MATH401": ["MATH301", "MATH302", "MATH303"],
+      "MATH410": ["MATH301"],
+      "MATH411": ["MATH410"],
+      "MATH412": ["MATH411"],
+      "MATH420": ["MATH302"],
+      "MATH421": ["MATH420"],
+      "MATH430": ["MATH304"],
+      "MATH431": ["MATH430"],
+      "STAT301": ["MATH203"],
+      "STAT302": ["STAT301"],
+      "MATH498": ["MATH401"]
+    },
+    "capstone": {
+      "course_id": "MATH498",
+      "title": "Senior Capstone Project in Mathematics",
+      "description": "An independent research project or advanced seminar culminating in a written report and presentation.",
+      "credits": 3
+    },
+    "mastery_exam": {
+      "description": "A comprehensive examination covering core areas of undergraduate mathematics (Calculus, Linear Algebra, Real Analysis, Abstract Algebra). Requires a minimum score of 70% to pass.",
+      "format": "Written examination, 4 hours duration."
     }
-  ]
+  }
 }

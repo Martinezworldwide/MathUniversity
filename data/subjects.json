@@ -1,0 +1,329 @@
+{
+  "taxonomy_rules": "New specialties can be added at Level 3 under the most relevant Level 2 sub-branch. If no appropriate Level 2 exists, a new Level 2 can be created under the most relevant Level 1 major branch. Each addition must include a brief justification for its placement.",
+  "levels": {
+    "Level 1": {
+      "Foundations": {
+        "Level 2": {
+          "Logic and Set Theory": {
+            "Level 3": [
+              "Propositional Logic",
+              "Predicate Logic",
+              "Naive Set Theory",
+              "Axiomatic Set Theory",
+              "Model Theory"
+            ]
+          },
+          "Proof Techniques": {
+            "Level 3": [
+              "Direct Proof",
+              "Proof by Contradiction",
+              "Proof by Induction",
+              "Constructive Proofs"
+            ]
+          }
+        }
+      },
+      "Algebra": {
+        "Level 2": {
+          "Linear Algebra": {
+            "Level 3": [
+              "Vector Spaces",
+              "Matrices and Determinants",
+              "Eigenvalues and Eigenvectors",
+              "Linear Transformations",
+              "Inner Product Spaces"
+            ]
+          },
+          "Abstract Algebra": {
+            "Level 3": [
+              "Group Theory",
+              "Ring Theory",
+              "Field Theory",
+              "Module Theory",
+              "Galois Theory"
+            ]
+          },
+          "Number Theory": {
+            "Level 3": [
+              "Elementary Number Theory",
+              "Algebraic Number Theory",
+              "Analytic Number Theory",
+              "Diophantine Equations"
+            ]
+          },
+          "Universal Algebra": {
+            "Level 3": [
+              "Lattices",
+              "Boolean Algebra"
+            ]
+          }
+        }
+      },
+      "Analysis": {
+        "Level 2": {
+          "Real Analysis": {
+            "Level 3": [
+              "Sequences and Series",
+              "Continuity and Differentiation",
+              "Integration Theory (Riemann, Lebesgue)",
+              "Metric Spaces",
+              "Multivariable Real Analysis"
+            ]
+          },
+          "Complex Analysis": {
+            "Level 3": [
+              "Complex Numbers and Functions",
+              "Cauchy-Riemann Equations",
+              "Complex Integration",
+              "Residue Theory",
+              "Conformal Mappings"
+            ]
+          },
+          "Functional Analysis": {
+            "Level 3": [
+              "Normed Vector Spaces",
+              "Hilbert Spaces",
+              "Banach Spaces",
+              "Spectral Theory"
+            ]
+          },
+          "Harmonic Analysis": {
+            "Level 3": [
+              "Fourier Series",
+              "Fourier Transforms",
+              "Wavelets"
+            ]
+          },
+          "Measure Theory": {
+            "Level 3": [
+              "Lebesgue Measure",
+              "Measurable Functions",
+              "Lp Spaces"
+            ]
+          }
+        }
+      },
+      "Geometry": {
+        "Level 2": {
+          "Euclidean Geometry": {
+            "Level 3": [
+              "Foundations of Euclidean Geometry",
+              "Geometric Constructions"
+            ]
+          },
+          "Differential Geometry": {
+            "Level 3": [
+              "Curves and Surfaces",
+              "Manifolds",
+              "Riemannian Geometry",
+              "Connections and Curvature"
+            ]
+          },
+          "Algebraic Geometry": {
+            "Level 3": [
+              "Affine Varieties",
+              "Projective Varieties",
+              "Schemes"
+            ]
+          },
+          "Non-Euclidean Geometry": {
+            "Level 3": [
+              "Hyperbolic Geometry",
+              "Elliptic Geometry"
+            ]
+          }
+        }
+      },
+      "Topology": {
+        "Level 2": {
+          "General Topology": {
+            "Level 3": [
+              "Topological Spaces",
+              "Continuity and Homeomorphism",
+              "Compactness and Connectedness",
+              "Separation Axioms"
+            ]
+          },
+          "Algebraic Topology": {
+            "Level 3": [
+              "Homotopy Theory",
+              "Homology Theory",
+              "Fundamental Group",
+              "Covering Spaces"
+            ]
+          },
+          "Differential Topology": {
+            "Level 3": [
+              "Smooth Manifolds",
+              "Transversality",
+              "Morse Theory"
+            ]
+          }
+        }
+      },
+      "Discrete Mathematics": {
+        "Level 2": {
+          "Combinatorics": {
+            "Level 3": [
+              "Enumerative Combinatorics",
+              "Graph Theory",
+              "Extremal Combinatorics",
+              "Design Theory"
+            ]
+          },
+          "Graph Theory": {
+            "Level 3": [
+              "Basic Graph Concepts",
+              "Trees and Networks",
+              "Graph Coloring",
+              "Flows and Matchings"
+            ]
+          }
+        }
+      },
+      "Probability and Statistics": {
+        "Level 2": {
+          "Probability Theory": {
+            "Level 3": [
+              "Axioms of Probability",
+              "Random Variables and Distributions",
+              "Limit Theorems",
+              "Stochastic Processes"
+            ]
+          },
+          "Mathematical Statistics": {
+            "Level 3": [
+              "Estimation Theory",
+              "Hypothesis Testing",
+              "Nonparametric Statistics",
+              "Bayesian Statistics"
+            ]
+          },
+          "Applied Statistics": {
+            "Level 3": [
+              "Regression Analysis",
+              "ANOVA",
+              "Multivariate Analysis",
+              "Time Series Analysis"
+            ]
+          }
+        }
+      },
+      "Optimization": {
+        "Level 2": {
+          "Linear Optimization": {
+            "Level 3": [
+              "Simplex Method",
+              "Duality Theory"
+            ]
+          },
+          "Nonlinear Optimization": {
+            "Level 3": [
+              "Unconstrained Optimization",
+              "Constrained Optimization",
+              "Convex Optimization"
+            ]
+          },
+          "Dynamic Programming": {
+            "Level 3": [
+              "Bellman Equation",
+              "Optimal Control"
+            ]
+          }
+        }
+      },
+      "Numerical Analysis": {
+        "Level 2": {
+          "Numerical Linear Algebra": {
+            "Level 3": [
+              "Solving Linear Systems",
+              "Eigenvalue Problems"
+            ]
+          },
+          "Numerical Differentiation and Integration": {
+            "Level 3": [
+              "Interpolation",
+              "Quadrature Rules"
+            ]
+          },
+          "Numerical Solutions of ODEs and PDEs": {
+            "Level 3": [
+              "Finite Difference Methods",
+              "Finite Element Methods"
+            ]
+          }
+        }
+      },
+      "Dynamical Systems": {
+        "Level 2": {
+          "Ordinary Differential Equations": {
+            "Level 3": [
+              "Qualitative Theory",
+              "Phase Plane Analysis",
+              "Bifurcations"
+            ]
+          },
+          "Partial Differential Equations": {
+            "Level 3": [
+              "Classification of PDEs",
+              "Solution Techniques (Separation of Variables, Fourier Transforms)",
+              "Well-Posedness"
+            ]
+          },
+          "Chaos Theory": {
+            "Level 3": [
+              "Fractals",
+              "Strange Attractors"
+            ]
+          }
+        }
+      },
+      "Mathematical Physics": {
+        "Level 2": {
+          "Classical Mechanics": {
+            "Level 3": [
+              "Lagrangian Mechanics",
+              "Hamiltonian Mechanics"
+            ]
+          },
+          "Quantum Mechanics": {
+            "Level 3": [
+              "Schrödinger Equation",
+              "Operator Theory"
+            ]
+          },
+          "Relativity": {
+            "Level 3": [
+              "Special Relativity",
+              "General Relativity"
+            ]
+          }
+        }
+      },
+      "Information, Coding, and Cryptography": {
+        "Level 2": {
+          "Information Theory": {
+            "Level 3": [
+              "Entropy",
+              "Channel Capacity"
+            ]
+          },
+          "Coding Theory": {
+            "Level 3": [
+              "Error-Correcting Codes",
+              "Block Codes",
+              "Convolutional Codes"
+            ]
+          },
+          "Cryptography": {
+            "Level 3": [
+              "Symmetric Key Cryptography",
+              "Public Key Cryptography",
+              "Hash Functions"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

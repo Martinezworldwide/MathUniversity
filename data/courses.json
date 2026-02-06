@@ -1,0 +1,1375 @@
+{
+  "MATH101": {
+    "course_id": "MATH101",
+    "title": "Calculus I",
+    "description": "Introduction to limits, continuity, differentiation, and applications of derivatives. Fundamental theorem of calculus and basic integration.",
+    "level": 100,
+    "prerequisites": [],
+    "credit_hours": 3,
+    "modules": [
+      {
+        "module_title": "Limits and Continuity",
+        "lessons": [
+          "Introduction to Limits",
+          "Limit Laws",
+          "One-Sided Limits and Infinite Limits",
+          "Limits at Infinity",
+          "Continuity",
+          "Intermediate Value Theorem"
+        ]
+      },
+      {
+        "module_title": "Differentiation",
+        "lessons": [
+          "Derivatives and Rates of Change",
+          "The Derivative as a Function",
+          "Differentiation Rules",
+          "Derivatives of Trigonometric Functions",
+          "The Chain Rule",
+          "Implicit Differentiation",
+          "Related Rates"
+        ]
+      },
+      {
+        "module_title": "Applications of Differentiation",
+        "lessons": [
+          "Extrema on an Interval",
+          "Rolle's Theorem and Mean Value Theorem",
+          "First Derivative Test",
+          "Second Derivative Test",
+          "Optimization Problems",
+          "Newton's Method"
+        ]
+      },
+      {
+        "module_title": "Integration",
+        "lessons": [
+          "Antiderivatives",
+          "The Definite Integral",
+          "Fundamental Theorem of Calculus",
+          "Integration by Substitution",
+          "Applications of Integration (Area)"
+        ]
+      }
+    ],
+    "assessments": {
+      "quizzes": 4,
+      "midterm": true,
+      "final": true,
+      "project": false
+    },
+    "mastery_rubric": "To pass, students must demonstrate proficiency in calculating limits, derivatives, and basic integrals. A strong understanding of the Fundamental Theorem of Calculus and applications of derivatives (e.g., optimization) is required. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH102": {
+    "course_id": "MATH102",
+    "title": "Calculus II",
+    "description": "Techniques of integration, applications of integration, sequences and series, parametric equations, and polar coordinates.",
+    "level": 100,
+    "prerequisites": ["MATH101"],
+    "credit_hours": 3,
+    "modules": [
+      {
+        "module_title": "Techniques of Integration",
+        "lessons": [
+          "Integration by Parts",
+          "Trigonometric Integrals",
+          "Trigonometric Substitution",
+          "Partial Fractions",
+          "Improper Integrals"
+        ]
+      },
+      {
+        "module_title": "Applications of Integration",
+        "lessons": [
+          "Area Between Curves",
+          "Volumes by Disks/Washers",
+          "Volumes by Cylindrical Shells",
+          "Arc Length",
+          "Surface Area of Revolution"
+        ]
+      },
+      {
+        "module_title": "Sequences and Series",
+        "lessons": [
+          "Sequences",
+          "Series and Convergence",
+          "Integral Test and P-Series",
+          "Comparison Tests",
+          "Alternating Series Test",
+          "Ratio and Root Tests",
+          "Power Series",
+          "Taylor and Maclaurin Series"
+        ]
+      },
+      {
+        "module_title": "Parametric Equations and Polar Coordinates",
+        "lessons": [
+          "Parametric Curves",
+          "Calculus with Parametric Curves",
+          "Polar Coordinates",
+          "Area and Arc Length in Polar Coordinates"
+        ]
+      }
+    ],
+    "assessments": {
+      "quizzes": 4,
+      "midterm": true,
+      "final": true,
+      "project": false
+    },
+    "mastery_rubric": "To pass, students must master various integration techniques and their applications, especially in calculating volumes and arc lengths. A solid grasp of convergence tests for sequences and series, and the ability to work with power, Taylor, and Maclaurin series, is essential. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH201": {
+    "course_id": "MATH201",
+    "title": "Multivariable Calculus",
+    "description": "Functions of several variables, partial derivatives, multiple integrals, vector calculus, Green's, Stokes', and Divergence Theorems.",
+    "level": 200,
+    "prerequisites": ["MATH102"],
+    "credit_hours": 4,
+    "modules": [
+      {
+        "module_title": "Vectors and the Geometry of Space",
+        "lessons": [
+          "3D Coordinate Systems",
+          "Vectors",
+          "Dot Product",
+          "Cross Product",
+          "Equations of Lines and Planes",
+          "Cylinders and Quadric Surfaces"
+        ]
+      },
+      {
+        "module_title": "Vector Functions",
+        "lessons": [
+          "Vector Functions and Space Curves",
+          "Derivatives and Integrals of Vector Functions",
+          "Arc Length and Curvature",
+          "Motion in Space"
+        ]
+      },
+      {
+        "module_title": "Partial Derivatives",
+        "lessons": [
+          "Functions of Several Variables",
+          "Limits and Continuity",
+          "Partial Derivatives",
+          "Tangent Planes and Linear Approximations",
+          "The Chain Rule",
+          "Directional Derivatives and the Gradient Vector",
+          "Maximum and Minimum Values"
+        ]
+      },
+      {
+        "module_title": "Multiple Integrals",
+        "lessons": [
+          "Double Integrals over Rectangles",
+          "Iterated Integrals",
+          "Double Integrals over General Regions",
+          "Double Integrals in Polar Coordinates",
+          "Triple Integrals",
+          "Triple Integrals in Cylindrical Coordinates",
+          "Triple Integrals in Spherical Coordinates",
+          "Change of Variables in Multiple Integrals"
+        ]
+      },
+      {
+        "module_title": "Vector Calculus",
+        "lessons": [
+          "Vector Fields",
+          "Line Integrals",
+          "Fundamental Theorem for Line Integrals",
+          "Green's Theorem",
+          "Curl and Divergence",
+          "Surface Integrals",
+          "Stokes' Theorem",
+          "Divergence Theorem"
+        ]
+      }
+    ],
+    "assessments": {
+      "quizzes": 5,
+      "midterm": true,
+      "final": true,
+      "project": false
+    },
+    "mastery_rubric": "To pass, students must demonstrate a comprehensive understanding of multivariable functions, partial differentiation, and multiple integration. Proficiency in vector calculus, including line and surface integrals, and the application of Green's, Stokes', and Divergence Theorems is required. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH202": {
+    "course_id": "MATH202",
+    "title": "Differential Equations",
+    "description": "First-order equations, second-order linear equations, series solutions, Laplace transforms, and systems of differential equations.",
+    "level": 200,
+    "prerequisites": ["MATH201"],
+    "credit_hours": 3,
+    "modules": [
+      {
+        "module_title": "Introduction to Differential Equations",
+        "lessons": [
+          "Definitions and Terminology",
+          "Initial-Value Problems",
+          "Differential Equations as Mathematical Models"
+        ]
+      },
+      {
+        "module_title": "First-Order Differential Equations",
+        "lessons": [
+          "Solution Curves",
+          "Separable Equations",
+          "Linear Equations",
+          "Exact Equations",
+          "Homogeneous Equations",
+          "Applications of First-Order Equations"
+        ]
+      },
+      {
+        "module_title": "Higher-Order Differential Equations",
+        "lessons": [
+          "Preliminary Theory: Linear Equations",
+          "Reduction of Order",
+          "Homogeneous Linear Equations with Constant Coefficients",
+          "Undetermined Coefficients (Superposition Approach)",
+          "Variation of Parameters",
+          "Cauchy-Euler Equation"
+        ]
+      },
+      {
+        "module_title": "Laplace Transform",
+        "lessons": [
+          "Definition of the Laplace Transform",
+          "Inverse Transforms",
+          "Operational Properties I & II",
+          "Dirac Delta Function",
+          "Systems of Linear Differential Equations"
+        ]
+      },
+      {
+        "module_title": "Series Solutions of Linear Equations",
+        "lessons": [
+          "Review of Power Series",
+          "Series Solutions about Ordinary Points",
+          "Series Solutions about Singular Points"
+        ]
+      },
+      {
+        "module_title": "Systems of Linear First-Order Differential Equations",
+        "lessons": [
+          "Linear Systems",
+          "Homogeneous Linear Systems",
+          "Nonhomogeneous Linear Systems",
+          "Matrix Exponential"
+        ]
+      }
+    ],
+    "assessments": {
+      "quizzes": 6,
+      "midterm": true,
+      "final": true,
+      "project": false
+    },
+    "mastery_rubric": "To pass, students must be able to solve various types of first- and second-order differential equations, apply Laplace transforms, and find series solutions. A clear understanding of modeling real-world phenomena with differential equations is crucial. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH203": {
+    "course_id": "MATH203",
+    "title": "Linear Algebra",
+    "description": "Systems of linear equations, matrices, determinants, vector spaces, linear transformations, eigenvalues, and eigenvectors.",
+    "level": 200,
+    "prerequisites": ["MATH102"],
+    "credit_hours": 3,
+    "modules": [
+      {
+        "module_title": "Systems of Linear Equations and Matrices",
+        "lessons": [
+          "Introduction to Systems of Linear Equations",
+          "Gaussian Elimination",
+          "Matrices and Matrix Operations",
+          "Inverses; Rules of Matrix Arithmetic",
+          "Elementary Matrices and a Method for Finding A⁻¹"
+        ]
+      },
+      {
+        "module_title": "Determinants",
+        "lessons": [
+          "The Determinant Function",
+          "Evaluating Determinants by Row Reduction",
+          "Properties of the Determinant Function",
+          "Cramer's Rule"
+        ]
+      },
+      {
+        "module_title": "Vector Spaces",
+        "lessons": [
+          "Real Vector Spaces",
+          "Subspaces",
+          "Spanning Sets and Linear Independence",
+          "Basis and Dimension",
+          "Row Space, Column Space, and Null Space"
+        ]
+      },
+      {
+        "module_title": "Linear Transformations",
+        "lessons": [
+          "General Linear Transformations",
+          "Kernels and Ranges",
+          "Inverse Linear Transformations",
+          "Matrices of General Linear Transformations",
+          "Similarity"
+        ]
+      },
+      {
+        "module_title": "Eigenvalues and Eigenvectors",
+        "lessons": [
+          "Eigenvalues and Eigenvectors",
+          "Diagonalization",
+          "Orthogonal Diagonalization"
+        ]
+      },
+      {
+        "module_title": "Inner Product Spaces",
+        "lessons": [
+          "Inner Products",
+          "Gram-Schmidt Process",
+          "Orthogonal Matrices"
+        ]
+      }
+    ],
+    "assessments": {
+      "quizzes": 6,
+      "midterm": true,
+      "final": true,
+      "project": false
+    },
+    "mastery_rubric": "To pass, students must demonstrate strong computational skills in solving linear systems, matrix operations, and finding determinants. A conceptual understanding of vector spaces, linear transformations, eigenvalues, and eigenvectors is crucial. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH301": {
+    "course_id": "MATH301",
+    "title": "Real Analysis I",
+    "description": "Rigorous treatment of real numbers, sequences, series, limits, continuity, differentiation, and Riemann integration.",
+    "level": 300,
+    "prerequisites": ["MATH202"],
+    "credit_hours": 3,
+    "modules": [
+      {
+        "module_title": "The Real Number System",
+        "lessons": [
+          "Axioms of a Field",
+          "Order Properties",
+          "Completeness Axiom",
+          "Archimedean Property and Density of Rationals/Irrationals",
+          "Suprema and Infima"
+        ]
+      },
+      {
+        "module_title": "Sequences and Series of Real Numbers",
+        "lessons": [
+          "Convergent Sequences",
+          "Limit Theorems for Sequences",
+          "Monotone Sequences",
+          "Cauchy Sequences",
+          "Subsequences",
+          "Series and Convergence Tests"
+        ]
+      },
+      {
+        "module_title": "Topology of the Real Line",
+        "lessons": [
+          "Open and Closed Sets",
+          "Compact Sets",
+          "Connected Sets",
+          "Heine-Borel Theorem",
+          "Bolzano-Weierstrass Theorem"
+        ]
+      },
+      {
+        "module_title": "Limits and Continuity of Functions",
+        "lessons": [
+          "Limits of Functions",
+          "Continuous Functions",
+          "Properties of Continuous Functions",
+          "Uniform Continuity",
+          "Intermediate Value Theorem (Rigorous Proof)"
+        ]
+      },
+      {
+        "module_title": "Differentiation",
+        "lessons": [
+          "The Derivative",
+          "Mean Value Theorem (Rigorous Proof)",
+          "L'Hôpital's Rule",
+          "Taylor's Theorem"
+        ]
+      },
+      {
+        "module_title": "Riemann Integration",
+        "lessons": [
+          "The Riemann Integral",
+          "Properties of the Riemann Integral",
+          "Fundamental Theorem of Calculus (Rigorous Proof)",
+          "Improper Integrals (Rigorous Approach)"
+        ]
+      }
+    ],
+    "assessments": {
+      "quizzes": 6,
+      "midterm": true,
+      "final": true,
+      "project": false
+    },
+    "mastery_rubric": "To pass, students must demonstrate a rigorous understanding of the foundational concepts of real analysis, including epsilon-delta proofs for limits and continuity, properties of sequences and series, and the theory of differentiation and Riemann integration. The ability to construct formal mathematical proofs is paramount. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH302": {
+    "course_id": "MATH302",
+    "title": "Abstract Algebra I",
+    "description": "Introduction to group theory: groups, subgroups, normal subgroups, homomorphisms, and quotient groups.",
+    "level": 300,
+    "prerequisites": ["MATH201", "MATH203"],
+    "credit_hours": 3,
+    "modules": [
+      {
+        "module_title": "Introduction to Groups",
+        "lessons": [
+          "Binary Operations",
+          "Definition of a Group",
+          "Examples of Groups (integers, permutations, matrices)",
+          "Basic Properties of Groups"
+        ]
+      },
+      {
+        "module_title": "Subgroups",
+        "lessons": [
+          "Definition and Examples",
+          "Cyclic Subgroups",
+          "Lagrange's Theorem",
+          "Cosets"
+        ]
+      },
+      {
+        "module_title": "Homomorphisms and Isomorphisms",
+        "lessons": [
+          "Definition of a Homomorphism",
+          "Properties of Homomorphisms",
+          "Isomorphisms",
+          "Automorphisms"
+        ]
+      },
+      {
+        "module_title": "Normal Subgroups and Factor Groups",
+        "lessons": [
+          "Normal Subgroups",
+          "Factor Groups (Quotient Groups)",
+          "The Isomorphism Theorems"
+        ]
+      },
+      {
+        "module_title": "Permutation Groups and Cayley's Theorem",
+        "lessons": [
+          "Permutations",
+          "Cycles and Transpositions",
+          "Alternating Groups",
+          "Cayley's Theorem"
+        ]
+      },
+      {
+        "module_title": "Direct Products and Finitely Generated Abelian Groups",
+        "lessons": [
+          "External Direct Products",
+          "Internal Direct Products",
+          "Fundamental Theorem of Finitely Generated Abelian Groups"
+        ]
+      }
+    ],
+    "assessments": {
+      "quizzes": 6,
+      "midterm": true,
+      "final": true,
+      "project": false
+    },
+    "mastery_rubric": "To pass, students must demonstrate a conceptual understanding of groups, subgroups, and homomorphisms, and be able to construct proofs related to these structures. Proficiency in working with cosets, normal subgroups, and factor groups is essential. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH303": {
+    "course_id": "MATH303",
+    "title": "Complex Analysis",
+    "description": "Complex numbers, analytic functions, Cauchy-Riemann equations, complex integration, power series, and residue theory.",
+    "level": 300,
+    "prerequisites": ["MATH202"],
+    "credit_hours": 3,
+    "modules": [
+      {
+        "module_title": "Complex Numbers and Functions",
+        "lessons": [
+          "Complex Numbers and the Complex Plane",
+          "Functions of a Complex Variable",
+          "Analytic Functions"
+        ]
+      },
+      {
+        "module_title": "Cauchy-Riemann Equations and Elementary Functions",
+        "lessons": [
+          "Cauchy-Riemann Equations",
+          "Harmonic Functions",
+          "Exponential and Logarithmic Functions",
+          "Trigonometric and Hyperbolic Functions"
+        ]
+      },
+      {
+        "module_title": "Complex Integration",
+        "lessons": [
+          "Contour Integrals",
+          "Cauchy-Goursat Theorem",
+          "Cauchy Integral Formula",
+          "Derivatives of Analytic Functions"
+        ]
+      },
+      {
+        "module_title": "Series",
+        "lessons": [
+          "Sequences and Series of Functions",
+          "Taylor Series",
+          "Laurent Series",
+          "Zeros of Analytic Functions"
+        ]
+      },
+      {
+        "module_title": "Residues and Poles",
+        "lessons": [
+          "Isolated Singularities",
+          "Residues",
+          "Residue Theorem",
+          "Applications of the Residue Theorem"
+        ]
+      },
+      {
+        "module_title": "Conformal Mappings",
+        "lessons": [
+          "Geometric Interpretation of Functions",
+          "Conformal Mappings",
+          "Schwarz-Christoffel Transformation"
+        ]
+      }
+    ],
+    "assessments": {
+      "quizzes": 6,
+      "midterm": true,
+      "final": true,
+      "project": false
+    },
+    "mastery_rubric": "To pass, students must demonstrate a strong understanding of complex numbers, analytic functions, and the Cauchy-Riemann equations. Proficiency in complex integration, residue theory, and applications to evaluating real integrals is required. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH304": {
+    "course_id": "MATH304",
+    "title": "Introduction to Topology",
+    "description": "Foundations of point-set topology: topological spaces, continuous functions, compactness, connectedness, and separation axioms.",
+    "level": 300,
+    "prerequisites": ["MATH202", "MATH203"],
+    "credit_hours": 3,
+    "modules": [
+      {
+        "module_title": "Topological Spaces",
+        "lessons": [
+          "Definition of a Topology",
+          "Open and Closed Sets",
+          "Basis for a Topology",
+          "Subspace Topology",
+          "Product Topology"
+        ]
+      },
+      {
+        "module_title": "Continuous Functions and Homeomorphisms",
+        "lessons": [
+          "Continuous Functions",
+          "Homeomorphisms",
+          "Metric Spaces and Topologies Induced by Metrics"
+        ]
+      },
+      {
+        "module_title": "Connectedness",
+        "lessons": [
+          "Connected Spaces",
+          "Path-Connected Spaces",
+          "Components and Path Components"
+        ]
+      },
+      {
+        "module_title": "Compactness",
+        "lessons": [
+          "Compact Spaces",
+          "Compactness in Metric Spaces",
+          "Local Compactness"
+        ]
+      },
+      {
+        "module_title": "Separation Axioms",
+        "lessons": [
+          "Hausdorff Spaces (T2)",
+          "Regular Spaces (T3)",
+          "Normal Spaces (T4)",
+          "Urysohn's Lemma and Tietze Extension Theorem"
+        ]
+      },
+      {
+        "module_title": "Countability and Separation Axioms",
+        "lessons": [
+          "First and Second Countable Spaces",
+          "Separable Spaces",
+          "Completely Regular Spaces"
+        ]
+      }
+    ],
+    "assessments": {
+      "quizzes": 6,
+      "midterm": true,
+      "final": true,
+      "project": false
+    },
+    "mastery_rubric": "To pass, students must develop a rigorous understanding of topological spaces, continuous functions, and homeomorphisms. The ability to prove properties related to compactness, connectedness, and the various separation axioms is crucial. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH350": {
+    "course_id": "MATH350",
+    "title": "Numerical Analysis I",
+    "description": "Introduction to numerical methods: error analysis, solving nonlinear equations, interpolation, numerical differentiation, and integration.",
+    "level": 300,
+    "prerequisites": ["MATH202", "MATH203"],
+    "credit_hours": 3,
+    "modules": [
+      {
+        "module_title": "Mathematical Preliminaries and Error Analysis",
+        "lessons": [
+          "Review of Calculus",
+          "Round-off Errors and Computer Arithmetic",
+          "Error Propagation",
+          "Stability and Conditioning"
+        ]
+      },
+      {
+        "module_title": "Solutions of Equations in One Variable",
+        "lessons": [
+          "Bisection Method",
+          "Fixed-Point Iteration",
+          "Newton's Method",
+          "Secant Method",
+          "Rate of Convergence"
+        ]
+      },
+      {
+        "module_title": "Interpolation and Polynomial Approximation",
+        "lessons": [
+          "Taylor Polynomials",
+          "Lagrange Interpolating Polynomials",
+          "Newton's Divided Differences",
+          "Cubic Spline Interpolation"
+        ]
+      },
+      {
+        "module_title": "Numerical Differentiation and Integration",
+        "lessons": [
+          "Numerical Differentiation Formulas",
+          "Richardson Extrapolation",
+          "Trapezoidal Rule",
+          "Simpson's Rule",
+          "Romberg Integration",
+          "Gaussian Quadrature"
+        ]
+      },
+      {
+        "module_title": "Direct Methods for Solving Linear Systems",
+        "lessons": [
+          "Gaussian Elimination with Partial Pivoting",
+          "LU Factorization",
+          "Cholesky Factorization",
+          "Matrix Norms"
+        ]
+      }
+    ],
+    "assessments": {
+      "quizzes": 5,
+      "midterm": true,
+      "final": true,
+      "project": true
+    },
+    "mastery_rubric": "To pass, students must understand fundamental numerical methods for solving mathematical problems, including error analysis. Proficiency in implementing and analyzing algorithms for root finding, interpolation, differentiation, and integration is required. The ability to analyze the stability and convergence of numerical schemes is crucial. Final course grade must be 70% or higher, with at least 60% on the final exam or project."
+  },
+  "MATH351": {
+    "course_id": "MATH351",
+    "title": "Numerical Analysis II",
+    "description": "Advanced numerical methods: iterative methods for linear systems, eigenvalue problems, and numerical solutions of ordinary and partial differential equations.",
+    "level": 300,
+    "prerequisites": ["MATH350"],
+    "credit_hours": 3,
+    "modules": [
+      {
+        "module_title": "Iterative Techniques for Solving Linear Systems",
+        "lessons": [
+          "Jacobi Method",
+          "Gauss-Seidel Method",
+          "Successive Over-Relaxation (SOR)",
+          "Conjugate Gradient Method"
+        ]
+      },
+      {
+        "module_title": "Approximation Theory",
+        "lessons": [
+          "Discrete Least Squares Approximation",
+          "Continuous Least Squares Approximation",
+          "Chebyshev Polynomials",
+          "Rational Function Approximation"
+        ]
+      },
+      {
+        "module_title": "Eigenvalue Problems",
+        "lessons": [
+          "Eigenvalue and Eigenvector Basics",
+          "Power Method",
+          "QR Algorithm",
+          "Jacobi Method for Symmetric Matrices"
+        ]
+      },
+      {
+        "module_title": "Numerical Solutions of Ordinary Differential Equations",
+        "lessons": [
+          "Euler's Method",
+          "Runge-Kutta Methods",
+          "Multistep Methods",
+          "Stability of ODE Methods",
+          "Boundary-Value Problems"
+        ]
+      },
+      {
+        "module_title": "Numerical Solutions of Partial Differential Equations",
+        "lessons": [
+          "Finite Difference Method for Laplace Equation",
+          "Finite Difference Method for Heat Equation",
+          "Finite Difference Method for Wave Equation",
+          "Introduction to Finite Element Method"
+        ]
+      }
+    ],
+    "assessments": {
+      "quizzes": 5,
+      "midterm": true,
+      "final": true,
+      "project": true
+    },
+    "mastery_rubric": "To pass, students must demonstrate proficiency in advanced numerical techniques for solving complex mathematical problems, including iterative methods for linear systems, eigenvalue computation, and the numerical solution of differential equations. The ability to select appropriate methods and analyze their convergence and error properties is crucial. Final course grade must be 70% or higher, with at least 60% on the final exam or project."
+  },
+  "MATH401": {
+    "course_id": "MATH401",
+    "title": "Introduction to Graduate Mathematics",
+    "description": "A capstone course preparing students for graduate-level studies, covering advanced topics and interconnections across pure and applied mathematics.",
+    "level": 400,
+    "prerequisites": ["MATH301", "MATH302", "MATH303"],
+    "credit_hours": 3,
+    "modules": [
+      {
+        "module_title": "Advanced Topics in Analysis",
+        "lessons": [
+          "Introduction to Measure Theory",
+          "Lp Spaces",
+          "Introduction to Functional Analysis Concepts"
+        ]
+      },
+      {
+        "module_title": "Advanced Topics in Algebra",
+        "lessons": [
+          "Introduction to Ring and Field Theory",
+          "Galois Theory Overview",
+          "Module Theory Concepts"
+        ]
+      },
+      {
+        "module_title": "Introduction to Manifolds and Differential Geometry",
+        "lessons": [
+          "Smooth Manifolds",
+          "Tangent Spaces",
+          "Differential Forms",
+          "Stokes' Theorem on Manifolds"
+        ]
+      },
+      {
+        "module_title": "Mathematical Logic and Foundations",
+        "lessons": [
+          "Set Theory Review",
+          "Formal Systems",
+          "Gödel's Incompleteness Theorems (overview)"
+        ]
+      },
+      {
+        "module_title": "Connections in Applied Mathematics",
+        "lessons": [
+          "Applications of PDEs in Physics and Engineering",
+          "Advanced Optimization Techniques",
+          "Stochastic Processes in Finance"
+        ]
+      }
+    ],
+    "assessments": {
+      "quizzes": 5,
+      "midterm": true,
+      "final": true,
+      "project": false
+    },
+    "mastery_rubric": "To pass, students must demonstrate a broad and deep understanding of advanced mathematical concepts and their interconnections, suitable for graduate studies. The ability to synthesize knowledge from various branches of mathematics and engage with abstract theoretical arguments is essential. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH410": {
+    "course_id": "MATH410",
+    "title": "Abstract Algebra II (Ring Theory)",
+    "description": "Advanced topics in ring theory: rings, ideals, quotient rings, integral domains, unique factorization domains, and field extensions.",
+    "level": 400,
+    "prerequisites": ["MATH301"],
+    "credit_hours": 3,
+    "modules": [
+      {
+        "module_title": "Rings and Subrings",
+        "lessons": [
+          "Definition and Examples of Rings",
+          "Properties of Rings",
+          "Subrings",
+          "Integral Domains and Fields"
+        ]
+      },
+      {
+        "module_title": "Ideals and Factor Rings",
+        "lessons": [
+          "Ideals",
+          "Factor Rings (Quotient Rings)",
+          "Prime and Maximal Ideals",
+          "Homomorphisms and Isomorphism Theorems for Rings"
+        ]
+      },
+      {
+        "module_title": "Polynomial Rings",
+        "lessons": [
+          "Polynomial Rings over a Field",
+          "Irreducibility Tests",
+          "Unique Factorization Domains (UFDs)"
+        ]
+      },
+      {
+        "module_title": "Field Extensions",
+        "lessons": [
+          "Field Extensions",
+          "Algebraic and Transcendental Elements",
+          "Splitting Fields",
+          "Finite Fields"
+        ]
+      }
+    ],
+    "assessments": {
+      "quizzes": 4,
+      "midterm": true,
+      "final": true,
+      "project": false
+    },
+    "mastery_rubric": "To pass, students must demonstrate a thorough understanding of ring theory, including ideals, factor rings, and polynomial rings. The ability to construct proofs related to ring properties, irreducibility, and field extensions is crucial. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH411": {
+    "course_id": "MATH411",
+    "title": "Abstract Algebra III (Galois Theory)",
+    "description": "Further exploration of field theory, including advanced topics in Galois theory and its applications to polynomial solvability.",
+    "level": 400,
+    "prerequisites": ["MATH410"],
+    "credit_hours": 3,
+    "modules": [
+      {
+        "module_title": "Review of Field Extensions",
+        "lessons": [
+          "Algebraic Extensions",
+          "Splitting Fields",
+          "Separable Extensions"
+        ]
+      },
+      {
+        "module_title": "Galois Theory Fundamentals",
+        "lessons": [
+          "Galois Groups",
+          "The Fundamental Theorem of Galois Theory",
+          "Solvability by Radicals"
+        ]
+      },
+      {
+        "module_title": "Applications of Galois Theory",
+        "lessons": [
+          "Insolvability of the Quintic",
+          "Geometric Constructions",
+          "Transcendence of e and pi (overview)"
+        ]
+      }
+    ],
+    "assessments": {
+      "quizzes": 3,
+      "midterm": true,
+      "final": true,
+      "project": false
+    },
+    "mastery_rubric": "To pass, students must demonstrate a deep understanding of Galois theory, including its fundamental theorem and applications to the solvability of polynomials. The ability to compute Galois groups and apply the theory to specific examples is essential. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH412": {
+    "course_id": "MATH412",
+    "title": "Algebraic Number Theory",
+    "description": "Introduction to algebraic number theory, including algebraic integers, number fields, unique factorization of ideals, and Dirichlet's Unit Theorem.",
+    "level": 400,
+    "prerequisites": ["MATH411"],
+    "credit_hours": 3,
+    "modules": [
+      {
+        "module_title": "Algebraic Integers and Number Fields",
+        "lessons": [
+          "Algebraic Integers",
+          "Number Fields",
+          "Integral Bases"
+        ]
+      },
+      {
+        "module_title": "Dedekind Domains and Ideal Theory",
+        "lessons": [
+          "Dedekind Domains",
+          "Fractional Ideals",
+          "Unique Factorization of Ideals"
+        ]
+      },
+      {
+        "module_title": "Class Group and Units",
+        "lessons": [
+          "Class Group",
+          "Dirichlet's Unit Theorem"
+        ]
+      }
+    ],
+    "assessments": {
+      "quizzes": 3,
+      "midterm": true,
+      "final": true,
+      "project": false
+    },
+    "mastery_rubric": "To pass, students must demonstrate a foundational understanding of algebraic number theory, including algebraic integers, number fields, and the unique factorization of ideals. The ability to work with class groups and apply Dirichlet's Unit Theorem is crucial. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH420": {
+    "course_id": "MATH420",
+    "title": "Real Analysis II (Measure Theory)",
+    "description": "Advanced topics in measure theory and Lebesgue integration: Lebesgue measure, measurable functions, Lp spaces, and convergence theorems.",
+    "level": 400,
+    "prerequisites": ["MATH302"],
+    "credit_hours": 3,
+    "modules": [
+      {
+        "module_title": "Measure Theory Fundamentals",
+        "lessons": [
+          "Outer Measure",
+          "Lebesgue Measure",
+          "Measurable Sets",
+          "Measurable Functions"
+        ]
+      },
+      {
+        "module_title": "Lebesgue Integration",
+        "lessons": [
+          "The Lebesgue Integral",
+          "Comparison with Riemann Integral",
+          "Convergence Theorems (Monotone, Dominated)"
+        ]
+      },
+      {
+        "module_title": "Lp Spaces",
+        "lessons": [
+          "Definition of Lp Spaces",
+          "Hölder's and Minkowski's Inequalities",
+          "Completeness of Lp Spaces"
+        ]
+      }
+    ],
+    "assessments": {
+      "quizzes": 3,
+      "midterm": true,
+      "final": true,
+      "project": false
+    },
+    "mastery_rubric": "To pass, students must demonstrate a rigorous understanding of measure theory and Lebesgue integration, including the construction of Lebesgue measure and integral, and the various convergence theorems. The ability to work with Lp spaces and apply the theoretical concepts to advanced problems is essential. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH421": {
+    "course_id": "MATH421",
+    "title": "Functional Analysis I",
+    "description": "Introduction to functional analysis: normed spaces, Banach spaces, Hilbert spaces, and fundamental theorems.",
+    "level": 400,
+    "prerequisites": ["MATH420"],
+    "credit_hours": 3,
+    "modules": [
+      {
+        "module_title": "Normed Spaces and Banach Spaces",
+        "lessons": [
+          "Normed Vector Spaces",
+          "Banach Spaces",
+          "Examples of Banach Spaces",
+          "Linear Operators and Functionals"
+        ]
+      },
+      {
+        "module_title": "Hilbert Spaces",
+        "lessons": [
+          "Inner Product Spaces",
+          "Hilbert Spaces",
+          "Orthonormal Sets and Bases",
+          "Riesz Representation Theorem"
+        ]
+      },
+      {
+        "module_title": "Fundamental Theorems of Functional Analysis",
+        "lessons": [
+          "Hahn-Banach Theorem",
+          "Uniform Boundedness Principle",
+          "Open Mapping Theorem",
+          "Closed Graph Theorem"
+        ]
+      }
+    ],
+    "assessments": {
+      "quizzes": 3,
+      "midterm": true,
+      "final": true,
+      "project": false
+    },
+    "mastery_rubric": "To pass, students must demonstrate a strong understanding of normed spaces, Banach spaces, and Hilbert spaces, along with linear operators and functionals. The ability to apply the fundamental theorems of functional analysis (Hahn-Banach, Uniform Boundedness, Open Mapping, Closed Graph) is crucial. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH430": {
+    "course_id": "MATH430",
+    "title": "Differential Geometry I",
+    "description": "Theory of curves and surfaces in three-dimensional Euclidean space, including curvature, torsion, and fundamental forms.",
+    "level": 400,
+    "prerequisites": ["MATH304"],
+    "credit_hours": 3,
+    "modules": [
+      {
+        "module_title": "Curves in R^3",
+        "lessons": [
+          "Parametrized Curves",
+          "Arc Length and Reparametrization",
+          "Tangent, Normal, and Binormal Vectors",
+          "Curvature and Torsion",
+          "Frenet-Serret Formulas"
+        ]
+      },
+      {
+        "module_title": "Surfaces in R^3",
+        "lessons": [
+          "Parametrized Surfaces",
+          "Tangent Planes and Normal Vectors",
+          "First Fundamental Form",
+          "Surface Area"
+        ]
+      },
+      {
+        "module_title": "Curvature of Surfaces",
+        "lessons": [
+          "Shape Operator",
+          "Second Fundamental Form",
+          "Gaussian Curvature",
+          "Mean Curvature",
+          "Theorema Egregium"
+        ]
+      }
+    ],
+    "assessments": {
+      "quizzes": 3,
+      "midterm": true,
+      "final": true,
+      "project": false
+    },
+    "mastery_rubric": "To pass, students must demonstrate a firm grasp of the differential geometry of curves and surfaces, including the calculation of curvature, torsion, and fundamental forms. The ability to apply the Frenet-Serret formulas and understand Gaussian and Mean curvature is essential. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH431": {
+    "course_id": "MATH431",
+    "title": "Introduction to Algebraic Topology",
+    "description": "Fundamental group, covering spaces, and an introduction to homology theory.",
+    "level": 400,
+    "prerequisites": ["MATH430"],
+    "credit_hours": 3,
+    "modules": [
+      {
+        "module_title": "Homotopy and the Fundamental Group",
+        "lessons": [
+          "Homotopy of Paths",
+          "The Fundamental Group",
+          "Covering Spaces and the Fundamental Group"
+        ]
+      },
+      {
+        "module_title": "Covering Spaces",
+        "lessons": [
+          "Lifting Properties",
+          "Universal Covering Space",
+          "Group Actions"
+        ]
+      },
+      {
+        "module_title": "Introduction to Homology",
+        "lessons": [
+          "Simplicial Complexes",
+          "Simplicial Homology",
+          "Betti Numbers",
+          "Euler Characteristic"
+        ]
+      }
+    ],
+    "assessments": {
+      "quizzes": 3,
+      "midterm": true,
+      "final": true,
+      "project": false
+    },
+    "mastery_rubric": "To pass, students must demonstrate a conceptual understanding of homotopy, the fundamental group, and covering spaces. The ability to compute the fundamental group for basic spaces and an introduction to the principles of homology theory are required. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH498": {
+    "course_id": "MATH498",
+    "title": "Senior Capstone Project in Mathematics",
+    "description": "An independent research project or advanced seminar culminating in a written report and presentation.",
+    "level": 400,
+    "prerequisites": ["MATH401"],
+    "credit_hours": 3,
+    "modules": [
+      {
+        "module_title": "Project Proposal and Literature Review",
+        "lessons": [
+          "Identifying Research Topics",
+          "Formulating a Research Question",
+          "Conducting a Literature Review",
+          "Writing a Project Proposal"
+        ]
+      },
+      {
+        "module_title": "Research and Methodology",
+        "lessons": [
+          "Developing a Research Plan",
+          "Data Collection and Analysis Techniques",
+          "Mathematical Modeling",
+          "Proof Construction and Validation"
+        ]
+      },
+      {
+        "module_title": "Writing and Presentation",
+        "lessons": [
+          "Structuring a Research Paper",
+          "Effective Mathematical Writing",
+          "Creating a Presentation",
+          "Delivering a Research Presentation and Defense"
+        ]
+      }
+    ],
+    "assessments": {
+      "quizzes": 0,
+      "midterm": false,
+      "final": false,
+      "project": true
+    },
+    "mastery_rubric": "To pass, students must successfully complete an independent research project or an in-depth analysis of an advanced mathematical topic. This includes formulating a clear research question, conducting thorough research, applying appropriate mathematical methods, and presenting findings in a well-structured written report and an oral defense. The project must demonstrate a high level of mathematical maturity and independent thought. A panel of faculty will evaluate the project and presentation."
+  },
+  "STAT301": {
+    "course_id": "STAT301",
+    "title": "Probability Theory",
+    "description": "Axioms of probability, conditional probability, random variables, probability distributions, expectation, variance, and limit theorems.",
+    "level": 300,
+    "prerequisites": ["MATH203"],
+    "credit_hours": 3,
+    "modules": [
+      {
+        "module_title": "Basic Probability Concepts",
+        "lessons": [
+          "Sample Spaces and Events",
+          "Axioms of Probability",
+          "Counting Techniques (Permutations, Combinations)",
+          "Conditional Probability and Independence"
+        ]
+      },
+      {
+        "module_title": "Discrete Random Variables",
+        "lessons": [
+          "Random Variables and Probability Mass Functions",
+          "Expected Value of Discrete Random Variables",
+          "Variance and Standard Deviation",
+          "Common Discrete Distributions (Binomial, Poisson, Geometric)"
+        ]
+      },
+      {
+        "module_title": "Continuous Random Variables",
+        "lessons": [
+          "Probability Density Functions",
+          "Expected Value of Continuous Random Variables",
+          "Common Continuous Distributions (Uniform, Exponential, Normal)",
+          "Cumulative Distribution Functions"
+        ]
+      },
+      {
+        "module_title": "Joint Distributions and Transformations",
+        "lessons": [
+          "Joint Probability Distributions (Discrete and Continuous)",
+          "Conditional Distributions",
+          "Covariance and Correlation",
+          "Transformations of Random Variables"
+        ]
+      },
+      {
+        "module_title": "Limit Theorems",
+        "lessons": [
+          "Law of Large Numbers",
+          "Central Limit Theorem",
+          "Applications of Limit Theorems"
+        ]
+      }
+    ],
+    "assessments": {
+      "quizzes": 5,
+      "midterm": true,
+      "final": true,
+      "project": false
+    },
+    "mastery_rubric": "To pass, students must demonstrate a strong understanding of fundamental probability concepts, including conditional probability, random variables, and various probability distributions (discrete and continuous). Proficiency in calculating expected values, variances, and applying limit theorems is essential. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "STAT302": {
+    "course_id": "STAT302",
+    "title": "Mathematical Statistics",
+    "description": "Introduction to statistical inference: point estimation, interval estimation, hypothesis testing, and likelihood methods.",
+    "level": 300,
+    "prerequisites": ["STAT301"],
+    "credit_hours": 3,
+    "modules": [
+      {
+        "module_title": "Sampling Distributions",
+        "lessons": [
+          "Populations and Samples",
+          "Sampling Distributions of the Mean and Proportion",
+          "Central Limit Theorem Revisited"
+        ]
+      },
+      {
+        "module_title": "Point Estimation",
+        "lessons": [
+          "Properties of Point Estimators (Unbiasedness, Efficiency)",
+          "Method of Moments",
+          "Maximum Likelihood Estimation"
+        ]
+      },
+      {
+        "module_title": "Interval Estimation",
+          "lessons": [
+          "Confidence Intervals for Means",
+          "Confidence Intervals for Proportions",
+          "Confidence Intervals for Variances"
+        ]
+      },
+      {
+        "module_title": "Hypothesis Testing",
+        "lessons": [
+          "Basic Concepts of Hypothesis Testing",
+          "Type I and Type II Errors",
+          "Hypothesis Tests for Means (Z-test, T-test)",
+          "Hypothesis Tests for Proportions",
+          "Hypothesis Tests for Variances",
+          "P-values"
+        ]
+      },
+      {
+        "module_title": "Goodness-of-Fit and Contingency Tables",
+        "lessons": [
+          "Chi-Square Goodness-of-Fit Test",
+          "Chi-Square Test for Independence"
+        ]
+      },
+      {
+        "module_title": "Simple Linear Regression",
+        "lessons": [
+          "Least Squares Estimation",
+          "Inference for Regression Coefficients",
+          "Coefficient of Determination"
+        ]
+      }
+    ],
+    "assessments": {
+      "quizzes": 6,
+      "midterm": true,
+      "final": true,
+      "project": false
+    },
+    "mastery_rubric": "To pass, students must demonstrate a strong understanding of statistical inference, including point and interval estimation, and various hypothesis testing procedures. Proficiency in applying likelihood methods and interpreting statistical results is essential. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH204": {
+    "course_id": "MATH204",
+    "title": "Discrete Mathematics",
+    "description": "Introduction to fundamental concepts of discrete mathematics, including logic, set theory, proof techniques, combinatorics, graph theory, and algorithms.",
+    "level": 200,
+    "prerequisites": [],
+    "credit_hours": 3,
+    "modules": [
+      {"module_title": "Logic and Proofs", "lessons": ["Propositional Logic", "Predicate Logic", "Proof Methods"]},
+      {"module_title": "Set Theory and Functions", "lessons": ["Sets and Operations", "Functions", "Cardinality"]},
+      {"module_title": "Combinatorics", "lessons": ["Counting Principles", "Permutations and Combinations", "Binomial Theorem"]},
+      {"module_title": "Graph Theory", "lessons": ["Graphs and Models", "Graph Terminology", "Connectivity", "Euler and Hamilton Paths"]},
+      {"module_title": "Algorithms", "lessons": ["Introduction to Algorithms", "Algorithm Efficiency", "Searching and Sorting Algorithms"]}
+    ],
+    "assessments": {"quizzes": 5, "midterm": true, "final": true, "project": false},
+    "mastery_rubric": "To pass, students must demonstrate a clear understanding of logical reasoning, set theory, and basic proof techniques. Proficiency in combinatorial counting, fundamental graph theory concepts, and algorithmic analysis is required. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH402": {
+    "course_id": "MATH402",
+    "title": "Numerical Linear Algebra",
+    "description": "Numerical methods for solving problems in linear algebra, including systems of equations, least squares, eigenvalue problems, and singular value decomposition.",
+    "level": 400,
+    "prerequisites": ["MATH203", "MATH350"],
+    "credit_hours": 3,
+    "modules": [
+      {"module_title": "Matrix Computations", "lessons": ["Vector and Matrix Norms", "Condition Number", "Floating Point Arithmetic"]},
+      {"module_title": "Direct Methods for Linear Systems", "lessons": ["Gaussian Elimination", "LU Factorization", "Cholesky Factorization"]},
+      {"module_title": "Iterative Methods for Linear Systems", "lessons": ["Jacobi, Gauss-Seidel, SOR", "Conjugate Gradient Method", "Preconditioning"]},
+      {"module_title": "Eigenvalue Problems", "lessons": ["Power Method", "QR Algorithm", "Inverse Iteration", "Rayleigh Quotient"]},
+      {"module_title": "Least Squares and SVD", "lessons": ["Normal Equations", "QR Factorization", "Singular Value Decomposition"]}
+    ],
+    "assessments": {"quizzes": 5, "midterm": true, "final": true, "project": true},
+    "mastery_rubric": "To pass, students must master numerical techniques for linear algebraic problems, including direct and iterative methods for linear systems, and algorithms for eigenvalue problems. The ability to analyze stability, accuracy, and efficiency of these methods is crucial. Final course grade must be 70% or higher, with at least 60% on the final exam or project."
+  },
+  "MATH403": {
+    "course_id": "MATH403",
+    "title": "Partial Differential Equations",
+    "description": "Introduction to partial differential equations: classification, method of characteristics, separation of variables, Fourier series, and applications.",
+    "level": 400,
+    "prerequisites": ["MATH202", "MATH201"],
+    "credit_hours": 3,
+    "modules": [
+      {"module_title": "First-Order PDEs", "lessons": ["Method of Characteristics", "Quasilinear Equations"]},
+      {"module_title": "Second-Order PDEs Classification", "lessons": ["Laplace, Heat, Wave Equations", "Boundary and Initial Conditions"]},
+      {"module_title": "Separation of Variables", "lessons": ["Fourier Series", "Solving the Heat Equation", "Solving the Wave Equation", "Solving Laplace's Equation"]},
+      {"module_title": "Sturm-Liouville Theory", "lessons": ["Eigenvalue Problems", "Orthogonal Functions"]},
+      {"module_title": "Applications", "lessons": ["Diffusion, Vibrations, Potentials"]}
+    ],
+    "assessments": {"quizzes": 5, "midterm": true, "final": true, "project": false},
+    "mastery_rubric": "To pass, students must understand the classification of PDEs and master various analytical solution techniques, especially separation of variables and Fourier series. The ability to apply PDEs to model physical phenomena and interpret solutions is essential. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "STAT401": {
+    "course_id": "STAT401",
+    "title": "Regression Analysis",
+    "description": "Advanced topics in linear regression, including multiple regression, model selection, diagnostics, and an introduction to generalized linear models.",
+    "level": 400,
+    "prerequisites": ["STAT302", "MATH203"],
+    "credit_hours": 3,
+    "modules": [
+      {"module_title": "Simple Linear Regression Review", "lessons": ["Estimation and Inference", "Diagnostics"]},
+      {"module_title": "Multiple Linear Regression", "lessons": ["Model Formulation", "Estimation of Coefficients", "Inference and Hypothesis Testing"]},
+      {"module_title": "Model Selection and Diagnostics", "lessons": ["Subset Selection", "Collinearity", "Outliers and Influential Points", "Transformations"]},
+      {"module_title": "Categorical Predictors", "lessons": ["Indicator Variables", "Interaction Terms"]},
+      {"module_title": "Generalized Linear Models Introduction", "lessons": ["Logistic Regression", "Poisson Regression"]}
+    ],
+    "assessments": {"quizzes": 5, "midterm": true, "final": true, "project": true},
+    "mastery_rubric": "To pass, students must demonstrate mastery of multiple linear regression, including model building, diagnostics, and interpretation. Proficiency in model selection techniques and an understanding of generalized linear models are required. The ability to apply regression methods to real-world data using statistical software is crucial. Final course grade must be 70% or higher, with at least 60% on the final exam or project."
+  },
+  "STAT402": {
+    "course_id": "STAT402",
+    "title": "Bayesian Statistics",
+    "description": "Foundations of Bayesian inference, including Bayes' Theorem, prior and posterior distributions, Bayesian estimation, and hypothesis testing.",
+    "level": 400,
+    "prerequisites": ["STAT301"],
+    "credit_hours": 3,
+    "modules": [
+      {"module_title": "Foundations of Bayesian Inference", "lessons": ["Bayes' Theorem", "Prior and Posterior Distributions", "Conjugate Priors"]},
+      {"module_title": "Bayesian Estimation", "lessons": ["Point Estimation (MAP, posterior mean)", "Credible Intervals"]},
+      {"module_title": "Bayesian Hypothesis Testing", "lessons": ["Bayes Factors", "Decision Theory"]},
+      {"module_title": "Computational Methods", "lessons": ["Markov Chain Monte Carlo (MCMC)", "Gibbs Sampling"]},
+      {"module_title": "Applications", "lessons": ["Hierarchical Models", "Regression with Bayesian Methods"]}
+    ],
+    "assessments": {"quizzes": 5, "midterm": true, "final": true, "project": true},
+    "mastery_rubric": "To pass, students must demonstrate a strong understanding of Bayesian principles, including constructing prior and posterior distributions, and performing Bayesian estimation and hypothesis testing. Proficiency in basic computational Bayesian methods like MCMC is required. The ability to apply Bayesian inference to statistical problems is crucial. Final course grade must be 70% or higher, with at least 60% on the final exam or project."
+  }
+}
