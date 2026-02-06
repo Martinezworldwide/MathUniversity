@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         tracksArray.forEach(track => {
             html += `
                 <div class="degree-track">
-                    <h3>${track.title} (${track.track_id})</h3>
+                    <h3>${track.title || 'Untitled Track'} (${track.track_id})</h3>
                     <p><strong>Total Credits:</strong> ${track.total_credits || 'Not yet defined'}</p>
                     <h4>Required Courses</h4>
                     <ul>`;
@@ -102,11 +102,11 @@ document.addEventListener('DOMContentLoaded', async () => {
             html += `
                     <h4>Capstone</h4>
                     <p><strong>Course:</strong> ${track.capstone ? track.capstone.course_id : 'Not yet defined'}</p>
-                    <p><strong>Title:</strong> ${track.capstone ? track.capstone.title : ''}</p>
-                    <p>${track.capstone ? track.capstone.description : ''}</p>
+                    <p><strong>Title:</strong> ${track.capstone ? track.capstone.title : 'Not yet defined'}</p>
+                    <p>${track.capstone ? track.capstone.description : 'Not yet defined'}</p>
                     <h4>Mastery Exam</h4>
                     <p><strong>Format:</strong> ${track.mastery_exam ? track.mastery_exam.format : 'Not yet defined'}</p>
-                    <p>${track.mastery_exam ? track.mastery_exam.description : ''}</p>
+                    <p>${track.mastery_exam ? track.mastery_exam.description : 'Not yet defined'}</p>
                 </div>
             `;
         });
