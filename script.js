@@ -19,27 +19,31 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Render Taxonomy
     function renderTaxonomy(taxonomy) {
         let html = `<h2>Canonical Math Taxonomy</h2>`;
-        if (!taxonomy || !taxonomy.majorBranches || taxonomy.majorBranches.length === 0) {
+        if (!taxonomy || !taxonomy.levels || !taxonomy.levels["Level 1"]) {
             html += `<p>Taxonomy data not available or empty.</p>`;
             appContainer.innerHTML = html;
             return;
         }
 
-        taxonomy.majorBranches.forEach(level1 => {
-            html += `<h3>${level1.name}</h3>`;
-            if (level1.description) {
-                html += `<p class="description">${level1.description}</p>`;
-            }
-            if (level1.subBranches && level1.subBranches.length > 0) {
-                level1.subBranches.forEach(level2 => {
-                    html += `<h4>${level2.name}</h4>`;
-                    if (level2.description) {
-                        html += `<p class="description">${level2.description}</p>`;
-                    }
-                    if (level2.specialties && level2.specialties.length > 0) {
+        const level1Branches = taxonomy.levels["Level 1"];
+        
+        // Iterate through Level 1 branches (major branches)
+        Object.keys(level1Branches).forEach(level1Name => {
+            html += `<h3>${level1Name}</h3>`;
+            const level1Branch = level1Branches[level1Name];
+            
+            // Check for Level 2 sub-branches
+            if (level1Branch["Level 2"]) {
+                const level2Branches = level1Branch["Level 2"];
+                Object.keys(level2Branches).forEach(level2Name => {
+                    html += `<h4>${level2Name}</h4>`;
+                    const level2Branch = level2Branches[level2Name];
+                    
+                    // Check for Level 3 specialties
+                    if (level2Branch["Level 3"] && Array.isArray(level2Branch["Level 3"])) {
                         html += `<ul>`;
-                        level2.specialties.forEach(specialty => {
-                            html += `<li>${specialty.name}</li>`;
+                        level2Branch["Level 3"].forEach(specialty => {
+                            html += `<li>${specialty}</li>`;
                         });
                         html += `</ul>`;
                     }
@@ -47,15 +51,12 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
         });
 
-        html += `<h3>Rules for Expansion</h3><ul>`;
-        if (taxonomy.rulesForExpansion && taxonomy.rulesForExpansion.length > 0) {
-            taxonomy.rulesForExpansion.forEach(rule => {
-                html += `<li>${rule}</li>`;
-            });
+        html += `<h3>Rules for Expansion</h3>`;
+        if (taxonomy.taxonomy_rules) {
+            html += `<p>${taxonomy.taxonomy_rules}</p>`;
         } else {
-            html += `<li>No expansion rules defined.</li>`;
+            html += `<p>No expansion rules defined.</p>`;
         }
-        html += `</ul>`;
 
         appContainer.innerHTML = html;
     }
@@ -63,22 +64,24 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Render Degree Tracks
     function renderDegreeTracks(tracks) {
         let html = `<h2>Degree Tracks</h2>`;
-        if (!tracks || !tracks.degreeTracks || tracks.degreeTracks.length === 0) {
+        if (!tracks) {
             html += `<p>Degree track data not available or empty.</p>`;
             appContainer.innerHTML = html;
             return;
         }
 
-        tracks.degreeTracks.forEach(track => {
+        // Convert tracks object to array
+        const tracksArray = Object.values(tracks);
+        
+        tracksArray.forEach(track => {
             html += `
                 <div class="degree-track">
-                    <h3>${track.name} (${track.id})</h3>
-                    <p class="description">${track.description}</p>
-                    <p><strong>Total Credits:</strong> ${track.totalCredits || 'Not yet defined'}</p>
+                    <h3>${track.title} (${track.track_id})</h3>
+                    <p><strong>Total Credits:</strong> ${track.total_credits || 'Not yet defined'}</p>
                     <h4>Required Courses</h4>
                     <ul>`;
-            if (track.requiredCourses && track.requiredCourses.length > 0) {
-                track.requiredCourses.forEach(courseId => {
+            if (track.required_courses && track.required_courses.length > 0) {
+                track.required_courses.forEach(courseId => {
                     html += `<li>${courseId}</li>`; // Will link to full course details later
                 });
             } else {
@@ -86,24 +89,24 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
             html += `</ul>`;
 
-            if (track.electiveGroups && track.electiveGroups.length > 0) {
+            if (track.elective_groups) {
                 html += `<h4>Elective Groups</h4><ul>`;
-                track.electiveGroups.forEach(group => {
-                    html += `<li><strong>${group.name}:</strong> ${group.description} (${group.credits} credits)</li>`;
+                // elective_groups is an object, not an array
+                Object.keys(track.elective_groups).forEach(groupName => {
+                    const group = track.elective_groups[groupName];
+                    html += `<li><strong>${groupName}:</strong> ${group.description}</li>`;
                 });
                 html += `</ul>`;
             }
 
             html += `
-                    <h4>Prerequisites Overview</h4>
-                    <p>${track.prerequisitesOverview || 'Not yet defined'}</p>
                     <h4>Capstone</h4>
-                    <p><strong>Type:</strong> ${track.capstone ? track.capstone.type : 'Not yet defined'}</p>
+                    <p><strong>Course:</strong> ${track.capstone ? track.capstone.course_id : 'Not yet defined'}</p>
+                    <p><strong>Title:</strong> ${track.capstone ? track.capstone.title : ''}</p>
                     <p>${track.capstone ? track.capstone.description : ''}</p>
                     <h4>Mastery Exam</h4>
-                    <p><strong>Format:</strong> ${track.masteryExam ? track.masteryExam.format : 'Not yet defined'}</p>
-                    <p><strong>Topics:</strong> ${track.masteryExam ? track.masteryExam.topics : ''}</p>
-                    <p><strong>Pass Criteria:</strong> ${track.masteryExam ? track.masteryExam.passCriteria : ''}</p>
+                    <p><strong>Format:</strong> ${track.mastery_exam ? track.mastery_exam.format : 'Not yet defined'}</p>
+                    <p>${track.mastery_exam ? track.mastery_exam.description : ''}</p>
                 </div>
             `;
         });
@@ -116,7 +119,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         event.preventDefault();
         const target = event.target.getAttribute('data-target');
         if (target === 'taxonomy') {
-            const taxonomy = await loadData('taxonomy');
+            const taxonomy = await loadData('subjects');
             renderTaxonomy(taxonomy);
         } else if (target === 'tracks') {
             const tracks = await loadData('tracks');
