@@ -1,11 +1,13 @@
 {
   "content_courses": [
     "MATH101",
-    "MATH110"
+    "MATH110",
+    "MATH102"
   ],
   "counts": {
     "MATH101": 24,
-    "MATH110": 16
+    "MATH110": 16,
+    "MATH102": 22
   },
   "note": "Courses listed here have full written lesson content (intro, concepts, worked example, practice with answers, takeaway) for every lesson in their outline."
 }

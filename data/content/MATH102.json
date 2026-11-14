@@ -1,0 +1,682 @@
+{
+  "course_id": "MATH102",
+  "title": "Calculus II",
+  "lesson_count": 22,
+  "lessons": {
+    "Integration by Parts": {
+      "intro": "Integration by parts is the product rule run in reverse: when an integrand is a product of two functions and a substitution won't work, you differentiate one factor and integrate the other, trading the original integral for (usually) an easier one.",
+      "concepts": [
+        "Formula — ∫u dv = uv − ∫v du, where u is the factor you differentiate and dv is the factor you integrate.",
+        "Choosing u — use LIATE (Logarithmic, Inverse trig, Algebraic, Trigonometric, Exponential): whichever factor comes first in that list is usually the best u.",
+        "Tabular method — for repeated parts with a polynomial factor, the table of derivatives and integrals organizes the work and stops when a derivative hits zero.",
+        "Repeated parts — sometimes you must apply parts twice, and the original integral can reappear and be solved for algebraically (the 'boomerang' trick)."
+      ],
+      "example": {
+        "q": "Evaluate ∫x e^x dx.",
+        "steps": [
+          "Choose u = x (algebraic, before exponential in LIATE) and dv = e^x dx.",
+          "Then du = dx and v = e^x.",
+          "Apply the formula: ∫x e^x dx = x e^x − ∫e^x dx.",
+          "The remaining integral is easy: x e^x − e^x + C."
+        ],
+        "a": "e^x(x − 1) + C"
+      },
+      "practice": [
+        {
+          "q": "Evaluate ∫x sin x dx.",
+          "a": "−x cos x + sin x + C (check by differentiating: the derivative is x sin x)."
+        },
+        {
+          "q": "Evaluate ∫ln x dx.",
+          "a": "x ln x − x + C (take u = ln x, dv = dx)."
+        }
+      ],
+      "takeaway": "Pick u by LIATE, differentiate it, integrate dv, and the new integral should be simpler than the one you started with.",
+      "module": "Techniques of Integration"
+    },
+    "Trigonometric Integrals": {
+      "intro": "Integrals of powers of sine, cosine, tangent, and secant look messy until you use the Pythagorean identities to rewrite them. The trick is always the same: save one factor for the substitution and convert the rest.",
+      "concepts": [
+        "Sine-cosine powers — if the sine power is odd, save one sin x and convert the rest with sin²x = 1 − cos²x; if the cosine power is odd, do the mirror image.",
+        "Both powers even — use the half-angle identities sin²x = (1 − cos 2x)/2 and cos²x = (1 + cos 2x)/2 to lower the powers.",
+        "Tangent-secant — for ∫tan^m x sec^n x dx, if n is even save sec²x (the derivative of tan x); if m is odd save sec x tan x (the derivative of sec x).",
+        "The sec x integral — ∫sec x dx = ln|sec x + tan x| + C, proved by multiplying top and bottom by sec x + tan x."
+      ],
+      "example": {
+        "q": "Evaluate ∫sin³x cos x dx.",
+        "steps": [
+          "The cosine power is 1 (odd), so save cos x dx for the substitution and convert the sine power.",
+          "Let u = sin x, so du = cos x dx.",
+          "The integral becomes ∫u³ du = u⁴/4 + C.",
+          "Substitute back: sin⁴x/4 + C."
+        ],
+        "a": "sin⁴x/4 + C"
+      },
+      "practice": [
+        {
+          "q": "Evaluate ∫cos³x dx.",
+          "a": "sin x − sin³x/3 + C (write cos³x = (1 − sin²x)cos x, then u = sin x)."
+        },
+        {
+          "q": "Evaluate ∫sin²x dx.",
+          "a": "x/2 − sin 2x/4 + C (use the half-angle identity)."
+        }
+      ],
+      "takeaway": "Save one factor for du, convert the rest with a Pythagorean identity, and the substitution falls out.",
+      "module": "Techniques of Integration"
+    },
+    "Trigonometric Substitution": {
+      "intro": "When an integrand contains √(a² − x²), √(a² + x²), or √(x² − a²), no ordinary substitution helps — but a trig substitution turns the square root into a single trig function, because the Pythagorean identities are built for exactly that.",
+      "concepts": [
+        "The three cases — √(a² − x²) calls for x = a sin θ; √(a² + x²) calls for x = a tan θ; √(x² − a²) calls for x = a sec θ.",
+        "Why it works — each substitution makes the expression under the root a perfect square via sin²θ + cos²θ = 1, 1 + tan²θ = sec²θ, or sec²θ − 1 = tan²θ.",
+        "Returning to x — draw the right triangle for the substitution (or use θ = arcsin(x/a) etc.) to convert trig functions of θ back to expressions in x.",
+        "Definite integrals — change the limits to θ-values at the substitution step and never convert back."
+      ],
+      "example": {
+        "q": "Evaluate ∫dx/√(9 − x²).",
+        "steps": [
+          "The form √(9 − x²) calls for x = 3 sin θ, so dx = 3 cos θ dθ.",
+          "The root becomes √(9 − 9 sin²θ) = 3√(cos²θ) = 3 cos θ (for θ in (−π/2, π/2)).",
+          "The integral becomes ∫(3 cos θ)/(3 cos θ) dθ = ∫dθ = θ + C.",
+          "Since x = 3 sin θ, θ = arcsin(x/3)."
+        ],
+        "a": "arcsin(x/3) + C"
+      },
+      "practice": [
+        {
+          "q": "Evaluate ∫dx/(x² + 4).",
+          "a": "(1/2) arctan(x/2) + C (substitute x = 2 tan θ)."
+        },
+        {
+          "q": "Evaluate ∫√(x² − 1)/x dx for x > 1.",
+          "a": "√(x² − 1) − arcsec x + C (substitute x = sec θ; the integral becomes ∫tan²θ dθ)."
+        }
+      ],
+      "takeaway": "Match the root to its substitution, let the Pythagorean identity collapse the root, and draw the triangle to get back to x.",
+      "module": "Techniques of Integration"
+    },
+    "Partial Fractions": {
+      "intro": "A rational function can be split into a sum of simple fractions whose denominators are the factors of the original denominator — and each simple fraction integrates to a logarithm or an arctangent. Partial fractions turns one hard integral into several easy ones.",
+      "concepts": [
+        "Setup — factor the denominator completely; a linear factor (x − a) contributes A/(x − a); a repeated factor (x − a)² contributes A/(x − a) + B/(x − a)²; an irreducible quadratic contributes (Ax + B)/(x² + bx + c).",
+        "Solving for the constants — clear denominators and either match coefficients or plug in strategic x-values (the roots make terms vanish).",
+        "Long division first — if the numerator's degree is at least the denominator's, divide first and decompose only the remainder.",
+        "Integration — each A/(x − a) term integrates to A ln|x − a|; quadratic terms complete the square and give arctan or a log."
+      ],
+      "example": {
+        "q": "Evaluate ∫dx/((x − 1)(x + 2)).",
+        "steps": [
+          "Write 1/((x − 1)(x + 2)) = A/(x − 1) + B/(x + 2).",
+          "Clear denominators: 1 = A(x + 2) + B(x − 1).",
+          "Set x = 1: 1 = 3A, so A = 1/3. Set x = −2: 1 = −3B, so B = −1/3.",
+          "Integrate: (1/3)∫dx/(x − 1) − (1/3)∫dx/(x + 2) = (1/3)ln|x − 1| − (1/3)ln|x + 2| + C."
+        ],
+        "a": "(1/3) ln|(x − 1)/(x + 2)| + C"
+      },
+      "practice": [
+        {
+          "q": "Evaluate ∫(2x + 1)/(x(x + 1)) dx.",
+          "a": "ln|x(x + 1)| + C (the decomposition is 1/x + 1/(x + 1))."
+        },
+        {
+          "q": "Evaluate ∫dx/(x² − 4).",
+          "a": "(1/4) ln|(x − 2)/(x + 2)| + C."
+        }
+      ],
+      "takeaway": "Factor, split into simple fractions, solve for the constants with strategic x-values, then integrate term by term.",
+      "module": "Techniques of Integration"
+    },
+    "Improper Integrals": {
+      "intro": "Some integrals stretch to infinity or blow up at a point inside the interval. They are not ordinary integrals at all — they are limits of ordinary integrals, and that limit may or may not exist.",
+      "concepts": [
+        "Two kinds — an infinite limit of integration (∫ₐ^∞) or an integrand that is unbounded at an endpoint or interior point.",
+        "Definition — replace the problem spot by a variable bound, integrate normally, then take the limit; the integral converges only if that limit is finite.",
+        "The p-test — ∫₁^∞ dx/x^p converges exactly when p > 1, and diverges for p ≤ 1.",
+        "Comparison — if 0 ≤ f(x) ≤ g(x) and ∫g converges, then ∫f converges; if ∫f diverges, then ∫g diverges."
+      ],
+      "example": {
+        "q": "Evaluate ∫₁^∞ dx/x², or show it diverges.",
+        "steps": [
+          "Replace ∞ by a finite bound b: ∫₁^b dx/x² = [−1/x]₁ᵇ = 1 − 1/b.",
+          "Take the limit as b → ∞: 1/b → 0.",
+          "The limit is 1, a finite number, so the integral converges."
+        ],
+        "a": "1"
+      },
+      "practice": [
+        {
+          "q": "Evaluate ∫₀^∞ e^(−x) dx.",
+          "a": "1 (the antiderivative is −e^(−x); the limit at ∞ is 0 and at 0 it is −1)."
+        },
+        {
+          "q": "Does ∫₀¹ dx/√x converge? If so, to what?",
+          "a": "Yes — it converges to 2 (the antiderivative 2√x is finite at both ends)."
+        }
+      ],
+      "takeaway": "An improper integral is a limit in disguise: integrate to a finite bound first, then let the bound approach the problem spot.",
+      "module": "Techniques of Integration"
+    },
+    "Area Between Curves": {
+      "intro": "The area between two curves is the integral of the vertical (or horizontal) distance between them. The only new work versus area under one curve is finding where the curves cross, so you know which one is on top and where to stop.",
+      "concepts": [
+        "Setup — area = ∫ₐᵇ [top(x) − bottom(x)] dx, where a and b are the x-values where the curves intersect.",
+        "Finding intersections — solve f(x) = g(x); those solutions are the limits of integration.",
+        "Swapping roles — if the curves cross inside the interval, split the integral at the crossing; if it is easier to integrate with respect to y, use ∫[right(y) − left(y)] dy.",
+        "Signed vs. total area — (f − g) can be negative where g is on top; area is always the integral of the positive distance."
+      ],
+      "example": {
+        "q": "Find the area between y = x² and y = x.",
+        "steps": [
+          "Intersect: x² = x gives x(x − 1) = 0, so x = 0 and x = 1.",
+          "On [0, 1], the line y = x is above the parabola y = x².",
+          "Area = ∫₀¹ (x − x²) dx = [x²/2 − x³/3]₀¹.",
+          "Evaluate: 1/2 − 1/3 = 1/6."
+        ],
+        "a": "1/6"
+      },
+      "practice": [
+        {
+          "q": "Find the area between y = x² and y = 2x.",
+          "a": "4/3 (they cross at 0 and 2; integrate 2x − x² from 0 to 2)."
+        },
+        {
+          "q": "Find the area under y = sin x from 0 to π (between the curve and the x-axis).",
+          "a": "2."
+        }
+      ],
+      "takeaway": "Intersect first, identify the top curve, and integrate the gap — never integrate a difference that changes sign.",
+      "module": "Applications of Integration"
+    },
+    "Volumes by Disks/Washers": {
+      "intro": "Revolve a region around an axis and it sweeps out a solid. Slice that solid perpendicular to the axis and every slice is a disk (or a washer, if the region doesn't touch the axis) — integrate the cross-sectional areas and you have the volume.",
+      "concepts": [
+        "Disks — revolving the area under y = f(x) about the x-axis gives V = π∫ₐᵇ [f(x)]² dx: each slice is a disk of radius f(x).",
+        "Washers — if the region is between an outer curve R(x) and an inner curve r(x), each slice is a washer with area π(R² − r²).",
+        "Axis choice — revolving about the y-axis usually means slicing horizontally and integrating with respect to y.",
+        "Units check — the integrand is an area (length²), integrated over a length, giving length³, as a volume should."
+      ],
+      "example": {
+        "q": "Find the volume of the solid obtained by revolving the region under y = √x, 0 ≤ x ≤ 4, about the x-axis.",
+        "steps": [
+          "A slice at position x is a disk of radius √x, so its area is π(√x)² = πx.",
+          "Volume = π∫₀⁴ x dx = π[x²/2]₀⁴.",
+          "Evaluate: π(16/2 − 0) = 8π."
+        ],
+        "a": "8π"
+      },
+      "practice": [
+        {
+          "q": "Revolve the region under y = x², 0 ≤ x ≤ 1, about the x-axis. Find the volume.",
+          "a": "π/5 (integrate πx⁴ from 0 to 1)."
+        },
+        {
+          "q": "Revolve the region between y = x and y = x² about the x-axis. Find the volume.",
+          "a": "2π/15 (washer: outer radius x, inner radius x², integrate π(x² − x⁴) from 0 to 1)."
+        }
+      ],
+      "takeaway": "Slice perpendicular to the axis, write each slice's area as πR² (or π(R² − r²)), and integrate.",
+      "module": "Applications of Integration"
+    },
+    "Volumes by Cylindrical Shells": {
+      "intro": "Sometimes disks are the wrong tool — when the region is described nicely in x but the axis is vertical, slicing horizontally is painful. Cylindrical shells slice parallel to the axis instead, and each slice unrolls into a thin rectangle.",
+      "concepts": [
+        "Shell formula — revolving about a vertical axis: V = 2π∫ (shell radius)(shell height) dx, where the radius is the distance from the slice to the axis.",
+        "When to use shells — reach for them when the axis of rotation is parallel to the slicing direction, or when solving for the inverse function would be ugly.",
+        "Radius and height — the radius is measured from the axis to the slice; the height is the top function minus the bottom function at that slice.",
+        "Mirror image — revolving about a horizontal axis gives shells in y: V = 2π∫ (radius)(height) dy."
+      ],
+      "example": {
+        "q": "Find the volume of the solid obtained by revolving the region under y = x², 0 ≤ x ≤ 2, about the y-axis.",
+        "steps": [
+          "A shell at position x has radius x and height x² (the curve's value).",
+          "Volume = 2π∫₀² x · x² dx = 2π∫₀² x³ dx.",
+          "Integrate: 2π[x⁴/4]₀² = 2π · 4 = 8π."
+        ],
+        "a": "8π"
+      },
+      "practice": [
+        {
+          "q": "Revolve the region under y = √x, 0 ≤ x ≤ 1, about the y-axis. Find the volume.",
+          "a": "4π/5 (integrate 2πx^(3/2) from 0 to 1)."
+        },
+        {
+          "q": "Revolve the region between y = x and y = x² about the y-axis. Find the volume.",
+          "a": "π/6 (integrate 2πx(x − x²) from 0 to 1)."
+        }
+      ],
+      "takeaway": "When the axis runs parallel to your slices, use shells: 2π times radius times height, integrated across the region.",
+      "module": "Applications of Integration"
+    },
+    "Arc Length": {
+      "intro": "A curve's length is the limit of the lengths of tiny straight segments approximating it. Each segment has length √(dx² + dy²), and summing them gives an integral involving the derivative — which is why only a few arc lengths come out cleanly.",
+      "concepts": [
+        "Formula — for y = f(x) on [a, b], L = ∫ₐᵇ √(1 + (f'(x))²) dx.",
+        "Why it works — a tiny segment has length √((Δx)² + (Δy)²) = √(1 + (Δy/Δx)²) Δx, and Δy/Δx → f'(x).",
+        "Nice cases — the integral is often impossible in elementary terms; the textbook cases are the ones where 1 + (f')² turns out to be a perfect square.",
+        "Parametric form — for x = x(t), y = y(t), L = ∫√((dx/dt)² + (dy/dt)²) dt."
+      ],
+      "example": {
+        "q": "Find the length of y = (2/3)x^(3/2) from x = 0 to x = 3.",
+        "steps": [
+          "Differentiate: y' = x^(1/2), so (y')² = x.",
+          "The integrand is √(1 + x).",
+          "L = ∫₀³ (1 + x)^(1/2) dx = [(2/3)(1 + x)^(3/2)]₀³.",
+          "Evaluate: (2/3)(8 − 1) = 14/3."
+        ],
+        "a": "14/3"
+      },
+      "practice": [
+        {
+          "q": "Find the length of y = x³/6 + 1/(2x) from x = 1 to x = 2.",
+          "a": "17/12 (here 1 + (y')² = (x²/2 + 1/(2x²))², a perfect square)."
+        },
+        {
+          "q": "Find the length of y = x²/2 from x = 0 to x = 1.",
+          "a": "√2/2 + (1/2) ln(1 + √2)."
+        }
+      ],
+      "takeaway": "Arc length is ∫√(1 + (f')²) dx — set it up, and hope the square root simplifies.",
+      "module": "Applications of Integration"
+    },
+    "Surface Area of Revolution": {
+      "intro": "Revolve a curve around an axis and it sweeps out a surface — a cone from a line, a sphere from a semicircle. Each tiny arc of the curve traces a thin band, and adding the bands gives the surface area.",
+      "concepts": [
+        "Formula — revolving y = f(x) about the x-axis: S = 2π∫ₐᵇ f(x)√(1 + (f'(x))²) dx.",
+        "Anatomy — 2πf(x) is the circumference of the band at x, and √(1 + (f')²) dx is the band's slant width (the arc-length element).",
+        "About the y-axis — use S = 2π∫ x√(1 + (f'(x))²) dx, with the radius now the x-coordinate.",
+        "Check against geometry — a line revolved about the x-axis makes a cone; a semicircle makes a sphere of area 4πr²."
+      ],
+      "example": {
+        "q": "Find the surface area obtained by revolving y = √x, 0 ≤ x ≤ 1, about the x-axis.",
+        "steps": [
+          "y' = 1/(2√x), so 1 + (y')² = 1 + 1/(4x) = (4x + 1)/(4x).",
+          "√(1 + (y')²) = √(4x + 1)/(2√x).",
+          "S = 2π∫₀¹ √x · √(4x + 1)/(2√x) dx = π∫₀¹ √(4x + 1) dx.",
+          "Integrate: π[(4x + 1)^(3/2)/6]₀¹ = π(5√5 − 1)/6."
+        ],
+        "a": "π(5√5 − 1)/6"
+      },
+      "practice": [
+        {
+          "q": "Revolve y = x, 0 ≤ x ≤ 1, about the x-axis (a cone). Find the surface area.",
+          "a": "π√2 (agrees with the cone formula πr·l with r = 1, l = √2)."
+        },
+        {
+          "q": "Revolve the semicircle y = √(1 − x²), −1 ≤ x ≤ 1, about the x-axis. Find the surface area.",
+          "a": "4π — the surface area of the unit sphere."
+        }
+      ],
+      "takeaway": "Surface area is circumference times slant width, integrated: 2π∫ f(x)√(1 + (f')²) dx.",
+      "module": "Applications of Integration"
+    },
+    "Sequences": {
+      "intro": "A sequence is a list of numbers in order — a function from the natural numbers to the reals. Calculus II starts here because series are built from sequences, and the first question is always the same: do the terms settle down to a limit, or not?",
+      "concepts": [
+        "Notation — a sequence is written {aₙ} or a₁, a₂, a₃, …; aₙ is the nth term.",
+        "Convergence — aₙ → L means the terms get arbitrarily close to L as n grows; formally, lim n→∞ aₙ = L.",
+        "Limit laws apply — the limit of a sequence can be computed with the same rules as limits of functions, including dividing top and bottom by the highest power of n.",
+        "Monotone convergence — a bounded, monotone sequence always converges; this is the workhorse behind many convergence proofs.",
+        "Squeeze — if aₙ ≤ bₙ ≤ cₙ and the outer sequences share a limit, so does bₙ."
+      ],
+      "example": {
+        "q": "Find lim n→∞ (3n + 1)/(2n − 5).",
+        "steps": [
+          "Divide numerator and denominator by n: (3 + 1/n)/(2 − 5/n).",
+          "As n → ∞, 1/n → 0 and 5/n → 0.",
+          "The limit is 3/2."
+        ],
+        "a": "3/2"
+      },
+      "practice": [
+        {
+          "q": "Find lim n→∞ n²/(n² + 1).",
+          "a": "1 (divide by n²)."
+        },
+        {
+          "q": "Does the sequence aₙ = (−1)ⁿ converge?",
+          "a": "No — it oscillates between −1 and 1 and never settles."
+        }
+      ],
+      "takeaway": "Treat a sequence like a function of n: divide by the dominant power and read off the limit.",
+      "module": "Sequences and Series"
+    },
+    "Series and Convergence": {
+      "intro": "A series is an infinite sum, and the question is whether adding infinitely many terms produces a finite number. The partial sums — the running totals — decide: if they approach a limit, the series converges to it.",
+      "concepts": [
+        "Partial sums — S_N = a₁ + … + a_N; the series Σaₙ converges to S if S_N → S.",
+        "Geometric series — Σₙ₌₀^∞ arⁿ converges to a/(1 − r) when |r| < 1, and diverges otherwise.",
+        "Divergence test — if aₙ does not tend to 0, the series diverges; but aₙ → 0 does NOT guarantee convergence (the harmonic series is the famous counterexample).",
+        "Telescoping series — when partial sums collapse to a few surviving terms, the limit is easy to read off.",
+        "Linearity — convergent series can be added term by term and multiplied by constants."
+      ],
+      "example": {
+        "q": "Find the sum of Σₙ₌₀^∞ (1/2)ⁿ.",
+        "steps": [
+          "This is geometric with a = 1 and r = 1/2.",
+          "Since |r| = 1/2 < 1, it converges to a/(1 − r).",
+          "Sum = 1/(1 − 1/2) = 2."
+        ],
+        "a": "2"
+      },
+      "practice": [
+        {
+          "q": "Find the sum of Σₙ₌₀^∞ (3/4)ⁿ.",
+          "a": "4 (geometric with a = 1, r = 3/4)."
+        },
+        {
+          "q": "Does Σ n/(n + 1) converge?",
+          "a": "No — the terms tend to 1, not 0, so the series diverges by the divergence test."
+        }
+      ],
+      "takeaway": "Convergence is about the partial sums; geometric series and the divergence test settle the easy cases.",
+      "module": "Sequences and Series"
+    },
+    "Integral Test and P-Series": {
+      "intro": "When the terms of a series come from a positive decreasing function, the series and the improper integral of that function stand or fall together. That single idea classifies the whole family of p-series at once.",
+      "concepts": [
+        "Integral test — if f is continuous, positive, and decreasing, then Σf(n) and ∫₁^∞ f(x) dx either both converge or both diverge.",
+        "Why it works — the sum is sandwiched between two Riemann sums for the integral, so finiteness of one forces finiteness of the other.",
+        "P-series — Σ1/n^p converges exactly when p > 1; the harmonic series (p = 1) diverges, slowly.",
+        "Remainder estimate — the integral test also bounds the error of a partial sum: ∫_{N+1}^∞ f ≤ R_N ≤ ∫_N^∞ f."
+      ],
+      "example": {
+        "q": "Does Σ 1/n² converge? Does Σ 1/√n converge?",
+        "steps": [
+          "Both are p-series: Σ1/n^p with p = 2 and p = 1/2.",
+          "The p-test says Σ1/n^p converges exactly when p > 1.",
+          "p = 2 > 1, so Σ1/n² converges; p = 1/2 < 1, so Σ1/√n diverges."
+        ],
+        "a": "Σ1/n² converges; Σ1/√n diverges"
+      },
+      "practice": [
+        {
+          "q": "Does Σ 1/n³ converge?",
+          "a": "Yes — p = 3 > 1."
+        },
+        {
+          "q": "Does Σ 1/(n ln n) (starting at n = 2) converge?",
+          "a": "No — the integral ∫₂^∞ dx/(x ln x) = ln(ln x) evaluated to ∞, so the series diverges by the integral test."
+        }
+      ],
+      "takeaway": "For a positive decreasing series, check the integral instead — and remember p > 1 is the whole p-series story.",
+      "module": "Sequences and Series"
+    },
+    "Comparison Tests": {
+      "intro": "Most series are not p-series and have no integral you want to compute. Comparison tests let you judge a series by a simpler one you already understand: if your terms are smaller than a convergent series' terms, yours converges too.",
+      "concepts": [
+        "Direct comparison — if 0 ≤ aₙ ≤ bₙ and Σbₙ converges, then Σaₙ converges; if Σaₙ diverges, then Σbₙ diverges.",
+        "Limit comparison — if aₙ/bₙ → L with 0 < L < ∞, then Σaₙ and Σbₙ converge or diverge together.",
+        "Choosing the comparison — ignore lower-order terms and constants: for a rational expression, compare with 1/n^(degree difference).",
+        "One direction only — direct comparison cannot prove divergence from a larger divergent series, nor convergence from a smaller divergent one."
+      ],
+      "example": {
+        "q": "Does Σ 1/(2ⁿ − 1) converge?",
+        "steps": [
+          "Compare with the geometric series Σ1/2ⁿ, which converges.",
+          "For n ≥ 1, 2ⁿ − 1 ≥ 2ⁿ⁻¹, so 1/(2ⁿ − 1) ≤ 1/2ⁿ⁻¹ = 2/2ⁿ.",
+          "Σ2/2ⁿ converges (geometric), so by direct comparison Σ1/(2ⁿ − 1) converges."
+        ],
+        "a": "Converges (by comparison with Σ2/2ⁿ)"
+      },
+      "practice": [
+        {
+          "q": "Does Σ 1/(n² + n) converge?",
+          "a": "Yes — 1/(n² + n) < 1/n² and Σ1/n² converges."
+        },
+        {
+          "q": "Does Σ (2n + 1)/(n² + 1) converge?",
+          "a": "No — limit comparison with 1/n gives limit 2, and the harmonic series diverges."
+        }
+      ],
+      "takeaway": "Compare with the series you get by keeping only the dominant terms; the limit comparison test makes the judgment rigorous.",
+      "module": "Sequences and Series"
+    },
+    "Alternating Series Test": {
+      "intro": "A series whose signs alternate can converge even when the absolute values add up to infinity — the positive and negative terms cancel each other out, one step at a time. The alternating harmonic series is the classic example: it converges to ln 2.",
+      "concepts": [
+        "Alternating series test — if bₙ decreases to 0, then Σ(−1)ⁿbₙ converges.",
+        "Conditional vs. absolute — a series converges absolutely if Σ|aₙ| converges; it converges conditionally if it converges but not absolutely.",
+        "Error bound — for a convergent alternating series, the error of the Nth partial sum is at most the first omitted term: |R_N| ≤ b_{N+1}.",
+        "Both conditions matter — the terms must decrease AND tend to zero; a series like Σ(−1)ⁿn/(n+1) fails the second and diverges."
+      ],
+      "example": {
+        "q": "Does Σₙ₌₁^∞ (−1)ⁿ/n converge? Absolutely or conditionally?",
+        "steps": [
+          "The terms alternate in sign, with bₙ = 1/n decreasing to 0.",
+          "By the alternating series test, the series converges.",
+          "But Σ|(−1)ⁿ/n| = Σ1/n is the harmonic series, which diverges.",
+          "So the convergence is conditional, not absolute."
+        ],
+        "a": "Converges conditionally (to ln 2)"
+      },
+      "practice": [
+        {
+          "q": "Does Σ(−1)ⁿ/n² converge absolutely?",
+          "a": "Yes — Σ1/n² converges, so the series converges absolutely."
+        },
+        {
+          "q": "Estimate the error in using the first 10 partial sums of Σ(−1)ⁿ/n to approximate its sum.",
+          "a": "At most 1/11 — the error is bounded by the first omitted term b₁₁."
+        }
+      ],
+      "takeaway": "Alternating, decreasing to zero means convergence — and the next term bounds your error.",
+      "module": "Sequences and Series"
+    },
+    "Ratio and Root Tests": {
+      "intro": "When terms involve factorials, exponentials, or nth powers, comparison tests are clumsy. The ratio and root tests judge a series by the growth rate of its own terms — how fast they shrink, relative to the previous term or to their nth root.",
+      "concepts": [
+        "Ratio test — let L = lim |a_{n+1}/aₙ|. If L < 1 the series converges absolutely; if L > 1 it diverges; if L = 1 the test is inconclusive.",
+        "Root test — let L = lim (|aₙ|)^(1/n). The same three outcomes apply; it is the natural choice when aₙ is an nth power.",
+        "When to use which — factorials and products call for the ratio test; nth powers call for the root test.",
+        "Inconclusive at L = 1 — p-series all give L = 1 under the ratio test, so a ratio of 1 sends you back to the comparison or integral tests."
+      ],
+      "example": {
+        "q": "Does Σ n!/nⁿ converge?",
+        "steps": [
+          "Apply the ratio test: a_{n+1}/aₙ = [(n+1)!/(n+1)^(n+1)] · [nⁿ/n!].",
+          "Simplify: (n+1)!/n! = n+1, so the ratio is (n+1)nⁿ/(n+1)^(n+1) = nⁿ/(n+1)ⁿ = 1/(1 + 1/n)ⁿ.",
+          "As n → ∞, (1 + 1/n)ⁿ → e, so the ratio tends to 1/e ≈ 0.368 < 1.",
+          "By the ratio test, the series converges."
+        ],
+        "a": "Converges (ratio limit 1/e < 1)"
+      },
+      "practice": [
+        {
+          "q": "Does Σ 2ⁿ/n! converge?",
+          "a": "Yes — the ratio test gives limit 0."
+        },
+        {
+          "q": "Does Σ nⁿ/3ⁿ converge?",
+          "a": "No — the root test gives (nⁿ/3ⁿ)^(1/n) = n/3 → ∞, so it diverges."
+        }
+      ],
+      "takeaway": "Factorials → ratio test, nth powers → root test, and L = 1 means 'try something else'.",
+      "module": "Sequences and Series"
+    },
+    "Power Series": {
+      "intro": "A power series is a polynomial that never ends: Σcₙ(x − a)ⁿ. It converges on an interval around its center and diverges outside it — and inside that interval, it behaves like a function you can differentiate and integrate term by term.",
+      "concepts": [
+        "Radius of convergence — there is a number R (possibly 0 or ∞) such that the series converges absolutely for |x − a| < R and diverges for |x − a| > R.",
+        "Finding R — apply the ratio or root test to the general term; the resulting inequality in |x − a| reveals R.",
+        "Endpoints — the ratio test says nothing at |x − a| = R, so test each endpoint separately with the series tests.",
+        "Term-by-term calculus — inside the interval of convergence, you may differentiate and integrate a power series term by term; the radius stays the same."
+      ],
+      "example": {
+        "q": "Find the radius and interval of convergence of Σ xⁿ/n!.",
+        "steps": [
+          "Apply the ratio test: |a_{n+1}/aₙ| = |x|^(n+1)/(n+1)! · n!/|x|ⁿ = |x|/(n+1).",
+          "As n → ∞, this tends to 0 for every x.",
+          "So the series converges for all x: radius R = ∞, interval (−∞, ∞)."
+        ],
+        "a": "R = ∞, interval (−∞, ∞)"
+      },
+      "practice": [
+        {
+          "q": "Find the radius and interval of convergence of Σ xⁿ/n.",
+          "a": "R = 1, interval [−1, 1): at x = 1 the harmonic series diverges; at x = −1 the alternating harmonic series converges."
+        },
+        {
+          "q": "Find the radius and interval of convergence of Σ (x − 2)ⁿ/n².",
+          "a": "R = 1, interval [1, 3]: both endpoints give convergent p-series (Σ1/n² and Σ(−1)ⁿ/n²)."
+        }
+      ],
+      "takeaway": "The ratio test gives the radius; the endpoints always need their own separate check.",
+      "module": "Sequences and Series"
+    },
+    "Taylor and Maclaurin Series": {
+      "intro": "A Taylor series represents a function as a power series built from its derivatives at a single point. It is how calculators compute sin, cos, and e^x — and how we approximate complicated functions with polynomials.",
+      "concepts": [
+        "Formula — f(x) = Σ f⁽ⁿ⁾(a)/n! · (x − a)ⁿ, when the series converges to f; a = 0 gives a Maclaurin series.",
+        "Famous Maclaurin series — e^x = Σxⁿ/n!; sin x = x − x³/3! + x⁵/5! − ⋯; cos x = 1 − x²/2! + x⁴/4! − ⋯; 1/(1 − x) = Σxⁿ for |x| < 1.",
+        "Building new series — differentiate, integrate, substitute, or multiply known series instead of computing derivatives from scratch.",
+        "Taylor polynomials and error — the Nth Taylor polynomial approximates f near a; Taylor's inequality bounds the error with the next derivative."
+      ],
+      "example": {
+        "q": "Write the Maclaurin series for e^x and use it to approximate e^0.1 to four decimal places.",
+        "steps": [
+          "All derivatives of e^x are e^x, and e^0 = 1, so the Maclaurin series is Σxⁿ/n! = 1 + x + x²/2! + x³/3! + ⋯.",
+          "At x = 0.1: 1 + 0.1 + 0.01/2 + 0.001/6 + 0.0001/24 ≈ 1 + 0.1 + 0.005 + 0.0001667 + 0.0000042.",
+          "Summing: ≈ 1.1051709.",
+          "The true value e^0.1 ≈ 1.1051702, so four terms already give four correct decimal places."
+        ],
+        "a": "e^x = Σxⁿ/n!; e^0.1 ≈ 1.1052"
+      },
+      "practice": [
+        {
+          "q": "Write the Maclaurin series for sin x and approximate sin(0.2).",
+          "a": "sin x = x − x³/3! + x⁵/5! − ⋯; sin(0.2) ≈ 0.2 − 0.001333 = 0.198667 (true value 0.198669)."
+        },
+        {
+          "q": "Use the geometric series to find the Maclaurin series for ln(1 + x).",
+          "a": "ln(1 + x) = x − x²/2 + x³/3 − x⁴/4 + ⋯ (integrate 1/(1 + x) = Σ(−x)ⁿ term by term)."
+        }
+      ],
+      "takeaway": "Know the four famous Maclaurin series by heart — every other Taylor series is built from them.",
+      "module": "Sequences and Series"
+    },
+    "Parametric Curves": {
+      "intro": "Some curves are easier to describe by a third variable — a parameter — than by an equation in x and y. A circle traced by time, a projectile's path, a cycloid rolled by a wheel: parametric equations x = f(t), y = g(t) capture motion, not just shape.",
+      "concepts": [
+        "Definition — a parametric curve is the set of points (f(t), g(t)) as t ranges over an interval; t is the parameter, often time.",
+        "Eliminating the parameter — solve one equation for t and substitute into the other to get a Cartesian equation (when possible).",
+        "Slope — dy/dx = (dy/dt)/(dx/dt), provided dx/dt ≠ 0; the parameter's derivatives give the tangent slope directly.",
+        "Vertical tangents — when dx/dt = 0 but dy/dt ≠ 0, the curve has a vertical tangent at that point."
+      ],
+      "example": {
+        "q": "For x = t², y = t³, find dy/dx and the tangent slope at t = 2.",
+        "steps": [
+          "Differentiate with respect to t: dx/dt = 2t and dy/dt = 3t².",
+          "dy/dx = (dy/dt)/(dx/dt) = 3t²/(2t) = 3t/2.",
+          "At t = 2, the point is (4, 8) and the slope is 3(2)/2 = 3."
+        ],
+        "a": "dy/dx = 3t/2; at t = 2 the slope is 3"
+      },
+      "practice": [
+        {
+          "q": "Eliminate the parameter for x = cos t, y = sin t. What curve is it?",
+          "a": "x² + y² = 1 — the unit circle."
+        },
+        {
+          "q": "For x = t² − 1, y = 2t, find dy/dx in terms of t.",
+          "a": "dy/dx = 1/t (dx/dt = 2t, dy/dt = 2)."
+        }
+      ],
+      "takeaway": "Parametrize by t, eliminate when you need Cartesian form, and divide the t-derivatives for the slope.",
+      "module": "Parametric Equations and Polar Coordinates"
+    },
+    "Calculus with Parametric Curves": {
+      "intro": "Once a curve is parametric, the calculus follows the parameter: arc length integrates the speed √( (dx/dt)² + (dy/dt)² ), and area under the curve integrates y dx/dt. The formulas are the familiar ones, rewritten in t.",
+      "concepts": [
+        "Arc length — L = ∫_α^β √((dx/dt)² + (dy/dt)²) dt; the integrand is the speed of the point moving along the curve.",
+        "Area — the area under a parametric curve (traced left to right) is ∫_α^β y(t) · x'(t) dt.",
+        "Second derivative — d²y/dx² = (d/dt)(dy/dx) / (dx/dt); use it to find concavity and inflection points.",
+        "Speed vs. length — the speed at an instant is the integrand of the arc-length formula; length is its integral over time."
+      ],
+      "example": {
+        "q": "Find the length of one arch of the cycloid x = t − sin t, y = 1 − cos t, 0 ≤ t ≤ 2π.",
+        "steps": [
+          "dx/dt = 1 − cos t and dy/dt = sin t.",
+          "Speed = √((1 − cos t)² + sin²t) = √(2 − 2 cos t) = 2|sin(t/2)|; on [0, 2π] this is 2 sin(t/2).",
+          "L = ∫₀^{2π} 2 sin(t/2) dt = [−4 cos(t/2)]₀^{2π}.",
+          "Evaluate: −4(−1) − (−4)(1) = 8."
+        ],
+        "a": "8"
+      },
+      "practice": [
+        {
+          "q": "Find the length of x = t², y = 2t from t = 0 to t = 1.",
+          "a": "√2 + ln(1 + √2) (the integral is 2∫₀¹√(t² + 1) dt)."
+        },
+        {
+          "q": "Find the area under the parametric curve x = t, y = t² from t = 0 to t = 2.",
+          "a": "8/3 (integrate y·x'(t) = t² from 0 to 2)."
+        }
+      ],
+      "takeaway": "In t, arc length integrates the speed and area integrates y times dx/dt.",
+      "module": "Parametric Equations and Polar Coordinates"
+    },
+    "Polar Coordinates": {
+      "intro": "Polar coordinates locate a point by how far it is from the origin and in which direction — (r, θ) instead of (x, y). Curves with circular or rotational symmetry, like cardioids and spirals, become simple in polar form.",
+      "concepts": [
+        "Conversion — x = r cos θ, y = r sin θ; r² = x² + y² and tan θ = y/x.",
+        "Non-uniqueness — the same point has many polar names: (r, θ) = (r, θ + 2π) = (−r, θ + π).",
+        "Polar equations — r = a is a circle of radius |a| centered at the origin; θ = c is a line through the origin; r = a cos θ and r = a sin θ are circles through the origin.",
+        "Graphing — plot by sampling θ, computing r, and remembering that a negative r means 'plot in the opposite direction'."
+      ],
+      "example": {
+        "q": "Convert r = 2 cos θ to a Cartesian equation and identify the curve.",
+        "steps": [
+          "Multiply both sides by r: r² = 2r cos θ.",
+          "Replace r² by x² + y² and r cos θ by x: x² + y² = 2x.",
+          "Complete the square: (x − 1)² + y² = 1.",
+          "This is a circle of radius 1 centered at (1, 0)."
+        ],
+        "a": "Circle (x − 1)² + y² = 1"
+      },
+      "practice": [
+        {
+          "q": "Convert the polar point (2, π/3) to rectangular coordinates.",
+          "a": "(1, √3) (x = 2 cos(π/3) = 1, y = 2 sin(π/3) = √3)."
+        },
+        {
+          "q": "Convert the rectangular point (1, 1) to polar coordinates (r > 0, 0 ≤ θ < 2π).",
+          "a": "(√2, π/4)."
+        }
+      ],
+      "takeaway": "Polar form trades (x, y) for (distance, direction) — and circles through the origin become one-term equations.",
+      "module": "Parametric Equations and Polar Coordinates"
+    },
+    "Area and Arc Length in Polar Coordinates": {
+      "intro": "In polar coordinates, area is built from tiny sectors, not rectangles: a sector of angle dθ and radius r has area (1/2)r² dθ. Arc length follows the same idea as parametric curves, with the radius playing the role of the moving point.",
+      "concepts": [
+        "Area — the area swept by r = f(θ) from θ = a to θ = b is A = (1/2)∫ₐᵇ [f(θ)]² dθ.",
+        "Why (1/2)r² — a circular sector of radius r and angle dθ has area (1/2)r² dθ; integrating sweeps the region.",
+        "Arc length — L = ∫ₐᵇ √(r² + (dr/dθ)²) dθ.",
+        "Watch the range — trace the curve once: a full cardioid needs θ from 0 to 2π, but a circle r = sin θ is traced completely by 0 to π (r goes negative after that and retraces)."
+      ],
+      "example": {
+        "q": "Find the area enclosed by the cardioid r = 1 + cos θ.",
+        "steps": [
+          "Area = (1/2)∫₀^{2π} (1 + cos θ)² dθ.",
+          "Expand: (1/2)∫₀^{2π} (1 + 2 cos θ + cos²θ) dθ.",
+          "Integrate term by term: ∫₀^{2π} 1 dθ = 2π, ∫₀^{2π} 2 cos θ dθ = 0, ∫₀^{2π} cos²θ dθ = π.",
+          "Area = (1/2)(2π + 0 + π) = 3π/2."
+        ],
+        "a": "3π/2"
+      },
+      "practice": [
+        {
+          "q": "Find the area enclosed by the circle r = 2.",
+          "a": "4π (the formula gives (1/2)∫₀^{2π} 4 dθ = 4π, matching πr²)."
+        },
+        {
+          "q": "Find the arc length of the cardioid r = 1 + sin θ, 0 ≤ θ ≤ 2π.",
+          "a": "8 (the integrand simplifies to √(2 + 2 sin θ) = 2|sin(θ/2 + π/4)|, whose integral over a full period is 8)."
+        }
+      ],
+      "takeaway": "Polar area integrates (1/2)r² dθ; polar arc length integrates √(r² + (dr/dθ)²) dθ.",
+      "module": "Parametric Equations and Polar Coordinates"
+    }
+  }
+}
