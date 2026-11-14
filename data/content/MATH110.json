@@ -1,0 +1,492 @@
+{
+  "course_id": "MATH110",
+  "title": "Logic, Sets, and Proof",
+  "lesson_count": 16,
+  "lessons": {
+    "Propositions and Connectives": {
+      "intro": "Logic starts with propositions — statements that are definitely true or definitely false — and the connectives that combine them into compound statements whose truth is fully determined by their parts.",
+      "concepts": [
+        "Proposition — a declarative statement with a definite truth value: '7 is prime' is one; 'x + 1 = 5' is not (it depends on x); a question or command is not.",
+        "Connectives — negation ¬p ('not'), conjunction p ∧ q ('and'), disjunction p ∨ q ('or', inclusive), implication p → q ('if p then q'), biconditional p ↔ q ('if and only if').",
+        "Implication's truth rule — p → q is false ONLY when p is true and q is false. A false hypothesis makes the implication vacuously true.",
+        "Converse, inverse, contrapositive — for p → q: the converse is q → p, the inverse is ¬p → ¬q, and the contrapositive is ¬q → ¬p. Only the contrapositive is equivalent to the original."
+      ],
+      "example": {
+        "q": "Let p: 'It is raining' and q: 'The ground is wet'. Express ¬p ∧ q in words, and find the truth value of p → q when p is false and q is true.",
+        "steps": [
+          "¬p means 'It is not raining'; ∧ means 'and'. So ¬p ∧ q says: 'It is not raining and the ground is wet.'",
+          "For the implication with p false: an implication with a false hypothesis is true regardless of q.",
+          "So p → q is TRUE in this case (vacuous truth — think sprinklers, not rain)."
+        ],
+        "a": "'It is not raining and the ground is wet.'; p → q is true."
+      },
+      "practice": [
+        {
+          "q": "Is 'This statement is false' a proposition?",
+          "a": "No — it has no definite truth value (the liar paradox: assuming it true makes it false and vice versa)."
+        },
+        {
+          "q": "Write the contrapositive of 'If a number is divisible by 6, then it is divisible by 3.'",
+          "a": "'If a number is not divisible by 3, then it is not divisible by 6.' — equivalent to the original, so also true."
+        }
+      ],
+      "takeaway": "Master the implication's truth rule — false hypothesis, true implication — and the contrapositive; half of all proof technique is hiding in those two facts.",
+      "module": "Propositional Logic"
+    },
+    "Truth Tables and Logical Equivalence": {
+      "intro": "A truth table lists every combination of truth values for the parts of a statement and computes the whole. Two statements are logically equivalent when their tables agree in every row.",
+      "concepts": [
+        "Building tables — n distinct propositions need 2ⁿ rows; work column by column from the innermost connectives outward.",
+        "Logical equivalence — p ≡ q means p and q have identical truth tables; in a proof you may always swap a statement for an equivalent one.",
+        "De Morgan's laws — ¬(p ∧ q) ≡ ¬p ∨ ¬q and ¬(p ∨ q) ≡ ¬p ∧ ¬q: negation flips 'and' to 'or' as it distributes.",
+        "Implication equivalence — p → q ≡ ¬p ∨ q, the bridge that lets algebra manipulate implications."
+      ],
+      "example": {
+        "q": "Verify De Morgan's law ¬(p ∧ q) ≡ ¬p ∨ ¬q by truth table.",
+        "steps": [
+          "Row (T,T): p ∧ q = T, so ¬(p ∧ q) = F. ¬p ∨ ¬q = F ∨ F = F. Match.",
+          "Row (T,F): p ∧ q = F, negation = T. ¬p ∨ ¬q = F ∨ T = T. Match.",
+          "Row (F,T): p ∧ q = F, negation = T. ¬p ∨ ¬q = T ∨ F = T. Match.",
+          "Row (F,F): p ∧ q = F, negation = T. ¬p ∨ ¬q = T ∨ T = T. Match. All four rows agree."
+        ],
+        "a": "The two sides agree in all 4 rows, so ¬(p ∧ q) ≡ ¬p ∨ ¬q."
+      },
+      "practice": [
+        {
+          "q": "Use De Morgan to negate: 'The number is even and prime.'",
+          "a": "'The number is not even or not prime' — i.e., it fails to be even, or fails to be prime (or both)."
+        },
+        {
+          "q": "How many rows does a truth table for (p → q) ∧ (r ∨ ¬p) need?",
+          "a": "Three distinct propositions (p, q, r), so 2³ = 8 rows."
+        }
+      ],
+      "takeaway": "Truth tables are the brute-force referee of logic: equivalence means same table, every row.",
+      "module": "Propositional Logic"
+    },
+    "Tautologies and Inference Rules": {
+      "intro": "A tautology is true in every row of its table — a statement whose truth is guaranteed by its form alone. Inference rules are tautologies in action: they license the steps of a proof.",
+      "concepts": [
+        "Tautology, contradiction, contingency — always true, always false, or depends on the inputs. (p ∨ ¬p) is a tautology; (p ∧ ¬p) is a contradiction.",
+        "Modus ponens — from p → q and p, conclude q. The workhorse of proof: 'if P then Q; P holds; so Q.'",
+        "Modus tollens — from p → q and ¬q, conclude ¬p: deny the conclusion and the hypothesis falls with it (the engine of contrapositive proofs).",
+        "Other workhorses — hypothetical syllogism (p → q, q → r ⊢ p → r) chains implications; disjunctive syllogism (p ∨ q, ¬p ⊢ q) eliminates options."
+      ],
+      "example": {
+        "q": "Show that ((p → q) ∧ p) → q (modus ponens) is a tautology.",
+        "steps": [
+          "Check the only dangerous case: an implication fails only when its hypothesis is true and conclusion false.",
+          "Set q false. Then p → q true forces p false (a true p would make p → q false).",
+          "But then the hypothesis (p → q) ∧ p contains p false, so the hypothesis is false — and an implication with false hypothesis is true.",
+          "Every other row is easier still: whenever the full hypothesis is true, q must be true. So the implication is true in all rows."
+        ],
+        "a": "((p → q) ∧ p) → q is a tautology — modus ponens is a valid rule."
+      },
+      "practice": [
+        {
+          "q": "'If the server is up, the site loads. The site is not loading.' What follows, and by which rule?",
+          "a": "The server is not up — modus tollens."
+        },
+        {
+          "q": "Is 'p → (q → p)' a tautology?",
+          "a": "Yes: if p is true then (q → p) is true (true conclusion); if p is false the outer implication is vacuous. True in all rows."
+        }
+      ],
+      "takeaway": "Valid proof steps are tautologies applied: ponens pushes forward, tollens pulls back. Affirming the conclusion (from q and p → q concluding p) is NOT a rule — it's the classic fallacy.",
+      "module": "Propositional Logic"
+    },
+    "Normal Forms": {
+      "intro": "Normal forms rewrite any proposition into a standard shape built only from literals joined by one connective type. They make equivalence mechanical — and they are exactly what SAT solvers and digital circuits consume.",
+      "concepts": [
+        "Literals — a proposition or its negation: p, ¬q are literals.",
+        "Disjunctive normal form (DNF) — an OR of ANDs of literals, e.g. (p ∧ ¬q) ∨ (¬p ∧ r). Read a DNF off the TRUE rows of a truth table.",
+        "Conjunctive normal form (CNF) — an AND of ORs of literals, e.g. (p ∨ ¬q) ∧ (¬p ∨ r). Read a CNF off the FALSE rows — the native format of SAT solvers.",
+        "Conversion recipe — eliminate ↔ and → (use p → q ≡ ¬p ∨ q), push negations inward with De Morgan, then distribute."
+      ],
+      "example": {
+        "q": "Convert p → q into CNF and DNF.",
+        "steps": [
+          "Eliminate the implication: p → q ≡ ¬p ∨ q.",
+          "¬p ∨ q is a single OR of literals — it is already in CNF (one clause).",
+          "It is also a (degenerate) DNF: an OR of literals can be read as an OR of one-literal ANDs."
+        ],
+        "a": "CNF/DNF: ¬p ∨ q."
+      },
+      "practice": [
+        {
+          "q": "Convert ¬(p ∧ ¬q) into CNF.",
+          "a": "By De Morgan: ¬p ∨ q — one clause, already CNF."
+        },
+        {
+          "q": "Give the DNF of the truth table where (p, q) = (T, F) and (F, T) are the only true rows.",
+          "a": "(p ∧ ¬q) ∨ (¬p ∧ q) — the XOR function: one AND-term per true row."
+        }
+      ],
+      "takeaway": "DNF describes when a statement is true; CNF describes what it forbids. Same logic, standardized clothing.",
+      "module": "Propositional Logic"
+    },
+    "Quantifiers": {
+      "intro": "Quantifiers turn predicates into propositions by saying how many elements of a domain satisfy them: all (∀, 'for all') or at least one (∃, 'there exists'). They are how mathematics states nearly everything.",
+      "concepts": [
+        "Universal quantifier — ∀x P(x) claims P holds for every x in the domain. One counterexample destroys it.",
+        "Existential quantifier — ∃x P(x) claims P holds for at least one x. One example proves it.",
+        "Order matters — ∀x ∃y P(x, y) and ∃y ∀x P(x, y) say different things: 'for each x a (possibly different) y' versus 'one single y works for all x'.",
+        "Bound vs free — a variable under a quantifier is bound; the domain is part of the statement's meaning and must always be clear."
+      ],
+      "example": {
+        "q": "Over the real numbers, decide the truth of (a) ∀x ∃y (y > x) and (b) ∃y ∀x (y > x), and explain the difference.",
+        "steps": [
+          "(a) For each real x, choose y = x + 1. Then y > x — a witness exists for every x. TRUE.",
+          "(b) This demands one fixed real y larger than every real x — including larger than y + 1, impossible. FALSE.",
+          "The difference is purely the order: in (a) the witness y may depend on x; in (b) it may not."
+        ],
+        "a": "(a) True. (b) False. Quantifier order changes the claim."
+      },
+      "practice": [
+        {
+          "q": "Express 'There is a smallest positive integer' with quantifiers over ℤ.",
+          "a": "∃y ∀x ((x > 0) → (y ≤ x ∧ y > 0)) — and it is true, with y = 1. Over the positive reals the same sentence is false."
+        },
+        {
+          "q": "To disprove ∀x P(x), what must you produce?",
+          "a": "A single counterexample: one element of the domain for which P is false."
+        }
+      ],
+      "takeaway": "∀ is proved by arguing about an arbitrary element and refuted by one counterexample; ∃ is proved by one witness. And never swap their order casually.",
+      "module": "Predicate Logic"
+    },
+    "Predicates and Domains": {
+      "intro": "A predicate is a statement with a hole in it: P(x) becomes a proposition only when x is chosen from a specified domain. Most logical confusion in real arguments is an unstated or shifting domain.",
+      "concepts": [
+        "Predicate — P(x): 'x² > 4' is a predicate; P(3) ('9 > 4') is a true proposition; P(1) is false.",
+        "Domain (universe of discourse) — the set x ranges over. The same quantified sentence can flip truth when the domain changes: ∃x (x² = 2) is true over ℝ, false over ℚ.",
+        "Truth set — the elements of the domain making the predicate true; for x² > 4 over ℝ the truth set is (−∞, −2) ∪ (2, ∞).",
+        "Multi-variable predicates — P(x, y) like 'x divides y' need values for every variable (or quantifiers for each) to become a proposition."
+      ],
+      "example": {
+        "q": "For the predicate P(x): x² − 5x + 6 = 0 over the domain ℝ, find the truth set. Then say how the answer changes over the domain of positive reals and over ℤ.",
+        "steps": [
+          "Factor: (x − 2)(x − 3) = 0, so P(x) holds exactly for x = 2 and x = 3.",
+          "Over ℝ the truth set is {2, 3}; over the positive reals it is still {2, 3}; over ℤ also {2, 3} — here the domain doesn't change the answer.",
+          "But change the predicate to x² = 2 and the domain decides everything: truth set {√2, −√2} over ℝ, empty over ℚ."
+        ],
+        "a": "Truth set {2, 3} in all three domains for this predicate — but in general, always state the domain."
+      },
+      "practice": [
+        {
+          "q": "Is ∀x (x² ≥ 0) true over ℝ? Over ℂ?",
+          "a": "True over ℝ (squares of reals are nonnegative). Over ℂ it fails (and ≥ isn't even defined for general complex numbers) — another domain effect."
+        },
+        {
+          "q": "Write the truth set of Q(n): 'n is prime and n < 10' over ℕ.",
+          "a": "{2, 3, 5, 7}."
+        }
+      ],
+      "takeaway": "No domain, no statement. Pin the universe of discourse down before you argue.",
+      "module": "Predicate Logic"
+    },
+    "Negating Quantified Statements": {
+      "intro": "Negating quantified statements follows two mechanical rules — flip each quantifier and negate the predicate — and getting this right is essential: every proof by contradiction starts by negating the claim correctly.",
+      "concepts": [
+        "The flip rules — ¬∀x P(x) ≡ ∃x ¬P(x): 'not all' means 'at least one isn't'. ¬∃x P(x) ≡ ∀x ¬P(x): 'none' means 'every one isn't'.",
+        "Nested statements — work from the outside in: ¬∀x ∃y P(x, y) ≡ ∃x ∀y ¬P(x, y).",
+        "Negate the predicate last — implications inside need their own negation: ¬(p → q) ≡ p ∧ ¬q (the hypothesis holds and the conclusion fails).",
+        "Natural-language traps — the negation of 'all' is 'not all' (at least one exception), never 'none'."
+      ],
+      "example": {
+        "q": "Negate: 'Every student in the class passed at least one exam.' Formalize first, then negate.",
+        "steps": [
+          "Formalize: ∀ student s, ∃ exam e, Passed(s, e).",
+          "Flip ∀ to ∃ and ∃ to ∀, negate the predicate: ∃s ∀e ¬Passed(s, e).",
+          "In words: 'There is a student who passed no exam — who failed every exam they took / passed none.'"
+        ],
+        "a": "∃ a student such that for every exam, the student did not pass it."
+      },
+      "practice": [
+        {
+          "q": "Negate ∀x ∃y (x + y = 0) over ℝ, and give both truth values.",
+          "a": "Negation: ∃x ∀y (x + y ≠ 0). The original is true (take y = −x); the negation is false."
+        },
+        {
+          "q": "Negate the definition-shaped statement 'for every ε > 0 there is a δ > 0 such that |x − a| < δ implies |f(x) − L| < ε'.",
+          "a": "There exists ε > 0 such that for every δ > 0 there is an x with |x − a| < δ AND |f(x) − L| ≥ ε. (This is exactly 'the limit is not L' — the form used in disproofs.)"
+        }
+      ],
+      "takeaway": "Flip every quantifier, negate what's inside, and remember implications negate to 'hypothesis true AND conclusion false'.",
+      "module": "Predicate Logic"
+    },
+    "Proofs with Quantifiers": {
+      "intro": "Quantified statements have standard proof shapes: ∀ is proved by taking an arbitrary element, ∃ by producing a witness, and their negations reverse the job. Learn the shapes and most elementary proofs write themselves.",
+      "concepts": [
+        "Proving ∀ — 'Let x be an arbitrary element of the domain…' then prove P(x) using nothing special about x. The arbitrariness is what licenses the 'for all'.",
+        "Proving ∃ — exhibit a concrete witness and verify it works. 'Take n = 42' is a complete proof strategy when it checks out.",
+        "Refuting ∀ / proving ¬∃ — one counterexample refutes a ∀; to refute an ∃ you must show every element fails (a ∀-proof of the negation).",
+        "Uniqueness — ∃!x P(x) ('there is exactly one') is proved in two parts: existence (a witness) and uniqueness (any two witnesses are equal)."
+      ],
+      "example": {
+        "q": "Prove: for every integer n, if n is even then n² is even. And prove: there exists an integer whose square is itself plus 6.",
+        "steps": [
+          "Part 1 (∀-proof): Let n be an arbitrary even integer. Then n = 2k for some integer k.",
+          "n² = 4k² = 2(2k²), which is even since 2k² is an integer. As n was arbitrary, the claim holds for all even n.",
+          "Part 2 (∃-proof): Take n = 3 as the witness. Check: 3² = 9 and 3 + 6 = 9. ✓"
+        ],
+        "a": "Both proved — the first by an arbitrary-element argument, the second by the witness n = 3."
+      },
+      "practice": [
+        {
+          "q": "Disprove: every prime number is odd.",
+          "a": "Counterexample: 2 is prime and even."
+        },
+        {
+          "q": "Prove ∃! — there is a unique real number whose square equals its double minus one... or find the flaw.",
+          "a": "x² = 2x − 1 gives (x − 1)² = 0, so x = 1 is the one and only solution: existence (x = 1 works: 1 = 2 − 1 ✓) and uniqueness (the equation forces x = 1). It is genuinely unique."
+        }
+      ],
+      "takeaway": "Match the proof shape to the quantifier: arbitrary element for ∀, concrete witness for ∃, one counterexample to kill a ∀.",
+      "module": "Predicate Logic"
+    },
+    "Sets, Subsets, and Operations": {
+      "intro": "Sets — collections of objects — are the vocabulary of all of mathematics. This lesson fixes the notation and the operations (union, intersection, difference, complement) together with the subset relation.",
+      "concepts": [
+        "Membership and subsets — x ∈ A: x is an element of A. A ⊆ B: every element of A is in B. A = B exactly when A ⊆ B and B ⊆ A (the standard way to prove set equality: double inclusion).",
+        "Operations — union A ∪ B (in either), intersection A ∩ B (in both), difference A − B (in A but not B), complement Aᶜ (everything in the universe not in A).",
+        "Special sets — the empty set ∅ (subset of every set), the universal set U, and the power set P(A): the set of all subsets of A, which has 2^|A| elements when A is finite.",
+        "Set algebra mirrors logic — union/intersection/complement obey De Morgan's laws exactly like ∨/∧/¬: (A ∩ B)ᶜ = Aᶜ ∪ Bᶜ."
+      ],
+      "example": {
+        "q": "Let A = {1, 2, 3, 4}, B = {3, 4, 5}, with universe U = {1, 2, 3, 4, 5, 6}. Compute A ∪ B, A ∩ B, A − B, and Aᶜ.",
+        "steps": [
+          "A ∪ B — everything in either: {1, 2, 3, 4, 5}.",
+          "A ∩ B — everything in both: {3, 4}.",
+          "A − B — in A but not B: {1, 2}.",
+          "Aᶜ — in U but not A: {5, 6}."
+        ],
+        "a": "A ∪ B = {1,2,3,4,5}; A ∩ B = {3,4}; A − B = {1,2}; Aᶜ = {5,6}."
+      },
+      "practice": [
+        {
+          "q": "Prove A ∩ (B ∪ C) = (A ∩ B) ∪ (A ∩ C) by double inclusion (outline).",
+          "a": "x in the left side ⇒ x ∈ A and (x ∈ B or x ∈ C) ⇒ x is in A ∩ B or in A ∩ C ⇒ x in the right side. The reverse inclusion is the same steps backwards."
+        },
+        {
+          "q": "How many elements does the power set of {a, b, c, d} have? List the subsets containing a.",
+          "a": "2⁴ = 16 subsets. Those containing a: pair a with any subset of {b, c, d} — 2³ = 8 of them."
+        }
+      ],
+      "takeaway": "Prove set equalities by double inclusion, and translate freely between set operations and logic — they are the same algebra.",
+      "module": "Set Theory and Relations"
+    },
+    "Relations and Equivalence Relations": {
+      "intro": "A relation links elements of a set: a R b means a is related to b. The special relations that behave like equality — reflexive, symmetric, transitive — are equivalence relations, and they partition a set into classes.",
+      "concepts": [
+        "Relation — formally a subset of A × A; we write a ~ b or a R b. Examples: <, ≤, 'divides', congruence modulo n.",
+        "Three properties — reflexive (a ~ a for all a), symmetric (a ~ b ⇒ b ~ a), transitive (a ~ b and b ~ c ⇒ a ~ c).",
+        "Equivalence relation — one with all three properties. It splits A into disjoint equivalence classes [a] = {x : x ~ a}, and the classes partition A.",
+        "Congruence mod n — a ≡ b (mod n) means n divides a − b; the classes mod 3 are {…, 0, 3, 6, …}, {…, 1, 4, 7, …}, {…, 2, 5, 8, …} — the backbone of number theory."
+      ],
+      "example": {
+        "q": "Show that congruence modulo 3 is an equivalence relation on ℤ, and find the equivalence class of 7.",
+        "steps": [
+          "Reflexive: 3 divides a − a = 0 ✓. Symmetric: if 3 | (a − b) then 3 | (b − a) = −(a − b) ✓.",
+          "Transitive: if 3 | (a − b) and 3 | (b − c), then 3 divides their sum (a − c) ✓. So ≡ is an equivalence relation.",
+          "[7] = all integers congruent to 7 mod 3 = all integers ≡ 1 (mod 3): {…, −2, 1, 4, 7, 10, …}."
+        ],
+        "a": "≡ (mod 3) is reflexive, symmetric, and transitive; [7] = {n : n ≡ 1 (mod 3)}."
+      },
+      "practice": [
+        {
+          "q": "Is 'is a sibling of' an equivalence relation on people? Which property fails?",
+          "a": "Not reflexive in the usual reading (no one is their own sibling), and transitivity can fail across half-sibling families — so no."
+        },
+        {
+          "q": "Define a relation on ℝ by x ~ y iff x − y is rational. Is it an equivalence relation? What is [0]?",
+          "a": "Yes — reflexive (0 is rational), symmetric (negation), transitive (sum of rationals). [0] = ℚ itself."
+        }
+      ],
+      "takeaway": "Equivalence = reflexive + symmetric + transitive, and the payoff is always a partition into classes.",
+      "module": "Set Theory and Relations"
+    },
+    "Functions: Injective, Surjective, Bijective": {
+      "intro": "A function assigns each input exactly one output. Three adjectives classify how the outputs cover the codomain — and they decide whether a function can be undone.",
+      "concepts": [
+        "Injective (one-to-one) — different inputs give different outputs: f(a) = f(b) ⇒ a = b. Test: horizontal lines meet the graph at most once.",
+        "Surjective (onto) — every element of the codomain is hit: for each y there is an x with f(x) = y. The range equals the codomain.",
+        "Bijective — both: a perfect pairing between domain and codomain. Exactly the bijective functions have inverse functions.",
+        "Composition and inverses — if f is bijective, f⁻¹ undoes it: f⁻¹(f(x)) = x and f(f⁻¹(y)) = y. Note (f ∘ g)⁻¹ = g⁻¹ ∘ f⁻¹ — order reverses."
+      ],
+      "example": {
+        "q": "Show f(x) = 2x + 1, as a function ℝ → ℝ, is bijective, and find its inverse.",
+        "steps": [
+          "Injective: suppose f(a) = f(b). Then 2a + 1 = 2b + 1, so a = b ✓.",
+          "Surjective: given any real y, choose x = (y − 1)/2. Then f(x) = 2·((y − 1)/2) + 1 = y ✓.",
+          "Bijective, so the inverse is exactly that solving step: f⁻¹(y) = (y − 1)/2."
+        ],
+        "a": "f is bijective with f⁻¹(x) = (x − 1)/2."
+      },
+      "practice": [
+        {
+          "q": "Is f(x) = x², ℝ → ℝ, injective or surjective? Fix it so it becomes bijective.",
+          "a": "Neither: f(−1) = f(1) (not injective), and −1 is never an output (not surjective). Restrict to f: [0, ∞) → [0, ∞) and it is bijective, inverse √x."
+        },
+        {
+          "q": "Let f: ℤ → ℤ, f(n) = n + 5. Injective? Surjective? Inverse?",
+          "a": "Both — injective (n + 5 = m + 5 ⇒ n = m) and surjective (y is hit by y − 5). Inverse: f⁻¹(n) = n − 5."
+        }
+      ],
+      "takeaway": "Injective = no collisions, surjective = full coverage, bijective = perfectly reversible.",
+      "module": "Set Theory and Relations"
+    },
+    "Cardinality and Countability": {
+      "intro": "Two sets have the same cardinality when a bijection pairs them up. For infinite sets this produces shocking results: some infinities are bigger than others.",
+      "concepts": [
+        "Same cardinality — A and B have the same cardinality iff there is a bijection A → B. For infinite sets a proper subset can have the same cardinality as the whole (even numbers ↔ all integers via n ↦ 2n).",
+        "Countable — a set is countable if it can be listed in a sequence (bijection with ℕ, or finite). ℤ and ℚ are countable — ℚ via a diagonal sweep of the grid of fractions.",
+        "Uncountable — ℝ is uncountable: Cantor's diagonal argument shows any attempted list of reals misses one.",
+        "Cantor's theorem — the power set P(A) always has strictly larger cardinality than A: there are more sets of reals than reals, more infinities above that, endlessly."
+      ],
+      "example": {
+        "q": "Show the even integers have the same cardinality as all integers, and outline Cantor's proof that (0, 1) is uncountable.",
+        "steps": [
+          "Bijection: pair each integer n with the even integer 2n. Every integer is hit exactly once (inverse: halve the even number). So the evens — 'half' of ℤ — have cardinality exactly |ℤ|.",
+          "Cantor: suppose the reals in (0, 1) could be listed r₁, r₂, r₃, … Write each in decimal form.",
+          "Build a new number digit by digit: make its 1st decimal differ from r₁'s 1st decimal, its 2nd differ from r₂'s 2nd, and so on.",
+          "The new number lies in (0, 1) but differs from every rₙ in the n-th decimal place — it is missing from the list. Contradiction: no list can exhaust (0, 1)."
+        ],
+        "a": "Evens ↔ ℤ bijectively, so same cardinality; (0, 1) defeats every listing, so it is uncountable."
+      },
+      "practice": [
+        {
+          "q": "Give a bijection between the natural numbers and the odd natural numbers.",
+          "a": "n ↦ 2n − 1 (with ℕ starting at 1): 1→1, 2→3, 3→5, … — bijective."
+        },
+        {
+          "q": "Which is bigger: the set of all finite binary strings, or the set of all infinite binary strings?",
+          "a": "Finite strings are countable (list by length). Infinite strings are uncountable (they correspond to subsets of ℕ / reals in (0,1]) — strictly bigger, by the same diagonal idea."
+        }
+      ],
+      "takeaway": "Infinity comes in sizes: ℚ is listable, ℝ is not, and the power set operation always produces a bigger infinity.",
+      "module": "Set Theory and Relations"
+    },
+    "Direct Proof": {
+      "intro": "The direct proof is the default strategy: assume the hypothesis, and walk forward by definitions and known results until the conclusion appears. Most theorems in this course — and most first proofs anywhere — are direct.",
+      "concepts": [
+        "Structure — Assume P. Unpack definitions. Chain of justified steps. Conclude Q. Every step must follow from definitions, axioms, or earlier theorems.",
+        "Unpack definitions — 'even' becomes 'n = 2k for some integer k'; 'divides' becomes 'a·k = b'. Translating words into algebra is usually 80% of the proof.",
+        "Work with a generic element — pick an arbitrary representative (an arbitrary even number, an arbitrary element of the set) and never assume extra properties for it.",
+        "End cleanly — state that the conclusion has been reached, and what was proved."
+      ],
+      "example": {
+        "q": "Prove directly: the sum of two odd integers is even.",
+        "steps": [
+          "Let m and n be arbitrary odd integers. By definition, m = 2a + 1 and n = 2b + 1 for some integers a, b.",
+          "Add: m + n = 2a + 2b + 2 = 2(a + b + 1).",
+          "a + b + 1 is an integer, so m + n is twice an integer — even by definition. ∎"
+        ],
+        "a": "Sum of two odds = 2(a + b + 1), which is even."
+      },
+      "practice": [
+        {
+          "q": "Prove directly: if n is even, then n² + n is even.",
+          "a": "n = 2k ⇒ n² + n = 4k² + 2k = 2(2k² + k), an explicit double of an integer."
+        },
+        {
+          "q": "Prove directly: the product of a rational and a nonzero rational is rational.",
+          "a": "Let r = a/b, s = c/d with integers a, c and nonzero b, d. Then rs = ac/(bd), a ratio of integers with bd ≠ 0 — rational by definition."
+        }
+      ],
+      "takeaway": "When in doubt, go direct: unpack the hypothesis into algebra and compute your way to the conclusion.",
+      "module": "Proof Techniques"
+    },
+    "Contrapositive and Contradiction": {
+      "intro": "Two indirect strategies for when the direct road is blocked. The contrapositive proves p → q by proving ¬q → ¬p instead (they are equivalent). Contradiction assumes the conclusion false and derives an impossibility.",
+      "concepts": [
+        "Contrapositive — to prove 'if n² is even then n is even', prove 'if n is odd then n² is odd' — where the hypothesis (odd) is something you can compute with.",
+        "Contradiction — assume the negation of the goal (with the hypotheses) and derive a statement that is certainly false. The assumptions must then be inconsistent, so the goal holds.",
+        "Choosing — if the conclusion is a negative statement ('no such…', 'irrational', 'infinite'), contradiction is often natural; if ¬q is easier to use than p, try the contrapositive.",
+        "Negate correctly — contradiction stands or falls on the negation step: flip quantifiers, negate the predicate (the previous module's lesson)."
+      ],
+      "example": {
+        "q": "Prove by contrapositive: if n² is even, then n is even (n an integer).",
+        "steps": [
+          "Contrapositive: if n is odd, then n² is odd. Assume n odd: n = 2k + 1.",
+          "Compute: n² = 4k² + 4k + 1 = 2(2k² + 2k) + 1 — one more than an even number, hence odd.",
+          "The contrapositive is proved, and it is logically equivalent to the original statement. ∎"
+        ],
+        "a": "Odd n ⇒ odd n², so even n² ⇒ even n."
+      },
+      "practice": [
+        {
+          "q": "Prove by contradiction that √2 is irrational (outline the classic argument).",
+          "a": "Suppose √2 = p/q in lowest terms. Then p² = 2q², so p is even, p = 2r; then 4r² = 2q² gives q² = 2r², so q is also even — contradicting lowest terms. Hence no such fraction exists."
+        },
+        {
+          "q": "Prove by contrapositive: if a product ab is odd, then a and b are both odd (integers).",
+          "a": "Contrapositive: if a or b is even, ab is even — if a = 2k then ab = 2(kb). Proved directly, so the original holds."
+        }
+      ],
+      "takeaway": "Contrapositive swaps and negates; contradiction negates and explodes. Both are complete proofs — pick whichever gives you a hypothesis you can compute with.",
+      "module": "Proof Techniques"
+    },
+    "Mathematical Induction and Strong Induction": {
+      "intro": "Induction proves a statement for all natural numbers with two steps: check the first case, then show each case forces the next. One domino falls, and the design of the row does the rest.",
+      "concepts": [
+        "The two steps — Base case: verify P(1) (or the starting value). Inductive step: assume P(k) (the inductive hypothesis) and prove P(k + 1).",
+        "Why it works — the step turns P(1) into P(2), P(2) into P(3)… every case is reached. It is a theorem about ℕ, not a pattern guess: checking many cases is NOT a proof.",
+        "Strong induction — assume ALL of P(1), …, P(k) to prove P(k + 1). Needed when the next case depends on earlier ones beyond the immediate predecessor (e.g. factorization into primes).",
+        "Common failures — proving the step for the wrong direction (assuming P(k + 1) inside), or a base case that doesn't match where the step starts working."
+      ],
+      "example": {
+        "q": "Prove by induction: 1 + 2 + … + n = n(n + 1)/2 for all n ≥ 1.",
+        "steps": [
+          "Base (n = 1): left side 1; right side 1·2/2 = 1 ✓.",
+          "Inductive step: assume 1 + … + k = k(k + 1)/2. Then 1 + … + k + (k + 1) = k(k + 1)/2 + (k + 1).",
+          "Factor (k + 1): (k + 1)(k/2 + 1) = (k + 1)(k + 2)/2 — exactly the formula with n = k + 1.",
+          "So the formula holds for k + 1; by induction it holds for all n. ∎"
+        ],
+        "a": "The sum formula holds for every positive integer n."
+      },
+      "practice": [
+        {
+          "q": "Prove by induction: n³ − n is divisible by 3 for all n ≥ 1 (hint: (k + 1)³ − (k + 1) = (k³ − k) + 3(k² + k)).",
+          "a": "Base n = 1: 0, divisible. Step: by the hint, the expression grows by a multiple of 3, and divisibility by 3 is preserved."
+        },
+        {
+          "q": "Prove by strong induction: every integer n ≥ 2 is a product of primes.",
+          "a": "Base: 2 is prime. Step: for k + 1 — if it is prime, done; if composite, it factors into two smaller numbers ≥ 2, which by the strong hypothesis (applied to both factors, each ≤ k) are products of primes; multiply the products."
+        }
+      ],
+      "takeaway": "Base case anchors it, the step propagates it. If the step needs more than the previous case, strengthen the hypothesis — that's strong induction.",
+      "module": "Proof Techniques"
+    },
+    "Constructive and Existence Proofs": {
+      "intro": "Existence theorems claim something exists. A constructive proof hands you the object; a nonconstructive proof guarantees existence without producing it. Both are valid — but they give you different things.",
+      "concepts": [
+        "Constructive existence — exhibit the object explicitly and verify it has the required property (the witness style of ∃-proofs).",
+        "Nonconstructive existence — prove the object must exist by contradiction, counting, or case analysis, without identifying it: e.g. pigeonhole arguments, or Euclid's proof that primes are infinite.",
+        "Pigeonhole principle — if more objects than boxes, some box holds at least two. Pure existence: it never tells you which box.",
+        "Choosing — constructive proofs double as algorithms; reach for one when you need the object itself. Nonconstructive is fine when only existence matters."
+      ],
+      "example": {
+        "q": "Prove there exist integers x and y with 2x + 6y = 14 — constructively. Then prove: among any 13 people, two share a birth month — and name the proof type.",
+        "steps": [
+          "Constructive: produce the witness. Try y = 2: then 2x = 14 − 12 = 2, so x = 1. Check: 2(1) + 6(2) = 14 ✓. The pair (1, 2) IS the proof.",
+          "Birth months: there are 12 months (boxes) and 13 people (objects). By the pigeonhole principle, some month contains at least two people.",
+          "Note the second proof names no month and no people — existence without a witness: nonconstructive."
+        ],
+        "a": "(x, y) = (1, 2) constructively; two of any 13 people share a birth month, by pigeonhole (nonconstructive)."
+      },
+      "practice": [
+        {
+          "q": "Give a constructive proof that there is a rational number strictly between 1.41 and 1.42.",
+          "a": "Witness: 283/200 = 1.415, which lies strictly between them — a rational number, exhibited explicitly."
+        },
+        {
+          "q": "Show there exist two distinct powers of 2 whose difference is divisible by 1000 (type?).",
+          "a": "Consider 1001 powers 2⁰, 2¹, …, 2¹⁰⁰⁰ and their remainders mod 1000: only 1000 remainders, so two powers share a remainder, and their difference is divisible by 1000. Nonconstructive (pigeonhole) — it doesn't say which two."
+        }
+      ],
+      "takeaway": "Constructive = 'here it is, check it.' Nonconstructive = 'it cannot fail to exist.' Know which one your problem needs.",
+      "module": "Proof Techniques"
+    }
+  }
+}

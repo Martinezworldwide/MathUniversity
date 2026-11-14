@@ -2,6 +2,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     const appContainer = document.getElementById('app-container');
     const nav = document.querySelector('nav');
     let coursesCache = null;
+    let contentManifest = null;
+    const contentCache = {};
 
     function esc(value) {
         return String(value == null ? '' : value)
@@ -109,8 +111,24 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     }
 
+    async function loadContentManifest() {
+        if (!contentManifest) contentManifest = await loadData('content/index');
+        return contentManifest;
+    }
+
+    function hasContent(courseId) {
+        return !!(contentManifest && Array.isArray(contentManifest.content_courses) &&
+                  contentManifest.content_courses.includes(courseId));
+    }
+
+    async function loadContent(courseId) {
+        if (!contentCache[courseId]) contentCache[courseId] = await loadData(`content/${courseId}`);
+        return contentCache[courseId];
+    }
+
     // ---- Courses ----
     function courseCard(course) {
+        const fullContent = hasContent(course.course_id);
         const prereqs = Array.isArray(course.prerequisites) ? course.prerequisites : [];
         const prereqHtml = prereqs.length
             ? prereqs.map(id => `<a href="#courses" class="course-link prereq-chip" data-course="${esc(id)}">${esc(id)}</a>`).join(' ')
@@ -120,7 +138,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (Array.isArray(course.modules) && course.modules.length) {
             modulesHtml = course.modules.map(mod => {
                 const lessons = Array.isArray(mod.lessons) && mod.lessons.length
-                    ? `<ul>${mod.lessons.map(l => `<li>${esc(l)}</li>`).join('')}</ul>` : '';
+                    ? `<ul>${mod.lessons.map(l => fullContent
+                        ? `<li><button type="button" class="lesson-link" data-course="${esc(course.course_id)}" data-lesson="${esc(l)}">${esc(l)}</button></li>`
+                        : `<li>${esc(l)}</li>`).join('')}</ul>` : '';
                 return `<div class="course-module"><strong>${esc(mod.module_title)}</strong>${lessons}</div>`;
             }).join('');
         }
@@ -142,6 +162,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <span class="course-id">${esc(course.course_id)}</span>
                 <span class="level-badge level-${esc(course.level)}">${esc(course.level)}-level</span>
                 <span class="course-credits">${esc(course.credit_hours || '?')} credits</span>
+                ${fullContent ? '<span class="content-badge">📖 Full lesson content</span>' : ''}
             </div>
             <h3 class="course-title">${esc(course.title || 'Untitled Course')}</h3>
             <p class="course-desc">${esc(course.description || '')}</p>
@@ -162,7 +183,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         appContainer.innerHTML = `
             <h2>Course Library</h2>
-            <p class="section-intro"><strong id="course-count">${list.length} courses</strong> — every course is shown below. Tap “Modules &amp; lessons” on a card for the full syllabus.</p>
+            <p class="section-intro"><strong id="course-count">${list.length} courses</strong> — every course is shown below. Tap “Modules &amp; lessons” for the syllabus. Courses with a 📖 badge have full written lessons — tap any lesson title to read it, work the examples, and try the practice problems.</p>
             <div class="course-controls">
                 <input type="search" id="course-search" placeholder="Search courses — try “calculus”, “algebra”, “statistics”…" aria-label="Search courses">
                 <select id="course-level" aria-label="Filter by level">
@@ -201,7 +222,72 @@ document.addEventListener('DOMContentLoaded', async () => {
             });
         });
 
+        appContainer.querySelectorAll('.lesson-link').forEach(btn => {
+            btn.addEventListener('click', () => {
+                showLesson(btn.getAttribute('data-course'), btn.getAttribute('data-lesson'));
+            });
+        });
+
         if (openCourseId) openCourse(openCourseId);
+    }
+
+    // ---- Lesson content page ----
+    async function showLesson(courseId, lessonTitle) {
+        setActive('courses');
+        const courses = await loadCourses();
+        const course = courses ? courses[courseId] : null;
+        const content = await loadContent(courseId);
+        const lesson = content && content.lessons ? content.lessons[lessonTitle] : null;
+        if (!course || !lesson) {
+            appContainer.innerHTML = `<h2>Lesson not found</h2><div class="panel"><p>That lesson's content is not available yet.</p><p><button type="button" class="back-btn" id="lesson-back">← Back to Course Library</button></p></div>`;
+            document.getElementById('lesson-back').addEventListener('click', () => showCourses(courseId));
+            return;
+        }
+        // ordered lesson list for prev/next
+        const ordered = [];
+        (course.modules || []).forEach(m => (m.lessons || []).forEach(l => ordered.push(l)));
+        const idx = ordered.indexOf(lessonTitle);
+        const prev = idx > 0 ? ordered[idx - 1] : null;
+        const next = idx >= 0 && idx < ordered.length - 1 ? ordered[idx + 1] : null;
+
+        const concepts = (lesson.concepts || []).map(c => `<li>${esc(c)}</li>`).join('');
+        const steps = lesson.example && Array.isArray(lesson.example.steps)
+            ? lesson.example.steps.map(s => `<li>${esc(s)}</li>`).join('') : '';
+        const practice = (lesson.practice || []).map((p, i) => `
+            <div class="practice-item">
+                <p><strong>Problem ${i + 1}.</strong> ${esc(p.q)}</p>
+                <details class="practice-answer"><summary>Show answer</summary><p>${esc(p.a)}</p></details>
+            </div>`).join('');
+
+        appContainer.innerHTML = `
+            <div class="lesson-page">
+                <p><button type="button" class="back-btn" id="lesson-back">← Back to ${esc(courseId)} in the Course Library</button></p>
+                <p class="lesson-kicker">${esc(courseId)} · ${esc(course.title)} — ${esc(lesson.module || '')}</p>
+                <h2>${esc(lessonTitle)}</h2>
+                <p class="lesson-intro">${esc(lesson.intro || '')}</p>
+                <h3>Key ideas</h3>
+                <ul class="lesson-concepts">${concepts}</ul>
+                ${lesson.example ? `
+                <div class="example-box">
+                    <h3>Worked example</h3>
+                    <p class="example-q">${esc(lesson.example.q)}</p>
+                    <ol>${steps}</ol>
+                    <p class="example-a"><strong>Answer:</strong> ${esc(lesson.example.a)}</p>
+                </div>` : ''}
+                <h3>Practice</h3>
+                ${practice}
+                ${lesson.takeaway ? `<div class="takeaway"><strong>Takeaway:</strong> ${esc(lesson.takeaway)}</div>` : ''}
+                <div class="lesson-nav">
+                    ${prev ? `<button type="button" class="lesson-nav-btn" id="lesson-prev">← Previous: ${esc(prev)}</button>` : '<span></span>'}
+                    ${next ? `<button type="button" class="lesson-nav-btn" id="lesson-next">Next: ${esc(next)} →</button>` : '<span></span>'}
+                </div>
+            </div>`;
+        window.scrollTo({ top: 0 });
+        document.getElementById('lesson-back').addEventListener('click', () => showCourses(courseId));
+        const prevBtn = document.getElementById('lesson-prev');
+        if (prevBtn) prevBtn.addEventListener('click', () => showLesson(courseId, prev));
+        const nextBtn = document.getElementById('lesson-next');
+        if (nextBtn) nextBtn.addEventListener('click', () => showLesson(courseId, next));
     }
 
     function openCourse(courseId) {
@@ -222,6 +308,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     async function showCourses(openCourseId) {
         setActive('courses');
+        await loadContentManifest();
         const courses = await loadCourses();
         renderCourses(courses, openCourseId);
     }

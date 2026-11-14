@@ -1,0 +1,733 @@
+{
+  "course_id": "MATH101",
+  "title": "Calculus I",
+  "lesson_count": 24,
+  "lessons": {
+    "Introduction to Limits": {
+      "intro": "A limit describes what value a function approaches as its input approaches some point — whether or not the function actually reaches that value. Limits are the foundation everything in calculus is built on.",
+      "concepts": [
+        "Notation — lim x→a f(x) = L means f(x) gets arbitrarily close to L as x gets arbitrarily close to a (with x ≠ a).",
+        "Approach from both sides — the limit exists only when the values approached from the left and from the right agree.",
+        "The function value doesn't matter — f(a) can be different from the limit, or even undefined, while the limit still exists.",
+        "Estimating — you can estimate a limit from a table of values or a graph before computing it exactly."
+      ],
+      "example": {
+        "q": "Find lim x→2 (x² − 4)/(x − 2).",
+        "steps": [
+          "Direct substitution gives (4 − 4)/(2 − 2) = 0/0, which is undefined — but that says nothing about the limit.",
+          "Factor the numerator: (x² − 4)/(x − 2) = (x − 2)(x + 2)/(x − 2).",
+          "Cancel (x − 2) — allowed because in the limit x approaches 2 but never equals 2: the expression equals x + 2.",
+          "Now substitute: lim x→2 (x + 2) = 4."
+        ],
+        "a": "4"
+      },
+      "practice": [
+        {
+          "q": "Estimate lim x→0 (sin x)/x from values at x = ±0.1, ±0.01.",
+          "a": "The values approach 1, so the limit is 1 — one of the most important limits in calculus."
+        },
+        {
+          "q": "Find lim x→5 (x − 5)/(x − 5).",
+          "a": "For every x ≠ 5 the expression equals 1, so the limit is 1 (even though the function is undefined at x = 5)."
+        }
+      ],
+      "takeaway": "A limit is about approach, not arrival: simplify the expression first, then substitute.",
+      "module": "Limits and Continuity"
+    },
+    "Limit Laws": {
+      "intro": "Once a few basic limits are known, the limit laws let you build the limit of a complicated expression from the limits of its pieces — sums, products, quotients, powers, and roots.",
+      "concepts": [
+        "Sum and product laws — the limit of a sum (or product) is the sum (or product) of the limits, when they exist.",
+        "Quotient law — the limit of a quotient is the quotient of the limits, provided the denominator's limit is not 0.",
+        "Direct substitution for polynomials and rational functions — if f is a polynomial, or rational with a nonzero denominator at a, then lim x→a f(x) = f(a).",
+        "Squeeze theorem — if g(x) ≤ f(x) ≤ h(x) near a and both outer limits equal L, then f's limit is L too."
+      ],
+      "example": {
+        "q": "Find lim x→3 (2x² − 5x + 1).",
+        "steps": [
+          "This is a polynomial, so direct substitution applies.",
+          "Substitute x = 3: 2(3²) − 5(3) + 1.",
+          "Compute: 18 − 15 + 1 = 4."
+        ],
+        "a": "4"
+      },
+      "practice": [
+        {
+          "q": "Find lim x→−1 (x² + 3x)/(x + 2).",
+          "a": "(1 − 3)/(1) = −2."
+        },
+        {
+          "q": "Use the squeeze theorem to show lim x→0 x² sin(1/x) = 0.",
+          "a": "Since −x² ≤ x² sin(1/x) ≤ x² and both bounds → 0, the limit is 0."
+        }
+      ],
+      "takeaway": "Try direct substitution first; reach for factoring, rationalizing, or the squeeze theorem only when substitution gives 0/0 or fails.",
+      "module": "Limits and Continuity"
+    },
+    "One-Sided Limits and Infinite Limits": {
+      "intro": "Sometimes a function behaves differently on the two sides of a point, or grows without bound near it. One-sided limits and infinite limits describe both situations precisely.",
+      "concepts": [
+        "One-sided limits — lim x→a⁻ f(x) uses values left of a; lim x→a⁺ f(x) uses values right of a.",
+        "Existence test — the two-sided limit exists exactly when both one-sided limits exist and are equal.",
+        "Infinite limits — lim x→a f(x) = ∞ means f(x) grows beyond every bound as x approaches a; the line x = a is then a vertical asymptote.",
+        "Sign analysis — for rational functions, check the sign of numerator and denominator on each side to decide between +∞ and −∞."
+      ],
+      "example": {
+        "q": "Find the one-sided limits of f(x) = |x|/x at x = 0 and decide whether lim x→0 f(x) exists.",
+        "steps": [
+          "For x > 0, |x| = x, so f(x) = x/x = 1. The right-hand limit is 1.",
+          "For x < 0, |x| = −x, so f(x) = −x/x = −1. The left-hand limit is −1.",
+          "Left (−1) ≠ right (1), so the two-sided limit does not exist."
+        ],
+        "a": "Left limit −1, right limit 1; the two-sided limit does not exist."
+      },
+      "practice": [
+        {
+          "q": "Find lim x→1⁺ 1/(x − 1) and lim x→1⁻ 1/(x − 1).",
+          "a": "+∞ from the right (small positive denominator) and −∞ from the left (small negative denominator). x = 1 is a vertical asymptote."
+        },
+        {
+          "q": "Find lim x→2 1/(x − 2)².",
+          "a": "The denominator is a small positive number on both sides, so the limit is +∞."
+        }
+      ],
+      "takeaway": "At a suspicious point, always test both sides separately — and let the signs tell you +∞ versus −∞.",
+      "module": "Limits and Continuity"
+    },
+    "Limits at Infinity": {
+      "intro": "Limits at infinity describe a function's end behavior: what happens as x grows without bound in either direction. They reveal horizontal asymptotes and are the first step toward improper integrals.",
+      "concepts": [
+        "Notation — lim x→∞ f(x) = L means f(x) settles toward L as x grows; the line y = L is a horizontal asymptote.",
+        "Key fact — lim x→∞ 1/xʳ = 0 for any r > 0. Small-over-large terms vanish.",
+        "Rational function rule — compare degrees: numerator degree smaller → limit 0; equal degrees → ratio of leading coefficients; numerator larger → infinite limit.",
+        "Technique — divide numerator and denominator by the highest power of x in the denominator."
+      ],
+      "example": {
+        "q": "Find lim x→∞ (3x² + 2x)/(x² − 5).",
+        "steps": [
+          "Divide top and bottom by x²: (3 + 2/x)/(1 − 5/x²).",
+          "As x → ∞, 2/x → 0 and 5/x² → 0.",
+          "The limit is (3 + 0)/(1 − 0) = 3."
+        ],
+        "a": "3 — the line y = 3 is a horizontal asymptote."
+      },
+      "practice": [
+        {
+          "q": "Find lim x→∞ (7x − 1)/(2x² + 3).",
+          "a": "0 — the denominator's degree is higher."
+        },
+        {
+          "q": "Find lim x→−∞ (4x³ + x)/(2x³ − 5).",
+          "a": "2 — equal degrees, ratio of leading coefficients 4/2."
+        }
+      ],
+      "takeaway": "For rational functions at infinity, only the highest-degree terms matter in the long run.",
+      "module": "Limits and Continuity"
+    },
+    "Continuity": {
+      "intro": "A function is continuous at a point when you can draw it there without lifting your pen: the limit exists, the function is defined, and the two agree. Continuity is what makes the big theorems of calculus work.",
+      "concepts": [
+        "Definition — f is continuous at a when (1) f(a) is defined, (2) lim x→a f(x) exists, (3) the limit equals f(a).",
+        "Types of discontinuity — removable (a hole: limit exists but value differs or is missing), jump (one-sided limits differ), infinite (vertical asymptote).",
+        "Continuity on an interval — continuous at every interior point, and one-sided continuous at the endpoints.",
+        "Building continuous functions — sums, products, quotients (nonzero denominator), and compositions of continuous functions are continuous. Polynomials are continuous everywhere; rational functions are continuous wherever defined."
+      ],
+      "example": {
+        "q": "Show that f(x) = (x² − 9)/(x − 3) for x ≠ 3, with f(3) = 5, is not continuous at 3, and classify the discontinuity.",
+        "steps": [
+          "Factor: (x² − 9)/(x − 3) = x + 3 for x ≠ 3, so lim x→3 f(x) = 6.",
+          "But f(3) = 5 ≠ 6 — condition (3) fails.",
+          "Because the limit exists and only the value is wrong, the discontinuity is removable: redefining f(3) = 6 would fix it."
+        ],
+        "a": "Removable discontinuity at x = 3 (limit 6, value 5)."
+      },
+      "practice": [
+        {
+          "q": "Where is f(x) = (x + 1)/(x² − 1) discontinuous?",
+          "a": "At x = 1 (infinite discontinuity — vertical asymptote) and x = −1 (also infinite; numerator is 0 there? No: at x = −1 the numerator is 0 and the denominator is 0 — factor first: (x+1)/((x−1)(x+1)) = 1/(x−1) for x ≠ −1, so x = −1 is a removable hole, x = 1 is infinite)."
+        },
+        {
+          "q": "For what k is f(x) = x² for x ≤ 2, kx − 2 for x > 2, continuous at 2?",
+          "a": "Need 2k − 2 = 4, so k = 3."
+        }
+      ],
+      "takeaway": "Continuity = limit exists + value exists + they match. Name which condition fails and you know the type of break.",
+      "module": "Limits and Continuity"
+    },
+    "Intermediate Value Theorem": {
+      "intro": "The Intermediate Value Theorem (IVT) says a continuous function on an interval takes every value between its endpoint values. It sounds obvious — and it is the standard way to prove equations have solutions.",
+      "concepts": [
+        "Statement — if f is continuous on [a, b] and N is any number between f(a) and f(b), then some c in (a, b) has f(c) = N.",
+        "Root-finding use — if f(a) and f(b) have opposite signs, IVT guarantees a root (a c with f(c) = 0) between them.",
+        "Continuity is essential — a function with a jump can skip values, so IVT does not apply.",
+        "Bisection — IVT justifies repeatedly halving an interval that brackets a root to approximate it."
+      ],
+      "example": {
+        "q": "Show that x³ + x − 1 = 0 has a solution between 0 and 1.",
+        "steps": [
+          "Let f(x) = x³ + x − 1. Polynomials are continuous everywhere.",
+          "f(0) = −1 (negative) and f(1) = 1 + 1 − 1 = 1 (positive).",
+          "0 lies between −1 and 1, so by the IVT some c in (0, 1) has f(c) = 0.",
+          "(Numerically, c ≈ 0.682.)"
+        ],
+        "a": "A root exists in (0, 1), guaranteed by the IVT."
+      },
+      "practice": [
+        {
+          "q": "Show cos x = x has a solution in (0, 1).",
+          "a": "Let g(x) = cos x − x. g(0) = 1 > 0 and g(1) ≈ 0.540 − 1 < 0, so IVT gives a root in (0, 1)."
+        },
+        {
+          "q": "Why can't IVT be used on f(x) = 1/x over [−1, 1] to claim a root?",
+          "a": "f is not continuous on [−1, 1] — it is undefined and unbounded at 0 — and indeed it never equals 0."
+        }
+      ],
+      "takeaway": "Opposite signs at the ends of an interval + continuity = a root in between. IVT proves existence, not the value.",
+      "module": "Limits and Continuity"
+    },
+    "Derivatives and Rates of Change": {
+      "intro": "The derivative is the limit of average rates of change. It turns 'how fast on average' into 'how fast right now' — velocity from position, slope from secant lines.",
+      "concepts": [
+        "Average rate of change — (f(a + h) − f(a))/h is the slope of the secant line through two points of the graph.",
+        "Instantaneous rate / derivative — f′(a) = lim h→0 (f(a + h) − f(a))/h, the slope of the tangent line at a.",
+        "Velocity — if s(t) is position, average velocity is Δs/Δt and instantaneous velocity is s′(t).",
+        "The limit must exist — corners, cusps, and vertical tangents are points where the derivative fails to exist."
+      ],
+      "example": {
+        "q": "Using the definition, find the derivative of f(x) = x² at x = 3.",
+        "steps": [
+          "Form the difference quotient: ((3 + h)² − 3²)/h = (9 + 6h + h² − 9)/h = (6h + h²)/h.",
+          "Simplify (h ≠ 0): 6 + h.",
+          "Take the limit as h → 0: 6."
+        ],
+        "a": "f′(3) = 6 — the tangent line to y = x² at x = 3 has slope 6."
+      },
+      "practice": [
+        {
+          "q": "A ball's height is s(t) = 16t − 4t² metres. Find its average velocity on [1, 2] and instantaneous velocity at t = 1.",
+          "a": "Average: (s(2) − s(1))/1 = (16 − 12) = 4 m/s. Instantaneous: s′(t) = 16 − 8t, so s′(1) = 8 m/s."
+        },
+        {
+          "q": "Why does f(x) = |x| have no derivative at 0?",
+          "a": "The difference quotient is −1 from the left and +1 from the right, so the limit does not exist — the graph has a corner."
+        }
+      ],
+      "takeaway": "Derivative = limit of the difference quotient. Every shortcut rule later is this limit, pre-computed.",
+      "module": "Differentiation"
+    },
+    "The Derivative as a Function": {
+      "intro": "Instead of differentiating at one point at a time, we can differentiate a whole function at once: f′ is itself a function, giving the slope of f at every point.",
+      "concepts": [
+        "Definition — f′(x) = lim h→0 (f(x + h) − f(x))/h, wherever this limit exists.",
+        "Notations — f′(x), dy/dx, Df(x), and y′ all mean the same thing; Leibniz's dy/dx suggests a ratio and guides the chain rule.",
+        "Graphical link — f′ > 0 where f rises, f′ < 0 where f falls, f′ = 0 at peaks, troughs, and flat spots.",
+        "Differentiability implies continuity — if f′(a) exists then f is continuous at a; the converse is false (|x| at 0 is continuous but not differentiable)."
+      ],
+      "example": {
+        "q": "Use the definition to find f′(x) for f(x) = x², and evaluate f′(−1), f′(0), f′(2).",
+        "steps": [
+          "Difference quotient: ((x + h)² − x²)/h = (2xh + h²)/h = 2x + h.",
+          "Limit as h → 0: f′(x) = 2x.",
+          "Evaluate: f′(−1) = −2 (falling), f′(0) = 0 (flat — the vertex), f′(2) = 4 (rising steeply)."
+        ],
+        "a": "f′(x) = 2x."
+      },
+      "practice": [
+        {
+          "q": "Find f′(x) for f(x) = 1/x using the definition.",
+          "a": "((1/(x+h)) − 1/x)/h = −1/(x(x + h)) → −1/x²."
+        },
+        {
+          "q": "Sketch the sign of f′ for a function that falls until x = 2, then rises.",
+          "a": "f′ < 0 for x < 2, f′(2) = 0, f′ > 0 for x > 2."
+        }
+      ],
+      "takeaway": "f′ is a machine: feed it any x, get the slope of f at that x. Its sign chart is the story of where f rises and falls.",
+      "module": "Differentiation"
+    },
+    "Differentiation Rules": {
+      "intro": "Nobody computes limits by definition for every derivative. The power, product, and quotient rules turn differentiation into algebra.",
+      "concepts": [
+        "Power rule — d/dx xⁿ = n·xⁿ⁻¹, for any real n. Constants have derivative 0; constant multiples and sums differentiate term by term.",
+        "Exponential — d/dx eˣ = eˣ (the function that is its own derivative); d/dx aˣ = aˣ ln a.",
+        "Product rule — (fg)′ = f′g + fg′. Order matters: derivative of the first times the second, plus the first times derivative of the second.",
+        "Quotient rule — (f/g)′ = (f′g − fg′)/g². The numerator starts with the derivative of the top."
+      ],
+      "example": {
+        "q": "Differentiate f(x) = (x² + 1)(3x − 2) with the product rule.",
+        "steps": [
+          "Let u = x² + 1 (u′ = 2x) and v = 3x − 2 (v′ = 3).",
+          "f′ = u′v + uv′ = 2x(3x − 2) + (x² + 1)(3).",
+          "Expand: 6x² − 4x + 3x² + 3 = 9x² − 4x + 3.",
+          "Check by expanding first: f = 3x³ − 2x² + 3x − 2, whose derivative is 9x² − 4x + 3. ✓"
+        ],
+        "a": "f′(x) = 9x² − 4x + 3"
+      },
+      "practice": [
+        {
+          "q": "Differentiate y = (x + 1)/(x − 1).",
+          "a": "y′ = [1·(x − 1) − (x + 1)·1]/(x − 1)² = −2/(x − 1)²."
+        },
+        {
+          "q": "Differentiate y = 4x⁵ − 3x² + 7eˣ.",
+          "a": "y′ = 20x⁴ − 6x + 7eˣ."
+        }
+      ],
+      "takeaway": "Identify the structure first — sum, product, or quotient — then apply exactly one rule at a time.",
+      "module": "Differentiation"
+    },
+    "Derivatives of Trigonometric Functions": {
+      "intro": "Two limits power everything here: lim h→0 (sin h)/h = 1 and lim h→0 (cos h − 1)/h = 0. From them come the derivatives of all six trigonometric functions.",
+      "concepts": [
+        "The two key derivatives — d/dx sin x = cos x and d/dx cos x = −sin x (note the minus sign).",
+        "Tangent — d/dx tan x = sec² x, derived from sin/cos with the quotient rule.",
+        "The rest — d/dx sec x = sec x tan x; d/dx csc x = −csc x cot x; d/dx cot x = −csc² x. The 'co-' functions carry the minus signs.",
+        "Radians only — these formulas are true when x is measured in radians; that is why calculus always uses radians."
+      ],
+      "example": {
+        "q": "Differentiate y = x sin x.",
+        "steps": [
+          "This is a product: u = x (u′ = 1), v = sin x (v′ = cos x).",
+          "y′ = u′v + uv′ = 1·sin x + x·cos x."
+        ],
+        "a": "y′ = sin x + x cos x"
+      },
+      "practice": [
+        {
+          "q": "Differentiate y = tan x − x.",
+          "a": "y′ = sec² x − 1 = tan² x."
+        },
+        {
+          "q": "Find the slope of y = cos x at x = π.",
+          "a": "y′ = −sin x, so at π the slope is −sin π = 0 — a horizontal tangent at the trough."
+        }
+      ],
+      "takeaway": "Memorize sin and cos cold; derive tan from the quotient rule when you need it, and remember: co-functions get the minus.",
+      "module": "Differentiation"
+    },
+    "The Chain Rule": {
+      "intro": "Most real functions are compositions — a function inside another function. The chain rule is how you differentiate them: derivative of the outer (at the inner) times derivative of the inner.",
+      "concepts": [
+        "Statement — if y = f(g(x)), then dy/dx = f′(g(x)) · g′(x). In Leibniz form: dy/dx = (dy/du)·(du/dx).",
+        "Outside-in — differentiate the outermost function first, leaving the inside untouched, then multiply by the derivative of the inside.",
+        "Generalized power rule — d/dx [g(x)]ⁿ = n[g(x)]ⁿ⁻¹ · g′(x), the chain rule's most common special case.",
+        "Nesting — three or more layers just keep multiplying: one factor per layer."
+      ],
+      "example": {
+        "q": "Differentiate y = (3x² + 1)⁵.",
+        "steps": [
+          "Outer: u⁵ with u = 3x² + 1. Derivative of the outer at the inner: 5(3x² + 1)⁴.",
+          "Inner derivative: d/dx (3x² + 1) = 6x.",
+          "Multiply: y′ = 5(3x² + 1)⁴ · 6x = 30x(3x² + 1)⁴."
+        ],
+        "a": "y′ = 30x(3x² + 1)⁴"
+      },
+      "practice": [
+        {
+          "q": "Differentiate y = sin(x²).",
+          "a": "y′ = cos(x²) · 2x = 2x cos(x²)."
+        },
+        {
+          "q": "Differentiate y = e^(3x) · — careful, and y = √(x² + 4).",
+          "a": "d/dx e^(3x) = 3e^(3x). For the root: y′ = (1/(2√(x² + 4)))·2x = x/√(x² + 4)."
+        }
+      ],
+      "takeaway": "Peel the function like an onion — outermost layer first, and never forget to multiply by the derivative of what was inside.",
+      "module": "Differentiation"
+    },
+    "Implicit Differentiation": {
+      "intro": "Many curves are not given as y = f(x) at all — x² + y² = 25 describes a circle. Implicit differentiation finds dy/dx anyway, by differentiating both sides with respect to x and treating y as a function of x.",
+      "concepts": [
+        "The method — differentiate every term with respect to x; whenever you differentiate a y-term, multiply by dy/dx (the chain rule). Then solve for dy/dx.",
+        "d/dx y² = 2y · dy/dx, not 2y — the most common place students drop the dy/dx factor.",
+        "Product terms with x and y — like xy — need the product rule, which introduces both y and x·dy/dx terms.",
+        "Tangent lines — dy/dx at a specific point (x₀, y₀) on the curve gives the tangent slope there."
+      ],
+      "example": {
+        "q": "For x² + y² = 25, find dy/dx and the tangent slope at (3, 4).",
+        "steps": [
+          "Differentiate both sides: 2x + 2y·dy/dx = 0.",
+          "Solve: dy/dx = −x/y.",
+          "At (3, 4): slope = −3/4. (Check geometrically: the radius to (3, 4) has slope 4/3, and the tangent is perpendicular — negative reciprocal −3/4. ✓)"
+        ],
+        "a": "dy/dx = −x/y; slope −3/4 at (3, 4)."
+      },
+      "practice": [
+        {
+          "q": "Find dy/dx for x² + xy + y² = 7.",
+          "a": "2x + y + x·dy/dx + 2y·dy/dx = 0, so dy/dx = −(2x + y)/(x + 2y)."
+        },
+        {
+          "q": "Find dy/dx for sin y = x.",
+          "a": "cos y · dy/dx = 1, so dy/dx = 1/cos y = sec y."
+        }
+      ],
+      "takeaway": "Differentiate everything in x, tag every y-derivative with dy/dx, then do algebra. Geometry (like the circle's radius) is a great check.",
+      "module": "Differentiation"
+    },
+    "Related Rates": {
+      "intro": "In a related rates problem, several quantities change together in time and are linked by an equation. Differentiate the link with respect to time and the rates become linked too.",
+      "concepts": [
+        "Setup — identify the quantities, the rate you know, and the rate you want; write an equation connecting the quantities (geometry is the usual source).",
+        "Differentiate in t — every variable that changes with time gets a d/dt factor via the chain rule (e.g. d/dt x² = 2x dx/dt).",
+        "Substitute numbers LAST — plug in the instant's values only after differentiating; substituting early turns variables into constants and destroys the rates.",
+        "Sign meaning — a negative rate means the quantity is decreasing; state direction in your answer."
+      ],
+      "example": {
+        "q": "A 10 ft ladder leans on a wall. The bottom slides away at 1 ft/s. How fast is the top sliding down when the bottom is 6 ft from the wall?",
+        "steps": [
+          "Let x = distance of the bottom from the wall, y = height of the top. Link: x² + y² = 10² = 100 (Pythagoras).",
+          "Differentiate in t: 2x dx/dt + 2y dy/dt = 0.",
+          "At the instant: x = 6, so y = √(100 − 36) = 8; dx/dt = 1.",
+          "Solve: dy/dt = −(x/y) dx/dt = −(6/8)(1) = −0.75 ft/s."
+        ],
+        "a": "The top slides down at 0.75 ft/s (the negative sign means y is decreasing)."
+      },
+      "practice": [
+        {
+          "q": "A spherical balloon's radius grows at 0.5 cm/s. How fast is the volume growing when r = 2 cm? (V = (4/3)πr³)",
+          "a": "dV/dt = 4πr² dr/dt = 4π(4)(0.5) = 8π ≈ 25.1 cm³/s."
+        },
+        {
+          "q": "For a cone being filled, which equation links V, r, h before differentiating?",
+          "a": "V = (1/3)πr²h — and if r and h are proportional (similar triangles from the cone's shape), eliminate one variable first."
+        }
+      ],
+      "takeaway": "Equation first, differentiate in t second, numbers last. That order is the whole method.",
+      "module": "Differentiation"
+    },
+    "Extrema on an Interval": {
+      "intro": "Extreme values are the largest and smallest outputs of a function. On a closed interval, the Extreme Value Theorem guarantees they exist — and they can only occur at critical numbers or endpoints.",
+      "concepts": [
+        "Extreme Value Theorem — a continuous function on a closed interval [a, b] attains both an absolute maximum and an absolute minimum.",
+        "Critical numbers — values c in the domain where f′(c) = 0 or f′(c) does not exist. Interior extrema can only occur there (Fermat's theorem).",
+        "Closed Interval Method — evaluate f at every critical number in the interval and at both endpoints; the biggest output is the absolute max, the smallest is the absolute min.",
+        "Local vs absolute — a local max is biggest in its neighbourhood; the absolute max is biggest on the whole interval, and often sits at an endpoint."
+      ],
+      "example": {
+        "q": "Find the absolute extrema of f(x) = x³ − 3x on [−2, 2].",
+        "steps": [
+          "f′(x) = 3x² − 3 = 3(x − 1)(x + 1), so critical numbers are x = −1 and x = 1 (both in the interval).",
+          "Evaluate: f(−1) = 2, f(1) = −2.",
+          "Endpoints: f(−2) = −8 + 6 = −2, f(2) = 8 − 6 = 2.",
+          "Compare all four values {2, −2, −2, 2}: maximum 2, minimum −2."
+        ],
+        "a": "Absolute max 2 (at x = −1 and x = 2); absolute min −2 (at x = 1 and x = −2)."
+      },
+      "practice": [
+        {
+          "q": "Find the absolute extrema of f(x) = x² − 4x on [0, 3].",
+          "a": "f′ = 2x − 4 = 0 at x = 2, f(2) = −4. Endpoints: f(0) = 0, f(3) = −3. Absolute min −4 at x = 2; absolute max 0 at x = 0."
+        },
+        {
+          "q": "Why does the Closed Interval Method fail on an open interval (0, 2)?",
+          "a": "An open interval need not contain its extreme values — f(x) = x on (0, 2) has neither an absolute max nor min there."
+        }
+      ],
+      "takeaway": "Candidates for absolute extrema = critical numbers + endpoints. Evaluate them all; never skip the endpoints.",
+      "module": "Applications of Differentiation"
+    },
+    "Rolle's Theorem and Mean Value Theorem": {
+      "intro": "These two theorems connect a function's average behaviour to its instantaneous behaviour: somewhere inside the interval, the tangent is parallel to the secant.",
+      "concepts": [
+        "Rolle's theorem — if f is continuous on [a, b], differentiable on (a, b), and f(a) = f(b), then some c in (a, b) has f′(c) = 0.",
+        "Mean Value Theorem (MVT) — under the same continuity/differentiability conditions, some c has f′(c) = (f(b) − f(a))/(b − a): instantaneous rate equals average rate.",
+        "Hypotheses matter — one failed hypothesis (a corner, a jump) can destroy the conclusion.",
+        "Consequences — MVT is the engine behind the derivative tests, error bounds, and the fact that zero derivative everywhere forces a function to be constant."
+      ],
+      "example": {
+        "q": "Verify Rolle's theorem for f(x) = x² − 4x + 3 on [1, 3] and find the promised c.",
+        "steps": [
+          "f is a polynomial: continuous and differentiable everywhere.",
+          "f(1) = 1 − 4 + 3 = 0 and f(3) = 9 − 12 + 3 = 0 — equal endpoint values ✓.",
+          "f′(x) = 2x − 4 = 0 gives x = 2, which lies in (1, 3)."
+        ],
+        "a": "c = 2, where the tangent is horizontal."
+      },
+      "practice": [
+        {
+          "q": "Apply the MVT to f(x) = x² on [0, 2] and find c.",
+          "a": "Average rate = (4 − 0)/2 = 2. f′(c) = 2c = 2, so c = 1."
+        },
+        {
+          "q": "Why does f(x) = |x| on [−1, 1] have no c with f′(c) = 0 even though f(−1) = f(1)?",
+          "a": "f is not differentiable at 0, so Rolle's hypotheses fail — and indeed f′ is ±1 everywhere it exists, never 0."
+        }
+      ],
+      "takeaway": "Equal endpoints force a flat tangent (Rolle); in general, somewhere the instantaneous rate exactly matches the average rate (MVT).",
+      "module": "Applications of Differentiation"
+    },
+    "First Derivative Test": {
+      "intro": "The sign of f′ tells you where f climbs and where it falls. Where that sign changes at a critical number, you have found a local extremum — that is the first derivative test.",
+      "concepts": [
+        "Sign chart — split the number line at critical numbers; test f′ at one sample point in each interval.",
+        "Rising/falling — f′ > 0 on an interval means f is increasing there; f′ < 0 means decreasing.",
+        "The test — at a critical number, + to − change in f′ means local max; − to + means local min; no sign change means neither.",
+        "Process — factor f′ fully: its factors' signs make the chart fast and reliable."
+      ],
+      "example": {
+        "q": "Classify the critical numbers of f(x) = x³ − 3x² − 9x.",
+        "steps": [
+          "f′(x) = 3x² − 6x − 9 = 3(x − 3)(x + 1). Critical numbers: x = −1, x = 3.",
+          "Sign of f′: positive on (−∞, −1) [test −2: 3(−5)(−1) > 0], negative on (−1, 3) [test 0: −9 < 0], positive on (3, ∞).",
+          "At −1, f′ changes + to −: local max, f(−1) = −1 − 3 + 9 = 5.",
+          "At 3, f′ changes − to +: local min, f(3) = 27 − 27 − 27 = −27."
+        ],
+        "a": "Local max 5 at x = −1; local min −27 at x = 3."
+      },
+      "practice": [
+        {
+          "q": "Classify x = 0 for f(x) = x⁴.",
+          "a": "f′ = 4x³ changes − to + at 0, so x = 0 is a local (and absolute) min, f(0) = 0."
+        },
+        {
+          "q": "Classify x = 0 for f(x) = x³.",
+          "a": "f′ = 3x² is positive on both sides — no sign change, so no extremum at 0 (it's a flat inflection point)."
+        }
+      ],
+      "takeaway": "Extrema live where f′ changes sign — not merely where f′ = 0.",
+      "module": "Applications of Differentiation"
+    },
+    "Second Derivative Test": {
+      "intro": "The second derivative measures concavity — whether the graph cups upward or downward. At a critical number, concavity alone can classify the point, and where concavity flips you get inflection points.",
+      "concepts": [
+        "Concavity — f′′ > 0: concave up (f′ increasing, graph holds water); f′′ < 0: concave down.",
+        "Inflection points — points where concavity changes and the graph has a tangent line.",
+        "Second derivative test — at a critical number c with f′(c) = 0: f′′(c) > 0 → local min; f′′(c) < 0 → local max; f′′(c) = 0 → test fails, use the first derivative test.",
+        "Points of diminishing returns — in applications an inflection point is often where growth stops accelerating."
+      ],
+      "example": {
+        "q": "Classify the critical numbers of f(x) = x³ − 3x using the second derivative test.",
+        "steps": [
+          "f′(x) = 3x² − 3; critical numbers −1 and 1.",
+          "f′′(x) = 6x. At x = −1: f′′(−1) = −6 < 0 → concave down → local max, f(−1) = 2.",
+          "At x = 1: f′′(1) = 6 > 0 → concave up → local min, f(1) = −2.",
+          "f′′(0) = 0 and the sign of f′′ changes at 0, so (0, 0) is an inflection point."
+        ],
+        "a": "Local max at (−1, 2), local min at (1, −2), inflection point at (0, 0)."
+      },
+      "practice": [
+        {
+          "q": "Show the second derivative test fails for f(x) = x⁴ at 0, then classify 0 another way.",
+          "a": "f′′(0) = 0 — inconclusive. But f(x) = x⁴ ≥ 0 = f(0), so 0 is an absolute min (the first derivative test also shows − to +)."
+        },
+        {
+          "q": "Find the inflection points of f(x) = x³ − 6x².",
+          "a": "f′′ = 6x − 12 = 0 at x = 2, with a sign change, so (2, −16) is the inflection point."
+        }
+      ],
+      "takeaway": "f′′ > 0 cups up (min), f′′ < 0 cups down (max) — and when f′′(c) = 0, fall back to the sign chart.",
+      "module": "Applications of Differentiation"
+    },
+    "Optimization Problems": {
+      "intro": "Optimization turns a word problem into a function of one variable and finds its extreme value. The mathematics is the extrema machinery you already know; the skill is the translation.",
+      "concepts": [
+        "Recipe — draw and label; write the quantity to optimize; write the constraint; use the constraint to eliminate all but one variable; differentiate and test critical numbers and endpoints.",
+        "Domain first — the physical situation restricts the variable (lengths positive, etc.), and the optimum is often at a critical number inside that domain.",
+        "Closed vs open domains — on a closed domain also check endpoints; justify an interior optimum with the first or second derivative test.",
+        "Units and sanity — check the answer's units and magnitude against the problem before declaring victory."
+      ],
+      "example": {
+        "q": "A farmer has 100 ft of fencing to enclose a rectangular pen against a long barn wall (the wall forms one side, so fence is needed for only 3 sides). Maximize the area.",
+        "steps": [
+          "Let x = the length of each side perpendicular to the wall; then the parallel side is 100 − 2x. Area: A(x) = x(100 − 2x) = 100x − 2x², for 0 < x < 50.",
+          "A′(x) = 100 − 4x = 0 gives x = 25. A′′ = −4 < 0, so this is a maximum.",
+          "Parallel side: 100 − 2(25) = 50 ft. Maximum area: A(25) = 25 · 50 = 1250 ft²."
+        ],
+        "a": "25 ft (perpendicular) by 50 ft (parallel), maximum area 1250 ft²."
+      },
+      "practice": [
+        {
+          "q": "Find two positive numbers whose sum is 20 and whose product is maximal.",
+          "a": "P(x) = x(20 − x); P′ = 20 − 2x = 0 at x = 10. The numbers are 10 and 10, product 100."
+        },
+        {
+          "q": "A closed box with a square base must have volume 32. Express surface area in terms of the base edge x.",
+          "a": "Height h = 32/x², so S(x) = 2x² + 4x·(32/x²) = 2x² + 128/x."
+        }
+      ],
+      "takeaway": "Two equations — objective and constraint — then eliminate down to one variable and optimize honestly over its domain.",
+      "module": "Applications of Differentiation"
+    },
+    "Newton's Method": {
+      "intro": "Newton's method finds roots by following tangent lines: from a guess, slide along the tangent to the x-axis and repeat. It converges astonishingly fast — and can fail spectacularly when misused.",
+      "concepts": [
+        "The iteration — xₙ₊₁ = xₙ − f(xₙ)/f′(xₙ). Geometrically, xₙ₊₁ is where the tangent line at xₙ crosses the axis.",
+        "Quadratic convergence — near a simple root, the number of correct digits roughly doubles each step.",
+        "When it fails — f′(xₙ) near 0 throws the next guess far away; poor starting guesses can cycle or diverge; multiple roots slow convergence.",
+        "Stopping rule — iterate until successive guesses agree to the precision you need."
+      ],
+      "example": {
+        "q": "Use Newton's method to solve x³ − 2x − 5 = 0 starting from x₀ = 2.",
+        "steps": [
+          "f(x) = x³ − 2x − 5, f′(x) = 3x² − 2.",
+          "x₁ = 2 − f(2)/f′(2) = 2 − (−1)/10 = 2.1.",
+          "x₂ = 2.1 − f(2.1)/f′(2.1) = 2.1 − 0.061/11.23 ≈ 2.0946.",
+          "One more step gives 2.09455, stable to 5 decimal places."
+        ],
+        "a": "The root is approximately 2.09455 (this is the equation Newton himself used as an example)."
+      },
+      "practice": [
+        {
+          "q": "Derive the Newton iteration for √2 by applying it to f(x) = x² − 2.",
+          "a": "xₙ₊₁ = xₙ − (xₙ² − 2)/(2xₙ) = (xₙ + 2/xₙ)/2 — the Babylonian method: average your guess with 2 divided by it."
+        },
+        {
+          "q": "Starting from x₀ = 1, approximate the root of x³ − 2x − 5 = 0 — or explain the problem.",
+          "a": "f(1) = −6, f′(1) = 1, so x₁ = 1 − (−6)/1 = 7 — a wild jump far from the root near 2.09. The starting guess matters."
+        }
+      ],
+      "takeaway": "Tangent-line iteration: blazingly fast near a good guess, unforgiving of a bad one. Always sanity-check the result in the original equation.",
+      "module": "Applications of Differentiation"
+    },
+    "Antiderivatives": {
+      "intro": "An antiderivative of f is a function F with F′ = f: differentiation run in reverse. Because differentiating kills constants, every antiderivative comes as a family F(x) + C.",
+      "concepts": [
+        "The +C — if F is one antiderivative of f, all of them are F(x) + C; geometrically, the graphs are vertical shifts of each other.",
+        "Basic reversals — ∫ xⁿ dx = xⁿ⁺¹/(n + 1) + C (n ≠ −1); ∫ eˣ dx = eˣ + C; ∫ sin x dx = −cos x + C; ∫ cos x dx = sin x + C; ∫ 1/x dx = ln|x| + C.",
+        "Linearity — antiderivatives respect sums and constant multiples, term by term.",
+        "Initial value problems — a condition like F(0) = 3 pins down the constant and selects one member of the family."
+      ],
+      "example": {
+        "q": "Find the antiderivative F of f(x) = 3x² + 4x − 5 with F(1) = 2.",
+        "steps": [
+          "Reverse term by term: F(x) = x³ + 2x² − 5x + C.",
+          "Check by differentiating: 3x² + 4x − 5 ✓.",
+          "Apply the condition: F(1) = 1 + 2 − 5 + C = C − 2 = 2, so C = 4."
+        ],
+        "a": "F(x) = x³ + 2x² − 5x + 4."
+      },
+      "practice": [
+        {
+          "q": "Find ∫ (√x + 1/x) dx.",
+          "a": "Rewrite √x = x^(1/2): (2/3)x^(3/2) + ln|x| + C."
+        },
+        {
+          "q": "A particle has velocity v(t) = 3t² and position s(0) = 5. Find s(t).",
+          "a": "s(t) = t³ + C, and s(0) = 5 gives s(t) = t³ + 5."
+        }
+      ],
+      "takeaway": "Always verify an antiderivative by differentiating it — that check is free and catches every sign and constant error.",
+      "module": "Integration"
+    },
+    "The Definite Integral": {
+      "intro": "The definite integral ∫ₐᵇ f(x) dx is the limit of Riemann sums: slice the region under the curve into thin rectangles, add their areas, and let the slices shrink. It computes net signed area — and much more.",
+      "concepts": [
+        "Riemann sum — partition [a, b] into n subintervals of width Δx = (b − a)/n; sum f(xᵢ*)·Δx over the slices.",
+        "Definition — ∫ₐᵇ f(x) dx = lim n→∞ Σ f(xᵢ*)Δx, when this limit exists (continuous functions always qualify).",
+        "Signed area — regions below the x-axis count negatively; the integral is area above minus area below.",
+        "Properties — integrals add over adjacent intervals, reverse sign when limits swap, and respect sums and constant multiples."
+      ],
+      "example": {
+        "q": "Evaluate ∫₀² x dx two ways: geometrically, and state what the Riemann sum gives.",
+        "steps": [
+          "Geometrically, the region under y = x from 0 to 2 is a triangle with base 2 and height 2.",
+          "Area = ½ · 2 · 2 = 2.",
+          "The Riemann sums with right endpoints are Σ (2i/n)(2/n) = (4/n²)·n(n + 1)/2 = 2 + 2/n → 2 as n → ∞, confirming the definition agrees."
+        ],
+        "a": "∫₀² x dx = 2."
+      },
+      "practice": [
+        {
+          "q": "Evaluate ∫₋₁¹ x³ dx by symmetry/geometry of signed area.",
+          "a": "0 — x³ is odd: the area below the axis on [−1, 0] exactly cancels the area above it on [0, 1]."
+        },
+        {
+          "q": "Write ∫₁⁴ (x² + 1) dx as a limit of Riemann sums (do not evaluate).",
+          "a": "Δx = 3/n, xᵢ = 1 + 3i/n: lim n→∞ Σᵢ ((1 + 3i/n)² + 1)(3/n)."
+        }
+      ],
+      "takeaway": "The integral is a limit of sums — but thanks to symmetry and geometry, you can often read simple ones off a picture.",
+      "module": "Integration"
+    },
+    "Fundamental Theorem of Calculus": {
+      "intro": "The Fundamental Theorem is the bridge of the whole subject: it says integration and differentiation are inverse operations. Part 1 differentiates an integral; Part 2 evaluates integrals with antiderivatives.",
+      "concepts": [
+        "Part 1 — if g(x) = ∫ₐˣ f(t) dt with f continuous, then g′(x) = f(x). An accumulation function's rate of change is the value being accumulated.",
+        "Part 1 with chain rule — d/dx ∫ₐ^(u(x)) f(t) dt = f(u(x)) · u′(x).",
+        "Part 2 — ∫ₐᵇ f(x) dx = F(b) − F(a) for any antiderivative F of a continuous f. This is how definite integrals are actually computed.",
+        "Why it matters — Part 2 turns the impossible limit-of-sums definition into one substitution into an antiderivative."
+      ],
+      "example": {
+        "q": "Evaluate ∫₁³ x² dx.",
+        "steps": [
+          "An antiderivative of x² is F(x) = x³/3.",
+          "Part 2: F(3) − F(1) = 27/3 − 1/3 = 26/3."
+        ],
+        "a": "26/3 ≈ 8.67."
+      },
+      "practice": [
+        {
+          "q": "Find d/dx ∫₀ˣ t² dt, and d/dx ∫₀^(x²) cos t dt.",
+          "a": "Part 1 directly: x². With the chain rule: cos(x²) · 2x."
+        },
+        {
+          "q": "Evaluate ∫₀^π sin x dx.",
+          "a": "Antiderivative −cos x: (−cos π) − (−cos 0) = 1 + 1 = 2."
+        }
+      ],
+      "takeaway": "Accumulate, then differentiate, and you're back where you started — that inverse relationship is the Fundamental Theorem.",
+      "module": "Integration"
+    },
+    "Integration by Substitution": {
+      "intro": "Substitution is the chain rule read backwards. When an integrand contains a function and (a multiple of) its derivative, a change of variable u = g(x) collapses it into a basic integral.",
+      "concepts": [
+        "The pattern — look for an 'inside function' u whose derivative du also appears as a factor in the integrand.",
+        "Mechanics — set u = g(x), compute du = g′(x) dx, rewrite the entire integral in u (no x may remain), integrate, then substitute back.",
+        "Definite integrals — change the limits to u-values: when x = a, u = g(a); then you never need to return to x.",
+        "Strategic choice — u should make the integral simpler; if the du factor isn't there (up to a constant), pick another u or another method."
+      ],
+      "example": {
+        "q": "Evaluate ∫₀¹ x e^(x²) dx.",
+        "steps": [
+          "Set u = x², so du = 2x dx and x dx = du/2. The x factor in the integrand is exactly what substitution needs.",
+          "Change limits: x = 0 → u = 0; x = 1 → u = 1.",
+          "The integral becomes ∫₀¹ eᵘ (du/2) = ½ [eᵘ]₀¹ = ½(e − 1)."
+        ],
+        "a": "½(e − 1) ≈ 0.859."
+      },
+      "practice": [
+        {
+          "q": "Find ∫ 2x cos(x²) dx.",
+          "a": "With u = x²: sin(x²) + C."
+        },
+        {
+          "q": "Find ∫ cos x / sin x dx (the logarithmic pattern).",
+          "a": "With u = sin x, du = cos x dx: ∫ du/u = ln|sin x| + C. In general ∫ f′/f = ln|f| + C."
+        }
+      ],
+      "takeaway": "Spot the inside function, hunt for its derivative beside it, and let u swallow both.",
+      "module": "Integration"
+    },
+    "Applications of Integration (Area)": {
+      "intro": "The first great application: integrals compute areas — under a curve, and between two curves by integrating (top − bottom) across the interval where they cross.",
+      "concepts": [
+        "Area under a curve — for f ≥ 0 on [a, b], the area is ∫ₐᵇ f(x) dx.",
+        "Area between curves — A = ∫ₐᵇ [f(x) − g(x)] dx where f is the top function and g the bottom on the whole interval.",
+        "Find the crossings first — intersection x-values are the natural limits of integration; sketch to see which curve is on top.",
+        "Splitting — if top and bottom swap inside the interval, split the integral at the crossing."
+      ],
+      "example": {
+        "q": "Find the area between y = x and y = x².",
+        "steps": [
+          "Intersections: x = x² gives x = 0 and x = 1.",
+          "On (0, 1), the line y = x is above the parabola y = x² (test x = ½: ½ > ¼).",
+          "A = ∫₀¹ (x − x²) dx = [x²/2 − x³/3]₀¹ = ½ − ⅓ = ⅙."
+        ],
+        "a": "Area = 1/6 square units."
+      },
+      "practice": [
+        {
+          "q": "Find the area under y = √x from 0 to 4.",
+          "a": "∫₀⁴ x^(1/2) dx = [(2/3)x^(3/2)]₀⁴ = (2/3)(8) = 16/3."
+        },
+        {
+          "q": "Set up (don't evaluate) the area between y = x² and y = 2x.",
+          "a": "They cross at x = 0 and x = 2, with 2x on top: A = ∫₀² (2x − x²) dx (= 4/3)."
+        }
+      ],
+      "takeaway": "Area between curves = ∫ (top − bottom). The sketch and the crossing points do the thinking; the integral does the arithmetic.",
+      "module": "Integration"
+    }
+  }
+}
