@@ -144,7 +144,7 @@
       "practice": [
         {
           "q": "Where is f(x) = (x + 1)/(x² − 1) discontinuous?",
-          "a": "At x = 1 (infinite discontinuity — vertical asymptote) and x = −1 (also infinite; numerator is 0 there? No: at x = −1 the numerator is 0 and the denominator is 0 — factor first: (x+1)/((x−1)(x+1)) = 1/(x−1) for x ≠ −1, so x = −1 is a removable hole, x = 1 is infinite)."
+          "a": "Factor first: (x + 1)/((x − 1)(x + 1)) = 1/(x − 1) for x ≠ −1. So x = −1 is a removable discontinuity (a hole — the factor cancels), and x = 1 is an infinite discontinuity (vertical asymptote)."
         },
         {
           "q": "For what k is f(x) = x² for x ≤ 2, kx − 2 for x > 2, continuous at 2?",
@@ -328,8 +328,8 @@
           "a": "y′ = cos(x²) · 2x = 2x cos(x²)."
         },
         {
-          "q": "Differentiate y = e^(3x) · — careful, and y = √(x² + 4).",
-          "a": "d/dx e^(3x) = 3e^(3x). For the root: y′ = (1/(2√(x² + 4)))·2x = x/√(x² + 4)."
+          "q": "Differentiate (a) y = e^(3x) and (b) y = √(x² + 4).",
+          "a": "(a) 3e^(3x) — the chain rule contributes the factor 3 from the exponent. (b) y′ = (1/(2√(x² + 4)))·2x = x/√(x² + 4)."
         }
       ],
       "takeaway": "Peel the function like an onion — outermost layer first, and never forget to multiply by the derivative of what was inside.",

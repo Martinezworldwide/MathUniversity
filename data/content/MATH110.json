@@ -238,8 +238,8 @@
           "a": "Counterexample: 2 is prime and even."
         },
         {
-          "q": "Prove ∃! — there is a unique real number whose square equals its double minus one... or find the flaw.",
-          "a": "x² = 2x − 1 gives (x − 1)² = 0, so x = 1 is the one and only solution: existence (x = 1 works: 1 = 2 − 1 ✓) and uniqueness (the equation forces x = 1). It is genuinely unique."
+          "q": "Prove there is exactly one real number whose square equals its double minus one.",
+          "a": "x² = 2x − 1 rearranges to (x − 1)² = 0, which forces x = 1. Existence: x = 1 works (1 = 2·1 − 1 ✓). Uniqueness: the equation admits no other solution. So exactly one such number exists: 1."
         }
       ],
       "takeaway": "Match the proof shape to the quantifier: arbitrary element for ∀, concrete witness for ∃, one counterexample to kill a ∀.",
