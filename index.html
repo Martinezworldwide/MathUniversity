@@ -3,28 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Math University</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Math University — Course Library</title>
+    <meta name="description" content="Math University: a complete mathematics curriculum — 27 courses from Calculus I to Galois Theory, Measure Theory, and Bayesian Statistics.">
+    <link rel="stylesheet" href="style.css?v=2">
 </head>
 <body>
-    <header>
-        <h1>Math University</h1>
-        <nav>
-            <a href="index.html">Curriculum Home</a>
-            <!-- Navigation for tracks, taxonomy, etc. will go here -->
-        </nav>
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="brand">
+                <div class="brand-mark" aria-hidden="true">Σ</div>
+                <div>
+                    <h1>Math University</h1>
+                    <p class="tagline">A complete mathematics curriculum, from Calculus to Galois Theory</p>
+                </div>
+            </div>
+            <nav class="main-nav" aria-label="Main">
+                <!-- Navigation is built by script.js -->
+            </nav>
+        </div>
+        <div class="hero-stats" aria-label="At a glance">
+            <div class="stat"><strong>27</strong><span>Courses</span></div>
+            <div class="stat"><strong>120</strong><span>Credits — BS Math</span></div>
+            <div class="stat"><strong>12</strong><span>Taxonomy branches</span></div>
+            <div class="stat"><strong>100–400</strong><span>Course levels</span></div>
+        </div>
     </header>
 
     <main id="app-container">
-        <h2>Welcome to Math University!</h2>
-        <p>Explore our degree tracks, canonical math taxonomy, and course library.</p>
-        <!-- Content will be dynamically loaded here -->
+        <h2>Course Library</h2>
+        <p>Loading courses…</p>
     </main>
 
     <footer>
         <p>&copy; 2026 Math University. All rights reserved.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=2"></script>
 </body>
 </html>
