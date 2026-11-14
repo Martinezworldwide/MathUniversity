@@ -65,7 +65,9 @@
     "title": "Calculus II",
     "description": "Techniques of integration, applications of integration, sequences and series, parametric equations, and polar coordinates.",
     "level": 100,
-    "prerequisites": ["MATH101"],
+    "prerequisites": [
+      "MATH101"
+    ],
     "credit_hours": 3,
     "modules": [
       {
@@ -124,7 +126,9 @@
     "title": "Multivariable Calculus",
     "description": "Functions of several variables, partial derivatives, multiple integrals, vector calculus, Green's, Stokes', and Divergence Theorems.",
     "level": 200,
-    "prerequisites": ["MATH102"],
+    "prerequisites": [
+      "MATH102"
+    ],
     "credit_hours": 4,
     "modules": [
       {
@@ -199,7 +203,9 @@
     "title": "Differential Equations",
     "description": "First-order equations, second-order linear equations, series solutions, Laplace transforms, and systems of differential equations.",
     "level": 200,
-    "prerequisites": ["MATH201"],
+    "prerequisites": [
+      "MATH201"
+    ],
     "credit_hours": 3,
     "modules": [
       {
@@ -273,7 +279,9 @@
     "title": "Linear Algebra",
     "description": "Systems of linear equations, matrices, determinants, vector spaces, linear transformations, eigenvalues, and eigenvectors.",
     "level": 200,
-    "prerequisites": ["MATH102"],
+    "prerequisites": [
+      "MATH102"
+    ],
     "credit_hours": 3,
     "modules": [
       {
@@ -283,7 +291,7 @@
           "Gaussian Elimination",
           "Matrices and Matrix Operations",
           "Inverses; Rules of Matrix Arithmetic",
-          "Elementary Matrices and a Method for Finding A⁻¹"
+          "Elementary Matrices and a Method for Finding A\u207b\u00b9"
         ]
       },
       {
@@ -345,7 +353,9 @@
     "title": "Real Analysis I",
     "description": "Rigorous treatment of real numbers, sequences, series, limits, continuity, differentiation, and Riemann integration.",
     "level": 300,
-    "prerequisites": ["MATH202"],
+    "prerequisites": [
+      "MATH202"
+    ],
     "credit_hours": 3,
     "modules": [
       {
@@ -394,7 +404,7 @@
         "lessons": [
           "The Derivative",
           "Mean Value Theorem (Rigorous Proof)",
-          "L'Hôpital's Rule",
+          "L'H\u00f4pital's Rule",
           "Taylor's Theorem"
         ]
       },
@@ -421,7 +431,10 @@
     "title": "Abstract Algebra I",
     "description": "Introduction to group theory: groups, subgroups, normal subgroups, homomorphisms, and quotient groups.",
     "level": 300,
-    "prerequisites": ["MATH201", "MATH203"],
+    "prerequisites": [
+      "MATH201",
+      "MATH203"
+    ],
     "credit_hours": 3,
     "modules": [
       {
@@ -490,7 +503,9 @@
     "title": "Complex Analysis",
     "description": "Complex numbers, analytic functions, Cauchy-Riemann equations, complex integration, power series, and residue theory.",
     "level": 300,
-    "prerequisites": ["MATH202"],
+    "prerequisites": [
+      "MATH202"
+    ],
     "credit_hours": 3,
     "modules": [
       {
@@ -559,7 +574,10 @@
     "title": "Introduction to Topology",
     "description": "Foundations of point-set topology: topological spaces, continuous functions, compactness, connectedness, and separation axioms.",
     "level": 300,
-    "prerequisites": ["MATH202", "MATH203"],
+    "prerequisites": [
+      "MATH202",
+      "MATH203"
+    ],
     "credit_hours": 3,
     "modules": [
       {
@@ -627,7 +645,10 @@
     "title": "Numerical Analysis I",
     "description": "Introduction to numerical methods: error analysis, solving nonlinear equations, interpolation, numerical differentiation, and integration.",
     "level": 300,
-    "prerequisites": ["MATH202", "MATH203"],
+    "prerequisites": [
+      "MATH202",
+      "MATH203"
+    ],
     "credit_hours": 3,
     "modules": [
       {
@@ -692,7 +713,9 @@
     "title": "Numerical Analysis II",
     "description": "Advanced numerical methods: iterative methods for linear systems, eigenvalue problems, and numerical solutions of ordinary and partial differential equations.",
     "level": 300,
-    "prerequisites": ["MATH350"],
+    "prerequisites": [
+      "MATH350"
+    ],
     "credit_hours": 3,
     "modules": [
       {
@@ -755,7 +778,11 @@
     "title": "Introduction to Graduate Mathematics",
     "description": "A capstone course preparing students for graduate-level studies, covering advanced topics and interconnections across pure and applied mathematics.",
     "level": 400,
-    "prerequisites": ["MATH301", "MATH302", "MATH303"],
+    "prerequisites": [
+      "MATH301",
+      "MATH302",
+      "MATH303"
+    ],
     "credit_hours": 3,
     "modules": [
       {
@@ -788,7 +815,7 @@
         "lessons": [
           "Set Theory Review",
           "Formal Systems",
-          "Gödel's Incompleteness Theorems (overview)"
+          "G\u00f6del's Incompleteness Theorems (overview)"
         ]
       },
       {
@@ -813,7 +840,9 @@
     "title": "Abstract Algebra II (Ring Theory)",
     "description": "Advanced topics in ring theory: rings, ideals, quotient rings, integral domains, unique factorization domains, and field extensions.",
     "level": 400,
-    "prerequisites": ["MATH301"],
+    "prerequisites": [
+      "MATH301"
+    ],
     "credit_hours": 3,
     "modules": [
       {
@@ -865,7 +894,9 @@
     "title": "Abstract Algebra III (Galois Theory)",
     "description": "Further exploration of field theory, including advanced topics in Galois theory and its applications to polynomial solvability.",
     "level": 400,
-    "prerequisites": ["MATH410"],
+    "prerequisites": [
+      "MATH410"
+    ],
     "credit_hours": 3,
     "modules": [
       {
@@ -906,7 +937,9 @@
     "title": "Algebraic Number Theory",
     "description": "Introduction to algebraic number theory, including algebraic integers, number fields, unique factorization of ideals, and Dirichlet's Unit Theorem.",
     "level": 400,
-    "prerequisites": ["MATH411"],
+    "prerequisites": [
+      "MATH411"
+    ],
     "credit_hours": 3,
     "modules": [
       {
@@ -946,7 +979,9 @@
     "title": "Real Analysis II (Measure Theory)",
     "description": "Advanced topics in measure theory and Lebesgue integration: Lebesgue measure, measurable functions, Lp spaces, and convergence theorems.",
     "level": 400,
-    "prerequisites": ["MATH302"],
+    "prerequisites": [
+      "MATH302"
+    ],
     "credit_hours": 3,
     "modules": [
       {
@@ -970,7 +1005,7 @@
         "module_title": "Lp Spaces",
         "lessons": [
           "Definition of Lp Spaces",
-          "Hölder's and Minkowski's Inequalities",
+          "H\u00f6lder's and Minkowski's Inequalities",
           "Completeness of Lp Spaces"
         ]
       }
@@ -988,7 +1023,9 @@
     "title": "Functional Analysis I",
     "description": "Introduction to functional analysis: normed spaces, Banach spaces, Hilbert spaces, and fundamental theorems.",
     "level": 400,
-    "prerequisites": ["MATH420"],
+    "prerequisites": [
+      "MATH420"
+    ],
     "credit_hours": 3,
     "modules": [
       {
@@ -1032,7 +1069,9 @@
     "title": "Differential Geometry I",
     "description": "Theory of curves and surfaces in three-dimensional Euclidean space, including curvature, torsion, and fundamental forms.",
     "level": 400,
-    "prerequisites": ["MATH304"],
+    "prerequisites": [
+      "MATH304"
+    ],
     "credit_hours": 3,
     "modules": [
       {
@@ -1078,7 +1117,9 @@
     "title": "Introduction to Algebraic Topology",
     "description": "Fundamental group, covering spaces, and an introduction to homology theory.",
     "level": 400,
-    "prerequisites": ["MATH430"],
+    "prerequisites": [
+      "MATH430"
+    ],
     "credit_hours": 3,
     "modules": [
       {
@@ -1120,7 +1161,9 @@
     "title": "Senior Capstone Project in Mathematics",
     "description": "An independent research project or advanced seminar culminating in a written report and presentation.",
     "level": 400,
-    "prerequisites": ["MATH401"],
+    "prerequisites": [
+      "MATH401"
+    ],
     "credit_hours": 3,
     "modules": [
       {
@@ -1164,7 +1207,9 @@
     "title": "Probability Theory",
     "description": "Axioms of probability, conditional probability, random variables, probability distributions, expectation, variance, and limit theorems.",
     "level": 300,
-    "prerequisites": ["MATH203"],
+    "prerequisites": [
+      "MATH203"
+    ],
     "credit_hours": 3,
     "modules": [
       {
@@ -1225,7 +1270,9 @@
     "title": "Mathematical Statistics",
     "description": "Introduction to statistical inference: point estimation, interval estimation, hypothesis testing, and likelihood methods.",
     "level": 300,
-    "prerequisites": ["STAT301"],
+    "prerequisites": [
+      "STAT301"
+    ],
     "credit_hours": 3,
     "modules": [
       {
@@ -1246,7 +1293,7 @@
       },
       {
         "module_title": "Interval Estimation",
-          "lessons": [
+        "lessons": [
           "Confidence Intervals for Means",
           "Confidence Intervals for Proportions",
           "Confidence Intervals for Variances"
@@ -1295,13 +1342,54 @@
     "prerequisites": [],
     "credit_hours": 3,
     "modules": [
-      {"module_title": "Logic and Proofs", "lessons": ["Propositional Logic", "Predicate Logic", "Proof Methods"]},
-      {"module_title": "Set Theory and Functions", "lessons": ["Sets and Operations", "Functions", "Cardinality"]},
-      {"module_title": "Combinatorics", "lessons": ["Counting Principles", "Permutations and Combinations", "Binomial Theorem"]},
-      {"module_title": "Graph Theory", "lessons": ["Graphs and Models", "Graph Terminology", "Connectivity", "Euler and Hamilton Paths"]},
-      {"module_title": "Algorithms", "lessons": ["Introduction to Algorithms", "Algorithm Efficiency", "Searching and Sorting Algorithms"]}
+      {
+        "module_title": "Logic and Proofs",
+        "lessons": [
+          "Propositional Logic",
+          "Predicate Logic",
+          "Proof Methods"
+        ]
+      },
+      {
+        "module_title": "Set Theory and Functions",
+        "lessons": [
+          "Sets and Operations",
+          "Functions",
+          "Cardinality"
+        ]
+      },
+      {
+        "module_title": "Combinatorics",
+        "lessons": [
+          "Counting Principles",
+          "Permutations and Combinations",
+          "Binomial Theorem"
+        ]
+      },
+      {
+        "module_title": "Graph Theory",
+        "lessons": [
+          "Graphs and Models",
+          "Graph Terminology",
+          "Connectivity",
+          "Euler and Hamilton Paths"
+        ]
+      },
+      {
+        "module_title": "Algorithms",
+        "lessons": [
+          "Introduction to Algorithms",
+          "Algorithm Efficiency",
+          "Searching and Sorting Algorithms"
+        ]
+      }
     ],
-    "assessments": {"quizzes": 5, "midterm": true, "final": true, "project": false},
+    "assessments": {
+      "quizzes": 5,
+      "midterm": true,
+      "final": true,
+      "project": false
+    },
     "mastery_rubric": "To pass, students must demonstrate a clear understanding of logical reasoning, set theory, and basic proof techniques. Proficiency in combinatorial counting, fundamental graph theory concepts, and algorithmic analysis is required. Final course grade must be 70% or higher, with at least 60% on the final exam."
   },
   "MATH402": {
@@ -1309,16 +1397,60 @@
     "title": "Numerical Linear Algebra",
     "description": "Numerical methods for solving problems in linear algebra, including systems of equations, least squares, eigenvalue problems, and singular value decomposition.",
     "level": 400,
-    "prerequisites": ["MATH203", "MATH350"],
+    "prerequisites": [
+      "MATH203",
+      "MATH350"
+    ],
     "credit_hours": 3,
     "modules": [
-      {"module_title": "Matrix Computations", "lessons": ["Vector and Matrix Norms", "Condition Number", "Floating Point Arithmetic"]},
-      {"module_title": "Direct Methods for Linear Systems", "lessons": ["Gaussian Elimination", "LU Factorization", "Cholesky Factorization"]},
-      {"module_title": "Iterative Methods for Linear Systems", "lessons": ["Jacobi, Gauss-Seidel, SOR", "Conjugate Gradient Method", "Preconditioning"]},
-      {"module_title": "Eigenvalue Problems", "lessons": ["Power Method", "QR Algorithm", "Inverse Iteration", "Rayleigh Quotient"]},
-      {"module_title": "Least Squares and SVD", "lessons": ["Normal Equations", "QR Factorization", "Singular Value Decomposition"]}
+      {
+        "module_title": "Matrix Computations",
+        "lessons": [
+          "Vector and Matrix Norms",
+          "Condition Number",
+          "Floating Point Arithmetic"
+        ]
+      },
+      {
+        "module_title": "Direct Methods for Linear Systems",
+        "lessons": [
+          "Gaussian Elimination",
+          "LU Factorization",
+          "Cholesky Factorization"
+        ]
+      },
+      {
+        "module_title": "Iterative Methods for Linear Systems",
+        "lessons": [
+          "Jacobi, Gauss-Seidel, SOR",
+          "Conjugate Gradient Method",
+          "Preconditioning"
+        ]
+      },
+      {
+        "module_title": "Eigenvalue Problems",
+        "lessons": [
+          "Power Method",
+          "QR Algorithm",
+          "Inverse Iteration",
+          "Rayleigh Quotient"
+        ]
+      },
+      {
+        "module_title": "Least Squares and SVD",
+        "lessons": [
+          "Normal Equations",
+          "QR Factorization",
+          "Singular Value Decomposition"
+        ]
+      }
     ],
-    "assessments": {"quizzes": 5, "midterm": true, "final": true, "project": true},
+    "assessments": {
+      "quizzes": 5,
+      "midterm": true,
+      "final": true,
+      "project": true
+    },
     "mastery_rubric": "To pass, students must master numerical techniques for linear algebraic problems, including direct and iterative methods for linear systems, and algorithms for eigenvalue problems. The ability to analyze stability, accuracy, and efficiency of these methods is crucial. Final course grade must be 70% or higher, with at least 60% on the final exam or project."
   },
   "MATH403": {
@@ -1326,16 +1458,55 @@
     "title": "Partial Differential Equations",
     "description": "Introduction to partial differential equations: classification, method of characteristics, separation of variables, Fourier series, and applications.",
     "level": 400,
-    "prerequisites": ["MATH202", "MATH201"],
+    "prerequisites": [
+      "MATH202",
+      "MATH201"
+    ],
     "credit_hours": 3,
     "modules": [
-      {"module_title": "First-Order PDEs", "lessons": ["Method of Characteristics", "Quasilinear Equations"]},
-      {"module_title": "Second-Order PDEs Classification", "lessons": ["Laplace, Heat, Wave Equations", "Boundary and Initial Conditions"]},
-      {"module_title": "Separation of Variables", "lessons": ["Fourier Series", "Solving the Heat Equation", "Solving the Wave Equation", "Solving Laplace's Equation"]},
-      {"module_title": "Sturm-Liouville Theory", "lessons": ["Eigenvalue Problems", "Orthogonal Functions"]},
-      {"module_title": "Applications", "lessons": ["Diffusion, Vibrations, Potentials"]}
+      {
+        "module_title": "First-Order PDEs",
+        "lessons": [
+          "Method of Characteristics",
+          "Quasilinear Equations"
+        ]
+      },
+      {
+        "module_title": "Second-Order PDEs Classification",
+        "lessons": [
+          "Laplace, Heat, Wave Equations",
+          "Boundary and Initial Conditions"
+        ]
+      },
+      {
+        "module_title": "Separation of Variables",
+        "lessons": [
+          "Fourier Series",
+          "Solving the Heat Equation",
+          "Solving the Wave Equation",
+          "Solving Laplace's Equation"
+        ]
+      },
+      {
+        "module_title": "Sturm-Liouville Theory",
+        "lessons": [
+          "Eigenvalue Problems",
+          "Orthogonal Functions"
+        ]
+      },
+      {
+        "module_title": "Applications",
+        "lessons": [
+          "Diffusion, Vibrations, Potentials"
+        ]
+      }
     ],
-    "assessments": {"quizzes": 5, "midterm": true, "final": true, "project": false},
+    "assessments": {
+      "quizzes": 5,
+      "midterm": true,
+      "final": true,
+      "project": false
+    },
     "mastery_rubric": "To pass, students must understand the classification of PDEs and master various analytical solution techniques, especially separation of variables and Fourier series. The ability to apply PDEs to model physical phenomena and interpret solutions is essential. Final course grade must be 70% or higher, with at least 60% on the final exam."
   },
   "STAT401": {
@@ -1343,16 +1514,57 @@
     "title": "Regression Analysis",
     "description": "Advanced topics in linear regression, including multiple regression, model selection, diagnostics, and an introduction to generalized linear models.",
     "level": 400,
-    "prerequisites": ["STAT302", "MATH203"],
+    "prerequisites": [
+      "STAT302",
+      "MATH203"
+    ],
     "credit_hours": 3,
     "modules": [
-      {"module_title": "Simple Linear Regression Review", "lessons": ["Estimation and Inference", "Diagnostics"]},
-      {"module_title": "Multiple Linear Regression", "lessons": ["Model Formulation", "Estimation of Coefficients", "Inference and Hypothesis Testing"]},
-      {"module_title": "Model Selection and Diagnostics", "lessons": ["Subset Selection", "Collinearity", "Outliers and Influential Points", "Transformations"]},
-      {"module_title": "Categorical Predictors", "lessons": ["Indicator Variables", "Interaction Terms"]},
-      {"module_title": "Generalized Linear Models Introduction", "lessons": ["Logistic Regression", "Poisson Regression"]}
+      {
+        "module_title": "Simple Linear Regression Review",
+        "lessons": [
+          "Estimation and Inference",
+          "Diagnostics"
+        ]
+      },
+      {
+        "module_title": "Multiple Linear Regression",
+        "lessons": [
+          "Model Formulation",
+          "Estimation of Coefficients",
+          "Inference and Hypothesis Testing"
+        ]
+      },
+      {
+        "module_title": "Model Selection and Diagnostics",
+        "lessons": [
+          "Subset Selection",
+          "Collinearity",
+          "Outliers and Influential Points",
+          "Transformations"
+        ]
+      },
+      {
+        "module_title": "Categorical Predictors",
+        "lessons": [
+          "Indicator Variables",
+          "Interaction Terms"
+        ]
+      },
+      {
+        "module_title": "Generalized Linear Models Introduction",
+        "lessons": [
+          "Logistic Regression",
+          "Poisson Regression"
+        ]
+      }
     ],
-    "assessments": {"quizzes": 5, "midterm": true, "final": true, "project": true},
+    "assessments": {
+      "quizzes": 5,
+      "midterm": true,
+      "final": true,
+      "project": true
+    },
     "mastery_rubric": "To pass, students must demonstrate mastery of multiple linear regression, including model building, diagnostics, and interpretation. Proficiency in model selection techniques and an understanding of generalized linear models are required. The ability to apply regression methods to real-world data using statistical software is crucial. Final course grade must be 70% or higher, with at least 60% on the final exam or project."
   },
   "STAT402": {
@@ -1360,16 +1572,1441 @@
     "title": "Bayesian Statistics",
     "description": "Foundations of Bayesian inference, including Bayes' Theorem, prior and posterior distributions, Bayesian estimation, and hypothesis testing.",
     "level": 400,
-    "prerequisites": ["STAT301"],
+    "prerequisites": [
+      "STAT301"
+    ],
     "credit_hours": 3,
     "modules": [
-      {"module_title": "Foundations of Bayesian Inference", "lessons": ["Bayes' Theorem", "Prior and Posterior Distributions", "Conjugate Priors"]},
-      {"module_title": "Bayesian Estimation", "lessons": ["Point Estimation (MAP, posterior mean)", "Credible Intervals"]},
-      {"module_title": "Bayesian Hypothesis Testing", "lessons": ["Bayes Factors", "Decision Theory"]},
-      {"module_title": "Computational Methods", "lessons": ["Markov Chain Monte Carlo (MCMC)", "Gibbs Sampling"]},
-      {"module_title": "Applications", "lessons": ["Hierarchical Models", "Regression with Bayesian Methods"]}
+      {
+        "module_title": "Foundations of Bayesian Inference",
+        "lessons": [
+          "Bayes' Theorem",
+          "Prior and Posterior Distributions",
+          "Conjugate Priors"
+        ]
+      },
+      {
+        "module_title": "Bayesian Estimation",
+        "lessons": [
+          "Point Estimation (MAP, posterior mean)",
+          "Credible Intervals"
+        ]
+      },
+      {
+        "module_title": "Bayesian Hypothesis Testing",
+        "lessons": [
+          "Bayes Factors",
+          "Decision Theory"
+        ]
+      },
+      {
+        "module_title": "Computational Methods",
+        "lessons": [
+          "Markov Chain Monte Carlo (MCMC)",
+          "Gibbs Sampling"
+        ]
+      },
+      {
+        "module_title": "Applications",
+        "lessons": [
+          "Hierarchical Models",
+          "Regression with Bayesian Methods"
+        ]
+      }
     ],
-    "assessments": {"quizzes": 5, "midterm": true, "final": true, "project": true},
+    "assessments": {
+      "quizzes": 5,
+      "midterm": true,
+      "final": true,
+      "project": true
+    },
     "mastery_rubric": "To pass, students must demonstrate a strong understanding of Bayesian principles, including constructing prior and posterior distributions, and performing Bayesian estimation and hypothesis testing. Proficiency in basic computational Bayesian methods like MCMC is required. The ability to apply Bayesian inference to statistical problems is crucial. Final course grade must be 70% or higher, with at least 60% on the final exam or project."
+  },
+  "MATH110": {
+    "course_id": "MATH110",
+    "title": "Logic, Sets, and Proof",
+    "description": "Propositional and predicate logic, naive set theory, relations and functions, cardinality, and the core proof techniques every later course depends on.",
+    "level": 100,
+    "prerequisites": [],
+    "credit_hours": 3,
+    "modules": [
+      {
+        "module_title": "Propositional Logic",
+        "lessons": [
+          "Propositions and Connectives",
+          "Truth Tables and Logical Equivalence",
+          "Tautologies and Inference Rules",
+          "Normal Forms"
+        ]
+      },
+      {
+        "module_title": "Predicate Logic",
+        "lessons": [
+          "Quantifiers",
+          "Predicates and Domains",
+          "Negating Quantified Statements",
+          "Proofs with Quantifiers"
+        ]
+      },
+      {
+        "module_title": "Set Theory and Relations",
+        "lessons": [
+          "Sets, Subsets, and Operations",
+          "Relations and Equivalence Relations",
+          "Functions: Injective, Surjective, Bijective",
+          "Cardinality and Countability"
+        ]
+      },
+      {
+        "module_title": "Proof Techniques",
+        "lessons": [
+          "Direct Proof",
+          "Contrapositive and Contradiction",
+          "Mathematical Induction and Strong Induction",
+          "Constructive and Existence Proofs"
+        ]
+      }
+    ],
+    "assessments": {
+      "quizzes": 5,
+      "midterm": true,
+      "final": true,
+      "project": false
+    },
+    "mastery_rubric": "To pass, students must write direct, contrapositive, contradiction, and induction proofs, work fluently with sets, relations, and quantifiers, and judge the validity of a mathematical argument. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH211": {
+    "course_id": "MATH211",
+    "title": "Elementary Number Theory",
+    "description": "Divisibility, primes, congruences, and Diophantine equations \u2014 the classical core of number theory.",
+    "level": 200,
+    "prerequisites": [
+      "MATH110"
+    ],
+    "credit_hours": 3,
+    "modules": [
+      {
+        "module_title": "Divisibility and Primes",
+        "lessons": [
+          "Division Algorithm and gcd",
+          "Euclidean Algorithm and Bezout's Identity",
+          "Prime Numbers and the Fundamental Theorem of Arithmetic",
+          "Infinitude of Primes"
+        ]
+      },
+      {
+        "module_title": "Congruences",
+        "lessons": [
+          "Modular Arithmetic",
+          "Linear Congruences",
+          "Chinese Remainder Theorem",
+          "Fermat's Little Theorem and Euler's Theorem"
+        ]
+      },
+      {
+        "module_title": "Arithmetic Functions",
+        "lessons": [
+          "Multiplicative Functions",
+          "Euler's Totient Function",
+          "Mobius Inversion",
+          "Perfect, Mersenne, and Fermat Numbers"
+        ]
+      },
+      {
+        "module_title": "Diophantine Equations and Quadratic Residues",
+        "lessons": [
+          "Linear Diophantine Equations",
+          "Pythagorean Triples",
+          "Quadratic Residues and the Legendre Symbol",
+          "Introduction to Pell's Equation"
+        ]
+      }
+    ],
+    "assessments": {
+      "quizzes": 5,
+      "midterm": true,
+      "final": true,
+      "project": false
+    },
+    "mastery_rubric": "To pass, students must prove divisibility and congruence results, solve linear congruences and Diophantine equations, and apply Euler's and Fermat's theorems. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH212": {
+    "course_id": "MATH212",
+    "title": "Combinatorics",
+    "description": "Counting principles, permutations and combinations, generating functions, recurrence relations, and the pigeonhole principle.",
+    "level": 200,
+    "prerequisites": [
+      "MATH204"
+    ],
+    "credit_hours": 3,
+    "modules": [
+      {
+        "module_title": "Counting Principles",
+        "lessons": [
+          "Addition and Multiplication Principles",
+          "Permutations and Combinations",
+          "Binomial Theorem and Identities",
+          "Pigeonhole Principle"
+        ]
+      },
+      {
+        "module_title": "Advanced Counting",
+        "lessons": [
+          "Inclusion-Exclusion",
+          "Multinomial Coefficients",
+          "Stirling Numbers",
+          "Catalan Numbers"
+        ]
+      },
+      {
+        "module_title": "Generating Functions",
+        "lessons": [
+          "Ordinary Generating Functions",
+          "Exponential Generating Functions",
+          "Partition Numbers",
+          "Applications to Counting Problems"
+        ]
+      },
+      {
+        "module_title": "Recurrence Relations",
+        "lessons": [
+          "Linear Recurrences",
+          "Characteristic Equation Method",
+          "Divide-and-Conquer Recurrences",
+          "Combinatorial Proofs of Identities"
+        ]
+      }
+    ],
+    "assessments": {
+      "quizzes": 5,
+      "midterm": true,
+      "final": true,
+      "project": false
+    },
+    "mastery_rubric": "To pass, students must count structured sets with permutations, combinations, and inclusion-exclusion, solve recurrences, and use generating functions to extract counting sequences. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH213": {
+    "course_id": "MATH213",
+    "title": "Graph Theory",
+    "description": "Graphs, trees, connectivity, coloring, matchings, and flows \u2014 the mathematics of networks.",
+    "level": 200,
+    "prerequisites": [
+      "MATH204"
+    ],
+    "credit_hours": 3,
+    "modules": [
+      {
+        "module_title": "Basic Graph Concepts",
+        "lessons": [
+          "Graphs, Subgraphs, and Isomorphism",
+          "Degrees and the Handshaking Lemma",
+          "Paths, Cycles, and Connectivity",
+          "Bipartite Graphs"
+        ]
+      },
+      {
+        "module_title": "Trees and Networks",
+        "lessons": [
+          "Trees and Spanning Trees",
+          "Minimum Spanning Trees: Kruskal and Prim",
+          "Shortest Paths: Dijkstra's Algorithm",
+          "Network Flows and Max-Flow Min-Cut"
+        ]
+      },
+      {
+        "module_title": "Graph Coloring",
+        "lessons": [
+          "Vertex and Edge Coloring",
+          "Chromatic Number and Brooks' Theorem",
+          "Map Coloring and the Four Color Theorem",
+          "Scheduling Applications"
+        ]
+      },
+      {
+        "module_title": "Planarity, Euler, and Hamilton",
+        "lessons": [
+          "Eulerian Trails and Circuits",
+          "Hamiltonian Cycles",
+          "Planar Graphs and Euler's Formula",
+          "Kuratowski's Theorem"
+        ]
+      }
+    ],
+    "assessments": {
+      "quizzes": 5,
+      "midterm": true,
+      "final": true,
+      "project": false
+    },
+    "mastery_rubric": "To pass, students must model problems as graphs, prove properties of trees and connectivity, find colorings, matchings, and network flows, and analyze planarity. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH214": {
+    "course_id": "MATH214",
+    "title": "Foundations of Geometry",
+    "description": "Euclidean geometry from axioms, geometric constructions, and the non-Euclidean geometries that follow from changing the parallel postulate.",
+    "level": 200,
+    "prerequisites": [
+      "MATH110"
+    ],
+    "credit_hours": 3,
+    "modules": [
+      {
+        "module_title": "Foundations of Euclidean Geometry",
+        "lessons": [
+          "Euclid's Postulates and Hilbert's Axioms",
+          "Congruence and Similarity",
+          "Triangles, Circles, and Quadrilaterals",
+          "Area and the Pythagorean Theorem"
+        ]
+      },
+      {
+        "module_title": "Geometric Constructions",
+        "lessons": [
+          "Compass-and-Straightedge Constructions",
+          "Constructible Numbers",
+          "Impossible Constructions: Trisection and Doubling the Cube",
+          "Origami Constructions"
+        ]
+      },
+      {
+        "module_title": "Transformations",
+        "lessons": [
+          "Isometries of the Plane",
+          "Reflections, Rotations, and Translations",
+          "Similarity Transformations",
+          "Introduction to Symmetry Groups"
+        ]
+      },
+      {
+        "module_title": "Non-Euclidean Geometry",
+        "lessons": [
+          "The Parallel Postulate Problem",
+          "Hyperbolic Geometry and Models",
+          "Elliptic and Spherical Geometry",
+          "Geometry and Relativity (Preview)"
+        ]
+      }
+    ],
+    "assessments": {
+      "quizzes": 5,
+      "midterm": true,
+      "final": true,
+      "project": false
+    },
+    "mastery_rubric": "To pass, students must prove Euclidean theorems from axioms, carry out classical constructions, and compare Euclidean, hyperbolic, and elliptic geometry. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH320": {
+    "course_id": "MATH320",
+    "title": "Axiomatic Set Theory and Model Theory",
+    "description": "ZFC axioms, ordinals and cardinals, the axiom of choice, and an introduction to models, completeness, and Godel's theorems.",
+    "level": 300,
+    "prerequisites": [
+      "MATH110",
+      "MATH203"
+    ],
+    "credit_hours": 3,
+    "modules": [
+      {
+        "module_title": "The ZFC Axioms",
+        "lessons": [
+          "From Naive to Axiomatic Set Theory",
+          "Extensionality, Pairing, Union, Power Set",
+          "Separation, Replacement, and Foundation",
+          "Russell's Paradox Revisited"
+        ]
+      },
+      {
+        "module_title": "Ordinals and Cardinals",
+        "lessons": [
+          "Well-Orderings and Ordinals",
+          "Transfinite Induction and Recursion",
+          "Cardinals and Cardinal Arithmetic",
+          "Continuum Hypothesis"
+        ]
+      },
+      {
+        "module_title": "Axiom of Choice",
+        "lessons": [
+          "Choice and Zorn's Lemma",
+          "Equivalent Forms of Choice",
+          "Consequences: Bases and the Banach-Tarski Paradox",
+          "Independence Results (Statement)"
+        ]
+      },
+      {
+        "module_title": "Model Theory",
+        "lessons": [
+          "Languages, Structures, and Models",
+          "Satisfaction and Truth in a Structure",
+          "Compactness and Lowenheim-Skolem Theorems",
+          "Godel's Completeness and Incompleteness Theorems"
+        ]
+      }
+    ],
+    "assessments": {
+      "quizzes": 5,
+      "midterm": true,
+      "final": true,
+      "project": false
+    },
+    "mastery_rubric": "To pass, students must work inside ZFC, compare cardinalities beyond the countable, use transfinite induction, and explain what models and Godel incompleteness say about mathematics itself. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH413": {
+    "course_id": "MATH413",
+    "title": "Analytic Number Theory",
+    "description": "Using analysis to study primes: Dirichlet series, the Riemann zeta function, and the distribution of prime numbers.",
+    "level": 400,
+    "prerequisites": [
+      "MATH211",
+      "MATH303"
+    ],
+    "credit_hours": 3,
+    "modules": [
+      {
+        "module_title": "Arithmetic Functions and Summation",
+        "lessons": [
+          "Average Orders of Arithmetic Functions",
+          "Partial Summation",
+          "Dirichlet Convolution",
+          "Elementary Estimates for Primes"
+        ]
+      },
+      {
+        "module_title": "Dirichlet Series and Characters",
+        "lessons": [
+          "Dirichlet Series and Euler Products",
+          "Dirichlet Characters",
+          "Dirichlet's Theorem on Primes in Arithmetic Progressions",
+          "L-Functions"
+        ]
+      },
+      {
+        "module_title": "The Riemann Zeta Function",
+        "lessons": [
+          "Analytic Continuation of Zeta",
+          "Functional Equation",
+          "Zeros of Zeta",
+          "Explicit Formulas Linking Zeros and Primes"
+        ]
+      },
+      {
+        "module_title": "Prime Number Theorem",
+        "lessons": [
+          "Chebyshev's Estimates",
+          "The Prime Number Theorem: Statement and Proof Outline",
+          "Error Terms and the Riemann Hypothesis",
+          "Prime Gaps and Twin Primes (Survey)"
+        ]
+      }
+    ],
+    "assessments": {
+      "quizzes": 5,
+      "midterm": true,
+      "final": true,
+      "project": false
+    },
+    "mastery_rubric": "To pass, students must use Dirichlet series and characters to study arithmetic functions, follow the proof strategy of the Prime Number Theorem, and state the Riemann Hypothesis precisely. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH432": {
+    "course_id": "MATH432",
+    "title": "Algebraic Geometry",
+    "description": "Affine and projective varieties, ideals and varieties in duality, and an introduction to schemes \u2014 geometry studied with commutative algebra.",
+    "level": 400,
+    "prerequisites": [
+      "MATH410",
+      "MATH411"
+    ],
+    "credit_hours": 3,
+    "modules": [
+      {
+        "module_title": "Affine Varieties",
+        "lessons": [
+          "Affine Space and Polynomial Rings",
+          "Varieties and Ideals",
+          "Hilbert's Nullstellensatz",
+          "Coordinate Rings and Morphisms"
+        ]
+      },
+      {
+        "module_title": "Groebner Bases and Computation",
+        "lessons": [
+          "Monomial Orders",
+          "Buchberger's Algorithm",
+          "Elimination Theory",
+          "Solving Polynomial Systems"
+        ]
+      },
+      {
+        "module_title": "Projective Varieties",
+        "lessons": [
+          "Projective Space",
+          "Homogeneous Ideals and Varieties",
+          "Bezout's Theorem",
+          "Rational Maps and Blow-Ups"
+        ]
+      },
+      {
+        "module_title": "Schemes (Introduction)",
+        "lessons": [
+          "Sheaves on a Topological Space",
+          "The Spectrum of a Ring",
+          "Affine Schemes",
+          "Why Schemes: Motivation and Examples"
+        ]
+      }
+    ],
+    "assessments": {
+      "quizzes": 5,
+      "midterm": true,
+      "final": true,
+      "project": false
+    },
+    "mastery_rubric": "To pass, students must translate between ideals and varieties using the Nullstellensatz, compute with Groebner bases, and work with projective space and morphisms of varieties. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH433": {
+    "course_id": "MATH433",
+    "title": "Differential Topology",
+    "description": "Smooth manifolds, transversality, and Morse theory \u2014 topology done with calculus.",
+    "level": 400,
+    "prerequisites": [
+      "MATH304",
+      "MATH430"
+    ],
+    "credit_hours": 3,
+    "modules": [
+      {
+        "module_title": "Smooth Manifolds",
+        "lessons": [
+          "Smooth Manifolds and Smooth Maps",
+          "Tangent Spaces and Differentials",
+          "Immersions, Submersions, and Embeddings",
+          "Whitney Embedding Theorem"
+        ]
+      },
+      {
+        "module_title": "Transversality",
+        "lessons": [
+          "Sard's Theorem",
+          "Transversal Maps",
+          "Preimage and Intersection Theorems",
+          "Degree and Intersection Number"
+        ]
+      },
+      {
+        "module_title": "Vector Fields and Flows",
+        "lessons": [
+          "Vector Fields on Manifolds",
+          "Flows and Integral Curves",
+          "Lie Bracket",
+          "Index of a Vector Field and Poincare-Hopf"
+        ]
+      },
+      {
+        "module_title": "Morse Theory",
+        "lessons": [
+          "Morse Functions and Critical Points",
+          "The Morse Lemma",
+          "Handle Attachments and CW Structure",
+          "Morse Inequalities"
+        ]
+      }
+    ],
+    "assessments": {
+      "quizzes": 5,
+      "midterm": true,
+      "final": true,
+      "project": false
+    },
+    "mastery_rubric": "To pass, students must work with smooth maps between manifolds, apply Sard's theorem and transversality, and use Morse functions to recover a manifold's topology. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH314": {
+    "course_id": "MATH314",
+    "title": "Linear Optimization",
+    "description": "Linear programming: the simplex method, duality, sensitivity, and applications to transportation and network problems.",
+    "level": 300,
+    "prerequisites": [
+      "MATH203"
+    ],
+    "credit_hours": 3,
+    "modules": [
+      {
+        "module_title": "Linear Programs",
+        "lessons": [
+          "Formulation and Examples",
+          "Geometry of Feasible Regions",
+          "Extreme Points and Basic Feasible Solutions",
+          "Standard and Canonical Forms"
+        ]
+      },
+      {
+        "module_title": "The Simplex Method",
+        "lessons": [
+          "Simplex Algorithm",
+          "Two-Phase and Big-M Methods",
+          "Degeneracy and Cycling",
+          "Revised Simplex (Overview)"
+        ]
+      },
+      {
+        "module_title": "Duality Theory",
+        "lessons": [
+          "The Dual Problem",
+          "Weak and Strong Duality",
+          "Complementary Slackness",
+          "Shadow Prices and Economic Interpretation"
+        ]
+      },
+      {
+        "module_title": "Applications and Sensitivity",
+        "lessons": [
+          "Transportation and Assignment Problems",
+          "Network Flow Formulations",
+          "Sensitivity and Post-Optimal Analysis",
+          "Integer Programming (Introduction)"
+        ]
+      }
+    ],
+    "assessments": {
+      "quizzes": 5,
+      "midterm": true,
+      "final": true,
+      "project": true
+    },
+    "mastery_rubric": "To pass, students must formulate real problems as linear programs, solve them with the simplex method, interpret dual variables and shadow prices, and analyze sensitivity. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH315": {
+    "course_id": "MATH315",
+    "title": "Nonlinear and Convex Optimization",
+    "description": "Unconstrained and constrained nonlinear optimization, convexity, KKT conditions, and modern gradient methods.",
+    "level": 300,
+    "prerequisites": [
+      "MATH201",
+      "MATH314"
+    ],
+    "credit_hours": 3,
+    "modules": [
+      {
+        "module_title": "Convex Analysis",
+        "lessons": [
+          "Convex Sets and Functions",
+          "Subgradients",
+          "Separating Hyperplanes",
+          "Convex Conjugates (Fenchel)"
+        ]
+      },
+      {
+        "module_title": "Unconstrained Optimization",
+        "lessons": [
+          "Optimality Conditions",
+          "Gradient Descent and Line Search",
+          "Newton and Quasi-Newton Methods",
+          "Conjugate Gradient"
+        ]
+      },
+      {
+        "module_title": "Constrained Optimization",
+        "lessons": [
+          "Equality Constraints and Lagrangians",
+          "KKT Conditions",
+          "Inequality Constraints and Active Sets",
+          "Penalty and Barrier Methods"
+        ]
+      },
+      {
+        "module_title": "Duality and Applications",
+        "lessons": [
+          "Lagrangian Duality in Convex Problems",
+          "Support Vector Machines as Optimization",
+          "Regularization and Lasso",
+          "Interior Point Methods (Overview)"
+        ]
+      }
+    ],
+    "assessments": {
+      "quizzes": 5,
+      "midterm": true,
+      "final": true,
+      "project": true
+    },
+    "mastery_rubric": "To pass, students must analyze convexity, derive and apply KKT conditions, and implement gradient, Newton, and penalty methods with convergence guarantees. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH316": {
+    "course_id": "MATH316",
+    "title": "Dynamic Programming and Optimal Control",
+    "description": "Bellman's principle of optimality, the Hamilton-Jacobi-Bellman equation, Pontryagin's principle, and linear-quadratic control.",
+    "level": 300,
+    "prerequisites": [
+      "MATH202",
+      "MATH314"
+    ],
+    "credit_hours": 3,
+    "modules": [
+      {
+        "module_title": "Dynamic Programming",
+        "lessons": [
+          "Principle of Optimality",
+          "Bellman Equation",
+          "Finite-Horizon Problems and Backward Induction",
+          "Infinite-Horizon and Discounted Problems"
+        ]
+      },
+      {
+        "module_title": "Stochastic Dynamic Programming",
+        "lessons": [
+          "Markov Decision Processes",
+          "Value and Policy Iteration",
+          "Q-Learning (Introduction)",
+          "Applications: Inventory and Portfolio Choice"
+        ]
+      },
+      {
+        "module_title": "Optimal Control Theory",
+        "lessons": [
+          "Calculus of Variations",
+          "Pontryagin's Maximum Principle",
+          "Bang-Bang Control",
+          "Hamilton-Jacobi-Bellman Equation"
+        ]
+      },
+      {
+        "module_title": "Linear-Quadratic Control",
+        "lessons": [
+          "LQR Problem",
+          "Riccati Equations",
+          "Stability and Feedback",
+          "Applications in Engineering and Economics"
+        ]
+      }
+    ],
+    "assessments": {
+      "quizzes": 5,
+      "midterm": true,
+      "final": true,
+      "project": true
+    },
+    "mastery_rubric": "To pass, students must formulate sequential decision problems, solve them by backward induction and value iteration, and apply Pontryagin's maximum principle to control problems. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH317": {
+    "course_id": "MATH317",
+    "title": "Dynamical Systems and Chaos",
+    "description": "Qualitative theory of ODEs, phase-plane analysis, bifurcations, and chaos in maps and flows.",
+    "level": 300,
+    "prerequisites": [
+      "MATH202"
+    ],
+    "credit_hours": 3,
+    "modules": [
+      {
+        "module_title": "Qualitative Theory of ODEs",
+        "lessons": [
+          "Existence, Uniqueness, and Flows",
+          "Equilibria and Linearization",
+          "Stability: Lyapunov Methods",
+          "Limit Cycles and Poincare-Bendixson"
+        ]
+      },
+      {
+        "module_title": "Phase Plane Analysis",
+        "lessons": [
+          "Phase Portraits of Linear Systems",
+          "Nullclines and Direction Fields",
+          "Conservative and Hamiltonian Systems",
+          "Predator-Prey and Oscillator Models"
+        ]
+      },
+      {
+        "module_title": "Bifurcations",
+        "lessons": [
+          "Saddle-Node and Transcritical Bifurcations",
+          "Pitchfork and Hopf Bifurcations",
+          "Bifurcation Diagrams",
+          "Normal Forms"
+        ]
+      },
+      {
+        "module_title": "Chaos Theory",
+        "lessons": [
+          "The Logistic Map and Period Doubling",
+          "Lyapunov Exponents",
+          "Fractals and Strange Attractors",
+          "The Lorenz System"
+        ]
+      }
+    ],
+    "assessments": {
+      "quizzes": 5,
+      "midterm": true,
+      "final": true,
+      "project": true
+    },
+    "mastery_rubric": "To pass, students must analyze equilibria and stability, draw and read phase portraits, classify bifurcations, and demonstrate sensitive dependence in chaotic systems. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH318": {
+    "course_id": "MATH318",
+    "title": "Classical Mechanics (Mathematical Physics I)",
+    "description": "Mechanics done mathematically: Lagrangian and Hamiltonian formulations, conservation laws, and Noether's theorem.",
+    "level": 300,
+    "prerequisites": [
+      "MATH201",
+      "MATH202"
+    ],
+    "credit_hours": 3,
+    "modules": [
+      {
+        "module_title": "Lagrangian Mechanics",
+        "lessons": [
+          "Generalized Coordinates and Constraints",
+          "Euler-Lagrange Equations",
+          "Variational Principles",
+          "Central Force Motion and Kepler's Laws"
+        ]
+      },
+      {
+        "module_title": "Hamiltonian Mechanics",
+        "lessons": [
+          "Legendre Transform and Hamilton's Equations",
+          "Phase Space and Liouville's Theorem",
+          "Poisson Brackets",
+          "Canonical Transformations"
+        ]
+      },
+      {
+        "module_title": "Symmetries and Conservation",
+        "lessons": [
+          "Noether's Theorem",
+          "Energy, Momentum, and Angular Momentum",
+          "Cyclic Coordinates and Routhian Reduction",
+          "Small Oscillations and Normal Modes"
+        ]
+      },
+      {
+        "module_title": "Rigid Bodies and Advanced Topics",
+        "lessons": [
+          "Rotation and Euler Angles",
+          "Moment of Inertia Tensor",
+          "Integrable Systems and Action-Angle Variables",
+          "Chaos in Mechanics (Preview)"
+        ]
+      }
+    ],
+    "assessments": {
+      "quizzes": 5,
+      "midterm": true,
+      "final": true,
+      "project": false
+    },
+    "mastery_rubric": "To pass, students must derive equations of motion from variational principles, use Hamiltonian mechanics and Poisson brackets, and connect symmetries to conservation laws via Noether's theorem. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH440": {
+    "course_id": "MATH440",
+    "title": "Quantum Mechanics (Mathematical Physics II)",
+    "description": "The mathematical structure of quantum mechanics: Hilbert spaces, operators, the Schrodinger equation, and measurement.",
+    "level": 400,
+    "prerequisites": [
+      "MATH318",
+      "MATH421"
+    ],
+    "credit_hours": 3,
+    "modules": [
+      {
+        "module_title": "Mathematical Foundations",
+        "lessons": [
+          "Hilbert Spaces and Dirac Notation",
+          "Bounded and Unbounded Operators",
+          "Self-Adjoint Operators and Spectral Theorem",
+          "States, Observables, and Measurement Postulates"
+        ]
+      },
+      {
+        "module_title": "The Schrodinger Equation",
+        "lessons": [
+          "Time-Dependent and Time-Independent Equations",
+          "Free Particle and Wave Packets",
+          "Potential Wells and Barriers",
+          "Harmonic Oscillator: Operator Method"
+        ]
+      },
+      {
+        "module_title": "Angular Momentum and Spin",
+        "lessons": [
+          "Orbital Angular Momentum",
+          "Spin and Pauli Matrices",
+          "Addition of Angular Momenta",
+          "The Hydrogen Atom"
+        ]
+      },
+      {
+        "module_title": "Approximation and Structure",
+        "lessons": [
+          "Perturbation Theory",
+          "Variational Methods",
+          "Identical Particles and Entanglement (Introduction)",
+          "Path Integrals (Overview)"
+        ]
+      }
+    ],
+    "assessments": {
+      "quizzes": 5,
+      "midterm": true,
+      "final": true,
+      "project": false
+    },
+    "mastery_rubric": "To pass, students must set up quantum problems in Hilbert space, solve the Schrodinger equation for standard systems, and use spectral theory of self-adjoint operators. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH441": {
+    "course_id": "MATH441",
+    "title": "General Relativity",
+    "description": "Einstein's theory as geometry: manifolds, tensors, curvature, and the Einstein field equations with their classic solutions.",
+    "level": 400,
+    "prerequisites": [
+      "MATH318",
+      "MATH430"
+    ],
+    "credit_hours": 3,
+    "modules": [
+      {
+        "module_title": "Geometry for Relativity",
+        "lessons": [
+          "Manifolds and Tensor Fields (Review)",
+          "The Metric Tensor",
+          "Connections and Covariant Derivatives",
+          "Riemann Curvature and Geodesics"
+        ]
+      },
+      {
+        "module_title": "Special Relativity",
+        "lessons": [
+          "Minkowski Spacetime",
+          "Lorentz Transformations",
+          "Four-Vectors and Relativistic Dynamics",
+          "Equivalence Principle"
+        ]
+      },
+      {
+        "module_title": "Einstein Field Equations",
+        "lessons": [
+          "Stress-Energy Tensor",
+          "The Einstein Equations",
+          "Weak-Field Limit and Newtonian Gravity",
+          "Gravitational Waves (Overview)"
+        ]
+      },
+      {
+        "module_title": "Classic Solutions",
+        "lessons": [
+          "Schwarzschild Solution and Black Holes",
+          "Light Bending, Precession, and Time Delay Tests",
+          "Cosmology: Friedmann Equations",
+          "Singularities and the Penrose-Hawking Theorems (Statement)"
+        ]
+      }
+    ],
+    "assessments": {
+      "quizzes": 5,
+      "midterm": true,
+      "final": true,
+      "project": false
+    },
+    "mastery_rubric": "To pass, students must compute with tensors and connections, derive curvature, and work through the Schwarzschild solution and the predictions of general relativity. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH322": {
+    "course_id": "MATH322",
+    "title": "Information Theory",
+    "description": "Shannon entropy, data compression, channel capacity, and the fundamental limits of communication.",
+    "level": 300,
+    "prerequisites": [
+      "STAT301"
+    ],
+    "credit_hours": 3,
+    "modules": [
+      {
+        "module_title": "Entropy",
+        "lessons": [
+          "Entropy and Joint Entropy",
+          "Conditional Entropy and Mutual Information",
+          "Chain Rules and the Data Processing Inequality",
+          "Typical Sequences and AEP"
+        ]
+      },
+      {
+        "module_title": "Data Compression",
+        "lessons": [
+          "Kraft Inequality and Prefix Codes",
+          "Huffman Coding",
+          "Shannon's Source Coding Theorem",
+          "Lossy Compression and Rate-Distortion (Introduction)"
+        ]
+      },
+      {
+        "module_title": "Channel Capacity",
+        "lessons": [
+          "Discrete Memoryless Channels",
+          "Channel Capacity and Examples",
+          "Shannon's Noisy Channel Coding Theorem",
+          "Gaussian Channels"
+        ]
+      },
+      {
+        "module_title": "Advanced Topics",
+        "lessons": [
+          "Entropy in Cryptography and Statistics",
+          "Kolmogorov Complexity (Introduction)",
+          "Information Theory and Machine Learning",
+          "Network Information Theory (Survey)"
+        ]
+      }
+    ],
+    "assessments": {
+      "quizzes": 5,
+      "midterm": true,
+      "final": true,
+      "project": false
+    },
+    "mastery_rubric": "To pass, students must compute entropy and mutual information, prove and apply the source and channel coding theorems, and design optimal codes. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH323": {
+    "course_id": "MATH323",
+    "title": "Coding Theory",
+    "description": "Error-correcting codes: block codes, Hamming and Reed-Solomon codes, and the theory of reliable communication over noisy channels.",
+    "level": 300,
+    "prerequisites": [
+      "MATH203",
+      "MATH302"
+    ],
+    "credit_hours": 3,
+    "modules": [
+      {
+        "module_title": "Error-Correcting Codes",
+        "lessons": [
+          "The Coding Problem and Hamming Distance",
+          "Minimum Distance and Error Correction",
+          "Singleton, Hamming, and Plotkin Bounds",
+          "Perfect Codes"
+        ]
+      },
+      {
+        "module_title": "Linear Block Codes",
+        "lessons": [
+          "Generator and Parity-Check Matrices",
+          "Syndrome Decoding",
+          "Hamming Codes",
+          "Dual Codes"
+        ]
+      },
+      {
+        "module_title": "Cyclic Codes",
+        "lessons": [
+          "Polynomials over Finite Fields",
+          "Cyclic Codes and Generator Polynomials",
+          "BCH Codes",
+          "Reed-Solomon Codes and CD/DVD/QR Applications"
+        ]
+      },
+      {
+        "module_title": "Modern Codes",
+        "lessons": [
+          "Convolutional Codes and Viterbi Decoding",
+          "LDPC Codes (Introduction)",
+          "Turbo and Polar Codes (Survey)",
+          "Codes in Storage and Deep Space"
+        ]
+      }
+    ],
+    "assessments": {
+      "quizzes": 5,
+      "midterm": true,
+      "final": true,
+      "project": true
+    },
+    "mastery_rubric": "To pass, students must construct and decode linear and cyclic codes, compute minimum distances and bounds, and implement a Reed-Solomon codec. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH324": {
+    "course_id": "MATH324",
+    "title": "Cryptography",
+    "description": "Symmetric and public-key cryptography, hash functions, and the number theory that secures modern communication.",
+    "level": 300,
+    "prerequisites": [
+      "MATH211",
+      "MATH302"
+    ],
+    "credit_hours": 3,
+    "modules": [
+      {
+        "module_title": "Classical and Symmetric Cryptography",
+        "lessons": [
+          "Historical Ciphers and Cryptanalysis",
+          "Block Ciphers: DES and AES",
+          "Stream Ciphers and Modes of Operation",
+          "Hash Functions and Message Authentication"
+        ]
+      },
+      {
+        "module_title": "Public-Key Cryptography",
+        "lessons": [
+          "Diffie-Hellman Key Exchange",
+          "RSA: Construction and Attacks",
+          "Digital Signatures",
+          "Certificates and Public-Key Infrastructure"
+        ]
+      },
+      {
+        "module_title": "Number Theory for Cryptography",
+        "lessons": [
+          "Primality Testing",
+          "Factorization Algorithms (Overview)",
+          "Discrete Logarithms",
+          "Elliptic Curves and ECDSA"
+        ]
+      },
+      {
+        "module_title": "Modern Topics",
+        "lessons": [
+          "Zero-Knowledge Proofs (Introduction)",
+          "Lattice-Based and Post-Quantum Cryptography",
+          "Secret Sharing",
+          "Cryptographic Protocols and Security Definitions"
+        ]
+      }
+    ],
+    "assessments": {
+      "quizzes": 5,
+      "midterm": true,
+      "final": true,
+      "project": true
+    },
+    "mastery_rubric": "To pass, students must explain and implement RSA, Diffie-Hellman, and elliptic-curve cryptography, analyze hash functions and signatures, and reason about security definitions. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH325": {
+    "course_id": "MATH325",
+    "title": "Harmonic Analysis",
+    "description": "Fourier series and transforms, convergence theory, wavelets preview, and harmonic analysis on groups (introduction).",
+    "level": 300,
+    "prerequisites": [
+      "MATH301",
+      "MATH303"
+    ],
+    "credit_hours": 3,
+    "modules": [
+      {
+        "module_title": "Fourier Series",
+        "lessons": [
+          "Trigonometric Series and Coefficients",
+          "Pointwise and L2 Convergence",
+          "Fejer's Theorem and Summability",
+          "Gibbs Phenomenon"
+        ]
+      },
+      {
+        "module_title": "Fourier Transforms",
+        "lessons": [
+          "The Fourier Transform on R",
+          "Inversion and Plancherel Theorems",
+          "Convolution and Uncertainty Principle",
+          "Distributions and Tempered Fourier Analysis (Introduction)"
+        ]
+      },
+      {
+        "module_title": "Applications",
+        "lessons": [
+          "Fourier Methods for PDEs: Heat and Wave",
+          "Signal Sampling: Shannon-Nyquist Theorem",
+          "Fast Fourier Transform",
+          "Spectral Methods (Overview)"
+        ]
+      },
+      {
+        "module_title": "Beyond Euclidean Space",
+        "lessons": [
+          "Fourier Analysis on Finite Groups",
+          "Characters and Representations (Preview)",
+          "Time-Frequency Analysis and the Gabor Transform",
+          "Introduction to Wavelets"
+        ]
+      }
+    ],
+    "assessments": {
+      "quizzes": 5,
+      "midterm": true,
+      "final": true,
+      "project": false
+    },
+    "mastery_rubric": "To pass, students must compute and analyze Fourier series and transforms, prove convergence results, and apply harmonic analysis to PDEs and signals. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH327": {
+    "course_id": "MATH327",
+    "title": "Wavelets and Signal Analysis",
+    "description": "Multiresolution analysis, the discrete wavelet transform, and applications to compression, denoising, and signal processing.",
+    "level": 300,
+    "prerequisites": [
+      "MATH325"
+    ],
+    "credit_hours": 3,
+    "modules": [
+      {
+        "module_title": "From Fourier to Wavelets",
+        "lessons": [
+          "Limits of Fourier for Localized Signals",
+          "Short-Time Fourier Transform",
+          "Continuous Wavelet Transform",
+          "Time-Scale Analysis"
+        ]
+      },
+      {
+        "module_title": "Multiresolution Analysis",
+        "lessons": [
+          "Scaling Functions and the Dilation Equation",
+          "Wavelet Spaces and Orthonormal Bases",
+          "Haar Wavelets in Detail",
+          "Filter Banks and the Fast Wavelet Transform"
+        ]
+      },
+      {
+        "module_title": "Wavelet Families and Construction",
+        "lessons": [
+          "Daubechies Wavelets",
+          "Biorthogonal Wavelets",
+          "Wavelet Packets",
+          "Lifting Scheme (Introduction)"
+        ]
+      },
+      {
+        "module_title": "Applications",
+        "lessons": [
+          "Signal Denoising by Thresholding",
+          "Image Compression: JPEG 2000",
+          "Edge and Transient Detection",
+          "Wavelets in Data Science (Survey)"
+        ]
+      }
+    ],
+    "assessments": {
+      "quizzes": 5,
+      "midterm": true,
+      "final": true,
+      "project": true
+    },
+    "mastery_rubric": "To pass, students must construct Haar and Daubechies wavelets, implement multiresolution decompositions, and apply wavelet thresholding to real signals and images. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "STAT303": {
+    "course_id": "STAT303",
+    "title": "Stochastic Processes",
+    "description": "Random processes in time: Markov chains, Poisson processes, random walks, and Brownian motion.",
+    "level": 300,
+    "prerequisites": [
+      "STAT301"
+    ],
+    "credit_hours": 3,
+    "modules": [
+      {
+        "module_title": "Markov Chains",
+        "lessons": [
+          "Transition Matrices and Chapman-Kolmogorov",
+          "Classification of States",
+          "Stationary Distributions and Limit Theorems",
+          "Absorbing Chains and Hitting Times"
+        ]
+      },
+      {
+        "module_title": "Poisson Processes",
+        "lessons": [
+          "Counting Processes and Interarrival Times",
+          "Properties of the Poisson Process",
+          "Compound Poisson Processes",
+          "Queueing Models: M/M/1"
+        ]
+      },
+      {
+        "module_title": "Random Walks",
+        "lessons": [
+          "Simple and Biased Random Walks",
+          "Gambler's Ruin",
+          "Recurrence and Transience",
+          "Martingales (Introduction)"
+        ]
+      },
+      {
+        "module_title": "Brownian Motion",
+        "lessons": [
+          "Definition and Construction",
+          "Properties: Nowhere Differentiable Paths",
+          "Reflection Principle and First Passage",
+          "Stochastic Calculus (Preview) and Finance Applications"
+        ]
+      }
+    ],
+    "assessments": {
+      "quizzes": 5,
+      "midterm": true,
+      "final": true,
+      "project": true
+    },
+    "mastery_rubric": "To pass, students must build and analyze Markov chains, compute stationary distributions and hitting times, and model real systems with Poisson processes and Brownian motion. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "STAT403": {
+    "course_id": "STAT403",
+    "title": "Multivariate Statistical Analysis",
+    "description": "Analysis of multivariate data: the multivariate normal, PCA, factor analysis, discriminant analysis, and clustering.",
+    "level": 400,
+    "prerequisites": [
+      "STAT302",
+      "MATH203"
+    ],
+    "credit_hours": 3,
+    "modules": [
+      {
+        "module_title": "Multivariate Normal Distribution",
+        "lessons": [
+          "Random Vectors, Mean, and Covariance",
+          "Properties of the Multivariate Normal",
+          "Wishart Distribution and Hotelling's T2",
+          "MANOVA"
+        ]
+      },
+      {
+        "module_title": "Dimension Reduction",
+        "lessons": [
+          "Principal Component Analysis",
+          "Factor Analysis",
+          "Canonical Correlation (Introduction)",
+          "Multidimensional Scaling"
+        ]
+      },
+      {
+        "module_title": "Classification",
+        "lessons": [
+          "Linear Discriminant Analysis",
+          "Quadratic Discriminants and Logistic Models",
+          "Classification Error and Cross-Validation",
+          "Support Vector Machines (Survey)"
+        ]
+      },
+      {
+        "module_title": "Clustering",
+        "lessons": [
+          "Hierarchical Clustering",
+          "K-Means and Mixture Models",
+          "Cluster Validation",
+          "Applications to Real Multivariate Data"
+        ]
+      }
+    ],
+    "assessments": {
+      "quizzes": 5,
+      "midterm": true,
+      "final": true,
+      "project": true
+    },
+    "mastery_rubric": "To pass, students must analyze multivariate data with PCA and factor models, build discriminant and clustering methods, and test hypotheses about mean vectors. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "STAT404": {
+    "course_id": "STAT404",
+    "title": "Time Series Analysis",
+    "description": "ARMA and ARIMA models, spectral analysis, state-space models, and forecasting of time-dependent data.",
+    "level": 400,
+    "prerequisites": [
+      "STAT302"
+    ],
+    "credit_hours": 3,
+    "modules": [
+      {
+        "module_title": "Time Series Foundations",
+        "lessons": [
+          "Stationarity and Autocorrelation",
+          "White Noise and Random Walks",
+          "Trend, Seasonality, and Decomposition",
+          "ACF and PACF"
+        ]
+      },
+      {
+        "module_title": "ARMA Models",
+        "lessons": [
+          "Autoregressive and Moving Average Models",
+          "ARMA and ARIMA: Identification",
+          "Estimation and Diagnostic Checking",
+          "Forecasting with ARIMA"
+        ]
+      },
+      {
+        "module_title": "Spectral and State-Space Methods",
+        "lessons": [
+          "Periodogram and Spectral Density",
+          "Frequency-Domain Filtering",
+          "State-Space Models and the Kalman Filter",
+          "GARCH and Volatility Models (Introduction)"
+        ]
+      },
+      {
+        "module_title": "Applied Forecasting",
+        "lessons": [
+          "Model Selection in Practice",
+          "Forecast Evaluation",
+          "Multivariate Time Series (Survey)",
+          "Case Studies: Economics, Climate, and Finance Data"
+        ]
+      }
+    ],
+    "assessments": {
+      "quizzes": 5,
+      "midterm": true,
+      "final": true,
+      "project": true
+    },
+    "mastery_rubric": "To pass, students must identify, fit, and diagnose ARIMA models, produce forecasts with intervals, and analyze series in the frequency domain. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH405": {
+    "course_id": "MATH405",
+    "title": "Finite Element Methods",
+    "description": "The finite element method for PDEs: weak formulations, Galerkin approximation, mesh methods, and error analysis, with implementation.",
+    "level": 400,
+    "prerequisites": [
+      "MATH402",
+      "MATH403"
+    ],
+    "credit_hours": 3,
+    "modules": [
+      {
+        "module_title": "Weak Formulations",
+        "lessons": [
+          "Variational Form of Elliptic PDEs",
+          "Sobolev Spaces (Working Introduction)",
+          "Lax-Milgram Theorem",
+          "Galerkin Approximation and Cea's Lemma"
+        ]
+      },
+      {
+        "module_title": "Finite Element Spaces",
+        "lessons": [
+          "Triangulations and Meshes",
+          "Piecewise Linear Elements",
+          "Higher-Order and Quadrilateral Elements",
+          "Basis Functions and Assembly"
+        ]
+      },
+      {
+        "module_title": "Implementation",
+        "lessons": [
+          "Stiffness and Mass Matrices",
+          "Boundary Conditions in Practice",
+          "Solving the Linear System",
+          "A Complete 2D FEM Solver Project"
+        ]
+      },
+      {
+        "module_title": "Error Analysis and Extensions",
+        "lessons": [
+          "Interpolation Error and Convergence Rates",
+          "A Posteriori Error Estimates and Adaptivity",
+          "FEM for Parabolic and Hyperbolic Problems",
+          "Mixed Elements for Stokes Flow (Survey)"
+        ]
+      }
+    ],
+    "assessments": {
+      "quizzes": 5,
+      "midterm": true,
+      "final": true,
+      "project": true
+    },
+    "mastery_rubric": "To pass, students must derive weak formulations, assemble finite element systems, implement a working FEM solver, and analyze its convergence and error. Final course grade must be 70% or higher, with at least 60% on the final exam."
   }
 }

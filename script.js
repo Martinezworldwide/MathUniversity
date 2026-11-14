@@ -24,6 +24,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     async function loadCourses() {
         if (!coursesCache) coursesCache = await loadData('courses');
+        if (coursesCache) {
+            const stat = document.getElementById('stat-courses');
+            if (stat) stat.textContent = Object.keys(coursesCache).length;
+        }
         return coursesCache;
     }
 

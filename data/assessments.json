@@ -152,5 +152,180 @@
     "final": true,
     "project": false,
     "mastery_rubric": "To pass, students must demonstrate a strong understanding of statistical inference, including point and interval estimation, and various hypothesis testing procedures. Proficiency in applying likelihood methods and interpreting statistical results is essential. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH110": {
+    "quizzes": 5,
+    "midterm": true,
+    "final": true,
+    "project": false,
+    "mastery_rubric": "To pass, students must write direct, contrapositive, contradiction, and induction proofs, work fluently with sets, relations, and quantifiers, and judge the validity of a mathematical argument. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH211": {
+    "quizzes": 5,
+    "midterm": true,
+    "final": true,
+    "project": false,
+    "mastery_rubric": "To pass, students must prove divisibility and congruence results, solve linear congruences and Diophantine equations, and apply Euler's and Fermat's theorems. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH212": {
+    "quizzes": 5,
+    "midterm": true,
+    "final": true,
+    "project": false,
+    "mastery_rubric": "To pass, students must count structured sets with permutations, combinations, and inclusion-exclusion, solve recurrences, and use generating functions to extract counting sequences. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH213": {
+    "quizzes": 5,
+    "midterm": true,
+    "final": true,
+    "project": false,
+    "mastery_rubric": "To pass, students must model problems as graphs, prove properties of trees and connectivity, find colorings, matchings, and network flows, and analyze planarity. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH214": {
+    "quizzes": 5,
+    "midterm": true,
+    "final": true,
+    "project": false,
+    "mastery_rubric": "To pass, students must prove Euclidean theorems from axioms, carry out classical constructions, and compare Euclidean, hyperbolic, and elliptic geometry. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH320": {
+    "quizzes": 5,
+    "midterm": true,
+    "final": true,
+    "project": false,
+    "mastery_rubric": "To pass, students must work inside ZFC, compare cardinalities beyond the countable, use transfinite induction, and explain what models and Godel incompleteness say about mathematics itself. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH413": {
+    "quizzes": 5,
+    "midterm": true,
+    "final": true,
+    "project": false,
+    "mastery_rubric": "To pass, students must use Dirichlet series and characters to study arithmetic functions, follow the proof strategy of the Prime Number Theorem, and state the Riemann Hypothesis precisely. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH432": {
+    "quizzes": 5,
+    "midterm": true,
+    "final": true,
+    "project": false,
+    "mastery_rubric": "To pass, students must translate between ideals and varieties using the Nullstellensatz, compute with Groebner bases, and work with projective space and morphisms of varieties. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH433": {
+    "quizzes": 5,
+    "midterm": true,
+    "final": true,
+    "project": false,
+    "mastery_rubric": "To pass, students must work with smooth maps between manifolds, apply Sard's theorem and transversality, and use Morse functions to recover a manifold's topology. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH314": {
+    "quizzes": 5,
+    "midterm": true,
+    "final": true,
+    "project": true,
+    "mastery_rubric": "To pass, students must formulate real problems as linear programs, solve them with the simplex method, interpret dual variables and shadow prices, and analyze sensitivity. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH315": {
+    "quizzes": 5,
+    "midterm": true,
+    "final": true,
+    "project": true,
+    "mastery_rubric": "To pass, students must analyze convexity, derive and apply KKT conditions, and implement gradient, Newton, and penalty methods with convergence guarantees. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH316": {
+    "quizzes": 5,
+    "midterm": true,
+    "final": true,
+    "project": true,
+    "mastery_rubric": "To pass, students must formulate sequential decision problems, solve them by backward induction and value iteration, and apply Pontryagin's maximum principle to control problems. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH317": {
+    "quizzes": 5,
+    "midterm": true,
+    "final": true,
+    "project": true,
+    "mastery_rubric": "To pass, students must analyze equilibria and stability, draw and read phase portraits, classify bifurcations, and demonstrate sensitive dependence in chaotic systems. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH318": {
+    "quizzes": 5,
+    "midterm": true,
+    "final": true,
+    "project": false,
+    "mastery_rubric": "To pass, students must derive equations of motion from variational principles, use Hamiltonian mechanics and Poisson brackets, and connect symmetries to conservation laws via Noether's theorem. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH440": {
+    "quizzes": 5,
+    "midterm": true,
+    "final": true,
+    "project": false,
+    "mastery_rubric": "To pass, students must set up quantum problems in Hilbert space, solve the Schrodinger equation for standard systems, and use spectral theory of self-adjoint operators. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH441": {
+    "quizzes": 5,
+    "midterm": true,
+    "final": true,
+    "project": false,
+    "mastery_rubric": "To pass, students must compute with tensors and connections, derive curvature, and work through the Schwarzschild solution and the predictions of general relativity. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH322": {
+    "quizzes": 5,
+    "midterm": true,
+    "final": true,
+    "project": false,
+    "mastery_rubric": "To pass, students must compute entropy and mutual information, prove and apply the source and channel coding theorems, and design optimal codes. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH323": {
+    "quizzes": 5,
+    "midterm": true,
+    "final": true,
+    "project": true,
+    "mastery_rubric": "To pass, students must construct and decode linear and cyclic codes, compute minimum distances and bounds, and implement a Reed-Solomon codec. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH324": {
+    "quizzes": 5,
+    "midterm": true,
+    "final": true,
+    "project": true,
+    "mastery_rubric": "To pass, students must explain and implement RSA, Diffie-Hellman, and elliptic-curve cryptography, analyze hash functions and signatures, and reason about security definitions. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH325": {
+    "quizzes": 5,
+    "midterm": true,
+    "final": true,
+    "project": false,
+    "mastery_rubric": "To pass, students must compute and analyze Fourier series and transforms, prove convergence results, and apply harmonic analysis to PDEs and signals. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH327": {
+    "quizzes": 5,
+    "midterm": true,
+    "final": true,
+    "project": true,
+    "mastery_rubric": "To pass, students must construct Haar and Daubechies wavelets, implement multiresolution decompositions, and apply wavelet thresholding to real signals and images. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "STAT303": {
+    "quizzes": 5,
+    "midterm": true,
+    "final": true,
+    "project": true,
+    "mastery_rubric": "To pass, students must build and analyze Markov chains, compute stationary distributions and hitting times, and model real systems with Poisson processes and Brownian motion. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "STAT403": {
+    "quizzes": 5,
+    "midterm": true,
+    "final": true,
+    "project": true,
+    "mastery_rubric": "To pass, students must analyze multivariate data with PCA and factor models, build discriminant and clustering methods, and test hypotheses about mean vectors. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "STAT404": {
+    "quizzes": 5,
+    "midterm": true,
+    "final": true,
+    "project": true,
+    "mastery_rubric": "To pass, students must identify, fit, and diagnose ARIMA models, produce forecasts with intervals, and analyze series in the frequency domain. Final course grade must be 70% or higher, with at least 60% on the final exam."
+  },
+  "MATH405": {
+    "quizzes": 5,
+    "midterm": true,
+    "final": true,
+    "project": true,
+    "mastery_rubric": "To pass, students must derive weak formulations, assemble finite element systems, implement a working FEM solver, and analyze its convergence and error. Final course grade must be 70% or higher, with at least 60% on the final exam."
   }
 }
