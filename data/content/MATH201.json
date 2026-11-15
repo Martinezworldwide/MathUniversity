@@ -1,0 +1,1004 @@
+{
+  "course_id": "MATH201",
+  "title": "Multivariable Calculus",
+  "lesson_count": 33,
+  "lessons": {
+    "3D Coordinate Systems": {
+      "intro": "Calculus in three dimensions starts with a place to stand: the xyz-coordinate system adds a z-axis perpendicular to the familiar xy-plane, so every point is an ordered triple (x, y, z) and every geometric idea from 2D — distance, midpoints, circles — gains one more coordinate.",
+      "concepts": [
+        "Octants — the three coordinate planes (x = 0, y = 0, z = 0) divide space into eight octants; the first octant has x, y, z all positive.",
+        "Distance formula — the distance between (x1, y1, z1) and (x2, y2, z2) is √((x2−x1)² + (y2−y1)² + (z2−z1)²), the Pythagorean theorem applied twice.",
+        "Midpoint — average each coordinate: the midpoint of P and Q is ((x1+x2)/2, (y1+y2)/2, (z1+z2)/2).",
+        "Spheres — the sphere with center (h, k, l) and radius r is (x−h)² + (y−k)² + (z−l)² = r²; completing the square recovers a center and radius from a general equation."
+      ],
+      "example": {
+        "q": "Find the distance between P(1, 2, 3) and Q(4, 6, 3), and the midpoint of PQ.",
+        "steps": [
+          "Distance: √((4−1)² + (6−2)² + (3−3)²) = √(9 + 16 + 0) = √25.",
+          "So the distance is 5.",
+          "Midpoint: ((1+4)/2, (2+6)/2, (3+3)/2) = (5/2, 4, 3)."
+        ],
+        "a": "Distance 5; midpoint (2.5, 4, 3)"
+      },
+      "practice": [
+        {
+          "q": "Find the distance from the origin to (3, 4, 12).",
+          "a": "13 (since √(9 + 16 + 144) = √169)."
+        },
+        {
+          "q": "Write the equation of the sphere with center (1, −2, 3) and radius 4.",
+          "a": "(x−1)² + (y+2)² + (z−3)² = 16."
+        }
+      ],
+      "takeaway": "Every 2D distance idea carries over with one extra coordinate: square the difference in each coordinate, add, and take the square root.",
+      "module": "Vectors and the Geometry of Space"
+    },
+    "Vectors": {
+      "intro": "A vector is a quantity with magnitude and direction — displacement, velocity, force. In coordinates it is an ordered triple ⟨a, b, c⟩, and vectors add component-wise and scale by multiplying every component.",
+      "concepts": [
+        "Magnitude — |⟨a, b, c⟩| = √(a² + b² + c²); a vector with magnitude 1 is a unit vector.",
+        "Addition and scaling — ⟨a, b, c⟩ + ⟨d, e, f⟩ = ⟨a+d, b+e, c+f⟩ and k⟨a, b, c⟩ = ⟨ka, kb, kc⟩; geometrically, addition is the parallelogram (or tip-to-tail) rule.",
+        "Unit vector — the unit vector in the direction of v is v/|v|.",
+        "Position vs. displacement — the vector from P(x1, y1, z1) to Q(x2, y2, z2) is ⟨x2−x1, y2−y1, z2−z1⟩."
+      ],
+      "example": {
+        "q": "Let a = ⟨2, −1, 3⟩ and b = ⟨1, 0, −2⟩. Find a + b, 2a − b, and |a|.",
+        "steps": [
+          "a + b = ⟨2+1, −1+0, 3+(−2)⟩ = ⟨3, −1, 1⟩.",
+          "2a − b = ⟨4, −2, 6⟩ − ⟨1, 0, −2⟩ = ⟨3, −2, 8⟩.",
+          "|a| = √(4 + 1 + 9) = √14."
+        ],
+        "a": "a + b = ⟨3, −1, 1⟩; 2a − b = ⟨3, −2, 8⟩; |a| = √14"
+      },
+      "practice": [
+        {
+          "q": "Find the unit vector in the direction of ⟨1, 2, 2⟩.",
+          "a": "⟨1/3, 2/3, 2/3⟩ (the magnitude is 3)."
+        },
+        {
+          "q": "Let u = ⟨1, 0, −1⟩ and v = ⟨2, 1, 0⟩. Find 3u − 2v.",
+          "a": "⟨−1, −2, −3⟩."
+        }
+      ],
+      "takeaway": "Vectors add and scale component by component; divide by the magnitude to get a unit vector in the same direction.",
+      "module": "Vectors and the Geometry of Space"
+    },
+    "Dot Product": {
+      "intro": "The dot product turns two vectors into a single number that measures how much they point in the same direction. It is the key to angles, projections, and the physics idea of work.",
+      "concepts": [
+        "Component formula — a · b = a1b1 + a2b2 + a3b3.",
+        "Geometric formula — a · b = |a||b| cos θ, where θ is the angle between the vectors (0 ≤ θ ≤ π).",
+        "Orthogonality — a · b = 0 (for nonzero vectors) exactly when the vectors are perpendicular.",
+        "Projection — the scalar projection of b onto a is (a · b)/|a|, and the vector projection is ((a · b)/|a|²) a."
+      ],
+      "example": {
+        "q": "Let a = ⟨2, 3, −1⟩ and b = ⟨1, −2, 4⟩. Find a · b and the angle between them.",
+        "steps": [
+          "a · b = 2(1) + 3(−2) + (−1)(4) = 2 − 6 − 4 = −8.",
+          "|a| = √14 and |b| = √21, so cos θ = −8/(√14·√21) = −8/√294 ≈ −0.467.",
+          "θ = arccos(−0.467) ≈ 117.8°. The negative dot product means the angle is obtuse."
+        ],
+        "a": "a · b = −8; θ ≈ 117.8°"
+      },
+      "practice": [
+        {
+          "q": "Find the angle between a = ⟨1, −1, 2⟩ and b = ⟨3, 0, −1⟩.",
+          "a": "a · b = 1, |a| = √6, |b| = √10, so cos θ = 1/√60 and θ ≈ 82.6°."
+        },
+        {
+          "q": "A force F = ⟨5, 2, 0⟩ N moves an object along d = ⟨3, 4, 0⟩ m. Find the work done.",
+          "a": "W = F · d = 15 + 8 = 23 J."
+        }
+      ],
+      "takeaway": "Dot product zero means perpendicular; its sign tells you whether the angle is acute or obtuse.",
+      "module": "Vectors and the Geometry of Space"
+    },
+    "Cross Product": {
+      "intro": "The cross product of two vectors is a new vector perpendicular to both, with magnitude equal to the area of the parallelogram they span. It is how we build normals to planes and measure torque.",
+      "concepts": [
+        "Component formula — a × b = ⟨a2b3 − a3b2, a3b1 − a1b3, a1b2 − a2b1⟩, computed with a 3×3 determinant whose first row is i, j, k.",
+        "Magnitude — |a × b| = |a||b| sin θ, the area of the parallelogram with sides a and b; half of it is the area of the triangle.",
+        "Direction — the right-hand rule: curl the fingers of your right hand from a to b and your thumb points along a × b.",
+        "Algebra — a × b = −(b × a); a × a = 0; a × b = 0 exactly when a and b are parallel."
+      ],
+      "example": {
+        "q": "Let a = ⟨1, 2, 3⟩ and b = ⟨4, 5, 6⟩. Find a × b and the area of the parallelogram with sides a and b.",
+        "steps": [
+          "a × b = ⟨2·6 − 3·5, 3·4 − 1·6, 1·5 − 2·4⟩ = ⟨−3, 6, −3⟩.",
+          "|a × b| = √(9 + 36 + 9) = √54 = 3√6.",
+          "That magnitude is the parallelogram's area."
+        ],
+        "a": "a × b = ⟨−3, 6, −3⟩; area 3√6"
+      },
+      "practice": [
+        {
+          "q": "Find ⟨1, 0, 0⟩ × ⟨0, 1, 0⟩.",
+          "a": "⟨0, 0, 1⟩ (i × j = k)."
+        },
+        {
+          "q": "Find the area of the triangle with vertices (0, 0, 0), (1, 2, 0), (0, 1, 3).",
+          "a": "√46/2 (the cross product of the side vectors is ⟨6, −3, 1⟩, magnitude √46, halved)."
+        }
+      ],
+      "takeaway": "Cross product: determinant for the components, magnitude for the parallelogram area, right-hand rule for the direction.",
+      "module": "Vectors and the Geometry of Space"
+    },
+    "Equations of Lines and Planes": {
+      "intro": "A line in 3D is pinned down by a point and a direction vector; a plane by a point and a normal vector. Both come from the dot and cross products of the previous lessons.",
+      "concepts": [
+        "Vector equation of a line — r = r0 + t v, where r0 is a position vector of a point on the line and v is a direction vector; t ranges over all reals.",
+        "Symmetric equations — (x−x0)/a = (y−y0)/b = (z−z0)/c for direction ⟨a, b, c⟩ (omit a fraction if its denominator is 0).",
+        "Equation of a plane — n · (r − r0) = 0, i.e. a(x−x0) + b(y−y0) + c(z−z0) = 0 for normal n = ⟨a, b, c⟩.",
+        "Distances — the distance from a point to the plane ax + by + cz + d = 0 is |ax0 + by0 + cz0 + d|/√(a² + b² + c²)."
+      ],
+      "example": {
+        "q": "Find an equation of the plane through (1, 0, −2) with normal ⟨3, −1, 2⟩, and the distance from (2, 1, 0) to the plane x + 2y − 2z = 5.",
+        "steps": [
+          "Plane: 3(x − 1) − (y − 0) + 2(z + 2) = 0, i.e. 3x − y + 2z + 1 = 0.",
+          "Distance: |2 + 2(1) − 2(0) − 5|/√(1 + 4 + 4) = |−1|/3.",
+          "So the distance is 1/3."
+        ],
+        "a": "Plane 3x − y + 2z + 1 = 0; distance 1/3"
+      },
+      "practice": [
+        {
+          "q": "Find symmetric equations for the line through (0, 1, 1) and (2, 3, −1).",
+          "a": "Direction ⟨2, 2, −2⟩, so x/2 = (y−1)/2 = (z−1)/(−2)."
+        },
+        {
+          "q": "Find an equation of the plane through (1, 1, 1), (1, 2, 0), and (2, 0, 1).",
+          "a": "x + y + z = 3 (a normal is ⟨−1, −1, −1⟩ from the cross product of the edge vectors)."
+        }
+      ],
+      "takeaway": "Line: point plus direction vector. Plane: point plus normal vector — and the cross product builds a normal from two vectors in the plane.",
+      "module": "Vectors and the Geometry of Space"
+    },
+    "Cylinders and Quadric Surfaces": {
+      "intro": "Quadric surfaces are the 3D analogues of conic sections: the graphs of second-degree equations in x, y, z. Their traces — slices by coordinate planes — reveal which of the six classic shapes you are looking at.",
+      "concepts": [
+        "Cylinders — an equation missing one variable, e.g. x² + y² = 4, is a cylinder: the 2D curve extruded along the missing axis.",
+        "Ellipsoid — x²/a² + y²/b² + z²/c² = 1, a stretched sphere with all traces ellipses.",
+        "Paraboloid — z = x²/a² + y²/b² (elliptic) or z = x²/a² − y²/b² (hyperbolic saddle): traces are parabolas and ellipses or hyperbolas.",
+        "Hyperboloids and cones — x²/a² + y²/b² − z²/c² = 1 is a hyperboloid of one sheet; with −1 it is two sheets; x²/a² + y²/b² − z²/c² = 0 is a cone."
+      ],
+      "example": {
+        "q": "Identify the surface x² + y² − z² = 1 and describe its traces in the planes z = 0 and y = 0.",
+        "steps": [
+          "Two positive squares and one negative square, equal to 1: a hyperboloid of one sheet.",
+          "At z = 0 the trace is x² + y² = 1, a circle of radius 1 (the 'waist').",
+          "At y = 0 the trace is x² − z² = 1, a hyperbola opening along the x-axis."
+        ],
+        "a": "Hyperboloid of one sheet; z = 0 trace is the unit circle, y = 0 trace is the hyperbola x² − z² = 1"
+      },
+      "practice": [
+        {
+          "q": "Identify the surface y = x².",
+          "a": "A parabolic cylinder, extruded along the z-axis."
+        },
+        {
+          "q": "Identify x²/9 − y²/4 + z²/25 = 1.",
+          "a": "Hyperboloid of one sheet (two positive terms, one negative)."
+        }
+      ],
+      "takeaway": "Count the signs: all positive is an ellipsoid, one negative is a hyperboloid of one sheet, and a missing variable means a cylinder.",
+      "module": "Vectors and the Geometry of Space"
+    },
+    "Vector Functions and Space Curves": {
+      "intro": "A vector function r(t) = ⟨f(t), g(t), h(t)⟩ traces a curve through space as t varies — the position of a moving particle at each instant. Each component is an ordinary function of one variable.",
+      "concepts": [
+        "Parametrization — a space curve is the set of points r(t) as t runs over an interval; different parametrizations can trace the same curve.",
+        "Helix — r(t) = ⟨a cos t, a sin t, bt⟩ winds around a cylinder of radius a, rising bt per radian.",
+        "Domain — the domain of r is the intersection of the domains of its component functions.",
+        "Limits and continuity — r(t) has a limit (is continuous) exactly when each component does."
+      ],
+      "example": {
+        "q": "Describe the curve r(t) = ⟨2 cos t, 2 sin t, 3t⟩ and find the point where t = π/2.",
+        "steps": [
+          "x² + y² = 4 cos²t + 4 sin²t = 4, so the curve lies on the cylinder of radius 2 about the z-axis.",
+          "z = 3t grows linearly, so the curve is a helix rising 3 units per radian.",
+          "At t = π/2: r(π/2) = ⟨2 cos(π/2), 2 sin(π/2), 3π/2⟩ = ⟨0, 2, 3π/2⟩."
+        ],
+        "a": "A helix of radius 2 rising along the z-axis; at t = π/2 the point is (0, 2, 3π/2)"
+      },
+      "practice": [
+        {
+          "q": "Find the domain of r(t) = ⟨t², eᵗ, ln t⟩.",
+          "a": "t > 0 (ln t needs t > 0; the other components are defined everywhere)."
+        },
+        {
+          "q": "Find r(1) for r(t) = ⟨t², eᵗ, ln t⟩.",
+          "a": "⟨1, e, 0⟩."
+        }
+      ],
+      "takeaway": "Read a vector function component by component: the first two often draw a familiar plane curve while the third lifts it into space.",
+      "module": "Vector Functions"
+    },
+    "Derivatives and Integrals of Vector Functions": {
+      "intro": "Differentiate a vector function component by component and you get the velocity vector — tangent to the curve, pointing in the direction of motion. Integrate component by component and you recover position from velocity.",
+      "concepts": [
+        "Derivative — r′(t) = ⟨f′(t), g′(t), h′(t)⟩; it is tangent to the curve at r(t).",
+        "Rules — sums, scalar multiples, and the dot- and cross-product rules all carry over from single-variable calculus.",
+        "Integral — ∫r(t) dt = ⟨∫f, ∫g, ∫h⟩ dt; a definite integral gives a displacement vector.",
+        "Unit tangent — T(t) = r′(t)/|r′(t)| is the unit vector in the direction of motion."
+      ],
+      "example": {
+        "q": "Let r(t) = ⟨t², sin t, eᵗ⟩. Find r′(t), r′(π/2), and ∫₀¹ ⟨t, t², 1⟩ dt.",
+        "steps": [
+          "r′(t) = ⟨2t, cos t, eᵗ⟩.",
+          "r′(π/2) = ⟨π, cos(π/2), e^{π/2}⟩ = ⟨π, 0, e^{π/2}⟩.",
+          "∫₀¹ ⟨t, t², 1⟩ dt = ⟨1/2, 1/3, 1⟩."
+        ],
+        "a": "r′(t) = ⟨2t, cos t, eᵗ⟩; r′(π/2) = ⟨π, 0, e^{π/2}⟩; the integral is ⟨1/2, 1/3, 1⟩"
+      },
+      "practice": [
+        {
+          "q": "Find r′(t) for r(t) = ⟨cos t, sin t, t²⟩.",
+          "a": "⟨−sin t, cos t, 2t⟩."
+        },
+        {
+          "q": "Evaluate ∫₀² ⟨1, t, t²⟩ dt.",
+          "a": "⟨2, 2, 8/3⟩."
+        }
+      ],
+      "takeaway": "Vector calculus is single-variable calculus done three times at once — once per component.",
+      "module": "Vector Functions"
+    },
+    "Arc Length and Curvature": {
+      "intro": "Arc length measures how far a particle travels along a curve, and curvature measures how sharply the curve bends. A circle bends at a constant rate; a straight line does not bend at all.",
+      "concepts": [
+        "Arc length — from a to b the length is ∫ₐᵇ |r′(t)| dt; reparametrizing by arc length s makes |r′(s)| = 1.",
+        "Curvature — κ = |T′(t)|/|r′(t)| = |r′(t) × r″(t)|/|r′(t)|³, where T is the unit tangent.",
+        "Circle — a circle of radius a has constant curvature κ = 1/a: small circles bend sharply, large ones gently.",
+        "Plane curves — for y = f(x), κ = |f″(x)|/(1 + f′(x)²)^{3/2}."
+      ],
+      "example": {
+        "q": "Find the arc length of r(t) = ⟨cos t, sin t, t⟩ from t = 0 to t = 2π, and the curvature of the helix.",
+        "steps": [
+          "r′(t) = ⟨−sin t, cos t, 1⟩, so |r′(t)| = √(sin²t + cos²t + 1) = √2.",
+          "Length = ∫₀^{2π} √2 dt = 2π√2.",
+          "r″(t) = ⟨−cos t, −sin t, 0⟩ and r′ × r″ = ⟨sin t, −cos t, 1⟩, with |r′ × r″| = √2 and |r′|³ = 2√2, so κ = 1/2."
+        ],
+        "a": "Arc length 2π√2; curvature 1/2"
+      },
+      "practice": [
+        {
+          "q": "Find the curvature of the circle r(t) = ⟨3 cos t, 3 sin t, 0⟩.",
+          "a": "κ = 1/3 (a circle of radius 3)."
+        },
+        {
+          "q": "Find the arc length of r(t) = ⟨t, t², 0⟩ from t = 0 to t = 1.",
+          "a": "√5/2 + ln(2 + √5)/4 ≈ 1.479 (integrate √(1 + 4t²))."
+        }
+      ],
+      "takeaway": "Arc length integrates speed; curvature is the rate at which the unit tangent turns, per unit of arc length.",
+      "module": "Vector Functions"
+    },
+    "Motion in Space": {
+      "intro": "Position, velocity, and acceleration are all vectors: velocity is the derivative of position, acceleration the derivative of velocity. Splitting acceleration into tangential and normal parts separates speeding up from turning.",
+      "concepts": [
+        "Velocity and speed — v(t) = r′(t); speed is |v(t)|; acceleration is a(t) = v′(t) = r″(t).",
+        "Tangential component — a_T = (v · a)/|v| measures the rate of change of speed.",
+        "Normal component — a_N = |v × a|/|v| measures turning; a_N = κ|v|², and a = a_T T + a_N N.",
+        "Projectile motion — with gravity, r(t) = ⟨v0x t, v0y t − (g/2)t², 0⟩: constant horizontal velocity, vertical acceleration −g."
+      ],
+      "example": {
+        "q": "A particle has position r(t) = ⟨t², t, 2t⟩. Find its velocity and acceleration at t = 2, its speed then, and a_T and a_N at t = 2.",
+        "steps": [
+          "v(t) = ⟨2t, 1, 2⟩ and a(t) = ⟨2, 0, 0⟩. At t = 2: v = ⟨4, 1, 2⟩, a = ⟨2, 0, 0⟩.",
+          "Speed = |v| = √(16 + 1 + 4) = √21.",
+          "a_T = (v · a)/|v| = 8/√21; a_N = √(|a|² − a_T²) = √(4 − 64/21) = √(20/21)."
+        ],
+        "a": "v(2) = ⟨4, 1, 2⟩, a(2) = ⟨2, 0, 0⟩, speed √21, a_T = 8/√21, a_N = √(20/21)"
+      },
+      "practice": [
+        {
+          "q": "For r(t) = ⟨cos t, sin t, 0⟩, find speed, |a|, a_T, and a_N.",
+          "a": "Speed 1, |a| = 1, a_T = 0 (constant speed), a_N = 1 (pure turning)."
+        },
+        {
+          "q": "A projectile is launched with r(t) = ⟨10t, 20t − 4.9t², 0⟩. What is its velocity at t = 2?",
+          "a": "⟨10, 0.4, 0⟩ (v = ⟨10, 20 − 9.8t, 0⟩, and at t = 2 the vertical component is 0.4)."
+        }
+      ],
+      "takeaway": "a_T tells you how fast the speed is changing; a_N tells you how fast the direction is changing.",
+      "module": "Vector Functions"
+    },
+    "Functions of Several Variables": {
+      "intro": "A function of two variables assigns a number to every point (x, y) in its domain — think of temperature across a map, or height above a landscape. Its graph is a surface, and its level curves are the contour lines on a topographic map.",
+      "concepts": [
+        "Domain and range — the domain is the set of (x, y) where the formula makes sense; the range is the set of output values.",
+        "Graph — the graph of z = f(x, y) is the surface of points (x, y, f(x, y)) in 3D space.",
+        "Level curves — the curve f(x, y) = k is the set of points where the function has the constant value k; close-together level curves mean steep terrain.",
+        "Traces — fixing x or y slices the surface into a curve in a vertical plane."
+      ],
+      "example": {
+        "q": "Find the domain and range of f(x, y) = √(9 − x² − y²) and describe its level curves.",
+        "steps": [
+          "The square root needs 9 − x² − y² ≥ 0, so the domain is the disk x² + y² ≤ 9.",
+          "On that disk, f ranges from 0 (at the rim) to 3 (at the origin): range [0, 3].",
+          "Level curves √(9 − x² − y²) = k are circles x² + y² = 9 − k².",
+          "The graph is the upper hemisphere of radius 3."
+        ],
+        "a": "Domain: the disk x² + y² ≤ 9; range [0, 3]; level curves are concentric circles; graph is the upper hemisphere of radius 3"
+      },
+      "practice": [
+        {
+          "q": "Find the domain of f(x, y) = ln(x + y).",
+          "a": "x + y > 0 (the half-plane above the line y = −x)."
+        },
+        {
+          "q": "Evaluate f(2, 1) for f(x, y) = x² − 3xy + y².",
+          "a": "4 − 6 + 1 = −1."
+        }
+      ],
+      "takeaway": "Domain first, then picture the surface through its level curves — the contour map of the function.",
+      "module": "Partial Derivatives"
+    },
+    "Limits and Continuity": {
+      "intro": "For a limit in two variables to exist, the function must approach the same value along every path into the point. One bad path is enough to kill a limit — and that is what makes multivariable limits harder than single-variable ones.",
+      "concepts": [
+        "Two-path test — if f approaches different values along two paths into (a, b), the limit does not exist.",
+        "Squeeze — if |f(x, y)| ≤ g(x, y) and g → 0, then f → 0; the bound |x²y/(x² + y²)| ≤ |y| is a classic.",
+        "Continuity — f is continuous at (a, b) when the limit equals f(a, b); polynomials, exponentials, and quotients (where the denominator is nonzero) are continuous.",
+        "Polar coordinates — writing x = r cos θ, y = r sin θ often reduces a limit at the origin to a statement about r → 0."
+      ],
+      "example": {
+        "q": "Show that lim_{(x,y)→(0,0)} (x²y)/(x² + y²) = 0, and that lim_{(x,y)→(0,0)} xy/(x² + y²) does not exist.",
+        "steps": [
+          "For the first: |x²y/(x² + y²)| = |y| · x²/(x² + y²) ≤ |y| → 0, so by the squeeze theorem the limit is 0.",
+          "For the second, approach along y = mx: xy/(x² + y²) = mx²/(x² + m²x²) = m/(1 + m²), which depends on m.",
+          "Along y = 0 the value is 0; along y = x it is 1/2. Two paths, two values — the limit does not exist."
+        ],
+        "a": "First limit is 0 (squeeze); second limit does not exist (path-dependent)"
+      },
+      "practice": [
+        {
+          "q": "Does lim_{(x,y)→(0,0)} x²/(x² + y²) exist?",
+          "a": "No: along y = 0 it is 1, along x = 0 it is 0."
+        },
+        {
+          "q": "Does lim_{(x,y)→(0,0)} (x² − y²)/(x² + y²) exist?",
+          "a": "No: along y = 0 it is 1, along x = 0 it is −1."
+        }
+      ],
+      "takeaway": "One path is never enough to prove a limit exists; one path is enough to prove it does not.",
+      "module": "Partial Derivatives"
+    },
+    "Partial Derivatives": {
+      "intro": "A partial derivative measures the rate of change in one direction while all other variables are frozen — the slope of the surface along a line parallel to an axis. Treat the other variables as constants and differentiate as usual.",
+      "concepts": [
+        "Definition — f_x(a, b) is the derivative of the single-variable function x ↦ f(x, b); f_y freezes x instead.",
+        "Notation — f_x, ∂f/∂x, D_x f all mean the same thing; second partials are f_xx, f_yy, f_xy, f_yx.",
+        "Clairaut's theorem — if the mixed partials f_xy and f_yx are continuous, they are equal.",
+        "Interpretation — f_x is the slope in the x-direction, f_y the slope in the y-direction; together they will build the tangent plane."
+      ],
+      "example": {
+        "q": "Let f(x, y) = x²y + y³. Find f_x, f_y, f_xx, f_yy, and f_xy.",
+        "steps": [
+          "Freeze y and differentiate in x: f_x = 2xy.",
+          "Freeze x and differentiate in y: f_y = x² + 3y².",
+          "Differentiate again: f_xx = 2y and f_yy = 6y.",
+          "Mixed: f_xy = ∂/∂y (2xy) = 2x (and f_yx = ∂/∂x (x² + 3y²) = 2x, confirming Clairaut)."
+        ],
+        "a": "f_x = 2xy, f_y = x² + 3y², f_xx = 2y, f_yy = 6y, f_xy = 2x"
+      },
+      "practice": [
+        {
+          "q": "For f(x, y) = x³y² + sin(xy), find f_x(1, 0) and f_y(1, 0).",
+          "a": "f_x = 3x²y² + y cos(xy), so f_x(1, 0) = 0; f_y = 2x³y + x cos(xy), so f_y(1, 0) = 1."
+        },
+        {
+          "q": "For f(x, y) = xy², find f_x, f_y, and f_xy.",
+          "a": "f_x = y², f_y = 2xy, f_xy = 2y."
+        }
+      ],
+      "takeaway": "Partial derivatives are ordinary derivatives with the other variables held constant — and the mixed partials agree when they are continuous.",
+      "module": "Partial Derivatives"
+    },
+    "Tangent Planes and Linear Approximations": {
+      "intro": "A smooth surface is nearly flat up close: the tangent plane at a point is the best flat approximation, built from the two partial derivatives. Its formula is the multivariable version of the tangent line, and it powers linear approximation.",
+      "concepts": [
+        "Tangent plane — at (a, b) with z0 = f(a, b): z = z0 + f_x(a, b)(x − a) + f_y(a, b)(y − b).",
+        "Linear approximation — L(x, y) = f(a, b) + f_x(a, b)(x − a) + f_y(a, b)(y − b) estimates f near (a, b).",
+        "Differentials — dz = f_x dx + f_y dy estimates the change in f from small changes dx, dy.",
+        "Error — the approximation is good when (x, y) is close to (a, b); the error shrinks faster than the distance."
+      ],
+      "example": {
+        "q": "Find the tangent plane to z = x² + y² at (1, 2) and use it to estimate f(1.1, 1.9).",
+        "steps": [
+          "f(1, 2) = 5, f_x = 2x so f_x(1, 2) = 2, f_y = 2y so f_y(1, 2) = 4.",
+          "Tangent plane: z = 5 + 2(x − 1) + 4(y − 2) = 2x + 4y − 5.",
+          "Linear approximation: f(1.1, 1.9) ≈ 2(1.1) + 4(1.9) − 5 = 4.8.",
+          "The true value is 1.21 + 3.61 = 4.82, so the estimate is off by only 0.02."
+        ],
+        "a": "Tangent plane z = 2x + 4y − 5; estimate 4.8 (true value 4.82)"
+      },
+      "practice": [
+        {
+          "q": "Find the tangent plane to z = xy at (2, 3) and estimate f(2.1, 2.9).",
+          "a": "z = 6 + 3(x − 2) + 2(y − 3) = 3x + 2y − 6; estimate 6.1 (true value 6.09)."
+        },
+        {
+          "q": "For f(x, y) = √(x² + y²) at (3, 4), give the linear approximation and estimate f(3.1, 3.9).",
+          "a": "L(x, y) = 5 + (3/5)(x − 3) + (4/5)(y − 4); f(3.1, 3.9) ≈ 4.98."
+        }
+      ],
+      "takeaway": "The tangent plane is the linear part of the function near a point — two partial derivatives are all it takes.",
+      "module": "Partial Derivatives"
+    },
+    "The Chain Rule": {
+      "intro": "When the inputs of a multivariable function themselves depend on t (or on more variables), the chain rule tracks how the change flows through: multiply the rate along each path and add them up.",
+      "concepts": [
+        "One-parameter chain rule — if z = f(x, y) with x = x(t), y = y(t): dz/dt = f_x · dx/dt + f_y · dy/dt.",
+        "Tree diagrams — draw a branch for each intermediate variable; each path contributes a product of derivatives along it.",
+        "Several independent variables — if x and y depend on s and t, then ∂z/∂s = f_x x_s + f_y y_s (and similarly for t).",
+        "Implicit differentiation — for F(x, y) = 0, dy/dx = −F_x/F_y."
+      ],
+      "example": {
+        "q": "Let z = x²y with x = t² and y = t³. Find dz/dt two ways.",
+        "steps": [
+          "Chain rule: dz/dt = (2xy)(2t) + (x²)(3t²).",
+          "Substitute x = t², y = t³: 2xy = 2t⁵, so the first term is 4t⁶; x² = t⁴, so the second term is 3t⁶.",
+          "dz/dt = 7t⁶.",
+          "Check by substitution: z = t⁴ · t³ = t⁷, so dz/dt = 7t⁶. ✓"
+        ],
+        "a": "dz/dt = 7t⁶"
+      },
+      "practice": [
+        {
+          "q": "Let z = e^{xy} with x = 2t and y = t². Find dz/dt.",
+          "a": "dz/dt = y e^{xy} · 2 + x e^{xy} · 2t = 6t² e^{2t³}."
+        },
+        {
+          "q": "Let z = ln(x + y) with x = t and y = t². Find dz/dt.",
+          "a": "dz/dt = (1 + 2t)/(t + t²)."
+        }
+      ],
+      "takeaway": "Chain rule: sum over every path from the output back to the independent variable, multiplying derivatives along each path.",
+      "module": "Partial Derivatives"
+    },
+    "Directional Derivatives and the Gradient Vector": {
+      "intro": "Partial derivatives give slopes along the axes, but a surface has a slope in every direction. The gradient vector packages both partials into one arrow that points uphill — and its dot product with a unit direction gives the slope in that direction.",
+      "concepts": [
+        "Directional derivative — D_u f(a, b) = ∇f(a, b) · u, the rate of change in the direction of the unit vector u.",
+        "Gradient — ∇f = ⟨f_x, f_y⟩ (and ⟨f_x, f_y, f_z⟩ for three variables).",
+        "Steepest ascent — f increases fastest in the direction of ∇f, at the rate |∇f|; it decreases fastest in the direction −∇f.",
+        "Level curves — ∇f is perpendicular to the level curve f = k at every point."
+      ],
+      "example": {
+        "q": "Let f(x, y) = x² + y². At (1, 2), find the directional derivative in the direction u = ⟨3/5, 4/5⟩ and the direction and rate of steepest increase.",
+        "steps": [
+          "∇f = ⟨2x, 2y⟩, so ∇f(1, 2) = ⟨2, 4⟩.",
+          "D_u f = ⟨2, 4⟩ · ⟨3/5, 4/5⟩ = 6/5 + 16/5 = 22/5.",
+          "Steepest increase is in the direction of ∇f, i.e. ⟨1, 2⟩/√5, at rate |∇f| = √20 = 2√5."
+        ],
+        "a": "Directional derivative 22/5; steepest increase in direction ⟨1, 2⟩/√5 at rate 2√5"
+      },
+      "practice": [
+        {
+          "q": "For f(x, y) = xy at (2, 1), find D_u f with u = ⟨1/√2, 1/√2⟩.",
+          "a": "∇f = ⟨y, x⟩ = ⟨1, 2⟩, so D_u f = (1 + 2)/√2 = 3/√2."
+        },
+        {
+          "q": "For f(x, y) = xy at (2, 1), what is the maximum rate of increase?",
+          "a": "√5, in the direction ⟨1, 2⟩/√5."
+        }
+      ],
+      "takeaway": "The gradient points uphill; dot it with a unit vector to get the slope in any direction.",
+      "module": "Partial Derivatives"
+    },
+    "Maximum and Minimum Values": {
+      "intro": "Finding the highest and lowest points of a surface means solving f_x = 0 and f_y = 0 for critical points, then using the second-derivative test to sort them into maxima, minima, and saddles — plus Lagrange multipliers when the point must lie on a curve.",
+      "concepts": [
+        "Critical points — points where f_x = f_y = 0 or where a partial derivative fails to exist.",
+        "Second-derivative test — with D = f_xx f_yy − (f_xy)²: D > 0 and f_xx > 0 means a local min; D > 0 and f_xx < 0 means a local max; D < 0 means a saddle point.",
+        "Absolute extrema — on a closed, bounded region, check interior critical points and the boundary (often by parametrizing it).",
+        "Lagrange multipliers — to optimize f subject to g = k, solve ∇f = λ∇g together with g = k."
+      ],
+      "example": {
+        "q": "Find and classify the critical points of f(x, y) = x³ + y³ − 3xy.",
+        "steps": [
+          "f_x = 3x² − 3y = 0 gives y = x²; f_y = 3y² − 3x = 0 gives x = y². Together: x = x⁴, so x = 0 or x = 1.",
+          "Critical points: (0, 0) and (1, 1).",
+          "D = f_xx f_yy − f_xy² = (6x)(6y) − (−3)² = 36xy − 9.",
+          "At (1, 1): D = 27 > 0 and f_xx = 6 > 0, so a local minimum with f(1, 1) = −1. At (0, 0): D = −9 < 0, so a saddle point."
+        ],
+        "a": "Local minimum −1 at (1, 1); saddle point at (0, 0)"
+      },
+      "practice": [
+        {
+          "q": "Find and classify the critical point of f(x, y) = x² − 2x + y² − 6y + 10.",
+          "a": "Critical point (1, 3); D = 4 > 0 and f_xx = 2 > 0, so a local (in fact global) minimum with value 0."
+        },
+        {
+          "q": "Use Lagrange multipliers to maximize f(x, y) = xy subject to x² + y² = 1.",
+          "a": "Maximum 1/2 at (1/√2, 1/√2) (and at (−1/√2, −1/√2))."
+        }
+      ],
+      "takeaway": "Set both partials to zero, then let D decide: positive D means an extremum (sign of f_xx tells which), negative D means a saddle.",
+      "module": "Partial Derivatives"
+    },
+    "Double Integrals over Rectangles": {
+      "intro": "A double integral over a rectangle is an iterated integral: integrate in one variable while treating the other as a constant, then integrate the result. When the integrand is continuous, Fubini's theorem says the order does not matter.",
+      "concepts": [
+        "Iterated integral — ∬_R f(x, y) dA = ∫ₐᵇ ∫_c^d f(x, y) dy dx = ∫_c^d ∫ₐᵇ f(x, y) dx dy for R = [a, b] × [c, d].",
+        "Volume interpretation — if f ≥ 0, the double integral is the volume under the surface z = f(x, y) over R.",
+        "Fubini's theorem — for continuous f, both orders of integration give the same value.",
+        "Separable integrands — if f(x, y) = g(x)h(y), the double integral factors as (∫g)(∫h)."
+      ],
+      "example": {
+        "q": "Evaluate ∬_R (3x + 2y) dA where R = [0, 1] × [0, 2].",
+        "steps": [
+          "Inner integral (in y): ∫₀² (3x + 2y) dy = [3xy + y²]₀² = 6x + 4.",
+          "Outer integral: ∫₀¹ (6x + 4) dx = [3x² + 4x]₀¹ = 3 + 4 = 7.",
+          "Fubini says integrating in x first would give the same 7."
+        ],
+        "a": "7"
+      },
+      "practice": [
+        {
+          "q": "Evaluate ∫₀¹ ∫₀² (x + y) dy dx.",
+          "a": "3 (inner integral 2x + 2, then ∫₀¹ (2x + 2) dx = 1 + 2)."
+        },
+        {
+          "q": "Evaluate ∬_R x²y dA where R = [0, 2] × [0, 1].",
+          "a": "4/3 (∫₀² x²/2 dx = 4/3)."
+        }
+      ],
+      "takeaway": "Integrate one variable at a time, treating the other as a constant; Fubini guarantees the order is free.",
+      "module": "Multiple Integrals"
+    },
+    "Iterated Integrals": {
+      "intro": "An iterated integral is a double integral with its limits built in — the inner limits may depend on the outer variable, which is how a region's shape gets encoded into the integral. Choosing the order that matches the region's description is half the battle.",
+      "concepts": [
+        "Type I regions — between two curves y = g1(x) and y = g2(x) for a ≤ x ≤ b: integrate y first, then x.",
+        "Type II regions — between two curves x = h1(y) and x = h2(y) for c ≤ y ≤ d: integrate x first, then y.",
+        "Changing order — sketch the region, find its boundary curves, and rewrite the limits; the integrand stays the same.",
+        "Inner limits — the inner integral's limits are functions of the outer variable; the outer limits are always constants."
+      ],
+      "example": {
+        "q": "Evaluate ∫₀¹ ∫₀^{x²} (x + y) dy dx.",
+        "steps": [
+          "Inner integral: ∫₀^{x²} (x + y) dy = [xy + y²/2]₀^{x²} = x³ + x⁴/2.",
+          "Outer integral: ∫₀¹ (x³ + x⁴/2) dx = 1/4 + 1/10 = 7/20.",
+          "The region is the set under y = x² and above y = 0, for 0 ≤ x ≤ 1."
+        ],
+        "a": "7/20"
+      },
+      "practice": [
+        {
+          "q": "Evaluate ∫₀² ∫₀^{x} y dy dx.",
+          "a": "4/3 (inner integral x²/2, then ∫₀² x²/2 dx)."
+        },
+        {
+          "q": "Evaluate ∫₀^{π} ∫₀^{sin x} y dy dx.",
+          "a": "π/4 (inner integral sin²x/2; ∫₀^{π} sin²x/2 dx = π/4)."
+        }
+      ],
+      "takeaway": "The inner limits describe the region's top and bottom (or left and right); sketch first, then integrate.",
+      "module": "Multiple Integrals"
+    },
+    "Double Integrals over General Regions": {
+      "intro": "Most regions are not rectangles: they are bounded by curves. The strategy is the same as for iterated integrals — describe the region as between two functions, then integrate across it, using 1 as the integrand when you only want the area.",
+      "concepts": [
+        "Area as an integral — the area of D is ∬_D 1 dA.",
+        "Type I setup — ∬_D f dA = ∫ₐᵇ ∫_{g1(x)}^{g2(x)} f(x, y) dy dx.",
+        "Type II setup — ∬_D f dA = ∫_c^d ∫_{h1(y)}^{h2(y)} f(x, y) dx dy; pick whichever makes the limits simpler.",
+        "Intersection points — solve the boundary curves together to find where the region starts and ends."
+      ],
+      "example": {
+        "q": "Find the area of the region between y = x and y = x².",
+        "steps": [
+          "The curves meet where x = x², i.e. x = 0 and x = 1; on [0, 1], y = x is on top.",
+          "Area = ∫₀¹ ∫_{x²}^{x} 1 dy dx = ∫₀¹ (x − x²) dx.",
+          "∫₀¹ (x − x²) dx = 1/2 − 1/3 = 1/6."
+        ],
+        "a": "1/6"
+      },
+      "practice": [
+        {
+          "q": "Find the area of the triangle with vertices (0, 0), (1, 0), (0, 1).",
+          "a": "1/2 (∫₀¹ ∫₀^{1−x} 1 dy dx = ∫₀¹ (1 − x) dx)."
+        },
+        {
+          "q": "Evaluate ∫₀¹ ∫_{x²}^{x} (x + y) dy dx.",
+          "a": "3/20."
+        }
+      ],
+      "takeaway": "Find where the boundary curves meet, integrate between them, and use f = 1 when the question is just area.",
+      "module": "Multiple Integrals"
+    },
+    "Double Integrals in Polar Coordinates": {
+      "intro": "When a region is a disk, a sector, or an annulus, polar coordinates turn its boundaries into constants — but the area element changes: dA = r dr dθ, because a polar 'rectangle' grows with r.",
+      "concepts": [
+        "Conversion — x = r cos θ, y = r sin θ, x² + y² = r²; a disk of radius a is 0 ≤ r ≤ a, 0 ≤ θ ≤ 2π.",
+        "Area element — dA = r dr dθ; never forget the extra factor of r.",
+        "When to switch — radial symmetry, circular boundaries, or integrands like x² + y² and √(x² + y²) all point to polar.",
+        "Order — usually integrate r first (inner), θ second; for a full disk the θ integral is just a factor of 2π."
+      ],
+      "example": {
+        "q": "Evaluate ∬_D (x² + y²) dA where D is the disk of radius 2 centered at the origin.",
+        "steps": [
+          "In polar coordinates x² + y² = r² and dA = r dr dθ; D is 0 ≤ r ≤ 2, 0 ≤ θ ≤ 2π.",
+          "The integral is ∫₀^{2π} ∫₀² r² · r dr dθ = ∫₀^{2π} ∫₀² r³ dr dθ.",
+          "Inner: ∫₀² r³ dr = 4. Outer: ∫₀^{2π} 4 dθ = 8π."
+        ],
+        "a": "8π"
+      },
+      "practice": [
+        {
+          "q": "Evaluate ∬_D √(x² + y²) dA over the unit disk.",
+          "a": "2π/3 (∫₀^{2π} ∫₀¹ r² dr dθ)."
+        },
+        {
+          "q": "Find the area of the quarter-disk of radius 2 in the first quadrant.",
+          "a": "π (∫₀^{π/2} ∫₀² r dr dθ = (π/2)(2))."
+        }
+      ],
+      "takeaway": "Polar coordinates: replace x² + y² by r², dA by r dr dθ, and circular boundaries become constants.",
+      "module": "Multiple Integrals"
+    },
+    "Triple Integrals": {
+      "intro": "A triple integral integrates over a solid in 3D — it gives volume when the integrand is 1, and mass when the integrand is a density. It is just an iterated integral with three layers.",
+      "concepts": [
+        "Volume — the volume of a solid E is ∭_E 1 dV.",
+        "Iterated form — ∭_E f dV = ∫ ∫ ∫ f(x, y, z) dz dy dx with limits that describe E, innermost first.",
+        "Type 1 solids — between two surfaces z = u1(x, y) and z = u2(x, y) over a region D in the xy-plane.",
+        "Mass — if δ(x, y, z) is density, mass = ∭_E δ dV; center of mass divides the first moments by the mass."
+      ],
+      "example": {
+        "q": "Evaluate ∭_B x dV where B is the box [0, 2] × [0, 1] × [0, 1].",
+        "steps": [
+          "The integral factors over the box: (∫₀² x dx)(∫₀¹ dy)(∫₀¹ dz).",
+          "∫₀² x dx = 2, and each of the other integrals is 1.",
+          "So the triple integral is 2."
+        ],
+        "a": "2"
+      },
+      "practice": [
+        {
+          "q": "Evaluate ∭_B xyz dV over the unit cube [0, 1]³.",
+          "a": "1/8 ((1/2)(1/2)(1/2))."
+        },
+        {
+          "q": "Evaluate ∭_B (x² + y²) dV over the unit cube [0, 1]³.",
+          "a": "2/3 (∫₀¹ x² dx + ∫₀¹ y² dy = 1/3 + 1/3)."
+        }
+      ],
+      "takeaway": "Triple integrals are iterated integrals with three layers; 1 gives volume, density gives mass.",
+      "module": "Multiple Integrals"
+    },
+    "Triple Integrals in Cylindrical Coordinates": {
+      "intro": "Cylindrical coordinates are polar coordinates with height added: (r, θ, z). They are the natural choice for solids with a circular cross-section — cylinders, cones, and anything wrapped around the z-axis.",
+      "concepts": [
+        "Conversion — x = r cos θ, y = r sin θ, z = z; the volume element is dV = r dz dr dθ.",
+        "Cylinders — a solid cylinder of radius a and height h is 0 ≤ r ≤ a, 0 ≤ θ ≤ 2π, 0 ≤ z ≤ h.",
+        "Cones — the cone z = √(x² + y²) becomes z = r, so a cone of height 1 is r ≤ z ≤ 1.",
+        "Order — usually z innermost, then r, then θ; the θ integral is often just 2π."
+      ],
+      "example": {
+        "q": "Find the volume of the solid cylinder of radius 2 and height 3.",
+        "steps": [
+          "The cylinder is 0 ≤ r ≤ 2, 0 ≤ θ ≤ 2π, 0 ≤ z ≤ 3.",
+          "Volume = ∫₀^{2π} ∫₀² ∫₀³ r dz dr dθ.",
+          "Inner: ∫₀³ r dz = 3r; then ∫₀² 3r dr = 6; then ∫₀^{2π} 6 dθ = 12π — the familiar πr²h = π·4·3."
+        ],
+        "a": "12π"
+      },
+      "practice": [
+        {
+          "q": "Find the volume of the cone z = √(x² + y²) with 0 ≤ z ≤ 1.",
+          "a": "π/3 (∫₀^{2π} ∫₀¹ ∫_r¹ r dz dr dθ = 2π(1/2 − 1/3))."
+        },
+        {
+          "q": "Evaluate ∭_E z dV where E is the solid cylinder r ≤ 1, 0 ≤ z ≤ 2.",
+          "a": "2π (∫₀^{2π} ∫₀¹ ∫₀² z r dz dr dθ)."
+        }
+      ],
+      "takeaway": "Cylindrical coordinates: keep z, go polar in xy, and never drop the r in dV = r dz dr dθ.",
+      "module": "Multiple Integrals"
+    },
+    "Triple Integrals in Spherical Coordinates": {
+      "intro": "Spherical coordinates describe a point by its distance ρ from the origin and two angles — φ from the positive z-axis and θ around it. They are the right tool for balls, spheres, and cones with apex at the origin.",
+      "concepts": [
+        "Conversion — x = ρ sin φ cos θ, y = ρ sin φ sin θ, z = ρ cos φ; x² + y² + z² = ρ².",
+        "Volume element — dV = ρ² sin φ dρ dφ dθ; the ρ² sin φ is the Jacobian.",
+        "Ranges — a ball of radius a is 0 ≤ ρ ≤ a, 0 ≤ φ ≤ π, 0 ≤ θ ≤ 2π.",
+        "Cones and caps — a cone with half-angle α is 0 ≤ φ ≤ α; a spherical cap is a ≤ ρ ≤ b with φ limited."
+      ],
+      "example": {
+        "q": "Evaluate ∭_E √(x² + y² + z²) dV where E is the unit ball.",
+        "steps": [
+          "√(x² + y² + z²) = ρ and dV = ρ² sin φ dρ dφ dθ; E is 0 ≤ ρ ≤ 1, 0 ≤ φ ≤ π, 0 ≤ θ ≤ 2π.",
+          "The integral is ∫₀^{2π} ∫₀^{π} ∫₀¹ ρ³ sin φ dρ dφ dθ.",
+          "∫₀¹ ρ³ dρ = 1/4, ∫₀^{π} sin φ dφ = 2, ∫₀^{2π} dθ = 2π, so the product is 2π · 2 · (1/4) = π."
+        ],
+        "a": "π"
+      },
+      "practice": [
+        {
+          "q": "Find the volume of the ball of radius 2.",
+          "a": "32π/3 (∫₀^{2π} ∫₀^{π} ∫₀² ρ² sin φ dρ dφ dθ = 2π · 2 · 8/3)."
+        },
+        {
+          "q": "Evaluate ∭_E z² dV over the unit ball.",
+          "a": "4π/15 (by symmetry it is one third of ∭ ρ² dV = 4π/5)."
+        }
+      ],
+      "takeaway": "Spherical coordinates: ρ for distance, φ from the z-axis, θ around it — and dV = ρ² sin φ dρ dφ dθ.",
+      "module": "Multiple Integrals"
+    },
+    "Change of Variables in Multiple Integrals": {
+      "intro": "A change of variables is a substitution for double and triple integrals: it can turn a slanted parallelogram into a rectangle or an ellipse into a circle. The price is the Jacobian — the local stretching factor of the transformation.",
+      "concepts": [
+        "Jacobian — for x = x(u, v), y = y(u, v), the factor is |∂(x, y)/∂(u, v)|, the absolute value of the determinant of partial derivatives.",
+        "Formula — ∬_R f(x, y) dA = ∬_S f(x(u,v), y(u,v)) |∂(x,y)/∂(u,v)| du dv.",
+        "Polar and cylindrical revisited — the Jacobians r and ρ² sin φ are exactly the extra factors you already met.",
+        "Choosing the transformation — pick u and v so the region's boundaries become constants (e.g. u = x + y, v = x − y for a parallelogram)."
+      ],
+      "example": {
+        "q": "Use the change of variables x = 2u, y = 3v to find the area of the ellipse x²/4 + y²/9 = 1.",
+        "steps": [
+          "The transformation maps the ellipse to the unit disk u² + v² ≤ 1.",
+          "The Jacobian is |∂(x, y)/∂(u, v)| = |det [[2, 0], [0, 3]]| = 6.",
+          "Area = ∬_{u²+v²≤1} 6 du dv = 6 · (area of the unit disk) = 6π.",
+          "This matches πab = π · 2 · 3."
+        ],
+        "a": "6π"
+      },
+      "practice": [
+        {
+          "q": "Find the Jacobian of x = u + v, y = u − v.",
+          "a": "2 (|det [[1, 1], [1, −1]]| = |−2|)."
+        },
+        {
+          "q": "Find the Jacobian of the polar transformation x = r cos θ, y = r sin θ.",
+          "a": "r (the familiar factor in dA = r dr dθ)."
+        }
+      ],
+      "takeaway": "Change of variables: map the region to something simple, multiply by the Jacobian, and integrate there.",
+      "module": "Multiple Integrals"
+    },
+    "Vector Fields": {
+      "intro": "A vector field assigns a vector to every point in space — wind velocity over a map, the gravitational pull around a planet, the flow of a fluid. The two great questions about a field are whether it is a gradient (conservative) and how it curls and spreads.",
+      "concepts": [
+        "Definition — F(x, y, z) = ⟨P, Q, R⟩, where P, Q, R are scalar functions; a 2D field drops the third component.",
+        "Gradient fields — F = ∇f for some potential f is called conservative; the field points in the direction of fastest increase of f.",
+        "Conservative test — on a simply connected region, F is conservative exactly when ∂P/∂y = ∂Q/∂x, ∂P/∂z = ∂R/∂x, and ∂Q/∂z = ∂R/∂y.",
+        "Finding a potential — integrate P with respect to x, then match Q and R to fix the 'constant' (a function of the other variables)."
+      ],
+      "example": {
+        "q": "Show that F = ⟨y, x⟩ is conservative and find a potential function.",
+        "steps": [
+          "Check: ∂P/∂y = 1 and ∂Q/∂x = 1 — they match, so F is conservative.",
+          "Integrate P: f = ∫ y dx = xy + g(y).",
+          "Differentiate: f_y = x + g′(y) must equal Q = x, so g′(y) = 0 and g is a constant.",
+          "Take f(x, y) = xy; indeed ∇(xy) = ⟨y, x⟩."
+        ],
+        "a": "Conservative; potential f(x, y) = xy"
+      },
+      "practice": [
+        {
+          "q": "Show F = ⟨x², y², z²⟩ is conservative and find a potential.",
+          "a": "Mixed partials all match (all are 0); f = (x³ + y³ + z³)/3."
+        },
+        {
+          "q": "Is F = ⟨−y, x⟩ conservative?",
+          "a": "No: ∂P/∂y = −1 but ∂Q/∂x = 1."
+        }
+      ],
+      "takeaway": "A field is conservative when its mixed partials match — then a potential function exists and line integrals become easy.",
+      "module": "Vector Calculus"
+    },
+    "Line Integrals": {
+      "intro": "A line integral adds up values along a curve: a scalar function times arc length gives mass or average, while a vector field dotted with the tangent gives work — the total push of the field along the path.",
+      "concepts": [
+        "Scalar line integral — ∫_C f ds = ∫ₐᵇ f(r(t)) |r′(t)| dt; ds = |r′(t)| dt is the arc-length element.",
+        "Work integral — ∫_C F · dr = ∫ₐᵇ F(r(t)) · r′(t) dt; this is the work done by F along C.",
+        "Parametrization — describe C by r(t), a ≤ t ≤ b; reversing the direction flips the sign of a work integral but not of a scalar one.",
+        "Graphs as paths — for y = g(x), use r(t) = ⟨t, g(t)⟩."
+      ],
+      "example": {
+        "q": "Evaluate ∫_C y dx + x dy along the line segment from (0, 0) to (1, 1).",
+        "steps": [
+          "Parametrize: r(t) = ⟨t, t⟩, 0 ≤ t ≤ 1, so dx = dt and dy = dt.",
+          "On the path, y = t and x = t, so the integral is ∫₀¹ (t·1 + t·1) dt = ∫₀¹ 2t dt.",
+          "∫₀¹ 2t dt = 1."
+        ],
+        "a": "1"
+      },
+      "practice": [
+        {
+          "q": "Evaluate ∫_C y dx along y = x² from (0, 0) to (1, 1).",
+          "a": "1/3 (r(t) = ⟨t, t²⟩, dx = dt, y = t², so ∫₀¹ t² dt)."
+        },
+        {
+          "q": "Evaluate ∫_C (x + y) ds along the segment from (0, 0) to (1, 1).",
+          "a": "√2 (ds = √2 dt and x + y = 2t, so ∫₀¹ 2√2 t dt)."
+        }
+      ],
+      "takeaway": "Parametrize the curve, substitute, and integrate in t — ds for scalars, F · r′(t) for work.",
+      "module": "Vector Calculus"
+    },
+    "Fundamental Theorem for Line Integrals": {
+      "intro": "For a conservative field, the line integral depends only on the endpoints, not the path: it is just the change in the potential function. It is the exact analogue of the single-variable fundamental theorem.",
+      "concepts": [
+        "Theorem — if F = ∇f and C runs from A to B, then ∫_C F · dr = f(B) − f(A).",
+        "Path independence — a conservative field's work is the same along every path between two points.",
+        "Closed curves — the integral of a conservative field around any closed curve is 0.",
+        "Why it matters — it turns a hard path integral into two evaluations of a potential function."
+      ],
+      "example": {
+        "q": "Let F = ⟨2x, 2y⟩ and C be any path from (1, 0) to (0, 1). Evaluate ∫_C F · dr.",
+        "steps": [
+          "F = ∇f with f(x, y) = x² + y², since ∇(x² + y²) = ⟨2x, 2y⟩.",
+          "By the fundamental theorem, the integral is f(0, 1) − f(1, 0).",
+          "f(0, 1) = 1 and f(1, 0) = 1, so the integral is 0 — as it must be for a closed loop's worth of symmetry."
+        ],
+        "a": "0"
+      },
+      "practice": [
+        {
+          "q": "Let f(x, y) = xy and F = ∇f. Evaluate ∫_C F · dr from (0, 0) to (1, 2).",
+          "a": "2 (f(1, 2) − f(0, 0) = 2 − 0)."
+        },
+        {
+          "q": "Let F = ⟨3x², 3y²⟩. Evaluate ∫_C F · dr from (0, 0) to (1, 1).",
+          "a": "2 (potential f = x³ + y³; f(1, 1) − f(0, 0) = 2)."
+        }
+      ],
+      "takeaway": "For a gradient field, the line integral is just the potential at the end minus the potential at the start — the path does not matter.",
+      "module": "Vector Calculus"
+    },
+    "Green's Theorem": {
+      "intro": "Green's theorem converts a line integral around a closed curve into a double integral over the region inside — trading a boundary calculation for an area calculation, or the other way around.",
+      "concepts": [
+        "Circulation form — ∮_C P dx + Q dy = ∬_D (∂Q/∂x − ∂P/∂y) dA, for C positively (counterclockwise) oriented.",
+        "Area formula — taking P = −y/2, Q = x/2 gives area(D) = (1/2)∮_C (x dy − y dx).",
+        "Flux form — ∮_C F · n ds = ∬_D div F dA, measuring how much field flows out of D.",
+        "Orientation — the theorem needs C traversed counterclockwise; clockwise flips the sign."
+      ],
+      "example": {
+        "q": "Use Green's theorem to evaluate ∮_C (x dy − y dx), where C is the unit circle traversed counterclockwise.",
+        "steps": [
+          "Here P = −y and Q = x, so ∂Q/∂x − ∂P/∂y = 1 − (−1) = 2.",
+          "Green's theorem gives ∬_D 2 dA = 2 · (area of the unit disk) = 2π.",
+          "Equivalently, this is twice the area enclosed — the area formula with a factor of 2."
+        ],
+        "a": "2π"
+      },
+      "practice": [
+        {
+          "q": "Evaluate ∮_C (y dx + x dy) around the unit circle counterclockwise.",
+          "a": "0 (∂Q/∂x − ∂P/∂y = 1 − 1 = 0)."
+        },
+        {
+          "q": "Evaluate ∮_C x² dy around the unit circle counterclockwise.",
+          "a": "0 (the double integral is ∬_D 2x dA, which is 0 by symmetry)."
+        }
+      ],
+      "takeaway": "Green's theorem: the circulation around the boundary equals the double integral of (∂Q/∂x − ∂P/∂y) over the inside.",
+      "module": "Vector Calculus"
+    },
+    "Curl and Divergence": {
+      "intro": "Curl measures a field's local rotation — how much it swirls around a point — and divergence measures its local outflow — whether the point is a source or a sink. Together they are the two derivatives that matter for vector fields.",
+      "concepts": [
+        "Curl — ∇ × F = ⟨∂R/∂y − ∂Q/∂z, ∂P/∂z − ∂R/∂x, ∂Q/∂x − ∂P/∂y⟩; it is a vector pointing along the axis of rotation.",
+        "Divergence — div F = ∇ · F = ∂P/∂x + ∂Q/∂y + ∂R/∂z; it is a scalar, positive at sources and negative at sinks.",
+        "Conservative fields — F = ∇f has curl 0; conversely, a curl-free field on a simply connected region is conservative.",
+        "Identities — div(curl F) = 0 and curl(∇f) = 0 always."
+      ],
+      "example": {
+        "q": "Find the curl and divergence of F = ⟨−y, x, 0⟩.",
+        "steps": [
+          "Divergence: ∂P/∂x + ∂Q/∂y + ∂R/∂z = 0 + 0 + 0 = 0 — the field neither spreads nor compresses.",
+          "Curl: ⟨∂R/∂y − ∂Q/∂z, ∂P/∂z − ∂R/∂x, ∂Q/∂x − ∂P/∂y⟩ = ⟨0 − 0, 0 − 0, 1 − (−1)⟩ = ⟨0, 0, 2⟩.",
+          "The field rotates counterclockwise about the z-axis with twice the unit angular speed — as expected for solid-body rotation."
+        ],
+        "a": "div F = 0; curl F = ⟨0, 0, 2⟩"
+      },
+      "practice": [
+        {
+          "q": "Find div and curl of F = ⟨x², y², z²⟩.",
+          "a": "div F = 2x + 2y + 2z; curl F = ⟨0, 0, 0⟩."
+        },
+        {
+          "q": "Find div and curl of F = ⟨yz, xz, xy⟩.",
+          "a": "div F = 0; curl F = ⟨0, 0, 0⟩ (it is the gradient of xyz)."
+        }
+      ],
+      "takeaway": "Curl is the swirl (a vector), divergence is the source strength (a scalar); gradient fields have zero curl.",
+      "module": "Vector Calculus"
+    },
+    "Surface Integrals": {
+      "intro": "A surface integral adds up values over a curved surface — mass of a shell, flux of a field through it. The key is the surface area element dS, which measures how a parametrization stretches area.",
+      "concepts": [
+        "Scalar surface integral — ∬_S f dS = ∬_D f(r(u,v)) |r_u × r_v| du dv.",
+        "Graphs — for z = g(x, y), dS = √(1 + g_x² + g_y²) dA.",
+        "Flux — ∬_S F · dS = ∬_S F · n dS measures the flow of F through S; the orientation (choice of n) fixes the sign.",
+        "Closed surfaces — outward is the standard orientation for flux out of a solid."
+      ],
+      "example": {
+        "q": "Evaluate ∬_S z dS where S is the part of the plane z = 1 − x − y in the first octant.",
+        "steps": [
+          "On the plane, g_x = g_y = −1, so dS = √(1 + 1 + 1) dA = √3 dA.",
+          "The projection D is the triangle x ≥ 0, y ≥ 0, x + y ≤ 1.",
+          "∬_D (1 − x − y) √3 dA = √3 ∫₀¹ ∫₀^{1−x} (1 − x − y) dy dx = √3 · (1/6)."
+        ],
+        "a": "√3/6"
+      },
+      "practice": [
+        {
+          "q": "Find the surface area of the cone z = √(x² + y²) with 0 ≤ z ≤ 1.",
+          "a": "√2 π (dS = √2 dA over the unit disk)."
+        },
+        {
+          "q": "Find the flux of F = ⟨x, y, z⟩ outward through the unit sphere.",
+          "a": "4π (on the sphere F · n = 1, so the flux is the sphere's area)."
+        }
+      ],
+      "takeaway": "Surface integrals need dS: for a graph, √(1 + g_x² + g_y²) dA; flux dots the field with the unit normal.",
+      "module": "Vector Calculus"
+    },
+    "Stokes' Theorem": {
+      "intro": "Stokes' theorem says the circulation of a field around a closed curve equals the flux of its curl through any surface the curve bounds. It is Green's theorem lifted off the plane and into space.",
+      "concepts": [
+        "Theorem — ∮_C F · dr = ∬_S (∇ × F) · n dS, where C is the boundary of S with compatible orientation (right-hand rule).",
+        "Choose the easiest surface — any surface with the same boundary works, so pick a flat disk when you can.",
+        "Orientation — curl your right-hand fingers along C and your thumb gives the normal direction for S.",
+        "Physical meaning — the total swirl through a surface is measured by the circulation around its rim."
+      ],
+      "example": {
+        "q": "Verify Stokes' theorem for F = ⟨−y, x, 0⟩ with C the unit circle in the xy-plane and S the unit disk.",
+        "steps": [
+          "Line integral: parametrize x = cos t, y = sin t. Then −y dx + x dy = sin²t dt + cos²t dt = dt, so ∮_C F · dr = ∫₀^{2π} dt = 2π.",
+          "Curl: ∇ × F = ⟨0, 0, 2⟩, and n = ⟨0, 0, 1⟩ on the disk.",
+          "Surface integral: ∬_S ⟨0, 0, 2⟩ · ⟨0, 0, 1⟩ dS = ∬_S 2 dS = 2π — the two sides agree."
+        ],
+        "a": "Both sides equal 2π"
+      },
+      "practice": [
+        {
+          "q": "Use Stokes' theorem to evaluate ∮_C F · dr for F = ⟨0, x, 0⟩ around the unit circle in the xy-plane.",
+          "a": "π (curl F = ⟨0, 0, 1⟩, flux through the disk is its area π)."
+        },
+        {
+          "q": "For F = ⟨z, x, y⟩, find the flux of curl F through the unit disk in the xy-plane.",
+          "a": "π (curl F = ⟨1, 1, 1⟩; its z-component is 1, so the flux is the disk's area)."
+        }
+      ],
+      "takeaway": "Circulation around the rim equals the flux of the curl through the surface — and you may choose the simplest surface with that rim.",
+      "module": "Vector Calculus"
+    },
+    "Divergence Theorem": {
+      "intro": "The divergence theorem — Gauss's theorem — says the flux of a field out of a closed surface equals the triple integral of its divergence over the solid inside. It is the 3D version of Green's flux form and the capstone of the course.",
+      "concepts": [
+        "Theorem — ∬_S F · dS = ∭_E div F dV, where S is the closed boundary of the solid E, oriented outward.",
+        "When to use it — flux through a complicated closed surface becomes a (usually easier) volume integral.",
+        "Sources and sinks — div F > 0 means the field is created inside E; div F < 0 means it is absorbed.",
+        "Relation to the others — the fundamental theorem, Green's, Stokes', and the divergence theorem are all one idea: the integral over a boundary equals the integral of a derivative over the inside."
+      ],
+      "example": {
+        "q": "Verify the divergence theorem for F = ⟨x, y, z⟩ over the unit ball.",
+        "steps": [
+          "Divergence: div F = 1 + 1 + 1 = 3, so ∭_E 3 dV = 3 · (volume of the unit ball) = 3 · (4π/3) = 4π.",
+          "Flux: on the unit sphere the outward unit normal is n = ⟨x, y, z⟩, so F · n = x² + y² + z² = 1.",
+          "∬_S 1 dS = the sphere's surface area = 4π — the two sides agree."
+        ],
+        "a": "Both sides equal 4π"
+      },
+      "practice": [
+        {
+          "q": "Use the divergence theorem to find the flux of F = ⟨2x, 2y, 2z⟩ out of the unit cube [0, 1]³.",
+          "a": "6 (div F = 6, and the cube's volume is 1)."
+        },
+        {
+          "q": "Use the divergence theorem to find the flux of F = ⟨x³, y³, z³⟩ out of the unit sphere.",
+          "a": "12π/5 (div F = 3(x² + y² + z²) = 3ρ²; ∭ 3ρ² dV = 12π/5)."
+        }
+      ],
+      "takeaway": "Flux out of a closed surface equals the triple integral of the divergence inside — the grand finale of vector calculus.",
+      "module": "Vector Calculus"
+    }
+  }
+}
