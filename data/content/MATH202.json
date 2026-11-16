@@ -1,0 +1,818 @@
+{
+  "course_id": "MATH202",
+  "title": "Differential Equations",
+  "lesson_count": 27,
+  "lessons": {
+    "Definitions and Terminology": {
+      "intro": "A differential equation is an equation that involves an unknown function and its derivatives. The whole course is about recognizing what kind of equation you have — its order, whether it is linear, and what a solution means — because the type of the equation decides the method that solves it.",
+      "concepts": [
+        "Order — the order of a differential equation is the order of the highest derivative in it; y'' + 3y' + y = 0 is second order.",
+        "Linear vs. nonlinear — an equation is linear if the unknown function and its derivatives appear only to the first power, with no products of them; (y'')² + y = 0 is nonlinear because of the squared derivative, and y·y' = x is nonlinear because of the product.",
+        "Solution — a function is a solution on an interval if substituting it (and its derivatives) into the equation makes it a true identity there; most equations have a whole family of solutions, one for each choice of the arbitrary constants.",
+        "General vs. particular solution — the general solution contains arbitrary constants (as many as the order); a particular solution is one member of the family, picked out by extra conditions."
+      ],
+      "example": {
+        "q": "Show that y = e^{3x} is a solution of y'' − 9y = 0, and state the order of the equation and whether it is linear.",
+        "steps": [
+          "Differentiate: y' = 3e^{3x} and y'' = 9e^{3x}.",
+          "Substitute: y'' − 9y = 9e^{3x} − 9e^{3x} = 0, so the identity holds for every x.",
+          "The highest derivative is y'', so the equation is second order; y and y'' appear only to the first power, so it is linear."
+        ],
+        "a": "y = e^{3x} is a solution; the equation is second order and linear"
+      },
+      "practice": [
+        {
+          "q": "Give the order of (y'')² + y' = sin x, and say whether it is linear or nonlinear.",
+          "a": "Second order; nonlinear, because y'' is squared."
+        },
+        {
+          "q": "Verify that y = sin x + cos x is a solution of y'' + y = 0.",
+          "a": "y' = cos x − sin x, y'' = −sin x − cos x = −y, so y'' + y = 0."
+        }
+      ],
+      "takeaway": "Order is the highest derivative present; linear means no powers or products of the unknown function and its derivatives.",
+      "module": "Introduction to Differential Equations"
+    },
+    "Initial-Value Problems": {
+      "intro": "A differential equation alone usually has infinitely many solutions. An initial-value problem (IVP) pins down one of them by prescribing the value of the function (and its derivatives, for higher order) at a single point — the starting state of the system.",
+      "concepts": [
+        "Initial conditions — for a first-order equation one condition y(x0) = y0 is enough; an n-th order equation needs n conditions, y(x0), y'(x0), …, y^{(n−1)}(x0).",
+        "How to solve an IVP — find the general solution first, then use the initial conditions to solve for the constants; do the algebra at the end, not inside the integration.",
+        "Existence and uniqueness — for y' = f(x, y) with f and ∂f/∂y continuous near (x0, y0), the IVP has exactly one solution through that point; a solution can still fail to exist if the equation blows up, as with y' = y², y(0) = 1 at x = 1.",
+        "Why it matters — an IVP is the mathematical form of a physical prediction: the equation is the law, the initial condition is the state of the world now."
+      ],
+      "example": {
+        "q": "Solve the initial-value problem dy/dx = 2x with y(1) = 3.",
+        "steps": [
+          "Integrate: y = ∫ 2x dx = x² + C, the general solution.",
+          "Apply the initial condition: y(1) = 1 + C = 3, so C = 2.",
+          "The particular solution is y = x² + 2."
+        ],
+        "a": "y = x² + 2"
+      },
+      "practice": [
+        {
+          "q": "Solve dy/dx = 3x² with y(0) = 1.",
+          "a": "y = x³ + 1 (since y = x³ + C and C = 1)."
+        },
+        {
+          "q": "Solve y'' = 6x with y(0) = 1 and y'(0) = 2.",
+          "a": "y = x³ + 2x + 1 (integrate twice: y' = 3x² + 2, then y = x³ + 2x + 1)."
+        }
+      ],
+      "takeaway": "Solve generally first, then use the initial conditions to fix the constants — one condition per order of the equation.",
+      "module": "Introduction to Differential Equations"
+    },
+    "Differential Equations as Mathematical Models": {
+      "intro": "Differential equations are how change is written down: a rate of change depends on the present state, and that dependence is the equation. Population growth, cooling, decay, and motion all become first-order equations once you translate the words into a rate.",
+      "concepts": [
+        "Proportional growth — if a quantity grows at a rate proportional to itself, dP/dt = kP, the solution is exponential, P = P0 e^{kt}; k > 0 is growth, k < 0 is decay.",
+        "Newton's law of cooling — the rate of change of temperature is proportional to the difference from the surroundings: dT/dt = k(T − Tm), solved by T = Tm + (T0 − Tm) e^{kt}.",
+        "Radioactive decay and half-life — dN/dt = −λN gives N = N0 e^{−λt}; the half-life is the time for N to halve, ln 2 / λ.",
+        "Building the model — name the quantity, write its rate as a function of the quantity itself and time, and check the units: a rate of grams per minute must equal grams per minute on both sides."
+      ],
+      "example": {
+        "q": "A cup of coffee is 90°C in a 20°C room. After 10 minutes it has cooled to 60°C. What is its temperature after 20 minutes?",
+        "steps": [
+          "Model: dT/dt = k(T − 20), so T(t) = 20 + 70 e^{kt}.",
+          "Use T(10) = 60: 70 e^{10k} = 40, so e^{10k} = 4/7.",
+          "At t = 20: T = 20 + 70 e^{20k} = 20 + 70 (4/7)² = 20 + 70 · 16/49 = 20 + 160/7 ≈ 42.9°C."
+        ],
+        "a": "About 42.9°C"
+      },
+      "practice": [
+        {
+          "q": "A bacterial culture starts with 500 cells and doubles every 4 hours. How many cells are there after 12 hours?",
+          "a": "4,000 (three doublings: 500 · 2³)."
+        },
+        {
+          "q": "A radioactive sample has half-life 10 days and starts at 800 g. How much remains after 30 days?",
+          "a": "100 g (three half-lives: 800 / 2³)."
+        }
+      ],
+      "takeaway": "Translate a rate statement into d(quantity)/dt = (function of the quantity); proportional rates give exponentials.",
+      "module": "Introduction to Differential Equations"
+    },
+    "Solution Curves": {
+      "intro": "Before solving an equation, you can see its solutions: at every point (x, y) the equation dy/dx = f(x, y) prescribes a slope, and the solutions are the curves that follow those slopes everywhere. The picture of all the little slope segments is the direction field.",
+      "concepts": [
+        "Direction field — at each point (x, y) draw a short segment of slope f(x, y); solution curves are tangent to the segments they pass through, so you can sketch a solution by following the field.",
+        "Isoclines — curves f(x, y) = c along which all slopes are equal to c; for dy/dx = x + y the isocline of slope 1 is the line y = 1 − x.",
+        "Reading equilibrium — where f(x, y) = 0 the slope is zero, so solutions flatten there; a horizontal line y = y0 with f(x, y0) = 0 is a constant (equilibrium) solution.",
+        "When the field is enough — the field shows the qualitative behavior (growth, decay, oscillation) even when no closed-form solution exists, which is most of the time in real applications."
+      ],
+      "example": {
+        "q": "For dy/dx = 2x, find the slope of the direction field at (0, 0), (1, 0), and (−1, 1), and describe the solution curves.",
+        "steps": [
+          "The slope depends only on x: at (0, 0) the slope is 2·0 = 0; at (1, 0) it is 2; at (−1, 1) it is −2.",
+          "A curve following these slopes must flatten at x = 0 and rise steeply for large |x|.",
+          "Solving gives y = x² + C — parabolas, one through each initial point, exactly as the field suggests."
+        ],
+        "a": "Slopes 0, 2, −2; solution curves are the parabolas y = x² + C"
+      },
+      "practice": [
+        {
+          "q": "For dy/dx = y, what is the slope of the direction field at (0, 1) and at (1, 2)?",
+          "a": "1 at (0, 1) and 2 at (1, 2) — the slope equals the y-coordinate."
+        },
+        {
+          "q": "For dy/dx = x + y, find the isocline where the slope equals 1.",
+          "a": "The line x + y = 1, i.e. y = 1 − x."
+        }
+      ],
+      "takeaway": "The direction field turns an equation into a picture: solutions are the curves tangent to the slope segments everywhere.",
+      "module": "First-Order Differential Equations"
+    },
+    "Separable Equations": {
+      "intro": "A first-order equation is separable when it can be rearranged so that all the y's (with dy) sit on one side and all the x's (with dx) on the other. Then both sides integrate independently — it is the simplest solving method, and the first one to try.",
+      "concepts": [
+        "The test — dy/dx = g(x) h(y) is separable; dy/dx = x + y is not, because the right side cannot be factored into a function of x times a function of y.",
+        "The procedure — write dy/h(y) = g(x) dx, integrate both sides, and solve for y when you can; a single constant of integration is enough, since the two constants combine into one.",
+        "Lost solutions — dividing by h(y) can throw away constant solutions where h(y) = 0; check those separately (for dy/dx = y², the solution y = 0 is lost by the division).",
+        "Choosing the branch — after integrating you often get y² = something; the initial condition picks the sign of the square root."
+      ],
+      "example": {
+        "q": "Solve dy/dx = x/y with y(0) = 2.",
+        "steps": [
+          "Separate: y dy = x dx.",
+          "Integrate: y²/2 = x²/2 + C, so y² = x² + 2C; rename 2C as C.",
+          "Apply y(0) = 2: 4 = 0 + C, so C = 4 and y² = x² + 4; the initial value is positive, so y = √(x² + 4)."
+        ],
+        "a": "y = √(x² + 4)"
+      },
+      "practice": [
+        {
+          "q": "Solve dy/dx = e^x / y with y(0) = 1.",
+          "a": "y = √(2e^x − 1) (from y²/2 = e^x − 1/2)."
+        },
+        {
+          "q": "Solve dy/dx = y/x with y(1) = 2.",
+          "a": "y = 2x (from ln|y| = ln|x| + C)."
+        }
+      ],
+      "takeaway": "Factor the right side into g(x)·h(y), separate, integrate both sides — and check for constant solutions lost by division.",
+      "module": "First-Order Differential Equations"
+    },
+    "Linear Equations": {
+      "intro": "A first-order linear equation, y' + P(x) y = Q(x), can always be solved by one trick: multiply by an integrating factor that turns the left side into the derivative of a single product. No guessing is needed — the method works for every linear equation.",
+      "concepts": [
+        "Standard form — divide through so the equation reads y' + P(x) y = Q(x); P and Q are the two functions you need.",
+        "Integrating factor — μ(x) = e^{∫P(x) dx}; multiplying by μ makes the left side exactly d/dx(μ y), because μ' = P μ.",
+        "The solve — d/dx(μ y) = μ Q, so μ y = ∫ μ Q dx + C, and y = (∫ μ Q dx + C)/μ; the integral of μ Q is the only hard step.",
+        "Homogeneous vs. nonhomogeneous — with Q = 0 the solution is y = C e^{−∫P dx}; the general solution is that homogeneous part plus any one particular solution."
+      ],
+      "example": {
+        "q": "Solve y' + 2y = e^x.",
+        "steps": [
+          "Standard form is already there with P(x) = 2, so μ = e^{∫2 dx} = e^{2x}.",
+          "Multiply: d/dx(e^{2x} y) = e^{2x} · e^x = e^{3x}.",
+          "Integrate: e^{2x} y = e^{3x}/3 + C, so y = e^x/3 + C e^{−2x}."
+        ],
+        "a": "y = (1/3) e^x + C e^{−2x}"
+      },
+      "practice": [
+        {
+          "q": "Solve y' − y = 2 with y(0) = 1.",
+          "a": "y = 3e^x − 2 (μ = e^{−x}; y = −2 + Ce^x, and C = 3)."
+        },
+        {
+          "q": "Solve xy' + y = x².",
+          "a": "y = x²/3 + C/x (divide by x: y' + y/x = x, μ = x, so d/dx(xy) = x²)."
+        }
+      ],
+      "takeaway": "Linear first-order equations always yield to the integrating factor μ = e^{∫P dx}: the left side becomes d/dx(μ y).",
+      "module": "First-Order Differential Equations"
+    },
+    "Exact Equations": {
+      "intro": "Some equations M(x, y) dx + N(x, y) dy = 0 are secretly the total differential of one function F(x, y) — the equation is just dF = 0, so the solution is F(x, y) = C. The test for that is one partial-derivative equality.",
+      "concepts": [
+        "The exactness test — M dx + N dy is exact (equals dF for some F) exactly when ∂M/∂y = ∂N/∂x, on a simply connected region.",
+        "Finding F — integrate M with respect to x (treating y as constant) to get F = ∫M dx + h(y), then use ∂F/∂y = N to find h'(y) and h(y).",
+        "The solution — once F is found, the implicit solution is F(x, y) = C; you rarely need to solve for y explicitly.",
+        "If the test fails — the equation is not exact as written, but sometimes multiplying by an integrating factor (often a function of x alone or y alone) makes it exact; linear equations are the classic case."
+      ],
+      "example": {
+        "q": "Solve (2xy + 1) dx + (x² + 3y²) dy = 0.",
+        "steps": [
+          "Test: ∂M/∂y = 2x and ∂N/∂x = 2x — equal, so the equation is exact.",
+          "Integrate M in x: F = ∫(2xy + 1) dx = x²y + x + h(y).",
+          "∂F/∂y = x² + h'(y) must equal N = x² + 3y², so h'(y) = 3y² and h(y) = y³.",
+          "The solution is F = C."
+        ],
+        "a": "x²y + x + y³ = C"
+      },
+      "practice": [
+        {
+          "q": "Solve (3x² + y) dx + (x + 2y) dy = 0.",
+          "a": "x³ + xy + y² = C (exact: ∂M/∂y = 1 = ∂N/∂x)."
+        },
+        {
+          "q": "Show y dx + (x + 1) dy = 0 is exact and solve it.",
+          "a": "xy + y = C (∂M/∂y = 1 = ∂N/∂x; F = xy + y)."
+        }
+      ],
+      "takeaway": "Check ∂M/∂y = ∂N/∂x; if it holds, integrate M in x, fix the leftover function of y with N, and set F = C.",
+      "module": "First-Order Differential Equations"
+    },
+    "Homogeneous Equations": {
+      "intro": "A first-order equation is homogeneous when its right side depends only on the ratio y/x — the equation looks the same at every scale. The substitution v = y/x collapses it into a separable equation in v and x.",
+      "concepts": [
+        "The test — M(x, y) and N(x, y) are homogeneous of the same degree n if M(tx, ty) = tⁿ M(x, y); then dy/dx = −M/N depends only on y/x.",
+        "The substitution — set y = v x, so dy/dx = v + x dv/dx; the equation becomes separable in v and x.",
+        "Back-substitution — after solving for v, replace v by y/x to get the implicit solution in x and y.",
+        "Why it works — scaling (x, y) → (tx, ty) leaves the direction field unchanged along each ray through the origin, so the field is determined by the slope y/x alone."
+      ],
+      "example": {
+        "q": "Solve dy/dx = (x² + y²)/(xy).",
+        "steps": [
+          "The right side is (x/y) + (y/x), a function of y/x only — homogeneous. Set y = vx, so dy/dx = v + x dv/dx and the equation becomes v + x dv/dx = 1/v + v.",
+          "Cancel v and separate: x dv/dx = 1/v, so v dv = dx/x.",
+          "Integrate: v²/2 = ln|x| + C. Back-substitute v = y/x."
+        ],
+        "a": "y² = 2x² (ln|x| + C)"
+      },
+      "practice": [
+        {
+          "q": "Solve dy/dx = (x + y)/x.",
+          "a": "y = x ln|x| + Cx (v = y/x gives x dv/dx = 1)."
+        },
+        {
+          "q": "Solve dy/dx = y/x + x/y.",
+          "a": "y² = 2x² ln|x| + Cx² (v dv = dx/x with v = y/x)."
+        }
+      ],
+      "takeaway": "If the right side depends only on y/x, set y = vx — the equation separates in v and x.",
+      "module": "First-Order Differential Equations"
+    },
+    "Applications of First-Order Equations": {
+      "intro": "The first-order methods now become models of real systems: a tank filling and draining, a circuit charging, a family of curves and the curves that cross it at right angles. The equation is built the same way every time — rate in minus rate out.",
+      "concepts": [
+        "Mixing — for a tank of volume V with concentration, dA/dt = (rate in) − (rate out) = (inflow rate)(inflow concentration) − (outflow rate)(A/V); with equal in/out flow it is linear with constant coefficients.",
+        "Orthogonal trajectories — given a family F(x, y, C) = 0, differentiate and eliminate C to get the family's differential equation, then replace y' by −1/y' and solve for the perpendicular family.",
+        "RC circuits — charge q on a capacitor satisfies R dq/dt + q/C = E(t); it is a linear equation whose steady state is q = C·E.",
+        "The pattern — every application is the same move: name the changing quantity, write its rate as inflow minus outflow (or force divided by mass), and solve the resulting first-order equation."
+      ],
+      "example": {
+        "q": "A 100-liter tank starts with pure water. Brine with 5 g/L of salt flows in at 2 L/min, and the well-mixed solution flows out at 2 L/min. How much salt is in the tank after 50 minutes?",
+        "steps": [
+          "Let A(t) be grams of salt. Salt enters at 2·5 = 10 g/min and leaves at 2·(A/100) g/min, so dA/dt = 10 − A/50, A(0) = 0.",
+          "Linear with μ = e^{t/50}: d/dt(e^{t/50} A) = 10 e^{t/50}, so A = 500 + C e^{−t/50}; A(0) = 0 gives C = −500.",
+          "A(t) = 500(1 − e^{−t/50}); at t = 50, A = 500(1 − e^{−1}) ≈ 500(0.6321) ≈ 316 g."
+        ],
+        "a": "About 316 g (the tank tends toward 500 g)"
+      },
+      "practice": [
+        {
+          "q": "A circuit has R = 10 Ω, C = 0.01 F, and a constant 5 V source. What charge does the capacitor approach in the long run?",
+          "a": "0.05 C (steady state q = C·E = 0.01·5)."
+        },
+        {
+          "q": "Find the orthogonal trajectories of the family y = Cx².",
+          "a": "x² + 2y² = C (ellipses: the family has y' = 2y/x, so the orthogonal family has y' = −x/(2y))."
+        }
+      ],
+      "takeaway": "Rate in minus rate out builds the equation; the first-order methods then finish the job.",
+      "module": "First-Order Differential Equations"
+    },
+    "Preliminary Theory: Linear Equations": {
+      "intro": "Second-order linear equations behave like first-order ones, one level up: the solutions form a two-dimensional vector space, and two independent solutions are all you ever need. The Wronskian is the test that tells you whether two solutions are genuinely different.",
+      "concepts": [
+        "Superposition — if y1 and y2 solve a homogeneous linear equation, so does every combination C1 y1 + C2 y2; the solution set is a vector space of dimension equal to the order.",
+        "Linear independence — y1 and y2 are independent if neither is a constant multiple of the other; for solutions of a linear equation, independence on an interval is equivalent to a nonzero Wronskian there.",
+        "Wronskian — W(y1, y2) = y1 y2' − y1' y2; Abel's identity says W(x) = C e^{−∫P(x) dx} for y'' + P(x) y' + Q(x) y = 0, so it is either always zero or never zero.",
+        "Existence and uniqueness — if P, Q, and the forcing term are continuous on an interval containing x0, the IVP with y(x0) and y'(x0) given has exactly one solution on that interval."
+      ],
+      "example": {
+        "q": "Are y1 = e^x and y2 = e^{2x} linearly independent? Compute their Wronskian.",
+        "steps": [
+          "W = y1 y2' − y1' y2 = e^x · 2e^{2x} − e^x · e^{2x}.",
+          "That is 2e^{3x} − e^{3x} = e^{3x}.",
+          "e^{3x} is never zero, so the Wronskian never vanishes and the functions are linearly independent on every interval."
+        ],
+        "a": "W = e^{3x} ≠ 0, so y1 and y2 are linearly independent"
+      },
+      "practice": [
+        {
+          "q": "Compute the Wronskian of sin x and cos x. Are they independent?",
+          "a": "W = sin x·(−sin x) − cos x·cos x = −1 ≠ 0, so they are independent."
+        },
+        {
+          "q": "Compute the Wronskian of y1 = x and y2 = x². Where are they independent?",
+          "a": "W = x·2x − 1·x² = x², nonzero for x ≠ 0, so they are independent on (0, ∞) (and on (−∞, 0))."
+        }
+      ],
+      "takeaway": "Two solutions span the whole solution space exactly when their Wronskian is nonzero.",
+      "module": "Higher-Order Differential Equations"
+    },
+    "Reduction of Order": {
+      "intro": "If you know one solution of a homogeneous second-order linear equation, you can find a second one: look for it in the form y2 = u(x) y1(x). The equation for u collapses to first order — the order is reduced, hence the name.",
+      "concepts": [
+        "The ansatz — set y2 = u y1; substituting into the equation kills the u term (because y1 is a solution), leaving a first-order equation for u'.",
+        "The formula — y2 = y1 ∫ e^{−∫P(x) dx} / y1² dx for y'' + P(x) y' + Q(x) y = 0; any one antiderivative will do, since adding a constant just adds a multiple of y1.",
+        "When to use it — whenever one solution is obvious (a constant, an exponential, a polynomial) and the equation has non-constant coefficients so the constant-coefficient method does not apply.",
+        "It always works — reduction of order never fails for a second-order linear equation; the only risk is that the integral for u is hard to evaluate in closed form."
+      ],
+      "example": {
+        "q": "Given that y1 = e^{2x} solves y'' − 4y' + 4y = 0, find a second independent solution.",
+        "steps": [
+          "Here P(x) = −4, so e^{−∫P dx} = e^{4x}.",
+          "y2 = y1 ∫ e^{4x}/y1² dx = e^{2x} ∫ e^{4x}/e^{4x} dx = e^{2x} ∫ 1 dx.",
+          "Taking the antiderivative x gives y2 = x e^{2x}, which is independent of e^{2x}."
+        ],
+        "a": "y2 = x e^{2x}; the general solution is (C1 + C2 x) e^{2x}"
+      },
+      "practice": [
+        {
+          "q": "Given y1 = 1 solves y'' − y' = 0, find a second solution by reduction of order.",
+          "a": "y2 = e^x (P = −1, so y2 = ∫ e^x dx = e^x)."
+        },
+        {
+          "q": "Given y1 = cos x solves y'' + y = 0, find a second solution.",
+          "a": "y2 = sin x (P = 0, so y2 = cos x ∫ dx/cos²x = cos x tan x = sin x)."
+        }
+      ],
+      "takeaway": "One known solution gives a second: y2 = y1 ∫ e^{−∫P dx}/y1² dx.",
+      "module": "Higher-Order Differential Equations"
+    },
+    "Homogeneous Linear Equations with Constant Coefficients": {
+      "intro": "With constant coefficients, exponentials are the key: try y = e^{mx} and the differential equation becomes an algebraic one — the auxiliary (characteristic) equation. Its roots, real or complex, repeated or distinct, write down the whole solution space.",
+      "concepts": [
+        "The auxiliary equation — substituting y = e^{mx} into a y'' + b y' + c y = 0 gives (a m² + b m + c) e^{mx} = 0, so m must satisfy a m² + b m + c = 0.",
+        "Distinct real roots — m1 ≠ m2 gives y = C1 e^{m1 x} + C2 e^{m2 x}.",
+        "Repeated root — m1 = m2 = m gives y = (C1 + C2 x) e^{mx}; the extra factor x comes from reduction of order.",
+        "Complex roots — m = α ± βi gives y = e^{αx} (C1 cos βx + C2 sin βx); the real and imaginary parts of e^{(α+βi)x} are the two real solutions."
+      ],
+      "example": {
+        "q": "Solve y'' − 5y' + 6y = 0 with y(0) = 1 and y'(0) = 0.",
+        "steps": [
+          "Auxiliary equation: m² − 5m + 6 = 0, so (m − 2)(m − 3) = 0 and m = 2, 3.",
+          "General solution: y = C1 e^{2x} + C2 e^{3x}; y' = 2C1 e^{2x} + 3C2 e^{3x}.",
+          "y(0) = C1 + C2 = 1 and y'(0) = 2C1 + 3C2 = 0; solving gives C1 = 3, C2 = −2."
+        ],
+        "a": "y = 3e^{2x} − 2e^{3x}"
+      },
+      "practice": [
+        {
+          "q": "Solve y'' + 4y' + 4y = 0.",
+          "a": "y = (C1 + C2 x) e^{−2x} (repeated root m = −2)."
+        },
+        {
+          "q": "Solve y'' − 2y' + 5y = 0.",
+          "a": "y = e^x (C1 cos 2x + C2 sin 2x) (roots 1 ± 2i)."
+        }
+      ],
+      "takeaway": "Try e^{mx}: the auxiliary equation's roots give the solution — distinct roots give exponentials, a repeat adds an x, complex roots give e^{αx} times sine and cosine.",
+      "module": "Higher-Order Differential Equations"
+    },
+    "Undetermined Coefficients (Superposition Approach)": {
+      "intro": "For a constant-coefficient equation with a forcing term built from polynomials, exponentials, sines, and cosines, the particular solution has the same shape as the forcing term — with unknown coefficients to determine. Guess the shape, plug in, and solve for the coefficients.",
+      "concepts": [
+        "The guess table — for forcing e^{ax} try A e^{ax}; for a polynomial of degree n try a polynomial of degree n; for sin bx or cos bx try A cos bx + B sin bx; for products, multiply the guesses.",
+        "The resonance rule — if any term of your guess already solves the homogeneous equation, multiply that part of the guess by x (and by x again if the root is repeated).",
+        "Superposition — a forcing term that is a sum gets a particular solution that is the sum of the particular solutions for each piece; solve each piece separately.",
+        "Why it works — differentiating a polynomial, exponential, or sinusoid stays in the same family, so the equation can only match the forcing term if the guess has the same shape."
+      ],
+      "example": {
+        "q": "Solve y'' − 3y' + 2y = e^{3x}.",
+        "steps": [
+          "Homogeneous: m² − 3m + 2 = 0 gives m = 1, 2, so y_h = C1 e^x + C2 e^{2x}.",
+          "e^{3x} is not a homogeneous solution, so try y_p = A e^{3x}. Then y_p' = 3A e^{3x}, y_p'' = 9A e^{3x}.",
+          "Substitute: 9A − 9A + 2A = 2A must equal 1, so A = 1/2."
+        ],
+        "a": "y = C1 e^x + C2 e^{2x} + (1/2) e^{3x}"
+      },
+      "practice": [
+        {
+          "q": "Find a particular solution of y'' + y = sin x.",
+          "a": "y_p = −(x/2) cos x (sin x is a homogeneous solution, so multiply the guess by x)."
+        },
+        {
+          "q": "Find a particular solution of y'' − y = 2x.",
+          "a": "y_p = −2x (try Ax + B: −Ax − B = 2x gives A = −2, B = 0)."
+        }
+      ],
+      "takeaway": "Guess the forcing term's shape with unknown coefficients; multiply by x when the guess collides with a homogeneous solution.",
+      "module": "Higher-Order Differential Equations"
+    },
+    "Variation of Parameters": {
+      "intro": "Undetermined coefficients only works for special forcing terms. Variation of parameters works for any forcing term: take the homogeneous solutions y1, y2 and let their constants vary with x, then solve a small linear system for the derivatives of those varying constants.",
+      "concepts": [
+        "The ansatz — seek y_p = u1(x) y1 + u2(x) y2 with the constraint u1' y1 + u2' y2 = 0, which keeps y_p' free of u1'' and u2''.",
+        "The system — u1' y1 + u2' y2 = 0 and u1' y1' + u2' y2' = g(x) (the forcing term), solved by Cramer's rule with the Wronskian: u1' = −y2 g/W, u2' = y1 g/W.",
+        "Integrate and assemble — integrate u1' and u2' (any antiderivatives; constants of integration just add homogeneous solutions), then y_p = u1 y1 + u2 y2.",
+        "When to use it — any forcing term, especially ones undetermined coefficients cannot touch, like sec x, ln x, or 1/(1 + x²); the price is that the integrals may be hard."
+      ],
+      "example": {
+        "q": "Find a particular solution of y'' + y = sec x.",
+        "steps": [
+          "Homogeneous solutions: y1 = cos x, y2 = sin x, with Wronskian W = 1.",
+          "u1' = −y2 g/W = −sin x sec x = −tan x, so u1 = ln|cos x|; u2' = y1 g/W = cos x sec x = 1, so u2 = x.",
+          "Assemble: y_p = u1 y1 + u2 y2 = cos x ln|cos x| + x sin x."
+        ],
+        "a": "y_p = cos x · ln|cos x| + x sin x"
+      },
+      "practice": [
+        {
+          "q": "Find a particular solution of y'' − y = e^x by variation of parameters.",
+          "a": "y_p = (x/2) e^x − (1/4) e^x (W = −2; u1 = x/2, u2 = −e^{2x}/4)."
+        },
+        {
+          "q": "Find a particular solution of y'' + 4y = 1 by variation of parameters.",
+          "a": "y_p = 1/4 (u1' = −sin 2x / 2, u2' = cos 2x / 2; the pieces combine to the constant 1/4)."
+        }
+      ],
+      "takeaway": "Let the constants vary: u1' = −y2 g/W and u2' = y1 g/W, integrate, and y_p = u1 y1 + u2 y2 — it works for any forcing term.",
+      "module": "Higher-Order Differential Equations"
+    },
+    "Cauchy-Euler Equation": {
+      "intro": "The Cauchy-Euler (equidimensional) equation x² y'' + a x y' + b y = 0 has variable coefficients, but a power ansatz y = x^m turns it into algebra again — the same trick as constant coefficients, with x^m playing the role of e^{mx}.",
+      "concepts": [
+        "The indicial equation — substituting y = x^m gives m(m − 1) + a m + b = 0, a quadratic for m.",
+        "Distinct real roots — m1 ≠ m2 gives y = C1 x^{m1} + C2 x^{m2}.",
+        "Repeated root — m1 = m2 = m gives y = (C1 + C2 ln x) x^m; the logarithm is the Euler analogue of the extra factor x.",
+        "Complex roots — m = α ± βi gives y = x^α (C1 cos(β ln x) + C2 sin(β ln x)); the oscillation lives in ln x, not in x."
+      ],
+      "example": {
+        "q": "Solve x² y'' − 3x y' + 4y = 0 for x > 0.",
+        "steps": [
+          "Try y = x^m: m(m − 1) − 3m + 4 = m² − 4m + 4 = (m − 2)² = 0.",
+          "Repeated root m = 2, so the solutions are x² and x² ln x.",
+          "General solution: y = (C1 + C2 ln x) x²."
+        ],
+        "a": "y = (C1 + C2 ln x) x²"
+      },
+      "practice": [
+        {
+          "q": "Solve x² y'' + 3x y' + y = 0.",
+          "a": "y = (C1 + C2 ln x)/x (indicial (m+1)² = 0)."
+        },
+        {
+          "q": "Solve x² y'' + x y' − y = 0.",
+          "a": "y = C1 x + C2/x (indicial m² − 1 = 0)."
+        }
+      ],
+      "takeaway": "Try y = x^m: the indicial quadratic's roots give the solution — a repeat adds ln x, complex roots give sine and cosine of ln x.",
+      "module": "Higher-Order Differential Equations"
+    },
+    "Definition of the Laplace Transform": {
+      "intro": "The Laplace transform converts a function of time into a function of a new variable s, turning differentiation into multiplication by s. Differential equations become algebraic equations — solve those, then transform back.",
+      "concepts": [
+        "The definition — L{f(t)} = ∫_0^∞ e^{−st} f(t) dt, defined when the integral converges (for s large enough); linearity holds, L{af + bg} = aL{f} + bL{g}.",
+        "Basic transforms — L{1} = 1/s, L{e^{at}} = 1/(s − a) for s > a, L{tⁿ} = n!/s^{n+1}, L{sin at} = a/(s² + a²), L{cos at} = s/(s² + a²).",
+        "The key property — L{f'} = s F(s) − f(0) and L{f''} = s² F(s) − s f(0) − f'(0): initial conditions enter automatically, which is why the transform is made for IVPs.",
+        "Existence — functions of exponential order (bounded by Me^{ct}) have a transform for s > c; a jump discontinuity is fine, but e^{t²} grows too fast and has no Laplace transform."
+      ],
+      "example": {
+        "q": "Compute L{e^{2t}} from the definition.",
+        "steps": [
+          "L{e^{2t}} = ∫_0^∞ e^{−st} e^{2t} dt = ∫_0^∞ e^{−(s−2)t} dt.",
+          "The antiderivative is −e^{−(s−2)t}/(s−2); at the upper limit it vanishes only when s > 2.",
+          "At t = 0 the value is 1/(s − 2)."
+        ],
+        "a": "L{e^{2t}} = 1/(s − 2), for s > 2"
+      },
+      "practice": [
+        {
+          "q": "Find L{t²}.",
+          "a": "2/s³ (integrate by parts twice, or use n!/s^{n+1} with n = 2)."
+        },
+        {
+          "q": "Find L{sin 3t}.",
+          "a": "3/(s² + 9)."
+        }
+      ],
+      "takeaway": "L{f} = ∫_0^∞ e^{−st} f(t) dt; differentiation becomes multiplication by s, with the initial values built in.",
+      "module": "Laplace Transform"
+    },
+    "Inverse Transforms": {
+      "intro": "After solving in the s-domain, you must come back: the inverse Laplace transform turns F(s) into f(t). In practice this is pattern-matching against the transform table, using partial fractions to break complicated rational functions into recognizable pieces.",
+      "concepts": [
+        "Table lookup — 1/(s − a) inverts to e^{at}, s/(s² + a²) to cos at, a/(s² + a²) to sin at, n!/s^{n+1} to tⁿ.",
+        "Partial fractions — a rational F(s) splits into terms like A/(s − a) and (Bs + C)/(s² + a²); each piece inverts by the table, and the pieces add.",
+        "Uniqueness — if two continuous functions have the same Laplace transform, they are the same function, so the inverse is well defined.",
+        "Completing the square — denominators like s² + 2s + 5 become (s + 1)² + 4, which inverts (with the shift theorem) to e^{−t} times sine or cosine."
+      ],
+      "example": {
+        "q": "Find L^{−1}{ 1/((s − 1)(s − 2)) }.",
+        "steps": [
+          "Partial fractions: 1/((s − 1)(s − 2)) = A/(s − 1) + B/(s − 2). Setting s = 1 gives 1 = −A, so A = −1; setting s = 2 gives 1 = B, so B = 1.",
+          "So the transform is −1/(s − 1) + 1/(s − 2).",
+          "Invert term by term: −e^t + e^{2t}."
+        ],
+        "a": "e^{2t} − e^t"
+      },
+      "practice": [
+        {
+          "q": "Find L^{−1}{ 2/(s² + 4) }.",
+          "a": "sin 2t (it is 2/(s² + 2²))."
+        },
+        {
+          "q": "Find L^{−1}{ 1/(s(s + 1)) }.",
+          "a": "1 − e^{−t} (partial fractions give 1/s − 1/(s + 1))."
+        }
+      ],
+      "takeaway": "Invert by partial fractions plus the table: split F(s) into pieces you recognize, invert each one, and add.",
+      "module": "Laplace Transform"
+    },
+    "Operational Properties I & II": {
+      "intro": "Two translation theorems make the Laplace transform flexible: multiplying by an exponential in time shifts the transform in s, and delaying a function in time multiplies its transform by an exponential in s. Together with the derivative of a transform, they handle almost every transform you meet.",
+      "concepts": [
+        "First translation (s-shift) — L{e^{at} f(t)} = F(s − a): an exponential factor slides the transform sideways; e^{−t} cos 2t transforms to (s + 1)/((s + 1)² + 4).",
+        "Second translation (t-shift) — L{f(t − a) U(t − a)} = e^{−as} F(s), where U is the unit step: a delayed function gets an exponential factor.",
+        "Derivative of a transform — L{t f(t)} = −F'(s); multiplying by t in the time domain is differentiating (with a minus sign) in the s-domain.",
+        "Unit step — U(t − a) is 0 before a and 1 after; L{U(t − a)} = e^{−as}/s, the workhorse for piecewise forcing."
+      ],
+      "example": {
+        "q": "Find L{e^{−2t} cos 3t}.",
+        "steps": [
+          "Start with L{cos 3t} = s/(s² + 9).",
+          "Multiplying by e^{−2t} shifts s to s + 2 (first translation, a = −2).",
+          "Replace every s by s + 2: (s + 2)/((s + 2)² + 9)."
+        ],
+        "a": "L{e^{−2t} cos 3t} = (s + 2)/((s + 2)² + 9)"
+      },
+      "practice": [
+        {
+          "q": "Find L^{−1}{ (s + 1)/((s + 1)² + 4) }.",
+          "a": "e^{−t} cos 2t (reverse the s-shift with a = −1)."
+        },
+        {
+          "q": "Find L{t e^{3t}}.",
+          "a": "1/(s − 3)² (differentiate L{e^{3t}} = 1/(s − 3) and negate)."
+        }
+      ],
+      "takeaway": "e^{at} in time shifts s; a delay in time multiplies by e^{−as}; a factor t differentiates the transform.",
+      "module": "Laplace Transform"
+    },
+    "Dirac Delta Function": {
+      "intro": "A hammer blow, a sudden impulse, a force that acts for an instant: the Dirac delta δ(t − a) models a unit impulse concentrated at one instant. It is not an ordinary function — it is zero everywhere except at t = a, where it is infinitely tall — but its Laplace transform is clean, and it makes impulse problems solvable.",
+      "concepts": [
+        "The defining property — ∫_0^∞ δ(t − a) f(t) dt = f(a): the delta sifts out the value of f at a; in particular ∫ δ = 1, a unit impulse.",
+        "Laplace transform — L{δ(t − a)} = e^{−as} (and L{δ(t)} = 1): an impulse in time is just a delay factor in the s-domain.",
+        "Solving impulse IVPs — transform the equation, solve algebraically for Y(s), and invert with the second translation theorem; the response is zero until the impulse hits, then a shifted copy of the natural response.",
+        "Physical meaning — the response to δ(t − a) is the impulse response of the system: a mass-spring system hit at time a starts oscillating from that instant with amplitude set by the system."
+      ],
+      "example": {
+        "q": "Solve y'' + y = δ(t − 2π) with y(0) = 0 and y'(0) = 0.",
+        "steps": [
+          "Transform: (s² + 1) Y(s) = e^{−2πs}, so Y(s) = e^{−2πs}/(s² + 1).",
+          "1/(s² + 1) inverts to sin t, and the factor e^{−2πs} delays it by 2π: y = sin(t − 2π) U(t − 2π).",
+          "Since sin(t − 2π) = sin t, the response is 0 until t = 2π and then sin t."
+        ],
+        "a": "y(t) = 0 for t < 2π, y(t) = sin t for t > 2π"
+      },
+      "practice": [
+        {
+          "q": "Find L{δ(t − 3)}.",
+          "a": "e^{−3s}."
+        },
+        {
+          "q": "Solve y'' + 4y = δ(t − 1) with y(0) = y'(0) = 0.",
+          "a": "y = (1/2) sin(2(t − 1)) U(t − 1) (Y = e^{−s}/(s² + 4), and L^{−1}{1/(s²+4)} = (1/2) sin 2t)."
+        }
+      ],
+      "takeaway": "δ(t − a) is a unit impulse at time a; its transform is e^{−as}, and the response is the natural response delayed to a.",
+      "module": "Laplace Transform"
+    },
+    "Systems of Linear Differential Equations": {
+      "intro": "Many real systems are coupled: two tanks, two species, a mass on two springs. The Laplace transform solves a whole system at once — transform every equation, solve the resulting algebraic system for the transforms, and invert each one.",
+      "concepts": [
+        "Transform each equation — L{x'} = sX − x(0) for every unknown, so a system of n first-order equations becomes n algebraic equations in the n transforms.",
+        "Solve algebraically — solve the linear system for X(s), Y(s), … (by elimination or Cramer's rule), then invert each transform separately.",
+        "Initial conditions enter once — they appear in the algebraic system, so there is no second step of fixing constants.",
+        "The same idea, other methods — systems can also be solved by elimination (differentiate one equation and substitute) or by the eigenvalue method of the next lessons; Laplace is the most mechanical."
+      ],
+      "example": {
+        "q": "Solve x' = 2x + y, y' = x + 2y with x(0) = 1, y(0) = 0.",
+        "steps": [
+          "Transform: sX − 1 = 2X + Y and sY = X + 2Y. From the second, X = (s − 2)Y.",
+          "Substitute into the first: s(s − 2)Y − 1 = 2(s − 2)Y + Y, giving (s² − 4s + 3)Y = 1, so Y = 1/((s − 1)(s − 3)) = (1/2)(1/(s − 3) − 1/(s − 1)).",
+          "Invert: y = (e^{3t} − e^t)/2. Then X = (s − 2)Y = (1/2)(1/(s − 1) + 1/(s − 3)), so x = (e^t + e^{3t})/2."
+        ],
+        "a": "x = (e^t + e^{3t})/2, y = (e^{3t} − e^t)/2"
+      },
+      "practice": [
+        {
+          "q": "Solve x' = x, y' = 2y with x(0) = 1, y(0) = 2.",
+          "a": "x = e^t, y = 2e^{2t} (the equations are already uncoupled)."
+        },
+        {
+          "q": "Solve x' = y, y' = −x with x(0) = 1, y(0) = 0.",
+          "a": "x = cos t, y = −sin t."
+        }
+      ],
+      "takeaway": "Transform every equation, solve the algebraic system for the transforms, invert each one — initial conditions are handled in one pass.",
+      "module": "Laplace Transform"
+    },
+    "Review of Power Series": {
+      "intro": "When a differential equation resists closed-form methods, a power series can still solve it — but only if you know how series behave. This lesson is the toolkit: convergence, radius, and term-by-term calculus.",
+      "concepts": [
+        "Power series — ∑ a_n (x − x0)ⁿ; it converges inside an interval around x0 and diverges outside, with radius R found by the ratio or root test.",
+        "Ratio test for R — R = 1 / lim |a_{n+1}/a_n| when the limit exists; for ∑ n xⁿ the ratio is (n+1)/n → 1, so R = 1.",
+        "Termwise differentiation — inside the interval of convergence, a power series can be differentiated and integrated term by term, and the radius stays the same: d/dx ∑ a_n xⁿ = ∑ n a_n x^{n−1}.",
+        "Key series — 1/(1 − x) = ∑ xⁿ, e^x = ∑ xⁿ/n!, sin x = ∑ (−1)ⁿ x^{2n+1}/(2n+1)!, cos x = ∑ (−1)ⁿ x^{2n}/(2n)!; these are the benchmarks every series solution is compared against."
+      ],
+      "example": {
+        "q": "Find the radius of convergence of ∑ n xⁿ.",
+        "steps": [
+          "Ratio test: |a_{n+1} x^{n+1} / (a_n xⁿ)| = ((n+1)/n) |x|.",
+          "As n → ∞, (n+1)/n → 1, so the ratio tends to |x|; the series converges when |x| < 1 and diverges when |x| > 1.",
+          "The radius of convergence is R = 1 (the endpoints x = ±1 diverge, since the terms do not go to zero)."
+        ],
+        "a": "R = 1; converges on (−1, 1)"
+      },
+      "practice": [
+        {
+          "q": "Find the radius of convergence of ∑ xⁿ/n².",
+          "a": "R = 1 (ratio (n/(n+1))² → 1)."
+        },
+        {
+          "q": "Differentiate 1/(1 − x) = ∑ xⁿ term by term. What series do you get for 1/(1 − x)²?",
+          "a": "1/(1 − x)² = ∑ n x^{n−1} = 1 + 2x + 3x² + ···."
+        }
+      ],
+      "takeaway": "Series converge inside a radius found by the ratio test, and inside that interval you may differentiate and integrate term by term.",
+      "module": "Series Solutions of Linear Equations"
+    },
+    "Series Solutions about Ordinary Points": {
+      "intro": "If x0 is an ordinary point of y'' + P(x) y' + Q(x) y = 0 — meaning P and Q are analytic there — then the equation has two power-series solutions about x0, and you find them by assuming y = ∑ a_n (x − x0)ⁿ and matching coefficients.",
+      "concepts": [
+        "Ordinary point — P and Q have convergent power series at x0; for polynomial coefficients, every point where the leading coefficient is nonzero is ordinary.",
+        "The method — substitute y = ∑ a_n xⁿ (take x0 = 0 for simplicity), shift indices so every term is a multiple of xⁿ, and set each coefficient to zero to get a recurrence for a_n.",
+        "Two free constants — a_0 and a_1 are free (they are y(0) and y'(0)); the recurrence expresses every later a_n in terms of them, giving two independent series solutions.",
+        "Radius — the series converge at least up to the nearest singularity of P or Q in the complex plane."
+      ],
+      "example": {
+        "q": "Find the power-series solution of y'' + y = 0 with y(0) = 1, y'(0) = 0.",
+        "steps": [
+          "Let y = ∑ a_n xⁿ. Then y'' = ∑ n(n − 1) a_n x^{n−2}; shifting the index, the coefficient of xⁿ in y'' + y = 0 is (n+2)(n+1) a_{n+2} + a_n.",
+          "Recurrence: a_{n+2} = −a_n / ((n+2)(n+1)). With a_0 = 1 and a_1 = 0, all odd coefficients vanish.",
+          "a_2 = −1/2, a_4 = 1/24, a_6 = −1/720, … — the series is 1 − x²/2 + x⁴/24 − x⁶/720 + ···."
+        ],
+        "a": "y = 1 − x²/2! + x⁴/4! − x⁶/6! + ··· = cos x"
+      },
+      "practice": [
+        {
+          "q": "Use series to solve y' − y = 0 with y(0) = 1.",
+          "a": "y = ∑ xⁿ/n! = e^x (recurrence a_{n+1} = a_n/(n+1))."
+        },
+        {
+          "q": "For the Airy equation y'' − x y = 0, find a_3 and a_4 in terms of a_0 and a_1.",
+          "a": "a_3 = a_0/6 and a_4 = a_1/12 (recurrence a_{n+2} = a_{n−1}/((n+2)(n+1)))."
+        }
+      ],
+      "takeaway": "Assume y = ∑ a_n xⁿ, shift indices, and the recurrence builds the solution from a_0 and a_1.",
+      "module": "Series Solutions of Linear Equations"
+    },
+    "Series Solutions about Singular Points": {
+      "intro": "At a singular point the coefficients blow up and a plain power series may fail — the solution can have a logarithm or a fractional power. Frobenius's method fixes it: try y = x^r ∑ a_n xⁿ, and the indicial equation determines r.",
+      "concepts": [
+        "Regular singular point — for x² y'' + x p(x) y' + q(x) y = 0 with p and q analytic at 0; the point x = 0 is regular singular (a pole of order at most 1 in P and 2 in Q).",
+        "Indicial equation — substituting y = x^r gives r(r − 1) + p(0) r + q(0) = 0; its roots r1, r2 are the possible leading exponents.",
+        "Distinct roots, no integer gap — each root gives a Frobenius series y = x^r ∑ a_n xⁿ, with a recurrence like the ordinary-point case.",
+        "Repeated root or integer gap — if r1 = r2, the second solution contains ln x; if r1 − r2 is a positive integer, the second solution may also need a logarithm."
+      ],
+      "example": {
+        "q": "Find the first three nonzero terms of a Frobenius series solution of Bessel's equation x² y'' + x y' + x² y = 0 about x = 0.",
+        "steps": [
+          "Write it as x² y'' + x·1·y' + x²·y = 0: p(0) = 1, q(0) = 0, so the indicial equation is r(r − 1) + r = r² = 0, giving the double root r = 0.",
+          "With r = 0, try y = ∑ a_n xⁿ; the recurrence is a_n = −a_{n−2}/n² (odd coefficients vanish).",
+          "a_2 = −a_0/4, a_4 = a_0/64, a_6 = −a_0/2304, so y1 = a_0 (1 − x²/4 + x⁴/64 − x⁶/2304 + ···), the Bessel function J_0."
+        ],
+        "a": "y1 = 1 − x²/4 + x⁴/64 − x⁶/2304 + ··· (times a constant)"
+      },
+      "practice": [
+        {
+          "q": "Find the indicial roots of x² y'' + 3x y' + y = 0.",
+          "a": "r = −1 (double root): r(r−1) + 3r + 1 = (r+1)² = 0."
+        },
+        {
+          "q": "Find the indicial roots of x y'' + y' + x² y = 0.",
+          "a": "r = 0 (double root): r(r−1) + r = r² = 0."
+        }
+      ],
+      "takeaway": "At a regular singular point, try y = x^r ∑ a_n xⁿ — the indicial equation picks r, and a repeated root or integer gap brings in ln x.",
+      "module": "Series Solutions of Linear Equations"
+    },
+    "Linear Systems": {
+      "intro": "A system of first-order linear equations is one equation in disguise: X' = A X + F(t), where X is a vector and A a matrix. Everything from the scalar theory — homogeneous and particular solutions, superposition — carries over, with matrices doing the bookkeeping.",
+      "concepts": [
+        "Matrix form — the system x1' = a11 x1 + a12 x2 + f1, x2' = a21 x1 + a22 x2 + f2 becomes X' = AX + F with X = (x1, x2) and A the coefficient matrix.",
+        "Higher order to first order — an n-th order equation becomes a system of n first-order equations by setting x1 = y, x2 = y', …, xn = y^{(n−1)}; this is how computers solve ODEs.",
+        "Superposition — the general solution is X = X_h + X_p: a homogeneous part (a vector space of dimension n) plus any one particular solution.",
+        "Fundamental matrix — the columns of Φ(t) are n independent homogeneous solutions; every homogeneous solution is Φ(t) c for some constant vector c."
+      ],
+      "example": {
+        "q": "Write y'' + 3y' + 2y = 0 as a first-order system X' = AX.",
+        "steps": [
+          "Set x1 = y and x2 = y'. Then x1' = x2 by definition.",
+          "From the equation, y'' = −2y − 3y', so x2' = −2x1 − 3x2.",
+          "In matrix form, X' = [[0, 1], [−2, −3]] X."
+        ],
+        "a": "X' = [[0, 1], [−2, −3]] X with X = (y, y')"
+      },
+      "practice": [
+        {
+          "q": "Write y''' − y = 0 as a first-order system.",
+          "a": "x1' = x2, x2' = x3, x3' = x1, with x1 = y, x2 = y', x3 = y''."
+        },
+        {
+          "q": "Write the system x' = 2x − y, y' = x + y in the form X' = AX.",
+          "a": "A = [[2, −1], [1, 1]]."
+        }
+      ],
+      "takeaway": "A system is X' = AX + F; an n-th order equation becomes n first-order equations by naming each derivative a new variable.",
+      "module": "Systems of Linear First-Order Differential Equations"
+    },
+    "Homogeneous Linear Systems": {
+      "intro": "For X' = AX with constant A, exponentials are again the key — but now they are vector exponentials. An eigenvalue λ with eigenvector v gives the solution e^{λt} v, and n independent eigenvectors span the whole solution space.",
+      "concepts": [
+        "Eigenvalue solutions — if Av = λv with v ≠ 0, then X = e^{λt} v solves X' = AX; check it: X' = λ e^{λt} v = A e^{λt} v.",
+        "Distinct real eigenvalues — n distinct eigenvalues give n independent solutions e^{λ1 t} v1, …, e^{λn t} vn; the general solution is their combination.",
+        "Complex eigenvalues — λ = α ± βi gives a complex solution; its real and imaginary parts are two real solutions, and e^{αt}(cos βt, sin βt) combinations appear.",
+        "Repeated eigenvalues — a defective matrix (too few eigenvectors) needs generalized eigenvectors: solutions like t e^{λt} v appear, the matrix analogue of the repeated-root case."
+      ],
+      "example": {
+        "q": "Solve X' = [[1, 2], [2, 1]] X.",
+        "steps": [
+          "Eigenvalues: det(A − λI) = (1 − λ)² − 4 = 0, so λ = 3 and λ = −1.",
+          "For λ = 3: (A − 3I)v = 0 gives −2v1 + 2v2 = 0, so v = (1, 1). For λ = −1: 2v1 + 2v2 = 0, so v = (1, −1).",
+          "General solution: X = C1 e^{3t} (1, 1) + C2 e^{−t} (1, −1)."
+        ],
+        "a": "x = C1 e^{3t} + C2 e^{−t}, y = C1 e^{3t} − C2 e^{−t}"
+      },
+      "practice": [
+        {
+          "q": "Solve X' = [[3, 1], [0, 2]] X.",
+          "a": "X = C1 e^{3t}(1, 0) + C2 e^{2t}(1, −1)."
+        },
+        {
+          "q": "Solve X' = [[0, 1], [−1, 0]] X.",
+          "a": "X = C1 (cos t, −sin t) + C2 (sin t, cos t)."
+        }
+      ],
+      "takeaway": "Eigenvalue λ with eigenvector v gives the solution e^{λt} v; n independent ones span the solution space.",
+      "module": "Systems of Linear First-Order Differential Equations"
+    },
+    "Nonhomogeneous Linear Systems": {
+      "intro": "A forced system X' = AX + F(t) is solved the same way as a forced scalar equation: add a particular solution to the homogeneous general solution. Undetermined coefficients works when F is built from the usual families; variation of parameters, with the fundamental matrix, works always.",
+      "concepts": [
+        "Undetermined coefficients for systems — if F(t) is a polynomial, exponential, or sinusoid (times a constant vector), guess a particular solution of the same shape; if it collides with a homogeneous solution, multiply by t.",
+        "Variation of parameters — with fundamental matrix Φ, seek X_p = Φ U; then U' = Φ^{−1} F, so U = ∫ Φ^{−1} F dt and X_p = Φ ∫ Φ^{−1} F dt.",
+        "Diagonal systems are easy — if A is diagonal, each equation is an independent scalar equation; the matrix methods are only needed when A couples the unknowns.",
+        "Steady states — for constant F, a constant particular solution X_p satisfies A X_p + F = 0; if A is invertible, X_p = −A^{−1} F."
+      ],
+      "example": {
+        "q": "Find a particular solution of X' = [[1, 0], [0, 2]] X + (e^t, 0).",
+        "steps": [
+          "The fundamental matrix is Φ = diag(e^t, e^{2t}), so Φ^{−1} = diag(e^{−t}, e^{−2t}).",
+          "U' = Φ^{−1} F = (e^{−t}·e^t, 0) = (1, 0), so U = (t, 0).",
+          "X_p = Φ U = (t e^t, 0). (Undetermined coefficients would also need the factor t, since e^t solves the homogeneous first equation.)"
+        ],
+        "a": "X_p = (t e^t, 0)"
+      },
+      "practice": [
+        {
+          "q": "Find a constant particular solution of X' = [[0, 1], [−1, 0]] X + (0, 1).",
+          "a": "X_p = (1, 0) (set X' = 0: 0 = b, 0 = −a + 1, so a = 1, b = 0)."
+        },
+        {
+          "q": "Find a constant particular solution of X' = [[1, 1], [0, 1]] X + (1, 0).",
+          "a": "X_p = (−1, 0) (0 = a + b + 1 and 0 = b gives b = 0, a = −1)."
+        }
+      ],
+      "takeaway": "X = X_h + X_p: guess the forcing term's shape, or use X_p = Φ ∫ Φ^{−1} F dt for any forcing term.",
+      "module": "Systems of Linear First-Order Differential Equations"
+    },
+    "Matrix Exponential": {
+      "intro": "The matrix exponential e^{At} is the fundamental matrix of X' = AX in closed form: the solution with X(0) = X0 is simply X(t) = e^{At} X0. It is defined by the same power series as the scalar exponential, and for the matrices you meet it has a closed form.",
+      "concepts": [
+        "The definition — e^{At} = I + At + (At)²/2! + (At)³/3! + ···, which converges for every square matrix A.",
+        "The solution formula — X(t) = e^{At} X0 solves X' = AX with X(0) = X0; also d/dt e^{At} = A e^{At} = e^{At} A.",
+        "Diagonal matrices — if A = diag(λ1, …, λn), then e^{At} = diag(e^{λ1 t}, …, e^{λn t}).",
+        "Computing it — diagonalize A = PDP^{−1} and use e^{At} = P e^{Dt} P^{−1}; for a rotation matrix [[0, 1], [−1, 0]] the series collapses to [[cos t, sin t], [−sin t, cos t]]; for A = I + N with N² = 0, e^{At} = e^t (I + tN)."
+      ],
+      "example": {
+        "q": "Compute e^{At} for A = [[2, 0], [0, 3]] and use it to solve X' = AX with X(0) = (1, 1).",
+        "steps": [
+          "A is diagonal, so e^{At} = diag(e^{2t}, e^{3t}).",
+          "X(t) = e^{At} X0 = (e^{2t}·1, e^{3t}·1) = (e^{2t}, e^{3t}).",
+          "Check: x' = 2e^{2t} = 2x and y' = 3e^{3t} = 3y."
+        ],
+        "a": "e^{At} = [[e^{2t}, 0], [0, e^{3t}]]; X(t) = (e^{2t}, e^{3t})"
+      },
+      "practice": [
+        {
+          "q": "Compute e^{At} for A = [[0, 1], [−1, 0]].",
+          "a": "[[cos t, sin t], [−sin t, cos t]] (the series gives the rotation matrix)."
+        },
+        {
+          "q": "Compute e^{At} for A = [[1, 1], [0, 1]].",
+          "a": "e^t [[1, t], [0, 1]] (A = I + N with N² = 0, so e^{At} = e^t (I + tN))."
+        }
+      ],
+      "takeaway": "e^{At} is the fundamental matrix: X(t) = e^{At} X0 solves the system, and diagonal or rotation matrices give it in closed form.",
+      "module": "Systems of Linear First-Order Differential Equations"
+    }
+  }
+}
