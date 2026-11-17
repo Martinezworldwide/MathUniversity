@@ -1,0 +1,798 @@
+{
+  "course_id": "MATH203",
+  "title": "Linear Algebra",
+  "lesson_count": 25,
+  "lessons": {
+    "Introduction to Systems of Linear Equations": {
+      "intro": "A system of linear equations is a collection of equations in which every unknown appears only to the first power. Such systems are everywhere — balancing chemical reactions, solving circuits, fitting data — and the whole course grows out of one question: how do we find all the solutions, efficiently and reliably?",
+      "concepts": [
+        "Linear equation — an equation of the form a1x1 + a2x2 + … + anxn = b, where the ai and b are constants and each unknown appears to the first power; x + 2y − z = 4 is linear, xy = 1 is not.",
+        "Solution — an assignment of numbers to the unknowns that makes every equation in the system true at once; a system can have exactly one solution, infinitely many, or none at all.",
+        "Consistent vs. inconsistent — a system is consistent if it has at least one solution and inconsistent if it has none; two parallel lines give an inconsistent 2×2 system.",
+        "Geometric picture — in two unknowns each equation is a line: one solution means the lines cross, infinitely many means they are the same line, none means they are parallel.",
+        "Equivalent systems — two systems with the same solution set; the elementary operations (swap equations, multiply an equation by a nonzero constant, add a multiple of one equation to another) produce equivalent systems, which is why elimination works."
+      ],
+      "example": {
+        "q": "Solve the system x + y = 5, x − y = 1, and check the answer.",
+        "steps": [
+          "Add the equations: (x + y) + (x − y) = 5 + 1, so 2x = 6 and x = 3.",
+          "Substitute back: 3 + y = 5, so y = 2.",
+          "Check: 3 + 2 = 5 ✓ and 3 − 2 = 1 ✓, so (3, 2) satisfies both equations."
+        ],
+        "a": "x = 3, y = 2"
+      },
+      "practice": [
+        {
+          "q": "Solve 2x + y = 7, x − y = 2.",
+          "a": "Adding gives 3x = 9, so x = 3; then y = 1. Check: 2·3 + 1 = 7 ✓, 3 − 1 = 2 ✓."
+        },
+        {
+          "q": "Solve x + 2y = 8, 3x − y = 1.",
+          "a": "From the second equation y = 3x − 1; then x + 2(3x − 1) = 8 gives 7x = 10, so x = 10/7 and y = 23/7."
+        }
+      ],
+      "takeaway": "A linear system has one, infinitely many, or no solutions; elimination by combining equations preserves the solution set while simplifying it.",
+      "module": "Systems of Linear Equations and Matrices"
+    },
+    "Gaussian Elimination": {
+      "intro": "Gaussian elimination is the systematic way to solve any linear system: turn it into a triangular system by row operations, then read the answers off from the bottom up. It is the algorithm behind every computer solve of Ax = b, and it also tells you when a system has no solution or infinitely many.",
+      "concepts": [
+        "Augmented matrix — the coefficient matrix with the right-hand sides appended as an extra column; row operations on the matrix are exactly the equation operations that preserve solutions.",
+        "Row-echelon form — a matrix where each leading entry (pivot) sits to the right of the pivot above it and all-zero rows are at the bottom; a system in this form is solved by back-substitution.",
+        "Reduced row-echelon form — row-echelon form with every pivot equal to 1 and zeros above each pivot too; the solution can then be read off directly.",
+        "Free variables — variables with no pivot column; each free variable can take any value, giving infinitely many solutions, one per choice of the free variables.",
+        "Inconsistency test — a row [0 0 … 0 | b] with b ≠ 0 in the reduced matrix means 0 = b, so the system has no solution."
+      ],
+      "example": {
+        "q": "Use Gaussian elimination to solve x + 2y + z = 4, 2x + y − z = 1, x − y + 2z = 3.",
+        "steps": [
+          "Augmented matrix: [[1, 2, 1 | 4], [2, 1, −1 | 1], [1, −1, 2 | 3]]. Replace R2 by R2 − 2R1 and R3 by R3 − R1: [[1, 2, 1 | 4], [0, −3, −3 | −7], [0, −3, 1 | −1]].",
+          "Replace R3 by R3 − R2: [[1, 2, 1 | 4], [0, −3, −3 | −7], [0, 0, 4 | 6]], so 4z = 6 and z = 3/2.",
+          "Back-substitute: −3y − 3z = −7 gives −3y = −7 + 9/2 = −5/2, so y = 5/6; then x = 4 − 2(5/6) − 3/2 = 5/6.",
+          "Check in the second equation: 2(5/6) + 5/6 − 3/2 = 10/6 + 5/6 − 9/6 = 1 ✓."
+        ],
+        "a": "x = 5/6, y = 5/6, z = 3/2"
+      },
+      "practice": [
+        {
+          "q": "Solve x + y = 3, 2x − y = 0 by elimination.",
+          "a": "Adding gives 3x = 3, so x = 1; then y = 2."
+        },
+        {
+          "q": "Show that x + y = 1, 2x + 2y = 5 has no solution.",
+          "a": "Doubling the first equation gives 2x + 2y = 2, contradicting 2x + 2y = 5; elimination produces the row [0 0 | 3], so the system is inconsistent."
+        }
+      ],
+      "takeaway": "Row operations reduce any system to triangular form; pivots mark the determined variables, free variables mark the choices, and a 0 = b row marks inconsistency.",
+      "module": "Systems of Linear Equations and Matrices"
+    },
+    "Matrices and Matrix Operations": {
+      "intro": "A matrix is a rectangular array of numbers, and the real power of linear algebra comes from treating whole arrays as single objects that can be added and multiplied. Matrix multiplication looks strange at first — it is not entry-by-entry — but it is exactly the rule that makes matrices represent systems and transformations.",
+      "concepts": [
+        "Matrix — an m×n array with m rows and n columns; the (i, j)-entry sits in row i, column j; a vector is a matrix with one column.",
+        "Addition and scalar multiplication — entry-by-entry: (A + B)ij = Aij + Bij and (cA)ij = c·Aij; addition requires the same size.",
+        "Matrix multiplication — (AB)ij is the dot product of row i of A with column j of B, so AB needs A's column count to equal B's row count; an m×n times an n×p matrix is m×p.",
+        "Matrix multiplication is not commutative — in general AB ≠ BA, and both products may not even exist; order matters, always.",
+        "Transpose — Aᵀ flips rows and columns, (Aᵀ)ij = Aji; (AB)ᵀ = BᵀAᵀ, with the order reversed."
+      ],
+      "example": {
+        "q": "For A = [[1, 2], [3, 4]] and B = [[0, 1], [−1, 2]], compute AB and BA.",
+        "steps": [
+          "AB: row 1 of A dot columns of B: 1·0 + 2·(−1) = −2 and 1·1 + 2·2 = 5; row 2: 3·0 + 4·(−1) = −4 and 3·1 + 4·2 = 11. So AB = [[−2, 5], [−4, 11]].",
+          "BA: row 1 of B dot columns of A: 0·1 + 1·3 = 3 and 0·2 + 1·4 = 4; row 2: (−1)·1 + 2·3 = 5 and (−1)·2 + 2·4 = 6. So BA = [[3, 4], [5, 6]].",
+          "AB ≠ BA, as expected: matrix multiplication is not commutative."
+        ],
+        "a": "AB = [[−2, 5], [−4, 11]]; BA = [[3, 4], [5, 6]]"
+      },
+      "practice": [
+        {
+          "q": "For A and B above, compute A + B, A − B, and 2A.",
+          "a": "A + B = [[1, 3], [2, 6]]; A − B = [[1, 1], [4, 2]]; 2A = [[2, 4], [6, 8]]."
+        },
+        {
+          "q": "Can you multiply a 2×3 matrix by a 2×2 matrix? What about a 3×2 matrix by a 2×2 matrix?",
+          "a": "No for the first (3 ≠ 2, inner dimensions mismatch); yes for the second, giving a 3×2 matrix."
+        }
+      ],
+      "takeaway": "Matrix multiplication is row-times-column, not entry-times-entry; sizes must match inside, and order matters — AB and BA are usually different.",
+      "module": "Systems of Linear Equations and Matrices"
+    },
+    "Inverses; Rules of Matrix Arithmetic": {
+      "intro": "The inverse of a square matrix A is the matrix A⁻¹ that undoes it: A·A⁻¹ = A⁻¹·A = I. Inverses turn the problem 'solve Ax = b' into a single multiplication, x = A⁻¹b — when an inverse exists. Not every matrix has one, and the arithmetic rules (like (AB)⁻¹ = B⁻¹A⁻¹) mirror the transpose rules with the same order reversal.",
+      "concepts": [
+        "Inverse matrix — for square A, A⁻¹ satisfies AA⁻¹ = A⁻¹A = I; if it exists it is unique, and A is then called invertible or nonsingular.",
+        "2×2 inverse formula — for A = [[a, b], [c, d]] with ad − bc ≠ 0, A⁻¹ = (1/(ad − bc)) [[d, −b], [−c, a]]; the number ad − bc is the determinant.",
+        "Solving with an inverse — if A is invertible, Ax = b has the unique solution x = A⁻¹b; if A is not invertible, Ax = b may have no solution or infinitely many.",
+        "Singular matrices — a square matrix with no inverse is singular; for 2×2 this happens exactly when ad − bc = 0, i.e. when one row is a multiple of the other.",
+        "Inverse of a product — (AB)⁻¹ = B⁻¹A⁻¹, order reversed, just like the transpose rule (AB)ᵀ = BᵀAᵀ; also (A⁻¹)⁻¹ = A and (Aᵀ)⁻¹ = (A⁻¹)ᵀ."
+      ],
+      "example": {
+        "q": "Find the inverse of A = [[2, 1], [1, 1]] and use it to solve Ax = [3, 2]ᵀ.",
+        "steps": [
+          "Determinant: det A = 2·1 − 1·1 = 1 ≠ 0, so A is invertible.",
+          "2×2 formula: A⁻¹ = (1/1) [[1, −1], [−1, 2]] = [[1, −1], [−1, 2]].",
+          "Check: A·A⁻¹ = [[2·1 + 1·(−1), 2·(−1) + 1·2], [1·1 + 1·(−1), 1·(−1) + 1·2]] = [[1, 0], [0, 1]] = I ✓.",
+          "x = A⁻¹b = [[1, −1], [−1, 2]] [3, 2]ᵀ = [3 − 2, −3 + 4]ᵀ = [1, 1]ᵀ; check: 2·1 + 1 = 3 ✓, 1 + 1 = 2 ✓."
+        ],
+        "a": "A⁻¹ = [[1, −1], [−1, 2]]; the solution is x = 1, y = 1"
+      },
+      "practice": [
+        {
+          "q": "Find the inverse of [[3, 1], [2, 1]] and check it.",
+          "a": "det = 3·1 − 1·2 = 1, so A⁻¹ = [[1, −1], [−2, 3]]; multiplying gives I: 3·1 + 1·(−2) = 1, 3·(−1) + 1·3 = 0, etc."
+        },
+        {
+          "q": "Does [[1, 2], [2, 4]] have an inverse? Why or why not?",
+          "a": "No: det = 1·4 − 2·2 = 0, and row 2 is twice row 1, so the matrix is singular."
+        }
+      ],
+      "takeaway": "A square matrix is invertible exactly when its determinant is nonzero; then Ax = b has the unique solution x = A⁻¹b, and (AB)⁻¹ = B⁻¹A⁻¹.",
+      "module": "Systems of Linear Equations and Matrices"
+    },
+    "Elementary Matrices and a Method for Finding A⁻¹": {
+      "intro": "Every row operation is itself a matrix multiplication: doing a row operation on A is the same as multiplying A on the left by a special matrix called an elementary matrix. That turns Gauss–Jordan elimination into a factory for inverses — reduce [A | I] to [I | A⁻¹] and the inverse appears on the right.",
+      "concepts": [
+        "Elementary matrix — the result of performing one row operation on the identity matrix; multiplying by it on the left performs that same operation on any matrix.",
+        "Three types — row swap, row scaling by a nonzero constant, and adding a multiple of one row to another; every elementary matrix is invertible, and its inverse is the elementary matrix of the reverse operation.",
+        "Gauss–Jordan method — augment A with I and row-reduce until the left side is I; the right side is then A⁻¹. If the left side cannot become I, A is singular.",
+        "Why it works — the row operations that turn A into I are elementary matrices E1…Ek with Ek…E1·A = I, so Ek…E1 = A⁻¹, and applying the same operations to I produces exactly that product.",
+        "Row equivalence — A and B are row equivalent if B = EA for a product E of elementary matrices; row-equivalent matrices have the same solution sets for Ax = b."
+      ],
+      "example": {
+        "q": "Use Gauss–Jordan elimination to find the inverse of A = [[1, 2], [3, 5]].",
+        "steps": [
+          "Augment: [A | I] = [[1, 2 | 1, 0], [3, 5 | 0, 1]]. Replace R2 by R2 − 3R1: [[1, 2 | 1, 0], [0, −1 | −3, 1]].",
+          "Multiply R2 by −1: [[1, 2 | 1, 0], [0, 1 | 3, −1]]. Replace R1 by R1 − 2R2: [[1, 0 | −5, 2], [0, 1 | 3, −1]].",
+          "The left side is now I, so the right side is A⁻¹ = [[−5, 2], [3, −1]].",
+          "Check: A·A⁻¹ = [[1·(−5) + 2·3, 1·2 + 2·(−1)], [3·(−5) + 5·3, 3·2 + 5·(−1)]] = [[1, 0], [0, 1]] ✓."
+        ],
+        "a": "A⁻¹ = [[−5, 2], [3, −1]]"
+      },
+      "practice": [
+        {
+          "q": "Find the inverse of [[2, 0], [0, 3]] by Gauss–Jordan.",
+          "a": "Scale R1 by 1/2 and R2 by 1/3: A⁻¹ = [[1/2, 0], [0, 1/3]]."
+        },
+        {
+          "q": "Write the elementary matrix E that performs R2 → R2 − 3R1 on a 2-row matrix, and compute E·[[1, 2], [3, 5]].",
+          "a": "E = [[1, 0], [−3, 1]]; E·A = [[1, 2], [0, −1]], exactly R2 − 3R1 applied to A."
+        }
+      ],
+      "takeaway": "Row operations are multiplications by elementary matrices; row-reducing [A | I] to [I | A⁻¹] computes the inverse, and failure to reach I means A is singular.",
+      "module": "Systems of Linear Equations and Matrices"
+    },
+    "The Determinant Function": {
+      "intro": "The determinant is a single number attached to a square matrix that measures whether the matrix squashes space flat: det A ≠ 0 means A is invertible, det A = 0 means it is singular. Geometrically it is the (signed) factor by which A scales areas in 2D and volumes in 3D, which is why it shows up in change of variables, cross products, and Cramer's rule.",
+      "concepts": [
+        "2×2 determinant — det [[a, b], [c, d]] = ad − bc; it is zero exactly when the rows (or columns) are proportional, i.e. the matrix collapses a dimension.",
+        "Cofactor expansion — for n×n, pick a row or column and sum (entry) × (cofactor), where the cofactor is (−1)^(i+j) times the determinant of the matrix with row i and column j deleted; any row or column gives the same answer.",
+        "Triangular matrices — the determinant of a triangular matrix is the product of its diagonal entries, which makes row reduction a fast way to compute determinants.",
+        "Determinant and invertibility — A is invertible if and only if det A ≠ 0; det A = 0 is the precise test for singularity.",
+        "Geometric meaning — |det A| is the factor by which A scales area (2×2) or volume (3×3); the sign records whether orientation is flipped."
+      ],
+      "example": {
+        "q": "Compute det [[1, 2, 0], [0, 3, 1], [2, 1, 1]] by cofactor expansion along the first row, and verify with another row.",
+        "steps": [
+          "Cofactors along row 1: 1·det [[3, 1], [1, 1]] − 2·det [[0, 1], [2, 1]] + 0·det [[0, 3], [2, 1]].",
+          "Evaluate: 1·(3·1 − 1·1) − 2·(0·1 − 1·2) + 0 = 1·2 − 2·(−2) = 2 + 4 = 6.",
+          "Verify along row 3: 2·det [[2, 0], [3, 1]] − 1·det [[1, 0], [0, 1]] + 1·det [[1, 2], [0, 3]] = 2·2 − 1·1 + 1·3 = 4 − 1 + 3 = 6 ✓."
+        ],
+        "a": "det = 6"
+      },
+      "practice": [
+        {
+          "q": "Compute det [[5, 2], [1, 3]].",
+          "a": "5·3 − 2·1 = 13."
+        },
+        {
+          "q": "Compute det [[2, 0, 0], [1, 3, 0], [4, 5, 6]] without expanding.",
+          "a": "It is lower triangular, so the determinant is the product of the diagonal: 2·3·6 = 36."
+        }
+      ],
+      "takeaway": "The determinant is computed by cofactor expansion (or the diagonal product for triangular matrices) and is nonzero exactly for invertible matrices.",
+      "module": "Determinants"
+    },
+    "Evaluating Determinants by Row Reduction": {
+      "intro": "Cofactor expansion is hopeless for large matrices — an n×n determinant needs n! terms. Row reduction is the practical route: the effect of each row operation on the determinant is known exactly, so reduce to triangular form and multiply the diagonal.",
+      "concepts": [
+        "Row swap — swapping two rows flips the sign of the determinant.",
+        "Row scaling — multiplying a row by k multiplies the determinant by k.",
+        "Row addition — adding a multiple of one row to another leaves the determinant unchanged; this is the workhorse operation.",
+        "Strategy — use row additions to clear below each pivot, track swaps and scalings, and read the determinant off the resulting triangular matrix.",
+        "Zero row — if row reduction produces a row of zeros, the determinant is 0 and the matrix is singular."
+      ],
+      "example": {
+        "q": "Compute det [[1, 2, 3], [2, 5, 3], [1, 0, 8]] by row reduction.",
+        "steps": [
+          "R2 → R2 − 2R1 (determinant unchanged): [[1, 2, 3], [0, 1, −3], [1, 0, 8]]. R3 → R3 − R1: [[1, 2, 3], [0, 1, −3], [0, −2, 5]].",
+          "The matrix is now in a form where the determinant is 1 · det [[1, −3], [−2, 5]] (expand along column 1): 1·(1·5 − (−3)(−2)) = 5 − 6 = −1.",
+          "Sanity check by cofactor expansion of the original: 1·(5·8 − 3·0) − 2·(2·8 − 3·1) + 3·(2·0 − 5·1) = 40 − 26 − 15 = −1 ✓."
+        ],
+        "a": "det = −1"
+      },
+      "practice": [
+        {
+          "q": "Compute det [[2, 1], [4, 3]] by row reduction.",
+          "a": "R2 → R2 − 2R1 gives [[2, 1], [0, 1]], upper triangular with diagonal product 2·1 = 2 (check: 2·3 − 1·4 = 2 ✓)."
+        },
+        {
+          "q": "Compute det [[1, 1, 1], [0, 2, 1], [0, 0, 3]].",
+          "a": "Already upper triangular: 1·2·3 = 6."
+        }
+      ],
+      "takeaway": "Row additions preserve the determinant, swaps flip its sign, scalings scale it — reduce to triangular form and multiply the diagonal.",
+      "module": "Determinants"
+    },
+    "Properties of the Determinant Function": {
+      "intro": "The determinant is not just a number you compute — it is a function with clean algebraic rules that let you reason about matrices without computing anything. The big ones: products multiply determinants, transposes don't change them, and scaling a matrix scales the determinant by the power of the dimension.",
+      "concepts": [
+        "Multiplicativity — det(AB) = det(A)·det(B); in particular, det(A⁻¹) = 1/det(A) when A is invertible.",
+        "Transpose — det(Aᵀ) = det(A); row and column properties of determinants are therefore interchangeable.",
+        "Scalar multiples — det(cA) = cⁿ·det(A) for an n×n matrix A, because each of the n rows is scaled by c.",
+        "Similar matrices — if B = P⁻¹AP then det(B) = det(A); determinant is an invariant of similarity, like the trace.",
+        "Row dependence — det A = 0 if and only if the rows (equivalently, the columns) of A are linearly dependent."
+      ],
+      "example": {
+        "q": "Let A = [[1, 2], [3, 4]]. Compute det(2A), det(Aᵀ), and det(A⁻¹) from det A.",
+        "steps": [
+          "First det A = 1·4 − 2·3 = −2.",
+          "det(2A) = 2²·det(A) = 4·(−2) = −8; direct check: 2A = [[2, 4], [6, 8]], det = 16 − 24 = −8 ✓.",
+          "det(Aᵀ) = det(A) = −2; check: Aᵀ = [[1, 3], [2, 4]], det = 4 − 6 = −2 ✓.",
+          "det(A⁻¹) = 1/det(A) = −1/2; check: A⁻¹ = (−1/2)[[4, −2], [−3, 1]] = [[−2, 1], [3/2, −1/2]], det = (−2)(−1/2) − 1·(3/2) = 1 − 3/2 = −1/2 ✓."
+        ],
+        "a": "det(2A) = −8, det(Aᵀ) = −2, det(A⁻¹) = −1/2"
+      },
+      "practice": [
+        {
+          "q": "If det A = 5 for a 3×3 matrix A, what is det(3A)?",
+          "a": "3³·5 = 27·5 = 135."
+        },
+        {
+          "q": "If det A = 2 and det B = −3, what is det(AB) and det(A²)?",
+          "a": "det(AB) = 2·(−3) = −6; det(A²) = 2² = 4."
+        }
+      ],
+      "takeaway": "det(AB) = det A · det B, det(Aᵀ) = det A, det(cA) = cⁿ det A — these rules let you find determinants of related matrices for free.",
+      "module": "Determinants"
+    },
+    "Cramer's Rule": {
+      "intro": "Cramer's rule is a closed-form formula for solving Ax = b: each unknown is a ratio of two determinants. It is rarely the fastest way to compute a solution, but it is a beautiful theoretical tool — it proves that the solution of a nonsingular system is a rational function of the entries, and it gives a formula for A⁻¹ in terms of cofactors.",
+      "concepts": [
+        "Cramer's rule — if det A ≠ 0, the solution of Ax = b is xi = det(Ai)/det(A), where Ai is A with column i replaced by b.",
+        "Why it works — expanding det(Ai) along column i expresses it as a combination of the cofactors times the entries of b, which is exactly the i-th component of (adj A)·b.",
+        "Adjugate — the adjugate adj(A) is the transpose of the cofactor matrix, and A⁻¹ = adj(A)/det(A) when det A ≠ 0.",
+        "Cost — Cramer's rule needs n + 1 determinants of size n, so it is far slower than elimination for large n; its value is theoretical, not computational.",
+        "When it fails — if det A = 0, Cramer's rule does not apply; the system may have no solution or infinitely many, and elimination is the tool to find out which."
+      ],
+      "example": {
+        "q": "Use Cramer's rule to solve 2x + y = 5, x + 3y = 5.",
+        "steps": [
+          "Coefficient determinant: det A = det [[2, 1], [1, 3]] = 6 − 1 = 5 ≠ 0, so Cramer's rule applies.",
+          "Replace column 1 by b = (5, 5): det A1 = det [[5, 1], [5, 3]] = 15 − 5 = 10, so x = 10/5 = 2.",
+          "Replace column 2 by b: det A2 = det [[2, 5], [1, 5]] = 10 − 5 = 5, so y = 5/5 = 1.",
+          "Check: 2·2 + 1 = 5 ✓ and 2 + 3·1 = 5 ✓."
+        ],
+        "a": "x = 2, y = 1"
+      },
+      "practice": [
+        {
+          "q": "Use Cramer's rule to solve x + 2y = 4, 3x + y = 5.",
+          "a": "det A = 1 − 6 = −5; det A1 = det [[4, 2], [5, 1]] = 4 − 10 = −6, so x = 6/5; det A2 = det [[1, 4], [3, 5]] = 5 − 12 = −7, so y = 7/5."
+        },
+        {
+          "q": "Why can't Cramer's rule solve x + y = 1, 2x + 2y = 5?",
+          "a": "det A = 1·2 − 1·2 = 0, so the rule does not apply — and indeed the system is inconsistent."
+        }
+      ],
+      "takeaway": "When det A ≠ 0, xi = det(Ai)/det(A) with column i replaced by b — an explicit determinant formula for each unknown.",
+      "module": "Determinants"
+    },
+    "Real Vector Spaces": {
+      "intro": "A vector space is a set of objects — vectors — that can be added together and scaled, following ten familiar rules. Rⁿ is the model, but polynomials, matrices, and functions are vector spaces too, and every theorem proved from the axioms holds for all of them at once. That abstraction is the whole point of the subject.",
+      "concepts": [
+        "The ten axioms — closure under addition and scalar multiplication, commutativity and associativity of addition, a zero vector, additive inverses, and the distributive and associative laws for scalars; Rⁿ satisfies all ten.",
+        "Vectors are not just arrows — polynomials of degree at most 2, 2×2 matrices, and continuous functions on [0, 1] are all vector spaces under their natural operations.",
+        "Zero vector and negatives — in any vector space the zero vector is unique, 0·v = 0, (−1)·v = −v, and the additive inverse of each vector is unique; these follow from the axioms, not from coordinates.",
+        "Rⁿ as the prototype — every computation in Rⁿ (adding coordinates, scaling coordinates) is the pattern that the axioms abstract.",
+        "Why axioms matter — one proof from the axioms covers Rⁿ, function spaces, and polynomial spaces simultaneously; that is the leverage of abstraction."
+      ],
+      "example": {
+        "q": "In R², compute 2u − 3v for u = (1, 2) and v = (3, −1), and verify the result by checking each coordinate.",
+        "steps": [
+          "Scale: 2u = (2, 4) and 3v = (9, −3).",
+          "Subtract coordinate by coordinate: 2u − 3v = (2 − 9, 4 − (−3)) = (−7, 7).",
+          "Check: the first coordinate is 2·1 − 3·3 = 2 − 9 = −7 ✓; the second is 2·2 − 3·(−1) = 4 + 3 = 7 ✓."
+        ],
+        "a": "2u − 3v = (−7, 7)"
+      },
+      "practice": [
+        {
+          "q": "Compute 3(2, −1) + (−1, 4) in R².",
+          "a": "(6, −3) + (−1, 4) = (5, 1)."
+        },
+        {
+          "q": "What is the zero vector in R³, and what is the additive inverse of (2, −5, 1)?",
+          "a": "The zero vector is (0, 0, 0); the inverse of (2, −5, 1) is (−2, 5, −1)."
+        }
+      ],
+      "takeaway": "A vector space is any set closed under addition and scalar multiplication satisfying the ten axioms; Rⁿ is the prototype, but polynomials, matrices, and functions qualify too.",
+      "module": "Vector Spaces"
+    },
+    "Subspaces": {
+      "intro": "A subspace is a vector space living inside a bigger one: a subset that is closed under addition and scalar multiplication, so it inherits the whole structure. Lines and planes through the origin are the subspaces of R³, and the subspace test — contains zero, closed under addition, closed under scaling — is the fastest way to check one.",
+      "concepts": [
+        "Subspace test — a nonempty subset W of V is a subspace if it contains the zero vector and is closed under addition and scalar multiplication; closure under both operations is enough (the other axioms are inherited).",
+        "Lines and planes through the origin — in R³, the subspaces are {0}, lines through the origin, planes through the origin, and R³ itself; a plane not through the origin is not a subspace.",
+        "Solution sets — the solution set of a homogeneous system Ax = 0 is always a subspace (the null space); the solution set of Ax = b with b ≠ 0 is never a subspace.",
+        "Span as a subspace — the span of any set of vectors is a subspace, and it is the smallest subspace containing them.",
+        "Intersection and sum — the intersection of subspaces is a subspace; the sum U + W = {u + w} is the smallest subspace containing both."
+      ],
+      "example": {
+        "q": "Show that W = {(x, y, z) in R³ : x + y + z = 0} is a subspace, and find two vectors in it whose sum is also in it.",
+        "steps": [
+          "Zero: (0, 0, 0) satisfies 0 + 0 + 0 = 0, so 0 ∈ W.",
+          "Addition: if (x1, y1, z1) and (x2, y2, z2) are in W, their sum has coordinate sum (x1 + x2) + (y1 + y2) + (z1 + z2) = 0 + 0 = 0, so it is in W.",
+          "Scaling: if (x, y, z) ∈ W and c is a scalar, cx + cy + cz = c(x + y + z) = 0, so c(x, y, z) ∈ W. Hence W is a subspace.",
+          "Example: (1, −1, 0) ∈ W and (2, 1, −3) ∈ W, and their sum (3, 0, −3) has 3 + 0 − 3 = 0, so it is in W ✓."
+        ],
+        "a": "W is a subspace (a plane through the origin); e.g. (1, −1, 0), (2, 1, −3) ∈ W with sum (3, 0, −3) ∈ W"
+      },
+      "practice": [
+        {
+          "q": "Is {(x, y) : y = 2x} a subspace of R²? Is {(x, y) : y = 2x + 1}?",
+          "a": "Yes for y = 2x: it is a line through the origin, closed under addition and scaling. No for y = 2x + 1: it does not contain (0, 0)."
+        },
+        {
+          "q": "Is the set of 2×2 matrices with trace 0 a subspace of M₂₂?",
+          "a": "Yes: the zero matrix has trace 0, and trace(A + B) = trace(A) + trace(B), trace(cA) = c·trace(A), so it is closed under both operations."
+        }
+      ],
+      "takeaway": "A subset is a subspace if it contains zero and is closed under addition and scalar multiplication; solution sets of homogeneous systems are the canonical examples.",
+      "module": "Vector Spaces"
+    },
+    "Spanning Sets and Linear Independence": {
+      "intro": "Two questions decide the shape of a vector space: can these vectors build everything (do they span?), and is any of them redundant (are they independent?). A spanning set is a generating set; an independent set has no redundancy — and a basis is a set that is both.",
+      "concepts": [
+        "Span — the span of vectors v1…vk is the set of all their linear combinations c1v1 + … + ckvk; it is the smallest subspace containing them.",
+        "Linear independence — v1…vk are independent if the only way to write c1v1 + … + ckvk = 0 is c1 = … = ck = 0; otherwise they are dependent, and some vector is a combination of the others.",
+        "Testing independence — set up c1v1 + … + ckvk = 0 and solve; a nontrivial solution means dependence. In Rⁿ this is a homogeneous system.",
+        "More vectors than dimensions — any set of more than n vectors in Rⁿ is dependent; dependence is unavoidable once you exceed the dimension.",
+        "Spanning vs. independence — spanning is about reach (can you make everything?), independence is about economy (is anything wasted?); a basis does both with no waste."
+      ],
+      "example": {
+        "q": "Are the vectors (1, 1) and (1, −1) linearly independent in R²? Do they span R²?",
+        "steps": [
+          "Set c1(1, 1) + c2(1, −1) = (0, 0): this gives c1 + c2 = 0 and c1 − c2 = 0.",
+          "Adding: 2c1 = 0, so c1 = 0, and then c2 = 0. The only solution is trivial, so the vectors are independent.",
+          "Two independent vectors in R² span R²: any (a, b) = ((a+b)/2)(1, 1) + ((a−b)/2)(1, −1); check the first coordinate: (a+b)/2 + (a−b)/2 = a ✓, second: (a+b)/2 − (a−b)/2 = b ✓."
+        ],
+        "a": "Independent, and they span R²"
+      },
+      "practice": [
+        {
+          "q": "Are (1, 0, 0), (0, 1, 0), (0, 0, 1) linearly independent?",
+          "a": "Yes: c1(1,0,0) + c2(0,1,0) + c3(0,0,1) = (c1, c2, c3) = (0, 0, 0) forces c1 = c2 = c3 = 0."
+        },
+        {
+          "q": "Show that (1, 2, 3), (4, 5, 6), (7, 8, 9) are linearly dependent.",
+          "a": "(7, 8, 9) = 2(4, 5, 6) − (1, 2, 3): 2·(4,5,6) = (8,10,12), minus (1,2,3) = (7,8,9) ✓, so there is a nontrivial relation."
+        }
+      ],
+      "takeaway": "A set spans if every vector is a combination of it; it is independent if the only combination giving zero is the trivial one — and more than n vectors in Rⁿ are always dependent.",
+      "module": "Vector Spaces"
+    },
+    "Basis and Dimension": {
+      "intro": "A basis is a minimal spanning set — independent vectors that reach everything. Once a basis is fixed, every vector has unique coordinates, and the number of vectors in any basis — the dimension — is the intrinsic size of the space. Dimension is what makes 'R³ is bigger than a plane' precise.",
+      "concepts": [
+        "Basis — a linearly independent spanning set; every vector is a unique linear combination of basis vectors.",
+        "Dimension — the number of vectors in any basis of a finite-dimensional space; all bases of a space have the same size.",
+        "Standard bases — Rⁿ has the standard basis e1…en; the space of polynomials of degree ≤ 2 has basis {1, x, x²} and dimension 3.",
+        "Coordinates — relative to a basis, each vector has a unique coordinate vector; changing the basis changes the coordinates but not the vector.",
+        "Extending and shrinking — any independent set can be extended to a basis, and any spanning set can be shrunk to a basis, by adding or removing vectors one at a time."
+      ],
+      "example": {
+        "q": "Find a basis for the plane W = {(x, y, z) : x + y + z = 0} in R³ and state its dimension.",
+        "steps": [
+          "Solve x + y + z = 0 for x: x = −y − z, so a vector in W is (−y − z, y, z) = y(−1, 1, 0) + z(−1, 0, 1).",
+          "So W is spanned by v1 = (−1, 1, 0) and v2 = (−1, 0, 1); equivalently, using (1, −1, 0) and (1, 0, −1), both in the plane since 1 − 1 + 0 = 0 and 1 + 0 − 1 = 0.",
+          "They are independent: neither is a multiple of the other, so they form a basis of W.",
+          "Hence dim W = 2, as expected for a plane through the origin."
+        ],
+        "a": "Basis {(1, −1, 0), (1, 0, −1)}; dim W = 2"
+      },
+      "practice": [
+        {
+          "q": "What is the dimension of M₂₂, the space of 2×2 matrices? Give a basis.",
+          "a": "Dimension 4, with basis E11 = [[1,0],[0,0]], E12 = [[0,1],[0,0]], E21 = [[0,0],[1,0]], E22 = [[0,0],[0,1]]."
+        },
+        {
+          "q": "What is the dimension of the space of polynomials of degree at most 2?",
+          "a": "Dimension 3, with basis {1, x, x²}."
+        }
+      ],
+      "takeaway": "A basis is an independent spanning set; its size is the dimension, and coordinates relative to a basis are unique.",
+      "module": "Vector Spaces"
+    },
+    "Row Space, Column Space, and Null Space": {
+      "intro": "Every matrix A has three fundamental subspaces attached to it: the row space (spans of the rows), the column space (spans of the columns — exactly the vectors b for which Ax = b is solvable), and the null space (all x with Ax = 0). The rank–nullity theorem ties them together: rank + nullity = number of columns.",
+      "concepts": [
+        "Row space — the span of the rows of A, a subspace of Rⁿ (n = number of columns); row operations do not change it.",
+        "Column space — the span of the columns of A, a subspace of Rᵐ; Ax = b is solvable exactly when b is in the column space.",
+        "Null space — {x : Ax = 0}, a subspace of Rⁿ; it is the solution set of the homogeneous system.",
+        "Rank — the dimension of the row space, equal to the dimension of the column space, equal to the number of pivots in the row-echelon form.",
+        "Rank–nullity theorem — rank(A) + nullity(A) = n, where n is the number of columns; the pivots count the rank, the free variables count the nullity."
+      ],
+      "example": {
+        "q": "For A = [[1, 2], [2, 4]], find bases for the row space, column space, and null space, and verify rank–nullity.",
+        "steps": [
+          "Row space: the rows are (1, 2) and (2, 4) = 2(1, 2), so the row space is spanned by (1, 2) alone; rank = 1.",
+          "Column space: the columns are (1, 2)ᵀ and (2, 4)ᵀ = 2(1, 2)ᵀ, so the column space is spanned by (1, 2)ᵀ; dimension 1.",
+          "Null space: Ax = 0 means x + 2y = 0 (the second equation is a multiple), so (x, y) = (−2t, t) = t(−2, 1); the null space is spanned by (−2, 1), nullity 1.",
+          "Check: rank + nullity = 1 + 1 = 2 = number of columns ✓."
+        ],
+        "a": "Row space: span{(1, 2)}; column space: span{(1, 2)ᵀ}; null space: span{(−2, 1)}; rank 1, nullity 1"
+      },
+      "practice": [
+        {
+          "q": "For the identity matrix I₂, what are the rank and nullity?",
+          "a": "Rank 2 (both rows pivot), nullity 0 (only x = 0 solves Ix = 0)."
+        },
+        {
+          "q": "For A = [[1, 1, 1], [0, 0, 0]], give a basis for the row space and the nullity.",
+          "a": "Row space is spanned by (1, 1, 1), rank 1; nullity = 3 − 1 = 2 (solutions satisfy x + y + z = 0)."
+        }
+      ],
+      "takeaway": "Rank counts the pivots and the dimension of the row/column spaces; nullity counts the free variables; rank + nullity = number of columns.",
+      "module": "Vector Spaces"
+    },
+    "General Linear Transformations": {
+      "intro": "A linear transformation is a function between vector spaces that respects addition and scaling: T(u + v) = T(u) + T(v) and T(cu) = cT(u). Rotations, projections, differentiation, and matrix multiplication are all linear transformations — and the key fact is that a linear transformation is completely determined by what it does to a basis.",
+      "concepts": [
+        "Definition — T: V → W is linear if T(u + v) = T(u) + T(v) and T(cu) = cT(u) for all u, v and scalars c; equivalently T preserves linear combinations.",
+        "T(0) = 0 — every linear transformation sends the zero vector to the zero vector; a map with T(0) ≠ 0 is not linear.",
+        "Determined by a basis — if you know T on a basis of V, you know T everywhere, by linearity; this is why matrices can represent transformations.",
+        "Examples — rotation and reflection in R², projection onto a line or plane, differentiation on polynomials, and T(x) = Ax for any matrix A are all linear.",
+        "Non-examples — translation T(x) = x + b with b ≠ 0 is not linear (T(0) = b ≠ 0); neither is T(x) = ‖x‖ or T(x) = x²."
+      ],
+      "example": {
+        "q": "Let T: R² → R² be defined by T(x, y) = (x + 2y, 3x − y). Compute T(1, 2) and verify linearity on one pair of vectors.",
+        "steps": [
+          "T(1, 2) = (1 + 2·2, 3·1 − 2) = (5, 1).",
+          "Check additivity on u = (1, 0), v = (0, 1): T(u) = (1, 3), T(v) = (2, −1), so T(u) + T(v) = (3, 2).",
+          "And T(u + v) = T(1, 1) = (1 + 2, 3 − 1) = (3, 2) ✓ — the two agree, as linearity requires."
+        ],
+        "a": "T(1, 2) = (5, 1); T(u + v) = T(u) + T(v) = (3, 2)"
+      },
+      "practice": [
+        {
+          "q": "Let T(x, y) = (2x, y − x). Compute T(3, 1).",
+          "a": "T(3, 1) = (6, 1 − 3) = (6, −2)."
+        },
+        {
+          "q": "Is T(x, y) = (x + 1, y) a linear transformation? Why or why not?",
+          "a": "No: T(0, 0) = (1, 0) ≠ (0, 0), so it fails the first test for linearity."
+        }
+      ],
+      "takeaway": "A linear transformation preserves addition and scaling, sends zero to zero, and is determined by its values on a basis.",
+      "module": "Linear Transformations"
+    },
+    "Kernels and Ranges": {
+      "intro": "The kernel and the range are the two subspaces that measure what a linear transformation does: the kernel is everything it kills (maps to zero), the range is everything it can reach. The rank–nullity theorem for transformations says dim(ker T) + dim(range T) = dim(domain) — the same accounting as for matrices, because matrices and transformations are two faces of the same thing.",
+      "concepts": [
+        "Kernel — ker(T) = {v : T(v) = 0}, a subspace of the domain; it measures how much information T destroys.",
+        "Range — range(T) = {T(v) : v in V}, a subspace of the codomain; it measures what T can produce.",
+        "One-to-one — T is one-to-one (injective) exactly when ker(T) = {0}; nothing is lost.",
+        "Onto — T is onto (surjective) exactly when range(T) is the whole codomain.",
+        "Rank–nullity — dim ker(T) + dim range(T) = dim V; the nullity plus the rank always equals the dimension of the domain."
+      ],
+      "example": {
+        "q": "Let T: R² → R² be T(x, y) = (x + y, 2x + 2y). Find bases for the kernel and the range, and check rank–nullity.",
+        "steps": [
+          "Kernel: T(x, y) = (0, 0) means x + y = 0 (the second equation is twice the first), so y = −x and ker(T) = span{(1, −1)}; nullity 1.",
+          "Range: T(x, y) = (x + y)(1, 2), so every output is a multiple of (1, 2); range(T) = span{(1, 2)}; rank 1.",
+          "Check: nullity + rank = 1 + 1 = 2 = dim R² ✓.",
+          "Note T is neither one-to-one (kernel is nonzero) nor onto (range is a line, not all of R²)."
+        ],
+        "a": "ker(T) = span{(1, −1)}, range(T) = span{(1, 2)}; 1 + 1 = 2 ✓"
+      },
+      "practice": [
+        {
+          "q": "Let T: R³ → R² be T(x, y, z) = (x, y). Find the kernel and the range.",
+          "a": "Kernel: x = y = 0, so ker(T) is the z-axis, span{(0, 0, 1)}, nullity 1. Range: all of R², rank 2. Check: 1 + 2 = 3 ✓."
+        },
+        {
+          "q": "If T: R⁴ → R³ has nullity 2, what is the rank of T? Can T be onto?",
+          "a": "Rank = 4 − 2 = 2. T cannot be onto R³, since the range has dimension 2 < 3."
+        }
+      ],
+      "takeaway": "The kernel is what T kills, the range is what T reaches; T is one-to-one iff the kernel is {0}, and nullity + rank = dimension of the domain.",
+      "module": "Linear Transformations"
+    },
+    "Inverse Linear Transformations": {
+      "intro": "A linear transformation is invertible when it loses nothing and reaches everything — one-to-one and onto. Then there is a unique inverse transformation that undoes it, and for transformations between spaces of the same finite dimension, one-to-one and onto are the same condition. This is the transformation version of 'A⁻¹ exists exactly when det A ≠ 0'.",
+      "concepts": [
+        "Invertible transformation — T: V → W is invertible if there is a linear map T⁻¹: W → V with T⁻¹(T(v)) = v and T(T⁻¹(w)) = w for all v, w.",
+        "One-to-one plus onto — for finite-dimensional spaces of the same dimension, T is invertible iff it is one-to-one iff it is onto; any one of the three implies the other two.",
+        "Inverse of a matrix transformation — if T(x) = Ax with A invertible, then T⁻¹(y) = A⁻¹y; the inverse transformation is multiplication by the inverse matrix.",
+        "Composition — if T and S are invertible, (S∘T)⁻¹ = T⁻¹∘S⁻¹, order reversed, just like (AB)⁻¹ = B⁻¹A⁻¹.",
+        "Solving equations — T(x) = b has a unique solution x = T⁻¹(b) exactly when T is invertible; otherwise it has none or infinitely many."
+      ],
+      "example": {
+        "q": "Show T(x, y) = (x + y, x − y) is invertible and find its inverse.",
+        "steps": [
+          "Kernel check: T(x, y) = (0, 0) means x + y = 0 and x − y = 0; adding gives 2x = 0, so x = y = 0. The kernel is {0}, so T is one-to-one, hence invertible (domain and codomain both R²).",
+          "To invert: set u = x + y, v = x − y. Adding: u + v = 2x, so x = (u + v)/2. Subtracting: u − v = 2y, so y = (u − v)/2.",
+          "So T⁻¹(u, v) = ((u + v)/2, (u − v)/2).",
+          "Check: T(T⁻¹(3, 1)) = T(2, 1) = (2 + 1, 2 − 1) = (3, 1) ✓."
+        ],
+        "a": "T⁻¹(u, v) = ((u + v)/2, (u − v)/2)"
+      },
+      "practice": [
+        {
+          "q": "Find the inverse of T(x, y) = (2x, 3y).",
+          "a": "T⁻¹(u, v) = (u/2, v/3)."
+        },
+        {
+          "q": "Is T(x, y) = (x + y, 2x + 2y) invertible? Why or why not?",
+          "a": "No: its kernel is span{(1, −1)} ≠ {0}, so T is not one-to-one; it also fails to be onto."
+        }
+      ],
+      "takeaway": "T is invertible iff it is one-to-one iff it is onto (same finite dimension); the inverse undoes T, with composition order reversed.",
+      "module": "Linear Transformations"
+    },
+    "Matrices of General Linear Transformations": {
+      "intro": "Every linear transformation between finite-dimensional spaces is multiplication by a matrix — once bases are chosen. The standard matrix of T: Rⁿ → Rᵐ is built column by column: the j-th column is T(eⱼ), the image of the j-th standard basis vector. This is the bridge that turns abstract transformations into concrete computation.",
+      "concepts": [
+        "Standard matrix — for T: Rⁿ → Rᵐ, the matrix A with columns T(e1), …, T(en) satisfies T(x) = Ax for all x.",
+        "Reading a transformation off its matrix — the columns of A are the images of the standard basis vectors; the rows encode the coordinate functions.",
+        "Composition is multiplication — if T(x) = Ax and S(y) = By, then (S∘T)(x) = (BA)x; composing transformations is multiplying their matrices, in the same order.",
+        "Change of basis — with non-standard bases the matrix changes by similarity: the same transformation has matrix P⁻¹AP in a new basis.",
+        "Why it matters — matrices are the computational form of linear transformations; every algorithm for solving, inverting, or diagonalizing is an algorithm about transformations."
+      ],
+      "example": {
+        "q": "Find the standard matrix of T(x, y) = (x + 2y, 3x − y) and use it to compute T(1, 2).",
+        "steps": [
+          "T(e1) = T(1, 0) = (1, 3); this is column 1 of A.",
+          "T(e2) = T(0, 1) = (2, −1); this is column 2 of A.",
+          "So A = [[1, 2], [3, −1]].",
+          "T(1, 2) = A·(1, 2)ᵀ = (1·1 + 2·2, 3·1 + (−1)·2) = (5, 1) ✓, matching direct evaluation."
+        ],
+        "a": "A = [[1, 2], [3, −1]]; T(1, 2) = (5, 1)"
+      },
+      "practice": [
+        {
+          "q": "Find the standard matrix of T(x, y) = (y, x) (swap coordinates) and compute T(4, 5).",
+          "a": "T(e1) = (0, 1), T(e2) = (1, 0), so A = [[0, 1], [1, 0]]; T(4, 5) = (5, 4)."
+        },
+        {
+          "q": "If T(x) = Ax and S(y) = By, what is the matrix of S∘T?",
+          "a": "BA — the matrix of the composition is the product, in the same order."
+        }
+      ],
+      "takeaway": "The standard matrix of T has columns T(eⱼ); then T(x) = Ax, and composition of transformations is matrix multiplication.",
+      "module": "Linear Transformations"
+    },
+    "Similarity": {
+      "intro": "Two matrices are similar when they represent the same linear transformation in different bases: B = P⁻¹AP. Similar matrices share the essential invariants — determinant, trace, eigenvalues, characteristic polynomial — because they are the same transformation seen from another angle. Diagonalization is the quest for the simplest similar matrix: a diagonal one.",
+      "concepts": [
+        "Definition — A and B are similar if B = P⁻¹AP for some invertible P; the columns of P are the new basis vectors written in the old coordinates.",
+        "Invariants — similar matrices have the same determinant, trace, eigenvalues, rank, and characteristic polynomial.",
+        "Same transformation, new basis — similarity is a change of basis: A and P⁻¹AP describe the same map, just with coordinates measured differently.",
+        "Diagonalizable — A is diagonalizable if it is similar to a diagonal matrix; then the columns of P are eigenvectors and the diagonal entries are the eigenvalues.",
+        "Not everything is diagonalizable — a matrix with too few independent eigenvectors (like [[1, 1], [0, 1]]) is similar to no diagonal matrix."
+      ],
+      "example": {
+        "q": "Show A = [[1, 2], [0, 3]] is similar to the diagonal matrix B = [[1, 0], [0, 3]] using P = [[1, 1], [0, 1]], and check the invariants.",
+        "steps": [
+          "P⁻¹ = [[1, −1], [0, 1]] (check: P·P⁻¹ = [[1, 0], [0, 1]] ✓).",
+          "AP = [[1, 2], [0, 3]]·[[1, 1], [0, 1]] = [[1, 3], [0, 3]].",
+          "P⁻¹(AP) = [[1, −1], [0, 1]]·[[1, 3], [0, 3]] = [[1, 0], [0, 3]] = B ✓, so B = P⁻¹AP and the matrices are similar.",
+          "Invariants: det A = 3 = det B ✓; trace A = 4 = trace B ✓; eigenvalues of both are 1 and 3 ✓."
+        ],
+        "a": "B = P⁻¹AP = [[1, 0], [0, 3]]; det 3, trace 4, eigenvalues 1 and 3 agree"
+      },
+      "practice": [
+        {
+          "q": "If B = P⁻¹AP, what is det B in terms of det A? What about trace B?",
+          "a": "det B = det A and trace B = trace A — both are similarity invariants."
+        },
+        {
+          "q": "Is [[2, 0], [0, 2]] similar to [[2, 1], [0, 2]]? Why or why not?",
+          "a": "No: 2I is similar only to itself, since P⁻¹(2I)P = 2I for every P; the second matrix is not diagonalizable."
+        }
+      ],
+      "takeaway": "Similar matrices are the same transformation in different bases; they share determinant, trace, rank, and eigenvalues.",
+      "module": "Linear Transformations"
+    },
+    "Eigenvalues and Eigenvectors": {
+      "intro": "An eigenvector of A is a nonzero vector that A only stretches: Av = λv, with no change of direction. The stretch factor λ is the eigenvalue. Eigenvectors are the natural axes of a transformation — along them, the matrix acts like a single number — and they are the key to diagonalization, powers of matrices, and differential equations.",
+      "concepts": [
+        "Eigenpair — v ≠ 0 is an eigenvector with eigenvalue λ if Av = λv; the zero vector is never an eigenvector.",
+        "Characteristic polynomial — det(A − λI) = 0 is the characteristic equation; its roots are the eigenvalues. For 2×2, det(A − λI) = λ² − (trace A)λ + det A.",
+        "Eigenspace — for a fixed λ, the eigenvectors together with 0 form a subspace, the null space of A − λI; its dimension is the geometric multiplicity of λ.",
+        "Finding eigenvectors — for each eigenvalue λ, solve (A − λI)v = 0 by row reduction; free variables give the eigenspace.",
+        "Eigenvalues of triangular matrices — the eigenvalues of a triangular matrix are its diagonal entries, readable at a glance."
+      ],
+      "example": {
+        "q": "Find the eigenvalues and eigenvectors of A = [[2, 1], [1, 2]].",
+        "steps": [
+          "Characteristic polynomial: det(A − λI) = det [[2 − λ, 1], [1, 2 − λ]] = (2 − λ)² − 1 = λ² − 4λ + 3 = (λ − 1)(λ − 3). Eigenvalues: λ = 1 and λ = 3.",
+          "λ = 1: A − I = [[1, 1], [1, 1]]; solving gives x + y = 0, so eigenvectors are t(1, −1). Check: A(1, −1) = (2 − 1, 1 − 2) = (1, −1) = 1·(1, −1) ✓.",
+          "λ = 3: A − 3I = [[−1, 1], [1, −1]]; solving gives −x + y = 0, so eigenvectors are t(1, 1). Check: A(1, 1) = (3, 3) = 3·(1, 1) ✓."
+        ],
+        "a": "Eigenvalues 1 and 3; eigenspaces span{(1, −1)} and span{(1, 1)}"
+      },
+      "practice": [
+        {
+          "q": "Find the eigenvalues and eigenvectors of [[4, 0], [0, 1]].",
+          "a": "Diagonal, so eigenvalues are 4 and 1, with eigenvectors (1, 0) and (0, 1) respectively."
+        },
+        {
+          "q": "Find the eigenvalues of [[0, 1], [1, 0]].",
+          "a": "det(A − λI) = λ² − 1, so eigenvalues λ = 1 and λ = −1 (eigenvectors (1, 1) and (1, −1))."
+        }
+      ],
+      "takeaway": "Eigenvalues solve det(A − λI) = 0; eigenvectors solve (A − λI)v = 0 — they are the directions A only stretches.",
+      "module": "Eigenvalues and Eigenvectors"
+    },
+    "Diagonalization": {
+      "intro": "Diagonalizing A means writing A = PDP⁻¹ with D diagonal: the columns of P are eigenvectors and the diagonal of D holds the eigenvalues. Once diagonalized, powers become trivial — Aᵏ = PDᵏP⁻¹ — and so do exponentials, recurrences, and long-term behavior. A matrix is diagonalizable exactly when it has enough independent eigenvectors.",
+      "concepts": [
+        "Diagonalization — A = PDP⁻¹ where D is diagonal and P is invertible; the columns of P are eigenvectors of A and the diagonal entries of D are the corresponding eigenvalues.",
+        "Criterion — an n×n matrix is diagonalizable iff it has n linearly independent eigenvectors; distinct eigenvalues always give independent eigenvectors.",
+        "Powers — Aᵏ = PDᵏP⁻¹, and Dᵏ is just the diagonal entries raised to the k-th power; this makes high powers computable.",
+        "Non-diagonalizable — if some eigenvalue's geometric multiplicity is less than its algebraic multiplicity, there are not enough eigenvectors; e.g. [[1, 1], [0, 1]] has only one eigenvector direction.",
+        "Uses — diagonalization solves linear recurrences, powers of matrices, systems of differential equations, and Markov chains."
+      ],
+      "example": {
+        "q": "Diagonalize A = [[2, 1], [1, 2]] and use it to compute A².",
+        "steps": [
+          "Eigenvalues 1 and 3 with eigenvectors (1, −1) and (1, 1). Take P = [[1, 1], [−1, 1]] (columns are the eigenvectors) and D = [[1, 0], [0, 3]].",
+          "P⁻¹ = (1/2)[[1, −1], [1, 1]] (det P = 2; check P·P⁻¹ = I ✓).",
+          "A² = PD²P⁻¹: D² = [[1, 0], [0, 9]], so PD² = [[1, 9], [−1, 9]]; multiply by P⁻¹: (1/2)[[1 + 9, −1 + 9], [−1 + 9, 1 + 9]] = (1/2)[[10, 8], [8, 10]] = [[5, 4], [4, 5]].",
+          "Direct check: A² = [[2, 1], [1, 2]]·[[2, 1], [1, 2]] = [[5, 4], [4, 5]] ✓."
+        ],
+        "a": "A = PDP⁻¹ with P = [[1, 1], [−1, 1]], D = diag(1, 3); A² = [[5, 4], [4, 5]]"
+      },
+      "practice": [
+        {
+          "q": "Diagonalize A = [[3, 0], [0, 2]] (already diagonal). What are P and D?",
+          "a": "P = I and D = A itself; the matrix is already in diagonal form."
+        },
+        {
+          "q": "Why is [[1, 2], [0, 1]] not diagonalizable?",
+          "a": "Its only eigenvalue is 1 (double root), and A − I = [[0, 2], [0, 0]] has rank 1, so the eigenspace is 1-dimensional — only one independent eigenvector, but 2 are needed."
+        }
+      ],
+      "takeaway": "A = PDP⁻¹ with eigenvector columns in P and eigenvalues on the diagonal of D; then Aᵏ = PDᵏP⁻¹, and diagonalizability needs n independent eigenvectors.",
+      "module": "Eigenvalues and Eigenvectors"
+    },
+    "Orthogonal Diagonalization": {
+      "intro": "Symmetric matrices are special: the spectral theorem says every real symmetric matrix is orthogonally diagonalizable — A = QDQᵀ with Q orthogonal and D diagonal. The eigenvectors can be chosen orthonormal, which makes Q⁻¹ = Qᵀ, so no matrix inversion is needed. Symmetric matrices appear as covariance matrices, Hessians, and quadratic forms, so this is the most-used diagonalization in practice.",
+      "concepts": [
+        "Spectral theorem — every real symmetric matrix A has real eigenvalues and an orthonormal basis of eigenvectors; A = QDQᵀ with Q orthogonal.",
+        "Orthogonal matrix — QᵀQ = I, so Q⁻¹ = Qᵀ and the columns of Q are orthonormal; orthogonal matrices preserve lengths and angles.",
+        "Why symmetric matters — eigenvectors for distinct eigenvalues of a symmetric matrix are automatically orthogonal; within one eigenspace, Gram–Schmidt finishes the job.",
+        "Quadratic forms — xᵀAx with A symmetric is diagonalized by the same Q, turning the form into a sum of squares λ1y1² + … + λnyn².",
+        "Principal axes — the orthonormal eigenvectors are the principal axes of the quadratic form or the ellipsoid xᵀAx = 1."
+      ],
+      "example": {
+        "q": "Orthogonally diagonalize the symmetric matrix A = [[2, 1], [1, 2]].",
+        "steps": [
+          "Eigenvalues 1 and 3 with eigenvectors (1, −1) and (1, 1); they are orthogonal: (1, −1)·(1, 1) = 0 ✓, as the spectral theorem promises.",
+          "Normalize: q1 = (1/√2)(1, −1) and q2 = (1/√2)(1, 1). Take Q = (1/√2)[[1, 1], [−1, 1]] with columns q1, q2.",
+          "Check Q is orthogonal: QᵀQ = (1/2)[[1 + 1, 1 − 1], [1 − 1, 1 + 1]] = [[1, 0], [0, 1]] ✓.",
+          "Then A = QDQᵀ with D = diag(1, 3); indeed QDQᵀ = A (the (1,1) entry: (1/2)(1·1 + 1·3) = 2 ✓, the (1,2) entry: (1/2)(−1·1 + 1·3) = 1 ✓)."
+        ],
+        "a": "Q = (1/√2)[[1, 1], [−1, 1]], D = diag(1, 3); A = QDQᵀ"
+      },
+      "practice": [
+        {
+          "q": "Orthogonally diagonalize the symmetric matrix [[5, 0], [0, −1]].",
+          "a": "Already diagonal: Q = I, D = diag(5, −1)."
+        },
+        {
+          "q": "Find an orthonormal eigenbasis for [[0, 1], [1, 0]].",
+          "a": "Eigenvalues 1 and −1 with eigenvectors (1, 1) and (1, −1); normalized: (1/√2)(1, 1) and (1/√2)(1, −1)."
+        }
+      ],
+      "takeaway": "Every real symmetric matrix is A = QDQᵀ with Q orthogonal — eigenvectors are orthonormal, so Q⁻¹ = Qᵀ and no inversion is needed.",
+      "module": "Eigenvalues and Eigenvectors"
+    },
+    "Inner Products": {
+      "intro": "An inner product generalizes the dot product: it is a rule for measuring lengths and angles in any vector space. With an inner product you get norms, orthogonality, and the Cauchy–Schwarz inequality — the geometry that makes least squares, Fourier series, and Gram–Schmidt possible.",
+      "concepts": [
+        "Inner product axioms — ⟨u, v⟩ is linear in each argument, symmetric (⟨u, v⟩ = ⟨v, u⟩), and positive definite (⟨v, v⟩ ≥ 0, with equality only for v = 0).",
+        "Norm and distance — ‖v‖ = √⟨v, v⟩ is the length of v, and ‖u − v‖ is the distance between u and v.",
+        "Orthogonality — u and v are orthogonal if ⟨u, v⟩ = 0; the dot product in Rⁿ is the standard inner product, and orthogonal vectors meet at a right angle.",
+        "Cauchy–Schwarz — |⟨u, v⟩| ≤ ‖u‖‖v‖, with equality exactly when u and v are linearly dependent; it is what makes the angle formula cos θ = ⟨u, v⟩/(‖u‖‖v‖) valid.",
+        "Other inner products — on functions, ⟨f, g⟩ = ∫ f·g; on matrices, ⟨A, B⟩ = trace(AᵀB); on polynomials, weighted integrals — the same axioms, new geometry."
+      ],
+      "example": {
+        "q": "In R² with the dot product, find ⟨u, v⟩, ‖u‖, ‖v‖, and the angle between u = (1, 2) and v = (3, −1).",
+        "steps": [
+          "⟨u, v⟩ = 1·3 + 2·(−1) = 3 − 2 = 1.",
+          "‖u‖ = √(1² + 2²) = √5; ‖v‖ = √(3² + (−1)²) = √10.",
+          "cos θ = ⟨u, v⟩/(‖u‖‖v‖) = 1/(√5·√10) = 1/√50 ≈ 0.1414.",
+          "θ = arccos(1/√50) ≈ 81.9°."
+        ],
+        "a": "⟨u, v⟩ = 1, ‖u‖ = √5, ‖v‖ = √10, θ ≈ 81.9°"
+      },
+      "practice": [
+        {
+          "q": "Are (2, 0) and (0, 3) orthogonal in R² with the dot product? What is the angle between them?",
+          "a": "Yes: ⟨(2,0), (0,3)⟩ = 0, so the angle is 90°."
+        },
+        {
+          "q": "On polynomials, take ⟨p, q⟩ = ∫₋₁¹ p(x)q(x) dx. Compute ⟨1, x⟩.",
+          "a": "∫₋₁¹ x dx = 0, so 1 and x are orthogonal in this inner product."
+        }
+      ],
+      "takeaway": "An inner product gives lengths, angles, and orthogonality in any vector space; the dot product is the model, integrals and traces are other examples.",
+      "module": "Inner Product Spaces"
+    },
+    "Gram-Schmidt Process": {
+      "intro": "Gram–Schmidt turns any basis into an orthonormal basis, one vector at a time: keep the first vector, subtract from the second its projection onto the first, subtract from the third its projections onto the first two, and so on — then normalize. Orthonormal bases make coordinates easy (dot products instead of solving systems) and power QR factorization and least squares.",
+      "concepts": [
+        "Projection — the projection of v onto a unit vector u is ⟨v, u⟩u; onto a nonzero vector w it is (⟨v, w⟩/‖w‖²)w.",
+        "The algorithm — u1 = v1; u2 = v2 − proj_u1(v2); u3 = v3 − proj_u1(v3) − proj_u2(v3); …; then normalize ei = ui/‖ui‖.",
+        "Why it works — each subtraction removes exactly the components along the previous vectors, so the new vector is orthogonal to all of them; independence of the vi guarantees no ui is zero.",
+        "Orthonormal basis — the output e1…en is orthonormal: ⟨ei, ej⟩ = 0 for i ≠ j and ‖ei‖ = 1; coordinates of any vector are then just dot products.",
+        "QR factorization — writing A = QR with Q's columns the orthonormal basis and R upper triangular is Gram–Schmidt in matrix form, the workhorse of least squares."
+      ],
+      "example": {
+        "q": "Apply Gram–Schmidt to v1 = (1, 1, 0), v2 = (1, 0, 1), v3 = (0, 1, 1) in R³.",
+        "steps": [
+          "u1 = v1 = (1, 1, 0).",
+          "u2 = v2 − (⟨v2, u1⟩/‖u1‖²)u1: ⟨v2, u1⟩ = 1, ‖u1‖² = 2, so u2 = (1, 0, 1) − (1/2)(1, 1, 0) = (1/2, −1/2, 1).",
+          "u3 = v3 − (⟨v3, u1⟩/‖u1‖²)u1 − (⟨v3, u2⟩/‖u2‖²)u2: ⟨v3, u1⟩ = 1, so the first subtraction is (1/2)(1, 1, 0); ⟨v3, u2⟩ = 1/2 and ‖u2‖² = 3/2, so the second subtraction is (1/3)(1/2, −1/2, 1) = (1/6, −1/6, 1/3). Hence u3 = (0, 1, 1) − (1/2, 1/2, 0) − (1/6, −1/6, 1/3) = (−2/3, 2/3, 2/3).",
+          "Check orthogonality: u1·u3 = −2/3 + 2/3 + 0 = 0 ✓; u2·u3 = (1/2)(−2/3) + (−1/2)(2/3) + 1·(2/3) = −1/3 − 1/3 + 2/3 = 0 ✓."
+        ],
+        "a": "u1 = (1, 1, 0), u2 = (1/2, −1/2, 1), u3 = (−2/3, 2/3, 2/3) (normalize to get the orthonormal basis)"
+      },
+      "practice": [
+        {
+          "q": "Apply Gram–Schmidt to (1, 0), (1, 1) in R².",
+          "a": "u1 = (1, 0); u2 = (1, 1) − (1/1)(1, 0) = (0, 1). The orthonormal basis is e1 = (1, 0), e2 = (0, 1)."
+        },
+        {
+          "q": "Why does Gram–Schmidt fail if the input vectors are linearly dependent?",
+          "a": "Some ui becomes the zero vector (its vector is fully explained by the previous ones), and the zero vector cannot be normalized."
+        }
+      ],
+      "takeaway": "Gram–Schmidt orthogonalizes by subtracting projections, then normalizes; the result is an orthonormal basis with coordinates given by dot products.",
+      "module": "Inner Product Spaces"
+    },
+    "Orthogonal Matrices": {
+      "intro": "An orthogonal matrix is a square matrix with orthonormal columns — equivalently QᵀQ = I, so Q⁻¹ = Qᵀ. Orthogonal matrices are the rotations and reflections of linear algebra: they preserve lengths and angles, their determinants are ±1, and they are the matrices that appear in the spectral theorem and in QR factorization.",
+      "concepts": [
+        "Definition — Q is orthogonal if QᵀQ = I (equivalently QQᵀ = I); the columns — and the rows — are orthonormal.",
+        "Inverse is the transpose — Q⁻¹ = Qᵀ, so inverting an orthogonal matrix costs nothing; this is why they are prized numerically.",
+        "Determinant — det Q = ±1, since (det Q)² = det(QᵀQ) = det I = 1; +1 for rotations, −1 for reflections (and their products).",
+        "Length preservation — ‖Qx‖ = ‖x‖ for every x, because ‖Qx‖² = (Qx)ᵀ(Qx) = xᵀQᵀQx = xᵀx; angles are preserved too.",
+        "Examples — rotation matrices [[cos θ, −sin θ], [sin θ, cos θ]], reflections, permutation matrices, and Householder matrices are all orthogonal."
+      ],
+      "example": {
+        "q": "Show Q = (1/√2)[[1, −1], [1, 1]] is orthogonal, find det Q, and check that it preserves the length of (1, 0).",
+        "steps": [
+          "Qᵀ = (1/√2)[[1, 1], [−1, 1]]. Compute QᵀQ = (1/2)[[1 + 1, −1 + 1], [−1 + 1, 1 + 1]] = [[1, 0], [0, 1]] = I, so Q is orthogonal and Q⁻¹ = Qᵀ.",
+          "det Q = (1/2)(1·1 − (−1)·1) = (1/2)(2) = 1 — a rotation (by 45°).",
+          "Q(1, 0) = (1/√2, 1/√2), and ‖Q(1, 0)‖ = √(1/2 + 1/2) = 1 = ‖(1, 0)‖ ✓ — length preserved."
+        ],
+        "a": "QᵀQ = I, det Q = 1, ‖Q(1, 0)‖ = 1"
+      },
+      "practice": [
+        {
+          "q": "Is the rotation matrix [[cos θ, −sin θ], [sin θ, cos θ]] orthogonal for every θ?",
+          "a": "Yes: its columns are (cos θ, sin θ) and (−sin θ, cos θ), each of length 1 and orthogonal to each other, for every θ."
+        },
+        {
+          "q": "Is the permutation matrix [[0, 1], [1, 0]] orthogonal? What is its determinant?",
+          "a": "Yes: its columns (0, 1) and (1, 0) are orthonormal. Its determinant is −1, so it is a reflection."
+        }
+      ],
+      "takeaway": "Orthogonal matrices have orthonormal columns, Q⁻¹ = Qᵀ, det Q = ±1, and they preserve lengths and angles.",
+      "module": "Inner Product Spaces"
+    }
+  }
+}
