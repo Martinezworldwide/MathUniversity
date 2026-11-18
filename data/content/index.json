@@ -5,7 +5,8 @@
     "MATH102",
     "MATH201",
     "MATH202",
-    "MATH203"
+    "MATH203",
+    "MATH204"
   ],
   "counts": {
     "MATH101": 24,
@@ -13,7 +14,8 @@
     "MATH102": 22,
     "MATH201": 33,
     "MATH202": 27,
-    "MATH203": 25
+    "MATH203": 25,
+    "MATH204": 16
   },
   "note": "Courses listed here have full written lesson content (intro, concepts, worked example, practice with answers, takeaway) for every lesson in their outline."
 }

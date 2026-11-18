@@ -1,0 +1,530 @@
+{
+  "course_id": "MATH204",
+  "title": "Discrete Mathematics",
+  "lesson_count": 16,
+  "lessons": {
+    "Propositional Logic": {
+      "intro": "Propositional logic is the algebra of true-or-false statements. A proposition is a sentence that is either true or false — never both, never neither — and from simple propositions we build compound ones with connectives like 'and', 'or', 'not', and 'if... then'. Everything in this course, from proofs to circuits to algorithms, rests on getting these combinations exactly right.",
+      "concepts": [
+        "Proposition — a declarative sentence with a definite truth value, true or false; '2 + 2 = 4' is a proposition, 'What time is it?' is not.",
+        "Connectives — negation ¬p ('not p'), conjunction p ∧ q ('p and q', true only when both are true), disjunction p ∨ q ('p or q', true when at least one is true), implication p → q, and biconditional p ↔ q ('p if and only if q').",
+        "Implication — p → q is false in exactly one case: p true and q false. A false hypothesis makes the implication vacuously true, which surprises beginners but is essential for proofs.",
+        "Truth table — a table listing every combination of truth values for the variables and the resulting value of the compound statement; with n variables there are 2ⁿ rows.",
+        "Tautology, contradiction, contingency — a tautology is always true (like p ∨ ¬p), a contradiction is always false (like p ∧ ¬p), and a contingency is sometimes true and sometimes false.",
+        "Logical equivalence — two statements are equivalent when their truth tables match in every row; De Morgan's laws say ¬(p ∧ q) ≡ ¬p ∨ ¬q and ¬(p ∨ q) ≡ ¬p ∧ ¬q."
+      ],
+      "example": {
+        "q": "Build the truth table for (p ∧ q) → p and decide whether it is a tautology, a contradiction, or a contingency.",
+        "steps": [
+          "There are 2 variables, so 4 rows. Row 1 (p = T, q = T): p ∧ q = T, so (p ∧ q) → p is T → T = T.",
+          "Row 2 (p = T, q = F): p ∧ q = F, so F → T = T — a false hypothesis makes the implication true.",
+          "Row 3 (p = F, q = T): p ∧ q = F, so F → F = T. Row 4 (p = F, q = F): p ∧ q = F, so F → F = T.",
+          "Every row gives T, so the statement is true under every assignment."
+        ],
+        "a": "The statement is a tautology — always true."
+      },
+      "practice": [
+        {
+          "q": "Use a truth table to check whether ¬(p ∧ q) is logically equivalent to ¬p ∨ ¬q.",
+          "a": "Yes — De Morgan's law. Both are false only in the row p = T, q = T (where ¬(p ∧ q) = F and ¬p ∨ ¬q = F ∨ F = F), and true in the other three rows."
+        },
+        {
+          "q": "Let p be 'It is raining' and q be 'The ground is wet'. In what situation is p → q false?",
+          "a": "Exactly when it is raining (p true) and the ground is not wet (q false). If it is not raining, the implication is true regardless of the ground."
+        }
+      ],
+      "takeaway": "Truth tables settle every question about compound propositions: an implication fails only when a true hypothesis leads to a false conclusion, and De Morgan's laws let you push negations inside.",
+      "module": "Logic and Proofs"
+    },
+    "Predicate Logic": {
+      "intro": "Propositional logic cannot talk about 'all numbers' or 'some student' — it has no variables. Predicate logic adds predicates, like P(x) = 'x is even', and quantifiers that range over a domain. This is the language in which real mathematical statements are written, so reading and negating quantified statements correctly is a core skill.",
+      "concepts": [
+        "Predicate — a sentence containing variables, like P(x): 'x > 5', which becomes a proposition once x is given a value.",
+        "Domain (universe of discourse) — the set of values the variables range over; the same sentence can be true over one domain and false over another.",
+        "Universal quantifier ∀ — ∀x P(x) means P(x) holds for every x in the domain; one counterexample disproves it.",
+        "Existential quantifier ∃ — ∃x P(x) means P(x) holds for at least one x in the domain; one example proves it.",
+        "Negating quantifiers — ¬∀x P(x) is equivalent to ∃x ¬P(x), and ¬∃x P(x) is equivalent to ∀x ¬P(x); negation flips the quantifier and negates the predicate.",
+        "Nested quantifiers — order matters: ∀x ∃y (x < y) and ∃y ∀x (x < y) say very different things."
+      ],
+      "example": {
+        "q": "Translate 'Every student in this class has taken calculus' into predicate logic, then write its negation in words and in symbols. Let S(x) be 'x is a student in this class' and C(x) be 'x has taken calculus'.",
+        "steps": [
+          "'Every student' is a universal claim over students, so the statement is: ∀x (S(x) → C(x)) — for each person x, if x is a student in this class then x has taken calculus.",
+          "To negate, flip ∀ to ∃ and negate the inside: ¬∀x (S(x) → C(x)) ≡ ∃x ¬(S(x) → C(x)).",
+          "An implication S(x) → C(x) is false exactly when S(x) is true and C(x) is false, so ¬(S(x) → C(x)) ≡ S(x) ∧ ¬C(x).",
+          "The negation is therefore ∃x (S(x) ∧ ¬C(x))."
+        ],
+        "a": "Statement: ∀x (S(x) → C(x)). Negation: ∃x (S(x) ∧ ¬C(x)) — 'There is a student in this class who has not taken calculus.'"
+      },
+      "practice": [
+        {
+          "q": "Negate the statement 'There is a prime number greater than 100.'",
+          "a": "Flip ∃ to ∀ and negate: 'For every integer n, if n > 100 then n is not prime' — in symbols, ∀n (n > 100 → ¬Prime(n))."
+        },
+        {
+          "q": "Over the integers, is ∀x ∃y (x < y) true? Is ∃y ∀x (x < y) true? Explain the difference.",
+          "a": "∀x ∃y (x < y) is true: given any x, take y = x + 1. But ∃y ∀x (x < y) is false: it claims one integer y bigger than every integer, and y + 1 is always bigger. Order of quantifiers matters."
+        }
+      ],
+      "takeaway": "Quantifiers turn predicates into propositions; negating a quantified statement flips ∀ to ∃ (or the reverse) and negates the predicate — and nested quantifiers must be read in order.",
+      "module": "Logic and Proofs"
+    },
+    "Proof Methods": {
+      "intro": "A proof is a watertight argument that a statement is true. Discrete mathematics is the first place most students meet proof as a craft, and it offers a small toolkit — direct proof, contrapositive, contradiction, and induction — that covers almost every theorem you will ever need to prove.",
+      "concepts": [
+        "Direct proof — assume the hypothesis and derive the conclusion by a chain of valid steps; the workhorse method.",
+        "Proof by contrapositive — to prove p → q, prove ¬q → ¬p instead; the two are logically equivalent, and sometimes the contrapositive is much easier.",
+        "Proof by contradiction — assume the statement is false and derive an impossibility; the contradiction shows the assumption was wrong.",
+        "Proof by induction — to prove P(n) for all natural numbers n: prove the base case P(1), then the inductive step, that P(k) implies P(k + 1); the two together topple every case like dominoes.",
+        "Counterexample — to disprove a universal statement ∀x P(x), one x with ¬P(x) is enough; a single counterexample kills the claim.",
+        "Vacuous and trivial proofs — p → q is vacuously true when p is always false, and trivially true when q is always true."
+      ],
+      "example": {
+        "q": "Prove by contradiction that √2 is irrational.",
+        "steps": [
+          "Assume the opposite: √2 is rational, so √2 = p/q for integers p and q with q ≠ 0, in lowest terms (p and q share no common factor).",
+          "Square both sides: 2 = p²/q², so p² = 2q². Thus p² is even, and an even square means p itself is even — write p = 2k.",
+          "Substitute back: (2k)² = 2q², so 4k² = 2q² and q² = 2k². Thus q² is even, so q is even too.",
+          "But p and q both even contradicts the assumption that p/q was in lowest terms. The assumption must be false."
+        ],
+        "a": "√2 cannot be written as a ratio of integers — it is irrational."
+      },
+      "practice": [
+        {
+          "q": "Prove directly: if n is even, then n² is even.",
+          "a": "Write n = 2k for some integer k. Then n² = 4k² = 2(2k²), which is twice an integer, so n² is even."
+        },
+        {
+          "q": "Prove by induction that 1 + 2 + … + n = n(n + 1)/2 for all positive integers n.",
+          "a": "Base case n = 1: 1 = 1·2/2 ✓. Inductive step: assume the formula for k; then 1 + … + k + (k + 1) = k(k + 1)/2 + (k + 1) = (k + 1)(k + 2)/2, which is the formula for k + 1. By induction it holds for all n."
+        }
+      ],
+      "takeaway": "Choose the method to fit the claim: direct proof for straightforward implications, contrapositive when the negation is simpler, contradiction when assuming the opposite gives you something to work with, induction for statements about all natural numbers.",
+      "module": "Logic and Proofs"
+    },
+    "Sets and Operations": {
+      "intro": "Sets are the atoms of modern mathematics: nearly everything — numbers, functions, graphs, relations — is built from them. A set is just a collection of distinct objects, but the operations on sets (union, intersection, difference, complement) and the notion of a power set give you a precise language for counting and for describing collections.",
+      "concepts": [
+        "Set and element — a set is an unordered collection of distinct objects; x ∈ A means x is an element of A, and sets are written in roster form {1, 2, 3} or set-builder form {x | x > 0}.",
+        "Subset — A ⊆ B means every element of A is in B; A is a proper subset, A ⊂ B, if A ⊆ B and A ≠ B. The empty set ∅ is a subset of every set.",
+        "Union and intersection — A ∪ B is everything in A or in B (or both); A ∩ B is everything in both. A − B is everything in A but not in B.",
+        "Complement — relative to a universal set U, the complement A′ (or Ā) is everything in U that is not in A.",
+        "Power set — P(A) is the set of all subsets of A; if A has n elements, P(A) has 2ⁿ elements.",
+        "Set identities — union and intersection are commutative, associative, and distributive over each other; De Morgan's laws for sets say (A ∪ B)′ = A′ ∩ B′ and (A ∩ B)′ = A′ ∪ B′."
+      ],
+      "example": {
+        "q": "Let A = {1, 2, 3, 4} and B = {3, 4, 5, 6}. Find A ∪ B, A ∩ B, A − B, and the number of elements in the power set P(A).",
+        "steps": [
+          "Union: collect everything in either set, each once: A ∪ B = {1, 2, 3, 4, 5, 6}.",
+          "Intersection: keep only what is in both: A ∩ B = {3, 4}.",
+          "Difference: keep what is in A but not B: A − B = {1, 2}.",
+          "Power set size: |A| = 4, so |P(A)| = 2⁴ = 16 — every subset is a choice of in-or-out for each of the 4 elements."
+        ],
+        "a": "A ∪ B = {1, 2, 3, 4, 5, 6}; A ∩ B = {3, 4}; A − B = {1, 2}; |P(A)| = 16."
+      },
+      "practice": [
+        {
+          "q": "List every element of the power set P({a, b}).",
+          "a": "P({a, b}) = {∅, {a}, {b}, {a, b}} — 2² = 4 subsets."
+        },
+        {
+          "q": "Verify De Morgan's law (A ∪ B)′ = A′ ∩ B′ with U = {1, 2, 3, 4, 5, 6}, A = {1, 2, 3}, B = {3, 4}.",
+          "a": "A ∪ B = {1, 2, 3, 4}, so (A ∪ B)′ = {5, 6}. Meanwhile A′ = {4, 5, 6} and B′ = {1, 2, 5, 6}, so A′ ∩ B′ = {5, 6}. Both sides agree ✓."
+        }
+      ],
+      "takeaway": "Union, intersection, difference, and complement obey the same algebra as logical connectives — and a set with n elements has exactly 2ⁿ subsets.",
+      "module": "Set Theory and Functions"
+    },
+    "Functions": {
+      "intro": "A function is a rule that assigns to each input exactly one output. Functions are the machinery of discrete mathematics: they encode counting arguments, define sequences and algorithms, and — when they are bijections — prove that two sets have the same size. The key questions are always: is it one-to-one, is it onto, and can it be undone?",
+      "concepts": [
+        "Function — f: A → B assigns to each a in the domain A exactly one f(a) in the codomain B; the range is the set of values actually attained.",
+        "Injective (one-to-one) — f(a₁) = f(a₂) forces a₁ = a₂; distinct inputs give distinct outputs, so nothing collides.",
+        "Surjective (onto) — every b in B is f(a) for some a in A; the range is the whole codomain.",
+        "Bijective — both injective and surjective; a bijection pairs up A and B perfectly, proving they have the same cardinality.",
+        "Inverse function — if f is bijective, f⁻¹ undoes it: f⁻¹(f(a)) = a and f(f⁻¹(b)) = b.",
+        "Composition — (g ∘ f)(x) = g(f(x)): apply f first, then g. Composition is associative but not commutative — order matters."
+      ],
+      "example": {
+        "q": "Show that f(x) = 2x + 3 from ℝ to ℝ is bijective and find its inverse. Is g(x) = x² from ℝ to ℝ injective or surjective?",
+        "steps": [
+          "Injective: if 2a + 3 = 2b + 3 then 2a = 2b, so a = b — distinct inputs give distinct outputs.",
+          "Surjective: given any y, solve 2x + 3 = y to get x = (y − 3)/2, which is a real number mapping to y.",
+          "Since f is bijective it has an inverse: swap x and y in y = 2x + 3 to get x = 2y + 3, so y = (x − 3)/2. Hence f⁻¹(x) = (x − 3)/2.",
+          "For g(x) = x²: g(2) = g(−2) = 4, so g is not injective; and −1 has no square root in ℝ, so g is not surjective onto ℝ."
+        ],
+        "a": "f is bijective with f⁻¹(x) = (x − 3)/2. g(x) = x² is neither injective nor surjective on ℝ."
+      },
+      "practice": [
+        {
+          "q": "Show that f(x) = x³ from ℝ to ℝ is bijective and give its inverse.",
+          "a": "Strictly increasing, so injective; every real y is the cube of ∛y, so surjective. Inverse: f⁻¹(x) = ∛x."
+        },
+        {
+          "q": "Let f(n) = 2n from ℤ to ℤ. Is f injective? Surjective? Also compute (g ∘ f)(2) and (f ∘ g)(2) for f(x) = x + 1 and g(x) = x².",
+          "a": "f is injective (2a = 2b forces a = b) but not surjective: odd integers like 1 are never hit. (g ∘ f)(2) = g(3) = 9, while (f ∘ g)(2) = f(4) = 5 — composition order matters."
+        }
+      ],
+      "takeaway": "Injective means no collisions, surjective means nothing missed, bijective means a perfect pairing with an inverse — and (g ∘ f) is not the same as (f ∘ g).",
+      "module": "Set Theory and Functions"
+    },
+    "Cardinality": {
+      "intro": "How big is an infinite set? The surprising answer is that infinities come in different sizes. Cantor showed that the integers and the real numbers are not the same size of infinity, using a bijection to compare sets and a diagonal argument to prove that no listing of the reals can be complete. Cardinality is the theory of those sizes.",
+      "concepts": [
+        "Cardinality — |A| is the size of A; two sets have the same cardinality when there is a bijection between them.",
+        "Countable — a set is countable if it is finite or has the same cardinality as ℕ (the natural numbers); ℤ and ℚ are countable, surprisingly.",
+        "Uncountable — a set too large to be listed in a sequence; Cantor proved ℝ is uncountable.",
+        "Cantor's diagonal argument — given any list of real numbers in (0, 1), build a new number whose nth digit differs from the nth number's nth digit; the new number is missing from the list, so no list is complete.",
+        "Power set theorem — for any set A, |P(A)| > |A|; there is no largest infinity.",
+        "Countable unions — a countable union of countable sets is countable, which is how you show ℚ is countable (rationals with denominator n, for each n)."
+      ],
+      "example": {
+        "q": "Show the set of positive even integers is countable, and explain why the interval (0, 1) is not.",
+        "steps": [
+          "The map n ↦ 2n is a bijection from ℕ = {1, 2, 3, …} to the positive evens {2, 4, 6, …}: every even number 2n comes from exactly one n. So the evens have the same cardinality as ℕ — countable.",
+          "Suppose (0, 1) were countable, so its numbers could be listed r₁, r₂, r₃, …. Write each as a decimal 0.d₁d₂d₃….",
+          "Build a new number x whose nth decimal digit is 1 if the nth digit of rₙ is not 1, and 2 otherwise. Then x differs from rₙ in the nth digit, for every n — so x is in (0, 1) but is not on the list.",
+          "This contradiction shows no complete list exists: (0, 1) is uncountable."
+        ],
+        "a": "The positive evens are countable (bijection n ↦ 2n); (0, 1) is uncountable by Cantor's diagonal argument."
+      },
+      "practice": [
+        {
+          "q": "Show that ℤ, the set of all integers, is countable by giving an explicit listing.",
+          "a": "List them as 0, 1, −1, 2, −2, 3, −3, … — formally f(0) = 0, f(2k − 1) = k, f(2k) = −k for k ≥ 1 is a bijection ℕ → ℤ."
+        },
+        {
+          "q": "Is the set of all finite subsets of ℕ countable? Why?",
+          "a": "Yes. For each n, the subsets of size n are countable (they are essentially n-tuples of naturals), and the finite subsets are the countable union over n = 0, 1, 2, … of these countable sets — and a countable union of countable sets is countable."
+        }
+      ],
+      "takeaway": "Countable means 'listable like ℕ'; Cantor's diagonal argument proves the reals cannot be listed, so some infinities are strictly bigger than others.",
+      "module": "Set Theory and Functions"
+    },
+    "Counting Principles": {
+      "intro": "Counting is the heart of combinatorics, and almost every counting problem reduces to two rules: the product rule (multiply choices made in sequence) and the sum rule (add choices from disjoint cases). Add the pigeonhole principle — if you have more pigeons than holes, some hole holds two — and you can answer questions that look impossible at first glance.",
+      "concepts": [
+        "Product rule — if a task has a sequence of steps with n₁, n₂, …, nₖ choices at each step, there are n₁·n₂·…·nₖ ways to do the whole task.",
+        "Sum rule — if a task can be done in one of several disjoint ways, with n₁, n₂, …, nₖ ways respectively, there are n₁ + n₂ + … + nₖ ways in total.",
+        "Inclusion–exclusion — for two sets, |A ∪ B| = |A| + |B| − |A ∩ B|; the overlap must be subtracted once because it was counted twice.",
+        "Pigeonhole principle — if n + 1 or more objects are placed into n boxes, some box contains at least two objects.",
+        "Generalized pigeonhole — placing N objects into k boxes puts at least ⌈N/k⌉ objects in some box.",
+        "Complement counting — sometimes it is easier to count what you do not want and subtract from the total."
+      ],
+      "example": {
+        "q": "A password consists of 3 lowercase letters followed by 2 digits. How many passwords are possible?",
+        "steps": [
+          "The password is built in 5 steps: choose letter 1, letter 2, letter 3, digit 1, digit 2.",
+          "Each letter has 26 choices and each digit has 10 choices, and the choices are independent.",
+          "By the product rule, multiply: 26 · 26 · 26 · 10 · 10 = 26³ · 10².",
+          "26³ = 17,576, and 17,576 · 100 = 1,757,600."
+        ],
+        "a": "1,757,600 passwords."
+      },
+      "practice": [
+        {
+          "q": "How many 4-digit PINs have a nonzero first digit?",
+          "a": "9 choices for the first digit (1–9) and 10 for each of the other three: 9 · 10³ = 9,000."
+        },
+        {
+          "q": "Prove that among any 367 people, at least two share a birthday (counting February 29). Among any 13 people, at least two share a birth month.",
+          "a": "There are at most 366 possible birthdays; 367 people into 366 boxes forces a shared birthday by the pigeonhole principle. Likewise 13 people into 12 months forces a shared month."
+        }
+      ],
+      "takeaway": "Sequential choices multiply, disjoint cases add, and the pigeonhole principle turns 'more objects than boxes' into a guaranteed collision.",
+      "module": "Combinatorics"
+    },
+    "Permutations and Combinations": {
+      "intro": "When order matters, count permutations; when it does not, count combinations. The two are linked by a simple division — every combination of r objects can be ordered in r! ways — and that one relationship unlocks poker hands, committees, anagrams, and most of probability.",
+      "concepts": [
+        "Permutation — an ordered arrangement; P(n, r) = n·(n − 1)·…·(n − r + 1) = n!/(n − r)! counts ordered selections of r objects from n.",
+        "Combination — an unordered selection; C(n, r) = n!/(r!(n − r)!) counts r-subsets of an n-set. Also written as the binomial coefficient (n choose r).",
+        "Order matters or not — officers (president, VP, secretary) are a permutation; a committee is a combination. P(n, r) = C(n, r) · r! connects them.",
+        "Symmetry — C(n, r) = C(n, n − r): choosing r objects to take is the same as choosing n − r to leave behind.",
+        "Repeated items — arrangements of n objects with n₁ of one type, n₂ of another, and so on, number n!/(n₁!n₂!…); this counts anagrams.",
+        "Combinations with repetition — choosing r objects from n types with repeats allowed gives C(n + r − 1, r) possibilities."
+      ],
+      "example": {
+        "q": "From 10 people, how many ways are there to choose (a) a president, vice-president, and secretary, and (b) a 3-person committee?",
+        "steps": [
+          "(a) The offices are distinct, so order matters: choose the president (10 ways), then the VP (9 remaining), then the secretary (8 remaining). P(10, 3) = 10 · 9 · 8 = 720.",
+          "(b) A committee has no order: C(10, 3) = 10!/(3!·7!) = (10 · 9 · 8)/(3 · 2 · 1) = 720/6 = 120.",
+          "The ratio is 6 = 3!: each committee of 3 can be assigned the three offices in 3! ways, which is exactly why P(10, 3) = C(10, 3) · 3!."
+        ],
+        "a": "(a) 720 ways to fill the three offices; (b) 120 possible committees."
+      },
+      "practice": [
+        {
+          "q": "How many 5-card hands can be dealt from a standard 52-card deck?",
+          "a": "Order does not matter, so C(52, 5) = 52!/(5!·47!) = (52·51·50·49·48)/120 = 311,875,200/120 = 2,598,960 hands."
+        },
+        {
+          "q": "How many distinct arrangements are there of the letters in LEVEL?",
+          "a": "5 letters with L twice and E twice: 5!/(2!·2!) = 120/4 = 30 arrangements."
+        }
+      ],
+      "takeaway": "P(n, r) counts ordered selections, C(n, r) counts unordered ones, and they differ by exactly r! — the number of ways to order the chosen objects.",
+      "module": "Combinatorics"
+    },
+    "Binomial Theorem": {
+      "intro": "The binomial theorem says exactly what (x + y)ⁿ expands to: a sum of terms C(n, k)xⁿ⁻ᵏyᵏ, where the coefficients are the binomial coefficients — the same numbers that count combinations. It turns the algebra of expanding powers into the combinatorics of choosing, and Pascal's triangle is its picture.",
+      "concepts": [
+        "Binomial theorem — (x + y)ⁿ = Σₖ₌₀ⁿ C(n, k) xⁿ⁻ᵏ yᵏ; the coefficient of xⁿ⁻ᵏyᵏ is C(n, k), because that term arises by choosing y from k of the n factors.",
+        "Pascal's triangle — each entry is the sum of the two above it: C(n, k) = C(n − 1, k − 1) + C(n − 1, k). Row n of the triangle is the coefficients of (x + y)ⁿ.",
+        "Row sums — setting x = y = 1 gives Σₖ C(n, k) = 2ⁿ, which also says an n-element set has 2ⁿ subsets.",
+        "Alternating sum — setting x = 1, y = −1 gives Σₖ (−1)ᵏ C(n, k) = 0 for n ≥ 1: a set has equally many even-sized and odd-sized subsets.",
+        "Finding one coefficient — the term with xᵐ in (ax + b)ⁿ comes from choosing the right number of factors; compute C(n, k) times the powers of a and b."
+      ],
+      "example": {
+        "q": "Expand (x + 2)⁴ fully, and find the coefficient of x² in (x + 3)⁵.",
+        "steps": [
+          "(x + 2)⁴ = Σ C(4, k) x⁴⁻ᵏ 2ᵏ: coefficients 1, 4, 6, 4, 1 from Pascal's row 4.",
+          "Terms: 1·x⁴ + 4·x³·2 + 6·x²·4 + 4·x·8 + 1·16 = x⁴ + 8x³ + 24x² + 32x + 16.",
+          "For (x + 3)⁵, the x² term has 5 − k = 2, so k = 3: C(5, 3)·x²·3³ = 10 · 27 · x².",
+          "So the coefficient of x² is 270."
+        ],
+        "a": "(x + 2)⁴ = x⁴ + 8x³ + 24x² + 32x + 16; the coefficient of x² in (x + 3)⁵ is 270."
+      },
+      "practice": [
+        {
+          "q": "Find the coefficient of x³ in (2x − 1)⁵.",
+          "a": "The x³ term needs (2x)³, so k = 2 in the expansion: C(5, 2)·(2x)³·(−1)² = 10 · 8x³ · 1 = 80x³. The coefficient is 80."
+        },
+        {
+          "q": "Use the binomial theorem to prove that Σₖ₌₀ⁿ C(n, k) = 2ⁿ.",
+          "a": "Put x = 1, y = 1 in (x + y)ⁿ = Σ C(n, k) xⁿ⁻ᵏ yᵏ: the left side is (1 + 1)ⁿ = 2ⁿ and the right side is Σ C(n, k)."
+        }
+      ],
+      "takeaway": "The coefficients of (x + y)ⁿ are the binomial coefficients C(n, k); Pascal's triangle builds them, and plugging in x = y = 1 counts all subsets.",
+      "module": "Combinatorics"
+    },
+    "Graphs and Models": {
+      "intro": "A graph is the simplest model of connection: dots for things, lines for relationships between them. Road networks, social networks, the internet, molecules, and tournament schedules are all graphs. Once you model a situation as a graph, centuries of graph theory start answering your questions for you.",
+      "concepts": [
+        "Graph — a pair G = (V, E): V is a set of vertices (dots) and E is a set of edges (lines joining pairs of vertices).",
+        "Simple graph — no loops (an edge from a vertex to itself) and no multiple edges between the same pair; most of this course works with simple graphs.",
+        "Directed vs. undirected — in a directed graph each edge has a direction (one-way streets, follows); in an undirected graph edges are two-way.",
+        "Complete graph Kₙ — the simple graph on n vertices with every pair joined; it has n(n − 1)/2 edges, since each of the n vertices has n − 1 neighbors and each edge is counted twice.",
+        "Bipartite graph — vertices split into two groups with edges only between groups; a classic model for matching people to jobs or students to classes.",
+        "Modeling — the same graph can model friendships, flights, or circuits; the choice of what a vertex and an edge mean is the modeling step."
+      ],
+      "example": {
+        "q": "Model a road network on 4 cities A, B, C, D with roads A–B, B–C, C–D, A–D, and A–C. How many roads are there, and what is the degree of each city? Also, how many edges does the complete graph K₅ have?",
+        "steps": [
+          "The graph has vertices {A, B, C, D} and 5 edges: AB, BC, CD, AD, AC.",
+          "Count incident edges per vertex: A touches AB, AD, AC — degree 3; B touches AB, BC — degree 2; C touches BC, CD, AC — degree 3; D touches CD, AD — degree 2.",
+          "The degree sum is 3 + 2 + 3 + 2 = 10 = 2 · 5, twice the number of edges — every edge contributes 1 to the degree of each of its two endpoints.",
+          "K₅ has 5 vertices each joined to the other 4, so 5 · 4 / 2 = 10 edges."
+        ],
+        "a": "5 roads; degrees A = 3, B = 2, C = 3, D = 2 (sum 10 = 2 × edges). K₅ has 10 edges."
+      },
+      "practice": [
+        {
+          "q": "How many edges does the complete graph K₇ have?",
+          "a": "7 · 6 / 2 = 21 edges."
+        },
+        {
+          "q": "Can a simple graph on 4 vertices have a vertex of degree 4? Why or why not?",
+          "a": "No. In a simple graph a vertex can be joined to at most the other 3 vertices, so the maximum degree is 3."
+        }
+      ],
+      "takeaway": "A graph is vertices plus edges; Kₙ has n(n − 1)/2 edges, and the degrees always add up to twice the number of edges.",
+      "module": "Graph Theory"
+    },
+    "Graph Terminology": {
+      "intro": "To reason about graphs you need a precise vocabulary: degree, path, cycle, connected, subgraph. The handshaking lemma — the degrees sum to twice the number of edges — is the first theorem of graph theory, and it already rules out impossible graphs before you draw a single line.",
+      "concepts": [
+        "Degree — deg(v) is the number of edges incident to vertex v (a loop counts twice). The degree sequence lists all degrees, usually in decreasing order.",
+        "Handshaking lemma — Σ deg(v) = 2|E|: summing the degrees counts each edge exactly twice, once at each end. So the number of odd-degree vertices is always even.",
+        "Adjacent — two vertices joined by an edge are adjacent; two edges sharing a vertex are incident.",
+        "Walk, path, cycle — a walk is a sequence of vertices joined by edges; a path never repeats a vertex; a cycle is a closed path (except start = end) that never repeats a vertex.",
+        "Subgraph — a graph formed from some vertices and some edges of a larger graph.",
+        "Isolated vertex — a vertex of degree 0, joined to nothing; regular graph — every vertex has the same degree."
+      ],
+      "example": {
+        "q": "A graph has degree sequence 3, 3, 2, 2, 2, 0. How many edges does it have, and what can you say about its vertices?",
+        "steps": [
+          "Add the degrees: 3 + 3 + 2 + 2 + 2 + 0 = 12.",
+          "By the handshaking lemma, the degree sum is twice the number of edges, so 2|E| = 12 and |E| = 6.",
+          "The vertex of degree 0 is isolated — it has no edges at all, so the graph cannot be connected.",
+          "Two vertices have odd degree (the two 3s); the handshaking lemma guarantees the count of odd-degree vertices is even, and 2 is even, so this sequence is at least numerically possible."
+        ],
+        "a": "6 edges; one isolated vertex, and exactly two vertices of odd degree."
+      },
+      "practice": [
+        {
+          "q": "A graph has 8 edges. What is the sum of the degrees of its vertices?",
+          "a": "By the handshaking lemma, the degree sum is 2|E| = 2 · 8 = 16."
+        },
+        {
+          "q": "Can a simple graph have degree sequence 3, 3, 3, 1? Explain.",
+          "a": "No. The vertex of degree 1 is adjacent to only one vertex, but each degree-3 vertex must be adjacent to all three other vertices — including the degree-1 vertex, which would then have degree 3, a contradiction."
+        }
+      ],
+      "takeaway": "The handshaking lemma — degrees sum to twice the edges — is a quick impossibility test: any degree sequence with an odd sum, or an odd count of odd degrees, cannot be a graph.",
+      "module": "Graph Theory"
+    },
+    "Connectivity": {
+      "intro": "A connected graph is one piece: you can travel from any vertex to any other along edges. Connectivity is what makes a network useful — a disconnected network has islands that cannot reach each other — and trees, the minimally connected graphs, are the cheapest way to connect n vertices.",
+      "concepts": [
+        "Connected — a graph is connected if there is a path between every pair of vertices; otherwise it is disconnected.",
+        "Connected component — a maximal connected subgraph; a disconnected graph splits into two or more components, and no edge joins different components.",
+        "Bridge — an edge whose removal increases the number of components; a cut vertex is a vertex whose removal (with its edges) disconnects the graph.",
+        "Tree — a connected graph with no cycles; a tree on n vertices has exactly n − 1 edges, and there is exactly one path between any two vertices.",
+        "Spanning tree — a tree using all the vertices of a connected graph; it keeps the graph connected with the fewest possible edges.",
+        "Directed connectivity — a directed graph is strongly connected if there is a directed path both ways between every pair, and weakly connected if ignoring directions leaves a connected graph."
+      ],
+      "example": {
+        "q": "Consider the graph on vertices {a, b, c, d, e} with edges ab, bc, cd, de. Is it connected? What happens if edge cd is removed? How many edges does a tree on 5 vertices have?",
+        "steps": [
+          "The edges form a single path a–b–c–d–e, and a path reaches every vertex from every other, so the graph is connected.",
+          "Removing cd leaves edges ab, bc on one side and de on the other; there is no longer any path from {a, b, c} to {d, e}, so cd is a bridge and the graph splits into two components, {a, b, c} and {d, e}.",
+          "A tree on n vertices has exactly n − 1 edges, so a tree on 5 vertices has 4 edges — exactly what this path graph has, and indeed this graph is a tree (connected, no cycles)."
+        ],
+        "a": "Connected (it is the path a–b–c–d–e). Removing cd disconnects it into {a, b, c} and {d, e}. A tree on 5 vertices has 4 edges."
+      },
+      "practice": [
+        {
+          "q": "Prove that a connected graph on n vertices has at least n − 1 edges.",
+          "a": "Take a spanning tree of the graph: it is connected, uses all n vertices, and has exactly n − 1 edges. The graph has at least the tree's edges, so at least n − 1."
+        },
+        {
+          "q": "How many edges must be removed from K₅ to disconnect it?",
+          "a": "4. Every vertex has degree 4, so isolating one vertex takes removing all 4 of its edges; removing 3 or fewer leaves every vertex with degree at least 1 and the graph still connected (K₅ minus 3 edges has minimum degree 1 at worst, but the edge-connectivity of K₅ is 4)."
+        }
+      ],
+      "takeaway": "Connected means one piece with a path between every pair; a tree is the cheapest connected graph at n − 1 edges, and bridges are the edges whose loss splits the graph.",
+      "module": "Graph Theory"
+    },
+    "Euler and Hamilton Paths": {
+      "intro": "Two famous questions about traversing a graph: can you use every edge exactly once (Euler), and can you visit every vertex exactly once (Hamilton)? Euler solved his question completely in 1736 with a simple parity test. Hamilton's question has no such simple test — and that difference is one of the great divides in computer science.",
+      "concepts": [
+        "Euler path — a walk that uses every edge exactly once; an Euler circuit is an Euler path that starts and ends at the same vertex.",
+        "Euler's theorem — a connected graph has an Euler circuit if and only if every vertex has even degree; it has an Euler path (but no circuit) if and only if exactly two vertices have odd degree.",
+        "Königsberg bridges — Euler's original problem: the four land masses had degrees 3, 3, 3, and 5 — four odd vertices — so no walk could cross every bridge exactly once.",
+        "Hamilton path — a path that visits every vertex exactly once; a Hamilton circuit returns to the start. Named for William Rowan Hamilton.",
+        "No simple test — unlike Euler paths, there is no known easy condition that decides whether a Hamilton circuit exists; the problem is NP-complete.",
+        "Applications — Euler paths model route inspection and DNA sequencing; Hamilton paths model the traveling salesperson and visiting every node once."
+      ],
+      "example": {
+        "q": "Does the Königsberg graph have an Euler path? And does the graph with vertices a, b, c, d and edges ab, bc, cd, da, ac (a square plus a diagonal) have an Euler path or circuit? Give one if it exists.",
+        "steps": [
+          "Königsberg: the degrees are 3, 3, 3, and 5 — four odd-degree vertices. Euler's theorem allows 0 or 2 odd vertices for an Euler path, so no Euler path exists.",
+          "Square plus diagonal: degrees are a = 3 (edges ab, da, ac), b = 2, c = 3 (bc, cd, ac), d = 2. Exactly two odd vertices (a and c), so an Euler path exists, starting at a and ending at c, but no Euler circuit.",
+          "One Euler path: a–b–c–a–d–c uses edges ab, bc, ca, ad, dc — all 5 edges exactly once, starting at a and ending at c ✓."
+        ],
+        "a": "Königsberg has no Euler path (four odd vertices). The square-plus-diagonal has an Euler path, e.g. a–b–c–a–d–c, but no Euler circuit."
+      },
+      "practice": [
+        {
+          "q": "Does K₅ have an Euler circuit? Why?",
+          "a": "Yes. Every vertex of K₅ has degree 4, which is even, and K₅ is connected — so by Euler's theorem an Euler circuit exists."
+        },
+        {
+          "q": "A connected graph has degrees 1, 2, 3, 4, 4. Does it have an Euler path? An Euler circuit?",
+          "a": "The odd-degree vertices are the ones with degrees 1 and 3 — exactly two — so an Euler path exists (from the degree-1 vertex to the degree-3 vertex). There is no Euler circuit, because not all degrees are even."
+        }
+      ],
+      "takeaway": "Count odd-degree vertices: 0 means an Euler circuit exists, 2 means an Euler path exists, anything else means neither — but Hamilton paths have no such easy test.",
+      "module": "Graph Theory"
+    },
+    "Introduction to Algorithms": {
+      "intro": "An algorithm is a precise recipe: a finite sequence of unambiguous steps that takes an input and produces an output. Searching a list and sorting numbers are the two classic first algorithms, and tracing them by hand teaches you to read pseudocode, prove correctness, and — in the next lesson — measure speed.",
+      "concepts": [
+        "Algorithm — a finite, unambiguous sequence of steps with a definite input and output; an algorithm is not a program, but a program implements an algorithm.",
+        "Pseudocode — an informal, language-free description of an algorithm, detailed enough to implement and to trace by hand.",
+        "Linear search — scan the list from the first element until you find the target or run out; works on any list, sorted or not.",
+        "Binary search — on a sorted list, compare the target with the middle element and discard the half that cannot contain it; repeat until found or the interval is empty.",
+        "Correctness — an algorithm is correct if it gives the right answer for every legal input; tracing and loop invariants are how you argue correctness.",
+        "Sorting — rearranging a list into increasing order; the next lesson compares how fast different sorting methods are."
+      ],
+      "example": {
+        "q": "Trace linear search for 7 in [3, 1, 7, 9, 2], and binary search for 7 in the sorted list [1, 2, 3, 7, 9, 11, 15]. How many comparisons does each make?",
+        "steps": [
+          "Linear search: compare 3 (no), then 1 (no), then 7 (yes) — found at position 3 after 3 comparisons. In the worst case it would check all 5 elements.",
+          "Binary search: the list has 7 elements, so the middle (4th) element is 7 — compare 7 with 7 and stop immediately.",
+          "Binary search found it in 1 comparison because the target happened to sit in the middle; linear search needed 3."
+        ],
+        "a": "Linear search: 3 comparisons. Binary search: 1 comparison."
+      },
+      "practice": [
+        {
+          "q": "Trace linear search for 9 in [4, 9, 2]. How many comparisons?",
+          "a": "Compare 4 (no), then 9 (yes) — found after 2 comparisons."
+        },
+        {
+          "q": "Trace binary search for 11 in [1, 2, 3, 7, 9, 11, 15]. How many comparisons?",
+          "a": "Middle element (4th) is 7 < 11, so discard the left half and search [9, 11, 15]; its middle is 11 — found in 2 comparisons."
+        }
+      ],
+      "takeaway": "Linear search scans everything and works anywhere; binary search halves the search space each step but needs a sorted list — and both are only useful if they are correct on every input.",
+      "module": "Algorithms"
+    },
+    "Algorithm Efficiency": {
+      "intro": "Two correct algorithms can differ enormously in speed. Big-O notation measures how an algorithm's work grows as the input grows, ignoring constants and small inputs — because what matters is whether doubling the input doubles the time, squares it, or barely changes it.",
+      "concepts": [
+        "Big-O notation — f(n) is O(g(n)) if f(n) ≤ C·g(n) for some constant C once n is large enough; it is an upper bound on growth, up to constant factors.",
+        "Common classes — O(1) constant, O(log n) logarithmic, O(n) linear, O(n log n), O(n²) quadratic, O(2ⁿ) exponential; each step up is a different world of feasible input sizes.",
+        "Worst case vs. average case — worst case is the slowest possible input (linear search missing the target); average case is the expected time over typical inputs.",
+        "Dominant term — only the fastest-growing term matters asymptotically: 3n² + 5n + 2 is O(n²), because n² swamps 5n + 2 for large n.",
+        "Why logs are tiny — log₂(1,000,000) ≈ 20, so a logarithmic algorithm barely notices a million-fold input; an exponential one cannot even handle n = 100.",
+        "Trade-offs — a faster algorithm may use more memory; efficiency analysis weighs both."
+      ],
+      "example": {
+        "q": "Linear search is O(n) and binary search is O(log n). How many comparisons does each need in the worst case on a list of 1,000,000 items? And how many comparisons does bubble sort make on 1,000 items?",
+        "steps": [
+          "Linear search, worst case: it may scan the whole list — 1,000,000 comparisons.",
+          "Binary search: each comparison halves the list, so after k comparisons the list has shrunk to 1,000,000/2ᵏ items; it is done when 2ᵏ ≈ 1,000,000, i.e. k ≈ 20 (since 2²⁰ = 1,048,576).",
+          "Bubble sort compares adjacent pairs: about n(n − 1)/2 ≈ 1,000 · 999/2 ≈ 500,000 comparisons for n = 1,000 — quadratic growth.",
+          "So on a million items, binary search needs ~20 comparisons while linear search needs up to a million — that is the power of O(log n)."
+        ],
+        "a": "Linear search: up to 1,000,000 comparisons. Binary search: about 20. Bubble sort on 1,000 items: about 500,000 comparisons."
+      },
+      "practice": [
+        {
+          "q": "What Big-O class is f(n) = 3n² + 5n + 2? Justify it in one sentence.",
+          "a": "O(n²): the n² term dominates, so for large n the function grows like a constant multiple of n²."
+        },
+        {
+          "q": "An O(n²) algorithm takes 1 second on n = 1,000. Roughly how long will it take on n = 2,000?",
+          "a": "About 4 seconds: doubling n multiplies n² work by 2² = 4."
+        }
+      ],
+      "takeaway": "Big-O describes growth, not exact time: O(log n) barely grows, O(n) grows proportionally, O(n²) quadruples when the input doubles, and O(2ⁿ) explodes.",
+      "module": "Algorithms"
+    },
+    "Searching and Sorting Algorithms": {
+      "intro": "Searching and sorting are the two most-used operations in computing, and the choice of algorithm decides whether a program feels instant or hangs. Sorting is the key that unlocks binary search, and the divide-and-conquer idea behind merge sort is one of the most reusable patterns in all of computer science.",
+      "concepts": [
+        "Linear search — O(n), works on any list, checks each element in turn; average case about n/2 comparisons.",
+        "Binary search — O(log n), requires a sorted list, halves the interval each step; on a million items it needs about 20 comparisons.",
+        "Bubble sort — repeatedly swap adjacent out-of-order pairs; O(n²), simple but slow on large lists.",
+        "Insertion sort — build the sorted list one element at a time, inserting each new element into its place; O(n²) worst case but fast on nearly-sorted data.",
+        "Merge sort — divide and conquer: split the list in half, sort each half recursively, then merge the two sorted halves in linear time; O(n log n) in all cases.",
+        "Stability — a stable sort keeps equal elements in their original relative order; merge sort is stable, and stability matters when sorting by one key and then another."
+      ],
+      "example": {
+        "q": "Sort [38, 27, 43, 3, 9, 82, 10] with merge sort. Show the split, the sorted halves, and the final merge.",
+        "steps": [
+          "Split the list into [38, 27, 43, 3] and [9, 82, 10].",
+          "Sort each half recursively: [38, 27, 43, 3] becomes [3, 27, 38, 43] and [9, 82, 10] becomes [9, 10, 82].",
+          "Merge the two sorted halves by repeatedly taking the smaller front element: 3, then 9, then 10, then 27, then 38, then 43, then 82.",
+          "Result: [3, 9, 10, 27, 38, 43, 82] — sorted, in O(n log n) time."
+        ],
+        "a": "Merge sort gives [3, 9, 10, 27, 38, 43, 82]."
+      },
+      "practice": [
+        {
+          "q": "Trace bubble sort on [5, 2, 9, 1] until sorted. How many passes does it take?",
+          "a": "Pass 1: [2, 5, 1, 9] (swaps 5↔2, 5↔1). Pass 2: [2, 1, 5, 9] (swap 5↔1). Pass 3: [1, 2, 5, 9] (swap 2↔1). Sorted after 3 passes."
+        },
+        {
+          "q": "Why can binary search be used after merge sort but not after a list is left unsorted? Compare the costs on 1,000,000 items.",
+          "a": "Binary search needs a sorted list; merge sort provides one in O(n log n) time. After that, each search costs ~20 comparisons instead of ~500,000 on average for linear search — so sorting once pays for itself after a few searches."
+        }
+      ],
+      "takeaway": "Sort once with an O(n log n) method like merge sort, then search in O(log n) with binary search — the combination beats scanning every time.",
+      "module": "Algorithms"
+    }
+  }
+}
