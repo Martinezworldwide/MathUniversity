@@ -1,0 +1,548 @@
+{
+  "course_id": "MATH211",
+  "title": "Elementary Number Theory",
+  "lesson_count": 16,
+  "lessons": {
+    "Division Algorithm and gcd": {
+      "intro": "Number theory begins with a simple question: when you divide one integer by another, what is left over? The division algorithm says the remainder is always smaller than the divisor, and that humble fact drives everything in this course — from the Euclidean algorithm to modular arithmetic to public-key cryptography. The greatest common divisor, or gcd, measures how much two numbers share, and it turns out to be far more than a schoolbook exercise.",
+      "concepts": [
+        "Divisibility — a divides b (written a | b) when b = ac for some integer c; for instance 6 | 42 because 42 = 6 · 7, but 6 does not divide 25.",
+        "Division algorithm — for any integers a and b with b > 0 there are unique integers q (quotient) and r (remainder) with a = bq + r and 0 ≤ r < b. The remainder is always smaller than the divisor.",
+        "Greatest common divisor — gcd(a, b) is the largest positive integer dividing both a and b; gcd(12, 18) = 6, and gcd(a, 0) = a.",
+        "Relatively prime (coprime) — a and b are relatively prime when gcd(a, b) = 1, as with 8 and 15; coprime numbers share no prime factor.",
+        "Common divisors divide the gcd — every common divisor of a and b divides gcd(a, b); this is what makes the gcd the 'greatest' in a strong sense.",
+        "Divisibility rules — divisibility by 2, 3, 5, 9, 10 and 11 can be checked from digits: a number is divisible by 3 exactly when its digit sum is, and by 11 exactly when the alternating digit sum is a multiple of 11."
+      ],
+      "example": {
+        "q": "Use the division algorithm to divide 107 by 29, then find gcd(48, 36) by repeatedly applying the division algorithm.",
+        "steps": [
+          "Divide 107 by 29: 29 · 3 = 87 and 29 · 4 = 116 is too big, so q = 3 and r = 107 − 87 = 20. Hence 107 = 3 · 29 + 20 with 0 ≤ 20 < 29.",
+          "For gcd(48, 36): divide 48 by 36 to get 48 = 1 · 36 + 12, so any common divisor of 48 and 36 also divides 12.",
+          "Divide 36 by 12: 36 = 3 · 12 + 0. The remainder is 0, so the last nonzero remainder, 12, is the gcd.",
+          "Check: 12 divides 48 (48 = 4 · 12) and 36 (36 = 3 · 12), and no larger number divides both."
+        ],
+        "a": "107 = 3 · 29 + 20, and gcd(48, 36) = 12."
+      },
+      "practice": [
+        {
+          "q": "Write 211 in the form a = bq + r with b = 17, and state q and r.",
+          "a": "211 = 12 · 17 + 7, so q = 12 and r = 7 (17 · 12 = 204, and 211 − 204 = 7, with 0 ≤ 7 < 17)."
+        },
+        {
+          "q": "Find gcd(84, 126) using the division algorithm.",
+          "a": "126 = 1 · 84 + 42, then 84 = 2 · 42 + 0, so the last nonzero remainder is 42: gcd(84, 126) = 42."
+        }
+      ],
+      "takeaway": "The division algorithm pins the remainder below the divisor, and repeatedly applying it walks the gcd down to the last nonzero remainder — the engine that powers the Euclidean algorithm next.",
+      "module": "Divisibility and Primes"
+    },
+    "Euclidean Algorithm and Bezout's Identity": {
+      "intro": "The Euclidean algorithm is one of the oldest algorithms still in daily use — Euclid wrote it down around 300 BCE, and your computer runs it every time it does cryptography. It finds gcds fast by replacing a pair of numbers with a smaller pair, over and over, until the remainder is zero. Run it backwards and it does something even more remarkable: it writes the gcd as a combination of the original numbers.",
+      "concepts": [
+        "Euclidean algorithm — to find gcd(a, b), divide a by b, replace (a, b) with (b, remainder), and repeat; the last nonzero remainder is the gcd. It is fast because remainders shrink quickly.",
+        "Why it works — gcd(a, b) = gcd(b, r) whenever a = bq + r, since any common divisor of a and b divides r = a − bq, and any common divisor of b and r divides a = bq + r.",
+        "Bezout's identity — for any integers a and b there are integers x and y with ax + by = gcd(a, b). The gcd is the smallest positive integer combination of a and b.",
+        "Extended Euclidean algorithm — running the Euclidean algorithm backwards expresses each remainder as a combination of a and b, ending with the gcd as ax + by.",
+        "Modular inverses — when gcd(a, m) = 1, Bezout gives ax + my = 1, so ax ≡ 1 (mod m): x is the inverse of a modulo m. This is how division works in modular arithmetic.",
+        "Solving ax + by = c — a solution exists exactly when gcd(a, b) divides c; dividing through by the gcd reduces to the Bezout case."
+      ],
+      "example": {
+        "q": "Use the Euclidean algorithm to find gcd(252, 198), then work backwards to write 18 as a combination 252x + 198y.",
+        "steps": [
+          "252 = 1 · 198 + 54. Replace (252, 198) with (198, 54).",
+          "198 = 3 · 54 + 36. Replace with (54, 36).",
+          "54 = 1 · 36 + 18. Replace with (36, 18).",
+          "36 = 2 · 18 + 0. The last nonzero remainder is 18, so gcd(252, 198) = 18.",
+          "Work backwards: 18 = 54 − 36 = 54 − (198 − 3 · 54) = 4 · 54 − 198.",
+          "Substitute 54 = 252 − 198: 18 = 4 · (252 − 198) − 198 = 4 · 252 − 5 · 198.",
+          "Check: 4 · 252 = 1008 and 5 · 198 = 990, and 1008 − 990 = 18."
+        ],
+        "a": "gcd(252, 198) = 18, and 18 = 4 · 252 − 5 · 198, so x = 4 and y = −5."
+      },
+      "practice": [
+        {
+          "q": "Find gcd(1071, 462) with the Euclidean algorithm.",
+          "a": "1071 = 2 · 462 + 147; 462 = 3 · 147 + 21; 147 = 7 · 21 + 0. Last nonzero remainder 21, so gcd(1071, 462) = 21."
+        },
+        {
+          "q": "Find integers x and y with 35x + 15y = gcd(35, 15).",
+          "a": "gcd(35, 15) = 5. 35 = 2 · 15 + 5, so 5 = 35 − 2 · 15: x = 1, y = −2. Check: 35 − 30 = 5."
+        }
+      ],
+      "takeaway": "The Euclidean algorithm finds the gcd by shrinking remainders, and running it backwards proves Bezout's identity: the gcd is always a combination ax + by — the key that unlocks modular inverses.",
+      "module": "Divisibility and Primes"
+    },
+    "Prime Numbers and the Fundamental Theorem of Arithmetic": {
+      "intro": "Primes are the atoms of the integers: every whole number bigger than 1 is built from them, and — remarkably — in exactly one way. The fundamental theorem of arithmetic says each integer has a unique prime factorization, up to the order of the factors. That uniqueness is the hidden foundation of almost every proof in number theory, and it is also what makes RSA encryption work: multiplying primes is easy, but undoing the multiplication is hard.",
+      "concepts": [
+        "Prime — an integer p > 1 whose only positive divisors are 1 and p: 2, 3, 5, 7, 11, 13, ... The number 1 is neither prime nor composite, and 2 is the only even prime.",
+        "Composite — an integer greater than 1 that is not prime, so it has a divisor other than 1 and itself; 4, 6, 8, 9, 10 are the first composites.",
+        "Fundamental theorem of arithmetic — every integer n > 1 factors uniquely as a product of primes, up to order: n = p1^a1 · p2^a2 · ... · pk^ak.",
+        "Euclid's lemma — if a prime p divides a product ab, then p divides a or p divides b. This is the step that makes factorization unique; it fails for composite numbers (6 divides 4 · 9 but divides neither factor).",
+        "Prime factorization by trial division — to factor n, test primes up to √n: if no prime up to √n divides n, then n is prime.",
+        "Factoring and gcds — from prime factorizations, gcd(a, b) takes the smaller exponent of each shared prime and lcm(a, b) the larger; hence gcd(a, b) · lcm(a, b) = ab."
+      ],
+      "example": {
+        "q": "Find the prime factorization of 360, and use it to find gcd(360, 126) and lcm(360, 126).",
+        "steps": [
+          "Factor 360: 360 = 36 · 10 = (2² · 3²) · (2 · 5) = 2³ · 3² · 5.",
+          "Factor 126: 126 = 2 · 63 = 2 · 3² · 7.",
+          "For the gcd take the smaller exponent of each shared prime: 2^1 · 3² = 2 · 9 = 18. (5 and 7 are not shared.)",
+          "For the lcm take the larger exponent of every prime appearing: 2³ · 3² · 5 · 7 = 8 · 9 · 35 = 2520.",
+          "Check: gcd · lcm = 18 · 2520 = 45360, and 360 · 126 = 45360."
+        ],
+        "a": "360 = 2³ · 3² · 5; gcd(360, 126) = 18; lcm(360, 126) = 2520."
+      },
+      "practice": [
+        {
+          "q": "Factor 1001 into primes.",
+          "a": "1001 = 7 · 11 · 13. Check: 7 · 11 = 77 and 77 · 13 = 1001."
+        },
+        {
+          "q": "Is 221 prime? Justify your answer.",
+          "a": "No: 221 = 13 · 17. Trial division up to √221 ≈ 14.9 finds 13 dividing 221 (13 · 17 = 221)."
+        }
+      ],
+      "takeaway": "Every integer is a unique product of primes, and Euclid's lemma is what forces that uniqueness. Prime factorization turns gcd and lcm problems into simple exponent comparisons.",
+      "module": "Divisibility and Primes"
+    },
+    "Infinitude of Primes": {
+      "intro": "There are infinitely many primes — Euclid proved it over two thousand years ago with an argument so short it fits in a paragraph, and it has been admired ever since. The proof is a masterpiece of indirect reasoning: assume the list of primes is complete, build a number that breaks the assumption, and watch the contradiction appear. It also hides a surprise: the number Euclid builds need not itself be prime.",
+      "concepts": [
+        "Euclid's proof — suppose the primes are exactly p1, p2, ..., pk. Form N = p1 · p2 · ... · pk + 1. No pi divides N (each leaves remainder 1), yet N > 1 has some prime divisor q, which cannot be any pi — contradiction. So the list was incomplete.",
+        "N need not be prime — N itself may be composite, as with 2 · 3 · 5 · 7 · 11 · 13 + 1 = 30031 = 59 · 509; the proof only needs a prime divisor of N, which must be new.",
+        "Proof by contradiction — assume the opposite of what you want to prove, derive something impossible, and conclude the assumption was false.",
+        "How many primes are there? — infinitely many, but they thin out: the prime number theorem says about n / ln n primes are at most n, so roughly 1 in every ln n numbers near n is prime.",
+        "Gaps between primes — prime gaps can be arbitrarily long: the numbers (k+1)! + 2, ..., (k+1)! + (k+1) are k consecutive composites.",
+        "Open questions — it is still unknown whether there are infinitely many twin primes (pairs like 11 and 13) or infinitely many Mersenne primes."
+      ],
+      "example": {
+        "q": "Apply Euclid's construction to the primes 2, 3, 5, 7, 11, 13. What is N, and what does its factorization show?",
+        "steps": [
+          "Multiply the primes: 2 · 3 · 5 · 7 · 11 · 13 = 30030.",
+          "Add 1: N = 30031. None of 2, 3, 5, 7, 11, 13 divides N, since each leaves remainder 1 (for instance 30031 = 2 · 15015 + 1).",
+          "Factor N: 30031 = 59 · 509. Check: 59 · 500 = 29500 and 59 · 9 = 531, so 59 · 509 = 30031. Both 59 and 509 are prime.",
+          "So N is composite, yet its prime factors 59 and 509 are new primes not on the original list — exactly what Euclid's argument promises."
+        ],
+        "a": "N = 30031 = 59 · 509. N is not prime, but its prime factors are new primes, so the list of primes can never be complete."
+      },
+      "practice": [
+        {
+          "q": "Apply Euclid's construction to just the primes 2 and 3. What is N, and is it prime?",
+          "a": "N = 2 · 3 + 1 = 7, which is prime — a new prime not on the list {2, 3}."
+        },
+        {
+          "q": "Find 5 consecutive composite numbers.",
+          "a": "Take 6! + 2 through 6! + 6: 722, 723, 724, 725, 726. Each is composite since 6! + k is divisible by k for 2 ≤ k ≤ 6 (e.g. 722 = 2 · 361)."
+        }
+      ],
+      "takeaway": "Euclid's proof shows the primes never run out: any finite list misses a prime divisor of (product of the list) + 1 — though that number itself may be composite, as 30031 = 59 · 509 shows.",
+      "module": "Divisibility and Primes"
+    },
+    "Modular Arithmetic": {
+      "intro": "Clock arithmetic is modular arithmetic: 8 o'clock plus 7 hours is 3 o'clock, because 15 ≡ 3 (mod 12). Working modulo m means keeping only the remainder after division by m, and the arithmetic of remainders turns out to be beautifully well behaved — addition and multiplication work just as you'd hope. This is the language of congruences, and it runs everything from calendar calculations to internet encryption.",
+      "concepts": [
+        "Congruence — a ≡ b (mod m) means m divides a − b, i.e. a and b leave the same remainder on division by m; 17 ≡ 2 (mod 5) since 17 − 2 = 15 is a multiple of 5.",
+        "Residue classes — modulo m there are exactly m classes, represented by 0, 1, ..., m − 1; every integer belongs to exactly one.",
+        "Adding and multiplying congruences — if a ≡ b (mod m) and c ≡ d (mod m), then a + c ≡ b + d and ac ≡ bd (mod m). You may reduce any factor modulo m before multiplying.",
+        "Powers — a^k (mod m) can be computed by repeated squaring, reducing mod m at each step so the numbers never grow large.",
+        "Cancellation — you may cancel a common factor from a congruence only if it is coprime to the modulus: from 2x ≡ 2 (mod 4) you cannot conclude x ≡ 1 (mod 4), since x = 3 also works (2 · 3 = 6 ≡ 2).",
+        "Divisibility tests — 10 ≡ 1 (mod 9) is why the digit-sum test works: a number is congruent mod 9 to the sum of its digits."
+      ],
+      "example": {
+        "q": "Compute (23 · 17) mod 5, and find the remainder of 2^10 on division by 7.",
+        "steps": [
+          "Reduce each factor mod 5 first: 23 ≡ 3 (mod 5) and 17 ≡ 2 (mod 5).",
+          "Multiply the residues: 23 · 17 ≡ 3 · 2 = 6 ≡ 1 (mod 5). Check directly: 23 · 17 = 391 = 78 · 5 + 1.",
+          "For 2^10 mod 7, reduce powers as you go: 2^3 = 8 ≡ 1 (mod 7).",
+          "Then 2^9 = (2^3)^3 ≡ 1^3 = 1 (mod 7), so 2^10 = 2^9 · 2 ≡ 1 · 2 = 2 (mod 7). Check: 2^10 = 1024 = 146 · 7 + 2."
+        ],
+        "a": "23 · 17 ≡ 1 (mod 5), and 2^10 ≡ 2 (mod 7) — the remainder is 2."
+      },
+      "practice": [
+        {
+          "q": "Find the remainder of 7^4 on division by 5.",
+          "a": "7 ≡ 2 (mod 5), so 7^4 ≡ 2^4 = 16 ≡ 1 (mod 5). The remainder is 1 (indeed 7^4 = 2401 = 480 · 5 + 1)."
+        },
+        {
+          "q": "If today is Tuesday, what day of the week is it 100 days from now?",
+          "a": "100 ≡ 2 (mod 7) since 100 = 14 · 7 + 2, so it is 2 days later: Thursday."
+        }
+      ],
+      "takeaway": "Modulo m, only the remainder matters: reduce early and often, and remember that cancellation needs a factor coprime to the modulus.",
+      "module": "Congruences"
+    },
+    "Linear Congruences": {
+      "intro": "A linear congruence like 3x ≡ 7 (mod 11) is the modular version of a linear equation — and unlike ordinary equations, it may have no solution, one solution, or many. The deciding factor is the gcd of the coefficient and the modulus. Solving these is a core skill: it is how you invert numbers modulo m, which is exactly what RSA decryption does billions of times a day.",
+      "concepts": [
+        "Linear congruence — ax ≡ b (mod m), asking for the residue class(es) of x satisfying it.",
+        "Solvability — ax ≡ b (mod m) has a solution exactly when gcd(a, m) divides b. If gcd(a, m) = 1 there is exactly one solution modulo m.",
+        "Multiple solutions — when d = gcd(a, m) divides b, there are exactly d solutions modulo m, spaced m/d apart; when d does not divide b, there are none.",
+        "Solving by inverses — if gcd(a, m) = 1, find the inverse a⁻¹ with aa⁻¹ ≡ 1 (mod m) via Bezout, then x ≡ a⁻¹b (mod m).",
+        "Finding inverses by trial or Euclid — small inverses can be found by testing multiples; in general the extended Euclidean algorithm gives them.",
+        "Reducing the equation — when d = gcd(a, m) > 1 divides b, divide a, b, m all by d and solve the reduced congruence, then lift back to d solutions."
+      ],
+      "example": {
+        "q": "Solve 3x ≡ 7 (mod 11), and decide whether 6x ≡ 9 (mod 15) has a solution.",
+        "steps": [
+          "For 3x ≡ 7 (mod 11): gcd(3, 11) = 1, so there is exactly one solution mod 11.",
+          "Find the inverse of 3 mod 11: 3 · 4 = 12 ≡ 1 (mod 11), so 3⁻¹ ≡ 4.",
+          "Multiply both sides by 4: x ≡ 4 · 7 = 28 ≡ 6 (mod 11). Check: 3 · 6 = 18 ≡ 7 (mod 11).",
+          "For 6x ≡ 9 (mod 15): gcd(6, 15) = 3, and 3 divides 9, so solutions exist — exactly 3 of them mod 15.",
+          "Divide by 3: 2x ≡ 3 (mod 5). The inverse of 2 mod 5 is 3 (2 · 3 = 6 ≡ 1), so x ≡ 3 · 3 = 9 ≡ 4 (mod 5).",
+          "Lift back: x ≡ 4 (mod 5) gives x ≡ 4, 9, 14 (mod 15). Check x = 9: 6 · 9 = 54 ≡ 9 (mod 15)."
+        ],
+        "a": "3x ≡ 7 (mod 11) has the unique solution x ≡ 6 (mod 11). 6x ≡ 9 (mod 15) has three solutions: x ≡ 4, 9, 14 (mod 15)."
+      },
+      "practice": [
+        {
+          "q": "Solve 5x ≡ 2 (mod 7).",
+          "a": "The inverse of 5 mod 7 is 3 (5 · 3 = 15 ≡ 1). So x ≡ 3 · 2 = 6 (mod 7). Check: 5 · 6 = 30 ≡ 2 (mod 7)."
+        },
+        {
+          "q": "Does 4x ≡ 6 (mod 10) have a solution? If so, find all solutions mod 10.",
+          "a": "gcd(4, 10) = 2 divides 6, so yes — two solutions. Divide by 2: 2x ≡ 3 (mod 5), so x ≡ 4 (mod 5) (inverse of 2 is 3; 3 · 3 = 9 ≡ 4). Lift: x ≡ 4, 9 (mod 10)."
+        }
+      ],
+      "takeaway": "A linear congruence ax ≡ b (mod m) is solvable exactly when gcd(a, m) divides b; with gcd 1 the inverse gives a unique solution, and with gcd d there are d solutions spaced m/d apart.",
+      "module": "Congruences"
+    },
+    "Chinese Remainder Theorem": {
+      "intro": "Suppose you know a number's remainder modulo 3, modulo 5, and modulo 7 — can you reconstruct the number? The Chinese Remainder Theorem says yes, uniquely modulo 3 · 5 · 7 = 105, provided the moduli are coprime. This 1,700-year-old result (from Sunzi's Mathematical Manual) is still central today: it lets computers do arithmetic with huge numbers by splitting them into small parallel pieces, and it underlies fast RSA decryption.",
+      "concepts": [
+        "Chinese Remainder Theorem (CRT) — if m1, ..., mk are pairwise coprime, the system x ≡ a1 (mod m1), ..., x ≡ ak (mod mk) has a solution, unique modulo M = m1 · ... · mk.",
+        "Constructive proof — for each i, let Mi = M/mi; since gcd(Mi, mi) = 1, Mi has an inverse yi mod mi, and x = Σ ai · Mi · yi works because Mi · yi ≡ 1 (mod mi) and ≡ 0 (mod mj) for j ≠ i.",
+        "Pairwise coprime — the moduli must share no prime factor; the theorem fails in general otherwise, though a solution can still exist when the congruences agree on shared factors.",
+        "Two-modulus case — x ≡ a (mod m), x ≡ b (mod n) with gcd(m, n) = 1: write x = a + mt, solve mt ≡ b − a (mod n) for t.",
+        "Iterative solving — a system of many congruences can be solved two at a time, merging each pair into one congruence modulo the product.",
+        "Applications — CRT speeds up RSA (decrypt mod p and mod q separately, then combine) and powers the Garner / residue number system arithmetic used in computer algebra."
+      ],
+      "example": {
+        "q": "Find the smallest positive integer x with x ≡ 2 (mod 3), x ≡ 3 (mod 5), and x ≡ 2 (mod 7).",
+        "steps": [
+          "Start with x ≡ 2 (mod 3): candidates are 2, 5, 8, 11, 14, 17, ...",
+          "Impose x ≡ 3 (mod 5): 8 ≡ 3 (mod 5), and 8 is the first candidate that works, so x ≡ 8 (mod 15).",
+          "Now candidates are 8, 23, 38, 53, ... Impose x ≡ 2 (mod 7): 8 ≡ 1, but 23 ≡ 2 (mod 7) since 23 = 3 · 7 + 2.",
+          "So x ≡ 23 (mod 105), and 23 is the smallest positive solution.",
+          "Verify: 23 = 7 · 3 + 2 (mod 3 ✓), 23 = 4 · 5 + 3 (mod 5 ✓), 23 = 3 · 7 + 2 (mod 7 ✓)."
+        ],
+        "a": "The smallest positive solution is x = 23, and all solutions are x ≡ 23 (mod 105)."
+      },
+      "practice": [
+        {
+          "q": "Solve x ≡ 1 (mod 4) and x ≡ 2 (mod 3).",
+          "a": "x = 1, 5, 9, ... from the first congruence; 5 ≡ 2 (mod 3), so x ≡ 5 (mod 12)."
+        },
+        {
+          "q": "A number leaves remainder 1 on division by 6 and remainder 5 on division by 7. Find its remainder on division by 42.",
+          "a": "x ≡ 1 (mod 6): 1, 7, 13, 19, 25, 31, ...; 19 ≡ 5 (mod 7), so x ≡ 19 (mod 42)."
+        }
+      ],
+      "takeaway": "Coprime moduli let you rebuild a number from its remainders, uniquely modulo their product — solve two congruences at a time and merge.",
+      "module": "Congruences"
+    },
+    "Fermat's Little Theorem and Euler's Theorem": {
+      "intro": "Fermat's little theorem is one of the most useful facts in all of number theory: for a prime p and any a not divisible by p, a^(p−1) ≡ 1 (mod p). It collapses enormous powers into tiny ones and is the beating heart of the RSA cryptosystem and of primality testing. Euler's theorem generalizes it from primes to any modulus, using the totient function to count the numbers coprime to the modulus.",
+      "concepts": [
+        "Fermat's little theorem — if p is prime and p does not divide a, then a^(p−1) ≡ 1 (mod p). Equivalently a^p ≡ a (mod p) for every integer a.",
+        "Why it works — multiplying the nonzero residues 1, ..., p−1 by a just permutes them mod p, so their products are congruent; cancelling (p−1)! gives a^(p−1) ≡ 1.",
+        "Euler's theorem — if gcd(a, n) = 1 then a^φ(n) ≡ 1 (mod n), where φ(n) counts the integers 1 ≤ k ≤ n coprime to n. Fermat is the case n = p, φ(p) = p − 1.",
+        "Reducing exponents — to compute a^k (mod n) with gcd(a, n) = 1, reduce k modulo φ(n) first: a^k ≡ a^(k mod φ(n)) (mod n).",
+        "Fermat primality test — if a^(n−1) is not ≡ 1 (mod n) for some a coprime to n, then n is definitely composite. The converse fails: Carmichael numbers like 561 pass the test for every a yet are composite.",
+        "Orders — the order of a modulo n is the smallest k with a^k ≡ 1 (mod n); it always divides φ(n), and a is a primitive root when its order is exactly φ(n)."
+      ],
+      "example": {
+        "q": "Compute 2^100 (mod 13) using Fermat's little theorem.",
+        "steps": [
+          "13 is prime and 13 does not divide 2, so Fermat's little theorem gives 2^12 ≡ 1 (mod 13).",
+          "Divide the exponent by 12: 100 = 8 · 12 + 4, so 2^100 = (2^12)^8 · 2^4.",
+          "Reduce: (2^12)^8 ≡ 1^8 = 1 (mod 13), and 2^4 = 16 ≡ 3 (mod 13).",
+          "Therefore 2^100 ≡ 1 · 3 = 3 (mod 13)."
+        ],
+        "a": "2^100 ≡ 3 (mod 13)."
+      },
+      "practice": [
+        {
+          "q": "Compute 3^20 (mod 7).",
+          "a": "By Fermat, 3^6 ≡ 1 (mod 7). 20 = 3 · 6 + 2, so 3^20 ≡ 3^2 = 9 ≡ 2 (mod 7)."
+        },
+        {
+          "q": "Use Fermat's little theorem to show that 2^10 ≡ 1 (mod 11) and hence find 2^33 (mod 11).",
+          "a": "2^10 ≡ 1 (mod 11) by Fermat. 33 = 3 · 10 + 3, so 2^33 ≡ 2^3 = 8 (mod 11)."
+        }
+      ],
+      "takeaway": "Fermat's little theorem (a^(p−1) ≡ 1 mod p) and Euler's generalization (a^φ(n) ≡ 1 mod n) let you shrink huge exponents before computing — the trick behind RSA and primality tests.",
+      "module": "Congruences"
+    },
+    "Multiplicative Functions": {
+      "intro": "Some of the most important functions in number theory count or sum over divisors — how many divisors does n have, what do they add up to? These divisor functions behave beautifully because they are multiplicative: their value at a product of coprime numbers is the product of their values. That single property reduces every computation to prime powers, where the answers are easy.",
+      "concepts": [
+        "Arithmetic function — any function f defined on the positive integers, like τ(n) (number of divisors) or σ(n) (sum of divisors).",
+        "Multiplicative — f is multiplicative when f(mn) = f(m)f(n) whenever gcd(m, n) = 1. Completely multiplicative strengthens this to all m, n. Note f(1) = 1 for any multiplicative f.",
+        "τ(n) — the number of positive divisors of n. If n = ∏ pᵢ^aᵢ then τ(n) = ∏ (aᵢ + 1).",
+        "σ(n) — the sum of the positive divisors of n. If n = ∏ pᵢ^aᵢ then σ(n) = ∏ (pᵢ^(aᵢ+1) − 1)/(pᵢ − 1).",
+        "Dirichlet convolution — (f * g)(n) = Σ_{d|n} f(d)g(n/d); the convolution of two multiplicative functions is multiplicative, and 1 * 1 = τ, 1 * id = σ.",
+        "Why multiplicativity helps — to compute τ or σ at n, factor n into prime powers, compute at each prime power (where divisors are just p⁰, ..., p^a), and multiply."
+      ],
+      "example": {
+        "q": "Compute τ(36) and σ(36) from the prime factorization 36 = 2² · 3².",
+        "steps": [
+          "τ at a prime power p^a is a + 1 (divisors p⁰, ..., p^a), and τ is multiplicative, so τ(36) = (2 + 1)(2 + 1) = 9.",
+          "List to check: the divisors of 36 are 1, 2, 3, 4, 6, 9, 12, 18, 36 — exactly 9.",
+          "σ at p^a is 1 + p + ... + p^a = (p^(a+1) − 1)/(p − 1). So σ(4) = 1 + 2 + 4 = 7 and σ(9) = 1 + 3 + 9 = 13.",
+          "By multiplicativity, σ(36) = σ(4) · σ(9) = 7 · 13 = 91.",
+          "Check by adding: 1 + 2 + 3 + 4 + 6 + 9 + 12 + 18 + 36 = 91."
+        ],
+        "a": "τ(36) = 9 and σ(36) = 91."
+      },
+      "practice": [
+        {
+          "q": "Find τ(72) and σ(72).",
+          "a": "72 = 2³ · 3², so τ(72) = (3 + 1)(2 + 1) = 12. σ(72) = σ(8)σ(9) = (1 + 2 + 4 + 8)(1 + 3 + 9) = 15 · 13 = 195."
+        },
+        {
+          "q": "How many positive divisors does 1000 have?",
+          "a": "1000 = 2³ · 5³, so τ(1000) = (3 + 1)(3 + 1) = 16."
+        }
+      ],
+      "takeaway": "τ and σ are multiplicative, so factor first, compute at each prime power (τ(p^a) = a + 1, σ(p^a) = 1 + p + ... + p^a), and multiply.",
+      "module": "Arithmetic Functions"
+    },
+    "Euler's Totient Function": {
+      "intro": "How many numbers up to n are coprime to n? Euler's totient function φ(n) answers that question, and its answer powers Euler's theorem, RSA key generation, and the structure of units modulo n. The formula is surprisingly clean: start with n and knock out the fraction of numbers sharing each prime factor.",
+      "concepts": [
+        "Totient — φ(n) counts the integers 1 ≤ k ≤ n with gcd(k, n) = 1. For example φ(10) = 4, counting 1, 3, 7, 9.",
+        "φ at primes and prime powers — φ(p) = p − 1, and φ(p^a) = p^a − p^(a−1) = p^(a−1)(p − 1): the numbers not coprime to p^a are exactly the multiples of p.",
+        "Product formula — if n = ∏ pᵢ^aᵢ then φ(n) = n ∏ (1 − 1/pᵢ), taking one factor per distinct prime.",
+        "Multiplicativity — φ is multiplicative: φ(mn) = φ(m)φ(n) when gcd(m, n) = 1.",
+        "Sum over divisors — Σ_{d|n} φ(d) = n, a beautiful identity: the integers 1..n split by the gcd they share with n.",
+        "Euler's theorem — if gcd(a, n) = 1 then a^φ(n) ≡ 1 (mod n); the totient is the exponent that makes this work."
+      ],
+      "example": {
+        "q": "Compute φ(72) and verify the product formula, then check the divisor-sum identity for n = 6.",
+        "steps": [
+          "Factor: 72 = 2³ · 3². The distinct primes are 2 and 3.",
+          "Product formula: φ(72) = 72 · (1 − 1/2) · (1 − 1/3) = 72 · (1/2) · (2/3) = 24.",
+          "Check by multiplicativity: φ(8) = 4 and φ(9) = 6, and gcd(8, 9) = 1, so φ(72) = 4 · 6 = 24. ✓",
+          "Divisor-sum identity for n = 6: divisors are 1, 2, 3, 6 with φ(1) = 1, φ(2) = 1, φ(3) = 2, φ(6) = 2.",
+          "Sum: 1 + 1 + 2 + 2 = 6 = n. ✓"
+        ],
+        "a": "φ(72) = 24, and Σ_{d|6} φ(d) = 1 + 1 + 2 + 2 = 6."
+      },
+      "practice": [
+        {
+          "q": "Compute φ(100).",
+          "a": "100 = 2² · 5², so φ(100) = 100 · (1 − 1/2) · (1 − 1/5) = 100 · (1/2) · (4/5) = 40."
+        },
+        {
+          "q": "For which n is φ(n) = 2?",
+          "a": "φ(3) = 2, φ(4) = 2, φ(6) = 2, and these are the only ones: n = 3, 4, 6."
+        }
+      ],
+      "takeaway": "φ(n) = n ∏(1 − 1/p) over the distinct primes dividing n. It counts the units mod n, drives Euler's theorem, and sums to n over divisors.",
+      "module": "Arithmetic Functions"
+    },
+    "Mobius Inversion": {
+      "intro": "The Möbius function μ is number theory's inclusion–exclusion machine: it is 0 when n has a squared prime factor, and (−1)^k when n is the product of k distinct primes. Its magic is the inversion formula — if you know the sums of a function over divisors, Möbius inversion recovers the function itself. It is the key to counting primes, primitive roots, and aperiodic necklaces.",
+      "concepts": [
+        "Möbius function — μ(1) = 1; μ(n) = 0 if any prime squared divides n; μ(n) = (−1)^k if n is a product of k distinct primes. So μ(30) = −1 (three primes) and μ(12) = 0 (4 divides 12).",
+        "Key identity — Σ_{d|n} μ(d) = 0 for n > 1, and = 1 for n = 1. The terms cancel in pairs by inclusion–exclusion.",
+        "Möbius inversion — if F(n) = Σ_{d|n} f(d) for all n, then f(n) = Σ_{d|n} μ(d) F(n/d). Sums over divisors can be undone.",
+        "Dirichlet convolution view — inversion says μ is the convolution-inverse of the constant function 1: μ * 1 = ε, where ε(1) = 1 and ε(n) = 0 for n > 1.",
+        "Counting coprime pairs — the number of pairs (a, b) with 1 ≤ a, b ≤ n and gcd(a, b) = 1 is Σ_{d=1}^n μ(d) ⌊n/d⌋².",
+        "Prime counting — Möbius inversion gives formulas for π(x) in terms of prime-power counts, and underlies the proof of the prime number theorem's analytic machinery."
+      ],
+      "example": {
+        "q": "Verify the identity Σ_{d|n} μ(d) = 0 for n = 6, and use Möbius inversion to recover f(6) = 6 from F(n) = σ(n) = Σ_{d|n} d.",
+        "steps": [
+          "Divisors of 6: 1, 2, 3, 6. μ(1) = 1, μ(2) = −1, μ(3) = −1, μ(6) = (−1)² = 1 (two distinct primes).",
+          "Sum: 1 − 1 − 1 + 1 = 0. ✓",
+          "Now F(n) = Σ_{d|n} f(d) with f(d) = d gives F = σ. Inversion says f(6) = Σ_{d|6} μ(d) σ(6/d).",
+          "Terms: d = 1: μ(1)σ(6) = 1 · 12 = 12. d = 2: μ(2)σ(3) = (−1) · 4 = −4. d = 3: μ(3)σ(2) = (−1) · 3 = −3. d = 6: μ(6)σ(1) = 1 · 1 = 1.",
+          "Sum: 12 − 4 − 3 + 1 = 6 = f(6). ✓ The divisor sums undo themselves."
+        ],
+        "a": "Σ_{d|6} μ(d) = 0, and Möbius inversion recovers f(6) = 6 from the σ values."
+      },
+      "practice": [
+        {
+          "q": "Compute μ(30) and μ(72).",
+          "a": "30 = 2 · 3 · 5 has three distinct primes, so μ(30) = (−1)³ = −1. 72 = 2³ · 3² has squared prime factors, so μ(72) = 0."
+        },
+        {
+          "q": "Verify Σ_{d|12} μ(d) = 0.",
+          "a": "Divisors 1, 2, 3, 4, 6, 12 give μ = 1, −1, −1, 0, 1, 0. Sum: 1 − 1 − 1 + 0 + 1 + 0 = 0."
+        }
+      ],
+      "takeaway": "μ detects squarefree numbers with a sign (−1)^k, its divisor sums cancel to zero, and Möbius inversion undoes any sum over divisors.",
+      "module": "Arithmetic Functions"
+    },
+    "Perfect, Mersenne, and Fermat Numbers": {
+      "intro": "Some numbers are special because of their divisors. Perfect numbers equal the sum of their proper divisors — the Greeks knew 6 and 28, and the search for more led Euclid to a stunning formula linking perfect numbers to primes of the form 2^p − 1, the Mersenne primes. Fermat numbers 2^(2^n) + 1 tell a cautionary tale: Fermat guessed they were all prime, and Euler proved him wrong.",
+      "concepts": [
+        "Perfect number — n is perfect when σ(n) = 2n, i.e. n equals the sum of its proper divisors: 6 = 1 + 2 + 3 and 28 = 1 + 2 + 4 + 7 + 14.",
+        "Euclid–Euler theorem — an even number is perfect exactly when it is 2^(p−1)(2^p − 1) with 2^p − 1 prime. It is unknown whether any odd perfect number exists.",
+        "Mersenne prime — a prime of the form M_p = 2^p − 1. If M_p is prime then p must be prime, but not every prime p works: 2^11 − 1 = 2047 = 23 · 89.",
+        "Mersenne examples — 2² − 1 = 3, 2³ − 1 = 7, 2⁵ − 1 = 31, 2⁷ − 1 = 127, 2¹³ − 1 = 8191 are prime; the largest known primes are Mersenne primes.",
+        "Fermat number — F_n = 2^(2^n) + 1. F_0 = 3, F_1 = 5, F_2 = 17, F_3 = 257, F_4 = 65537 are all prime.",
+        "Euler's counterexample — F_5 = 2^32 + 1 = 4294967297 = 641 · 6700417, so not all Fermat numbers are prime; no F_n with n ≥ 5 is known to be prime."
+      ],
+      "example": {
+        "q": "Show that 496 is a perfect number using the Euclid–Euler formula.",
+        "steps": [
+          "Euclid–Euler: 2^(p−1)(2^p − 1) is perfect when 2^p − 1 is prime. Try p = 5: 2^5 − 1 = 31, which is prime.",
+          "Form the number: 2^(5−1) · (2^5 − 1) = 16 · 31 = 496.",
+          "Check with σ: 496 = 2⁴ · 31, so σ(496) = σ(16) · σ(31) = (1 + 2 + 4 + 8 + 16) · (1 + 31) = 31 · 32 = 992 = 2 · 496.",
+          "Since σ(496) = 2 · 496, the proper divisors sum to 496 itself."
+        ],
+        "a": "496 = 2⁴ · 31 is perfect: its proper divisors 1, 2, 4, 8, 16, 31, 62, 124, 248 sum to 496."
+      },
+      "practice": [
+        {
+          "q": "Show that 28 is perfect, and identify the Mersenne prime in its Euclid–Euler form.",
+          "a": "28 = 2² · (2³ − 1) = 4 · 7, with Mersenne prime 7. Proper divisors 1 + 2 + 4 + 7 + 14 = 28."
+        },
+        {
+          "q": "Is 2^11 − 1 prime? Explain.",
+          "a": "No: 2^11 − 1 = 2047 = 23 · 89. So p prime does not guarantee M_p prime."
+        }
+      ],
+      "takeaway": "Even perfect numbers are exactly 2^(p−1)(2^p − 1) with 2^p − 1 a Mersenne prime; Fermat's guess that all F_n = 2^(2^n) + 1 are prime died at F_5 = 641 · 6700417.",
+      "module": "Arithmetic Functions"
+    },
+    "Linear Diophantine Equations": {
+      "intro": "A Diophantine equation asks for integer solutions — no fractions allowed. The simplest kind, ax + by = c, is completely understood: the gcd decides whether solutions exist, Bezout's identity produces one, and from one solution you can generate them all. These equations model real problems, from making change with two coin denominations to the classic 'chicken McNugget' question of which totals are reachable.",
+      "concepts": [
+        "Diophantine equation — an equation to be solved in integers. Named after Diophantus of Alexandria (c. 250 CE).",
+        "Solvability — ax + by = c has integer solutions exactly when gcd(a, b) divides c.",
+        "Finding one solution — divide through by d = gcd(a, b), then use Bezout on the reduced equation to get a particular solution (x₀, y₀).",
+        "General solution — if (x₀, y₀) solves ax + by = c, all solutions are x = x₀ + (b/d)t, y = y₀ − (a/d)t for t ∈ ℤ.",
+        "Nonnegative solutions — many problems need x, y ≥ 0; the parameter t is then restricted to a finite range (or empty).",
+        "Frobenius coin problem — with coprime denominations a, b, the largest unattainable amount is ab − a − b; every larger amount is attainable. For 4 and 7 the largest gap is 17."
+      ],
+      "example": {
+        "q": "Find all integer solutions of 7x + 11y = 100.",
+        "steps": [
+          "gcd(7, 11) = 1 divides 100, so solutions exist.",
+          "Find one solution: solve 7x ≡ 100 (mod 11). Since 100 ≡ 1 (mod 11), need 7x ≡ 1 (mod 11). The inverse of 7 mod 11 is 8 (7 · 8 = 56 ≡ 1).",
+          "So x ≡ 8 (mod 11); take x₀ = 8. Then 7 · 8 = 56, so 11y = 100 − 56 = 44 and y₀ = 4. Check: 56 + 44 = 100. ✓",
+          "General solution with d = 1: x = 8 + 11t, y = 4 − 7t for t ∈ ℤ.",
+          "Nonnegative solutions need 8 + 11t ≥ 0 and 4 − 7t ≥ 0, i.e. t = 0 only. So the only nonnegative solution is (8, 4)."
+        ],
+        "a": "All solutions: x = 8 + 11t, y = 4 − 7t (t ∈ ℤ). The only nonnegative solution is (8, 4)."
+      },
+      "practice": [
+        {
+          "q": "Find all integer solutions of 6x + 10y = 30.",
+          "a": "gcd = 2 divides 30. Divide by 2: 3x + 5y = 15. One solution: x = 5, y = 0. General: x = 5 + 5t, y = 0 − 3t."
+        },
+        {
+          "q": "Does 4x + 6y = 25 have integer solutions? Why or why not?",
+          "a": "No: gcd(4, 6) = 2 does not divide 25. The left side is always even, the right side odd."
+        }
+      ],
+      "takeaway": "ax + by = c is solvable exactly when gcd(a, b) | c; one Bezout solution plus the step (b/d, −a/d) generates all of them.",
+      "module": "Diophantine Equations and Quadratic Residues"
+    },
+    "Pythagorean Triples": {
+      "intro": "A Pythagorean triple is three positive integers (a, b, c) with a² + b² = c² — the integer right triangles. The Babylonians knew them a thousand years before Pythagoras, and the triple (3, 4, 5) is the most famous. Euclid gave a formula that generates every primitive triple, and the same circle of ideas leads, eventually, to Fermat's Last Theorem.",
+      "concepts": [
+        "Pythagorean triple — positive integers a, b, c with a² + b² = c², like (3, 4, 5), (5, 12, 13), (8, 15, 17), (7, 24, 25).",
+        "Primitive triple — a triple with gcd(a, b, c) = 1; every triple is a multiple of a primitive one (e.g. (6, 8, 10) = 2 · (3, 4, 5)).",
+        "Euclid's formula — for coprime m > n, of opposite parity, (m² − n², 2mn, m² + n²) is a primitive triple, and every primitive triple arises this way.",
+        "Why opposite parity — if m and n are both odd, all three numbers are even, so the triple is not primitive; opposite parity makes exactly one leg even.",
+        "Rational points on the circle — the formula comes from the line through (−1, 0) meeting x² + y² = 1 again at a rational point; it classifies all rational points on the unit circle.",
+        "Fermat's Last Theorem — aⁿ + bⁿ = cⁿ has no positive integer solutions for n ≥ 3; proved by Andrew Wiles in 1994. The n = 2 case is exactly Pythagorean triples."
+      ],
+      "example": {
+        "q": "Use Euclid's formula with m = 3, n = 2 to produce a Pythagorean triple, and verify it.",
+        "steps": [
+          "Check the conditions: gcd(3, 2) = 1 and 3 is odd while 2 is even — opposite parity, so the triple will be primitive.",
+          "Compute the legs: a = m² − n² = 9 − 4 = 5, b = 2mn = 2 · 3 · 2 = 12.",
+          "Compute the hypotenuse: c = m² + n² = 9 + 4 = 13.",
+          "Verify: 5² + 12² = 25 + 144 = 169 = 13². ✓",
+          "Note the pattern: m = 2, n = 1 gives (3, 4, 5), and m = 4, n = 1 gives (15, 8, 17)."
+        ],
+        "a": "Euclid's formula with m = 3, n = 2 gives the primitive triple (5, 12, 13)."
+      },
+      "practice": [
+        {
+          "q": "Find the primitive triple from m = 4, n = 3.",
+          "a": "a = 16 − 9 = 7, b = 2 · 4 · 3 = 24, c = 16 + 9 = 25: (7, 24, 25). Check: 49 + 576 = 625 = 25²."
+        },
+        {
+          "q": "Is (9, 12, 15) primitive? Which primitive triple is it a multiple of?",
+          "a": "No — gcd(9, 12, 15) = 3. It is 3 · (3, 4, 5)."
+        }
+      ],
+      "takeaway": "Euclid's formula (m² − n², 2mn, m² + n²) with coprime m > n of opposite parity generates every primitive Pythagorean triple.",
+      "module": "Diophantine Equations and Quadratic Residues"
+    },
+    "Quadratic Residues and the Legendre Symbol": {
+      "intro": "Which numbers are squares modulo p? Modulo 7, the squares are 1, 2, and 4 — but 3, 5, and 6 never appear as squares. This question of quadratic residues, and the Legendre symbol that encodes the answer as +1 or −1, leads to one of the most beautiful results in mathematics: the law of quadratic reciprocity, which Gauss called the golden theorem.",
+      "concepts": [
+        "Quadratic residue — a is a quadratic residue mod p (p ∤ a) when x² ≡ a (mod p) has a solution; otherwise a is a non-residue. Mod 7 the residues are 1, 2, 4.",
+        "Counting residues — for odd prime p, exactly (p − 1)/2 of the numbers 1..p−1 are residues: the squares 1², 2², ..., ((p−1)/2)² are all distinct mod p.",
+        "Legendre symbol — (a/p) = 1 if a is a residue mod p, −1 if a non-residue, 0 if p | a.",
+        "Euler's criterion — (a/p) ≡ a^((p−1)/2) (mod p). So (2/7) = 1 because 2³ = 8 ≡ 1 (mod 7).",
+        "Multiplicativity — (ab/p) = (a/p)(b/p): the product of two residues is a residue, and the product of two non-residues is a residue.",
+        "Quadratic reciprocity — for distinct odd primes p, q: (p/q)(q/p) = (−1)^((p−1)(q−1)/4). The two symbols agree except when both primes are ≡ 3 (mod 4), when they differ. Also (2/p) = 1 exactly when p ≡ ±1 (mod 8)."
+      ],
+      "example": {
+        "q": "Find the quadratic residues mod 7 and compute the Legendre symbol (2/7) two ways.",
+        "steps": [
+          "Square 1, 2, 3 mod 7: 1² = 1, 2² = 4, 3² = 9 ≡ 2. Squaring 4, 5, 6 repeats these (4² = 16 ≡ 2, 5² = 25 ≡ 4, 6² = 36 ≡ 1).",
+          "The residues mod 7 are {1, 2, 4}; the non-residues are {3, 5, 6}.",
+          "Since 3² ≡ 2 (mod 7), 2 is a residue: (2/7) = 1.",
+          "Check with Euler's criterion: (2/7) ≡ 2^((7−1)/2) = 2³ = 8 ≡ 1 (mod 7). ✓",
+          "Check the (2/p) rule: 7 ≡ −1 (mod 8), so (2/7) = 1. ✓"
+        ],
+        "a": "The residues mod 7 are 1, 2, 4, and (2/7) = 1."
+      },
+      "practice": [
+        {
+          "q": "Find the quadratic residues mod 11.",
+          "a": "1², 2², 3², 4², 5² ≡ 1, 4, 9, 5, 3 (mod 11). Residues: {1, 3, 4, 5, 9}."
+        },
+        {
+          "q": "Compute (3/11) using Euler's criterion.",
+          "a": "3 is a residue mod 11 (5² = 25 ≡ 3), so (3/11) = 1. Criterion: 3^5 = 243 = 22 · 11 + 1 ≡ 1 (mod 11). ✓"
+        }
+      ],
+      "takeaway": "Half the nonzero residues mod p are squares; the Legendre symbol (a/p) is ±1 by Euler's criterion, and quadratic reciprocity links (p/q) with (q/p).",
+      "module": "Diophantine Equations and Quadratic Residues"
+    },
+    "Introduction to Pell's Equation": {
+      "intro": "The equation x² − 2y² = 1 looks innocent, but its smallest nontrivial solution is (3, 2), and its solutions grow fast: (17, 12), (99, 70), (577, 408)... This is Pell's equation, x² − Dy² = 1, and it always has infinitely many solutions when D is not a perfect square. Its solutions give the best rational approximations to √D, and the ancient Greeks used them to approximate √2.",
+      "concepts": [
+        "Pell's equation — x² − Dy² = 1 with D a positive nonsquare integer, solved in integers x, y. For D = 2 the solutions begin (3, 2), (17, 12), (99, 70).",
+        "Fundamental solution — the solution with smallest x > 1; all other solutions are powers of it: x + y√D = (x₁ + y₁√D)^k.",
+        "Why infinitely many — if (x, y) solves it, so does the next power: (3 + 2√2)² = 17 + 12√2 gives (17, 12), since (17)² − 2(12)² = 289 − 288 = 1.",
+        "The norm trick — define N(x + y√D) = x² − Dy²; then N(αβ) = N(α)N(β), so products of solutions are solutions. This is the ring ℤ[√D] at work.",
+        "Approximating √D — solutions give x/y ≈ √D: 17/12 = 1.4167 and 99/70 ≈ 1.41429, closing in on √2 ≈ 1.41421.",
+        "The negative Pell equation — x² − Dy² = −1 may or may not have solutions: x² − 2y² = −1 has (1, 1), (7, 5), but x² − 3y² = −1 has none (squares mod 3 are 0 and 1)."
+      ],
+      "example": {
+        "q": "Verify that (3, 2) solves x² − 2y² = 1, then generate the next solution by squaring 3 + 2√2.",
+        "steps": [
+          "Check (3, 2): 3² − 2 · 2² = 9 − 8 = 1. ✓ So (3, 2) is a solution, and it is the fundamental one (y = 1 gives x² = 3, impossible).",
+          "Square: (3 + 2√2)² = 9 + 2 · 3 · 2√2 + (2√2)² = 9 + 12√2 + 8 = 17 + 12√2.",
+          "So the next candidate is (17, 12). Verify: 17² − 2 · 12² = 289 − 288 = 1. ✓",
+          "One more power gives (3 + 2√2)³ = (17 + 12√2)(3 + 2√2) = 99 + 70√2, so (99, 70) is next: 99² − 2 · 70² = 9801 − 9800 = 1. ✓"
+        ],
+        "a": "The fundamental solution is (3, 2); powers of 3 + 2√2 give (17, 12), (99, 70), and infinitely many more."
+      },
+      "practice": [
+        {
+          "q": "Find the fundamental solution of x² − 3y² = 1.",
+          "a": "Try y = 1: x² = 4, so x = 2. The fundamental solution is (2, 1): 4 − 3 = 1."
+        },
+        {
+          "q": "Show that if (x, y) solves x² − 2y² = 1 then so does (3x + 4y, 2x + 3y).",
+          "a": "Multiply: (x + y√2)(3 + 2√2) = (3x + 4y) + (2x + 3y)√2. Norms multiply: 1 · 1 = 1, so (3x + 4y)² − 2(2x + 3y)² = 1."
+        }
+      ],
+      "takeaway": "Pell's equation x² − Dy² = 1 always has infinitely many solutions; the fundamental solution generates them all by powers, and the ratios x/y approximate √D ever more closely.",
+      "module": "Diophantine Equations and Quadratic Residues"
+    }
+  }
+}
