@@ -1,0 +1,537 @@
+{
+  "course_id": "MATH212",
+  "title": "Combinatorics",
+  "lesson_count": 16,
+  "lessons": {
+    "Addition and Multiplication Principles": {
+      "intro": "Combinatorics begins with two rules so simple they look trivial — and so powerful that every counting argument in this course is built from them. The addition principle says: if you can do a task in one of several mutually exclusive ways, add the counts. The multiplication principle says: if a task is a sequence of independent choices, multiply the counts. Together they answer questions like how many outfits you can make, how many passwords exist, and how many hands a card game can deal.",
+      "concepts": [
+        "Addition principle (sum rule) — if a task can be done in m ways or in n ways, with no overlap between the two sets of ways, it can be done in m + n ways. Choosing a main course from 4 pasta dishes or 5 salads gives 9 choices.",
+        "Multiplication principle (product rule) — if a task is done in stages with m choices at stage one and n choices at stage two, independently, there are m · n ways total. Choosing a shirt (5 options) and then trousers (3 options) gives 15 outfits.",
+        "Independent choices — the product rule needs the number of options at each stage not to depend on earlier choices. If it does depend, count stage by stage and add, or condition carefully.",
+        "Tree diagrams — a branching tree with one level per stage makes the product rule visible: the number of leaves is the product of the branching factors.",
+        "Counting with restrictions — restrictions usually remove choices at one stage (subtract) or split the problem into cases (add). 'At least one' problems are often easiest by counting the complement.",
+        "Ordered vs unordered — the product rule counts ordered sequences of choices; when order does not matter, the count must be divided later (the topic of the next lesson)."
+      ],
+      "example": {
+        "q": "A cafeteria offers 4 appetizers, 6 main courses, and 3 desserts. A meal consists of one appetizer, one main, and one dessert. How many different meals are possible? If a diner skips dessert, how many two-course meals are there?",
+        "steps": [
+          "A meal is a sequence of three independent choices: appetizer, main, dessert.",
+          "By the multiplication principle, the number of full meals is 4 · 6 · 3 = 72.",
+          "A two-course meal (appetizer + main, no dessert) has 4 · 6 = 24 possibilities.",
+          "Total meals with or without dessert: 72 + 24 = 96, by the addition principle applied to the two disjoint cases."
+        ],
+        "a": "72 three-course meals; 24 two-course meals; 96 meals in total."
+      },
+      "practice": [
+        {
+          "q": "You own 5 shirts, 3 pairs of pants, and 2 pairs of shoes. How many different outfits (one of each) can you make?",
+          "a": "5 · 3 · 2 = 30 outfits, by the multiplication principle."
+        },
+        {
+          "q": "A license plate has 3 letters followed by 3 digits. How many different plates are possible?",
+          "a": "26³ · 10³ = 17,576 · 1,000 = 17,576,000 plates."
+        }
+      ],
+      "takeaway": "Add when the cases are alternatives; multiply when the choices are sequential and independent. Almost every counting problem in this course reduces to a careful combination of these two rules.",
+      "module": "Counting Principles"
+    },
+    "Permutations and Combinations": {
+      "intro": "When order matters, you count permutations; when it does not, you count combinations. The difference is the single most common source of counting errors, so it pays to get it exactly right: a president–vice-president–secretary slate is a permutation (the roles differ), while a three-person committee is a combination (the members are equals). Both counts come from the same factorial foundation.",
+      "concepts": [
+        "Permutation — an ordered arrangement of r distinct objects chosen from n: P(n, r) = n · (n − 1) · ... · (n − r + 1) = n! / (n − r)!. Order matters, so P(10, 3) = 10 · 9 · 8 = 720.",
+        "Combination — an unordered selection of r objects from n: C(n, r) = P(n, r) / r! = n! / (r! (n − r)!). Since each r-subset can be ordered in r! ways, divide by r!.",
+        "Factorials — n! = n · (n − 1) · ... · 1, with 0! = 1 by convention; factorials grow fast (10! = 3,628,800).",
+        "Choosing vs leaving out — C(n, r) = C(n, n − r): choosing the r objects kept is the same as choosing the n − r objects left out. C(10, 7) = C(10, 3) = 120.",
+        "Permutations with repetition — if each of r positions can be any of n symbols, there are n^r arrangements (this is the product rule again).",
+        "Sampling language — permutations count ordered samples without replacement; combinations count unordered samples without replacement; n^r counts ordered samples with replacement."
+      ],
+      "example": {
+        "q": "From a group of 10 students, (a) in how many ways can a president, vice-president, and secretary be chosen? (b) In how many ways can a 3-person committee be chosen?",
+        "steps": [
+          "(a) The offices are distinct, so order matters: choose the president (10 ways), then the vice-president (9 ways), then the secretary (8 ways). P(10, 3) = 10 · 9 · 8 = 720.",
+          "(b) A committee has no roles, so order does not matter: each committee of 3 can be ordered in 3! = 6 ways, so divide: C(10, 3) = 720 / 6 = 120.",
+          "Check with the formula: C(10, 3) = 10! / (3! · 7!) = (10 · 9 · 8) / 6 = 120.",
+          "The ratio 720 / 120 = 6 = 3! is exactly the number of ways to order 3 people — the permutation count is the combination count times r!."
+        ],
+        "a": "(a) 720 slates; (b) 120 committees."
+      },
+      "practice": [
+        {
+          "q": "In how many ways can 4 distinct books be arranged on a shelf from a collection of 8?",
+          "a": "P(8, 4) = 8 · 7 · 6 · 5 = 1,680 arrangements."
+        },
+        {
+          "q": "How many 5-card poker hands are there in a standard 52-card deck?",
+          "a": "C(52, 5) = 2,598,960 hands (order of cards in a hand does not matter)."
+        }
+      ],
+      "takeaway": "Permutations count ordered selections (multiply down r factors); combinations count unordered selections (divide by r! to forget the order). Ask first: does swapping two chosen objects change the outcome?",
+      "module": "Counting Principles"
+    },
+    "Binomial Theorem and Identities": {
+      "intro": "The binomial theorem says that (x + y)^n expands into a sum whose coefficients are exactly the combination numbers C(n, k) — the same numbers that count subsets. That is no coincidence: expanding the product means choosing, from each of the n factors, either x or y, and the terms with k copies of y are counted by C(n, k). The theorem turns algebra into combinatorics and back again.",
+      "concepts": [
+        "Binomial theorem — (x + y)^n = Σ C(n, k) x^(n−k) y^k for k = 0 to n. For example (x + y)^4 = x^4 + 4x³y + 6x²y² + 4xy³ + y^4.",
+        "Binomial coefficients — the coefficient of x^(n−k) y^k is C(n, k), the number of ways to choose which k of the n factors contribute y.",
+        "Pascal's triangle — each row lists C(n, 0), C(n, 1), ..., C(n, n); each entry is the sum of the two above it, which is Pascal's identity C(n, k) = C(n−1, k−1) + C(n−1, k).",
+        "Sum of a row — setting x = y = 1 gives Σ C(n, k) = 2^n: an n-element set has 2^n subsets. Row 6 sums to 64.",
+        "Alternating sum — setting x = 1, y = −1 gives Σ (−1)^k C(n, k) = 0 for n ≥ 1: a set has equally many even-sized and odd-sized subsets.",
+        "Extracting a coefficient — to find the coefficient of x^a y^b in (x + y)^n, use k = b: it is C(n, b) when a + b = n."
+      ],
+      "example": {
+        "q": "Find the coefficient of x²y³ in the expansion of (x + y)^5, and write out the full expansion of (x + y)^4.",
+        "steps": [
+          "In (x + y)^5, the term containing x²y³ has k = 3 copies of y chosen from 5 factors, so its coefficient is C(5, 3) = 10. (Equivalently C(5, 2) = 10.)",
+          "The full expansion of (x + y)^4 uses row 4 of Pascal's triangle, 1 4 6 4 1: x^4 + 4x³y + 6x²y² + 4xy³ + y^4.",
+          "Check the coefficients sum to 2^4 = 16: 1 + 4 + 6 + 4 + 1 = 16.",
+          "Check the alternating sum: 1 − 4 + 6 − 4 + 1 = 0, as the identity predicts."
+        ],
+        "a": "The coefficient of x²y³ in (x + y)^5 is 10; (x + y)^4 = x^4 + 4x³y + 6x²y² + 4xy³ + y^4."
+      },
+      "practice": [
+        {
+          "q": "What is the coefficient of x³ in (1 + x)^7?",
+          "a": "C(7, 3) = 35, since the x³ term chooses 3 of the 7 factors to contribute x."
+        },
+        {
+          "q": "Evaluate C(6, 0) + C(6, 1) + C(6, 2) + C(6, 3) + C(6, 4) + C(6, 5) + C(6, 6) without adding the terms one by one.",
+          "a": "The sum is 2^6 = 64, by setting x = y = 1 in the binomial theorem."
+        }
+      ],
+      "takeaway": "Binomial coefficients are simultaneously subset counts and expansion coefficients. The binomial theorem lets you prove counting identities by plugging in clever values of x and y.",
+      "module": "Counting Principles"
+    },
+    "Pigeonhole Principle": {
+      "intro": "If you put more pigeons than holes, some hole gets two pigeons. That is the whole principle — and it is one of the most surprisingly powerful tools in mathematics. It proves that two people in a room share a birthday, that a shuffled deck has a repeated suit pattern, and that any sequence of numbers contains a monotone subsequence. The art is in choosing the pigeons and the holes.",
+      "concepts": [
+        "Pigeonhole principle — if n + 1 objects are placed into n boxes, some box contains at least two objects. The objects are the pigeons, the categories are the holes.",
+        "Generalized form — if N objects go into k boxes, some box contains at least ⌈N/k⌉ objects. With 25 students and 5 letter grades, some grade is shared by at least 5 students.",
+        "Choosing the holes — the power is in the choice: for birthdays the holes are the 366 possible dates; for months, the 12 months; for remainders mod m, the m residues.",
+        "Guarantee vs. possibility — the principle proves a repetition must occur; it never says which box or which objects. It is an existence proof, not a construction.",
+        "Birthday bound — with 367 people, two must share a birthday (366 holes including February 29). With 23 people a shared birthday is merely likely, not guaranteed.",
+        "Dirichlet's approximation — the same idea shows that for any real α and any N, some multiple qα with 1 ≤ q ≤ N is within 1/N of an integer."
+      ],
+      "example": {
+        "q": "Show that among any 13 people, at least two were born in the same month. How many people are needed to guarantee two share a birth month and the same birth-month parity (both in even months or both in odd months)?",
+        "steps": [
+          "There are 12 months (holes) and 13 people (pigeons). Since 13 > 12, two people must fall in the same month.",
+          "For the stronger claim, the holes are the 24 month-parity pairs: (January, odd), (February, even), and so on — 12 months × 2 parities = 24 holes.",
+          "With 25 people and 24 holes, two share both a month and a parity — in fact they share the same month, and the parity is automatic. The bound is 25.",
+          "In general, to guarantee a repeat among k holes you need k + 1 pigeons."
+        ],
+        "a": "13 people force a shared birth month; 25 people force a shared month-parity pair."
+      },
+      "practice": [
+        {
+          "q": "A drawer holds socks in 5 colors, all mixed up. How many socks must you take (in the dark) to guarantee a matching pair?",
+          "a": "6 socks: with 5 colors as holes, 6 socks force two of the same color."
+        },
+        {
+          "q": "In a class of 25 students, grades are A, B, C, D, F. Show that at least 5 students share a grade.",
+          "a": "⌈25/5⌉ = 5, so by the generalized pigeonhole principle some grade is held by at least 5 students."
+        }
+      ],
+      "takeaway": "More pigeons than holes forces a collision. The principle is trivial to state and endlessly useful — the skill is picking the right holes.",
+      "module": "Counting Principles"
+    },
+    "Inclusion-Exclusion": {
+      "intro": "Adding the sizes of two overlapping sets double-counts their intersection, so you subtract it back. With three sets you subtract the pairwise intersections, then add the triple intersection back — and the pattern continues, alternating signs, for any number of sets. Inclusion-exclusion is the principled way to count unions, and it is the engine behind derangements, the sieve of Eratosthenes, and Euler's totient function.",
+      "concepts": [
+        "Two sets — |A ∪ B| = |A| + |B| − |A ∩ B|. The intersection was counted twice, so subtract it once.",
+        "Three sets — |A ∪ B ∪ C| = |A| + |B| + |C| − |A∩B| − |A∩C| − |B∩C| + |A∩B∩C|. Each element's net contribution is exactly 1.",
+        "General principle — for sets A1, ..., An, add the sizes of single sets, subtract the pairwise intersections, add the triple intersections, and so on, alternating signs through all n-way intersections.",
+        "Counting the complement — to count objects with none of several properties, count the total and subtract those with at least one property via inclusion-exclusion. Often easier than counting directly.",
+        "Divisibility counting — the numbers from 1 to 100 divisible by 2 or 3 are 50 + 33 − 16 = 67, since 16 are divisible by both (by 6).",
+        "Derangements — a permutation with no fixed points. By inclusion-exclusion, D_n = n! Σ (−1)^k / k!, which is the nearest integer to n!/e."
+      ],
+      "example": {
+        "q": "In a class of 40 students, 24 like mathematics, 18 like physics, and 8 like both. How many like at least one of the two subjects, and how many like neither?",
+        "steps": [
+          "Let M be the math-lovers and P the physics-lovers. |M| = 24, |P| = 18, |M ∩ P| = 8.",
+          "By inclusion-exclusion, |M ∪ P| = 24 + 18 − 8 = 34 students like at least one subject.",
+          "The students liking neither are the complement in the class of 40: 40 − 34 = 6.",
+          "Check by cases: math only 24 − 8 = 16, physics only 18 − 8 = 10, both 8, neither 6; total 16 + 10 + 8 + 6 = 40."
+        ],
+        "a": "34 students like at least one subject; 6 like neither."
+      },
+      "practice": [
+        {
+          "q": "How many integers from 1 to 100 are divisible by 2 or by 3?",
+          "a": "⌊100/2⌋ + ⌊100/3⌋ − ⌊100/6⌋ = 50 + 33 − 16 = 67."
+        },
+        {
+          "q": "For three sets with |A| = 20, |B| = 15, |C| = 12, pairwise intersections 6, 5, 4, and triple intersection 2, find |A ∪ B ∪ C|.",
+          "a": "20 + 15 + 12 − 6 − 5 − 4 + 2 = 34."
+        }
+      ],
+      "takeaway": "Inclusion-exclusion corrects overcounting by alternating signs over intersections. It turns 'at least one of these' into a computation you can actually do.",
+      "module": "Advanced Counting"
+    },
+    "Multinomial Coefficients": {
+      "intro": "The binomial coefficient counts ways to split n objects into two groups. The multinomial coefficient does the same for any number of groups — and it also counts anagrams of a word with repeated letters, coefficients in the expansion of (x + y + z)^n, and ways to deal cards into several hands at once. It is the binomial coefficient, grown up.",
+      "concepts": [
+        "Multinomial coefficient — the number of ways to divide n distinct objects into groups of sizes n1, n2, ..., nk (with n1 + ... + nk = n) is n! / (n1! n2! ... nk!).",
+        "Anagrams — the arrangements of a word with repeated letters are counted the same way: MISSISSIPPI has 11 letters with I ×4, S ×4, P ×2, M ×1, so 11! / (4! 4! 2! 1!) arrangements.",
+        "Multinomial theorem — (x1 + ... + xk)^n expands with coefficient n! / (n1! ... nk!) on the term x1^n1 ... xk^nk.",
+        "Binomial as a special case — when k = 2, the multinomial coefficient n! / (r! (n−r)!) is the binomial coefficient C(n, r).",
+        "Dividing into labeled groups — the groups are distinguished by their labels (or positions); dividing into unlabeled groups of equal size needs an extra division by the number of ways to permute the groups.",
+        "Sequential counting — the formula also follows from choosing group 1 (C(n, n1) ways), then group 2 from the rest (C(n − n1, n2) ways), and so on; the product telescopes to n! / (n1! ... nk!)."
+      ],
+      "example": {
+        "q": "How many distinct arrangements (anagrams) are there of the letters in MISSISSIPPI?",
+        "steps": [
+          "MISSISSIPPI has 11 letters: M once, I four times, S four times, P twice.",
+          "If all 11 letters were distinct there would be 11! = 39,916,800 arrangements.",
+          "Swapping identical letters does not create a new word, so divide by 4! for the I's, 4! for the S's, and 2! for the P's: 11! / (4! · 4! · 2!) = 39,916,800 / (24 · 24 · 2) = 39,916,800 / 1,152.",
+          "39,916,800 / 1,152 = 34,650."
+        ],
+        "a": "34,650 distinct arrangements."
+      },
+      "practice": [
+        {
+          "q": "How many distinct arrangements are there of the letters in BANANA?",
+          "a": "6! / (3! · 2! · 1!) = 720 / 12 = 60 (A ×3, N ×2, B ×1)."
+        },
+        {
+          "q": "What is the coefficient of x²y³z in the expansion of (x + y + z)^6?",
+          "a": "6! / (2! · 3! · 1!) = 720 / 12 = 60."
+        }
+      ],
+      "takeaway": "Splitting into groups of given sizes divides n! by the factorials of the group sizes. The same formula counts anagrams, multinomial coefficients, and multi-way divisions.",
+      "module": "Advanced Counting"
+    },
+    "Stirling Numbers": {
+      "intro": "How many ways can you partition n labeled balls into k nonempty unlabeled boxes? The answer is a Stirling number of the second kind, S(n, k) — and these numbers obey a recurrence so clean it feels like it was designed: S(n, k) = k · S(n−1, k) + S(n−1, k−1). Stirling numbers connect partitions, onto functions, and powers, and they sit at the crossroads of counting and algebra.",
+      "concepts": [
+        "Stirling numbers of the second kind — S(n, k) counts partitions of an n-element set into k nonempty unlabeled subsets. S(4, 2) = 7: the 7 ways to split {1, 2, 3, 4} into two groups.",
+        "The recurrence — S(n, k) = k · S(n−1, k) + S(n−1, k−1). Either element n joins one of the k existing blocks (k choices), or it forms a new block alone.",
+        "Boundary values — S(n, 1) = 1, S(n, n) = 1, S(n, 0) = 0 for n > 0, and S(0, 0) = 1. Also S(n, 2) = 2^(n−1) − 1.",
+        "Onto functions — the number of onto (surjective) functions from an n-element set to a k-element set is k! · S(n, k): partition the domain into k blocks, then assign the k labels in k! ways.",
+        "Bell numbers — the total number of partitions of an n-element set is B_n = Σ S(n, k). B_4 = 1 + 7 + 6 + 1 = 15.",
+        "Stirling numbers of the first kind — s(n, k) counts permutations of n elements with exactly k cycles; they expand falling factorials and are the signed companions of the second kind."
+      ],
+      "example": {
+        "q": "Compute S(5, 3), the number of ways to partition a 5-element set into 3 nonempty unlabeled subsets, using the recurrence.",
+        "steps": [
+          "Build up from smaller values. S(4, 2) = 7 (the partitions of a 4-set into 2 blocks) and S(4, 3) = 6 (choose which 2 elements pair up: C(4, 2) = 6).",
+          "Apply the recurrence: S(5, 3) = 3 · S(4, 3) + S(4, 2) = 3 · 6 + 7 = 18 + 7 = 25.",
+          "Interpretation: either element 5 joins one of the 3 blocks of a partition of {1,2,3,4} into 3 parts (3 · 6 ways), or {5} is a block alone and {1,2,3,4} is split into 2 parts (7 ways).",
+          "Check: the onto-function count from a 5-set to a 3-set is 3! · 25 = 150, a sensible number (out of 3^5 = 243 total functions)."
+        ],
+        "a": "S(5, 3) = 25."
+      },
+      "practice": [
+        {
+          "q": "Compute S(4, 2) directly by listing the partitions of {1, 2, 3, 4} into 2 nonempty subsets.",
+          "a": "7: the singleton {1} with the rest, {2} with the rest, {3} with the rest, {4} with the rest (4 ways), plus the three 2+2 splits {1,2}|{3,4}, {1,3}|{2,4}, {1,4}|{2,3}."
+        },
+        {
+          "q": "How many onto functions are there from a 6-element set to a 2-element set?",
+          "a": "2! · S(6, 2) = 2 · (2^5 − 1) = 2 · 31 = 62 (also 2^6 − 2, excluding the two constant functions)."
+        }
+      ],
+      "takeaway": "S(n, k) counts set partitions, and its recurrence comes from asking where the last element goes. Multiply by k! and you count onto functions instead.",
+      "module": "Advanced Counting"
+    },
+    "Catalan Numbers": {
+      "intro": "The Catalan numbers 1, 1, 2, 5, 14, 42, 132, ... appear in an astonishing number of places: ways to parenthesize a product, binary trees, Dyck paths that never dip below the diagonal, ways to triangulate a polygon, and non-crossing handshakes around a table. Whenever a structure splits into two smaller copies of itself, the Catalans are usually hiding nearby.",
+      "concepts": [
+        "Catalan formula — C_n = (1 / (n + 1)) · C(2n, n). So C_0 = 1, C_1 = 1, C_2 = 2, C_3 = 5, C_4 = 14.",
+        "Parenthesizations — C_n counts the ways to fully parenthesize a product of n + 1 factors: for 4 factors there are C_3 = 5 ways.",
+        "Dyck paths — C_n counts paths from (0, 0) to (2n, 0) with steps up and down that never go below the x-axis. The reflection principle proves the formula.",
+        "Binary trees — C_n counts binary trees with n internal nodes (or n + 1 leaves), and also triangulations of a polygon with n + 2 sides.",
+        "The recurrence — C_0 = 1 and C_{n+1} = Σ C_i · C_{n−i}: the first split of a structure into left and right parts of sizes i and n − i.",
+        "Growth — C_n grows like 4^n / (n^{3/2} √π), much slower than 2^{2n}: the 'never dip below' constraint cuts the count by a factor of about n."
+      ],
+      "example": {
+        "q": "Compute C_4 and list what it counts in three different settings.",
+        "steps": [
+          "By the formula, C_4 = (1/5) · C(8, 4) = (1/5) · 70 = 14.",
+          "Parenthesizations: there are 14 ways to parenthesize a product of 5 factors, e.g. ((ab)(cd))e and 13 others.",
+          "Binary trees: there are 14 binary trees with 4 internal nodes (equivalently 5 leaves).",
+          "Dyck paths: there are 14 paths of 8 steps (4 up, 4 down) from (0,0) to (8,0) that never dip below the axis; the total number of up-down paths is C(8,4) = 70, and exactly 1/5 of them stay above."
+        ],
+        "a": "C_4 = 14: 14 parenthesizations of 5 factors, 14 binary trees with 4 internal nodes, 14 Dyck paths of length 8."
+      },
+      "practice": [
+        {
+          "q": "How many ways are there to parenthesize the product a·b·c·d?",
+          "a": "C_3 = 5: ((ab)c)d, (a(bc))d, (ab)(cd), a((bc)d), a(b(cd))."
+        },
+        {
+          "q": "How many ways are there to triangulate a hexagon (divide it into triangles with non-crossing diagonals)?",
+          "a": "A hexagon has 6 = 4 + 2 sides, so the number of triangulations is C_4 = 14."
+        }
+      ],
+      "takeaway": "Catalan numbers count structures that split recursively into two smaller copies of themselves. When you see 'never below the diagonal' or 'fully parenthesized', think Catalan.",
+      "module": "Advanced Counting"
+    },
+    "Ordinary Generating Functions": {
+      "intro": "A generating function packs an entire sequence into a single algebraic object: the sequence a_0, a_1, a_2, ... becomes the power series A(x) = a_0 + a_1 x + a_2 x² + ... . Once the sequence lives inside a function, you can add, multiply, and differentiate it — and each algebraic move corresponds to a combinatorial operation. Generating functions turn counting problems into algebra problems, which are often far easier to solve.",
+      "concepts": [
+        "Definition — the ordinary generating function (OGF) of (a_n) is A(x) = Σ a_n x^n. The coefficient of x^n is the nth term; we rarely care whether the series converges.",
+        "The all-ones sequence — 1, 1, 1, ... has OGF 1 + x + x² + ... = 1/(1 − x). This is the geometric series, the workhorse of the subject.",
+        "Counting solutions — the number of nonnegative solutions of x1 + ... + xk = n is the coefficient of x^n in 1/(1 − x)^k, namely C(n + k − 1, k − 1) (stars and bars, recovered algebraically).",
+        "Multiplication means convolution — if A(x) and B(x) are OGFs of (a_n) and (b_n), then A(x)B(x) is the OGF of c_n = Σ a_k b_{n−k}. Choosing from two independent sources multiplies the generating functions.",
+        "Fibonacci — the Fibonacci sequence (with F_0 = 0, F_1 = 1) has OGF x / (1 − x − x²), which follows from its recurrence F_n = F_{n−1} + F_{n−2}.",
+        "Coefficient extraction — 1/(1 − x)^m expands with coefficient C(n + m − 1, m − 1) on x^n (the generalized binomial theorem with negative exponents)."
+      ],
+      "example": {
+        "q": "How many nonnegative integer solutions does x1 + x2 + x3 = 5 have? Find the answer with generating functions.",
+        "steps": [
+          "Each variable xi contributes a factor 1 + x + x² + ... = 1/(1 − x), since xi can be any nonnegative integer.",
+          "Three variables multiply: the OGF is 1/(1 − x)³, and the answer is the coefficient of x^5.",
+          "The coefficient of x^n in 1/(1 − x)^3 is C(n + 2, 2) (choose 2 bars among n + 2 positions). For n = 5: C(7, 2) = 21.",
+          "Sanity check by stars and bars: 5 stars and 2 bars in 7 positions gives C(7, 2) = 21. The algebra agrees with the direct count."
+        ],
+        "a": "21 solutions."
+      },
+      "practice": [
+        {
+          "q": "What is the ordinary generating function of the Fibonacci sequence F_0 = 0, F_1 = 1, F_n = F_{n−1} + F_{n−2}?",
+          "a": "x / (1 − x − x²). (Let F(x) = Σ F_n x^n; the recurrence gives F(x) = x + xF(x) + x²F(x), so F(x)(1 − x − x²) = x.)"
+        },
+        {
+          "q": "Find the coefficient of x³ in 1/(1 − x)^4.",
+          "a": "C(3 + 4 − 1, 4 − 1) = C(6, 3) = 20."
+        }
+      ],
+      "takeaway": "Ordinary generating functions encode sequences as power series; multiplying them convolves the sequences. Stars-and-bars counts fall out as coefficients of 1/(1 − x)^k.",
+      "module": "Generating Functions"
+    },
+    "Exponential Generating Functions": {
+      "intro": "Ordinary generating functions suit unlabeled structures, where order does not matter. But when the objects are labeled — permutations, set partitions, onto functions — the right tool is the exponential generating function, which divides the nth term by n!: E(x) = Σ a_n x^n / n!. The n! in the denominator is exactly what labeled counting needs, because choosing which labels go to each part is a binomial coefficient in disguise.",
+      "concepts": [
+        "Definition — the exponential generating function (EGF) of (a_n) is E(x) = Σ a_n · x^n / n!. The coefficient of x^n / n! is a_n.",
+        "The all-ones sequence again — a_n = 1 for all n has EGF Σ x^n / n! = e^x. The sequence a_n = n! has EGF Σ x^n = 1/(1 − x).",
+        "Product rule for labeled structures — if a labeled structure splits into two labeled parts, the EGFs multiply: E(x) = A(x)B(x), because the labels divide between the parts in C(n, k) ways, and C(n, k) · k! · (n−k)! = n! cancels the denominators.",
+        "Derangements — the EGF for derangements is e^{−x} / (1 − x), and D_n = n! Σ_{k=0}^n (−1)^k / k!. In particular D_4 = 9.",
+        "Bell numbers — the EGF for the Bell numbers B_n (partitions of an n-set) is e^{e^x − 1}.",
+        "Sets, sequences, cycles — EGFs of sets, sequences, and cycles are e^x, 1/(1 − x), and −ln(1 − x); combining them builds EGFs for most labeled structures."
+      ],
+      "example": {
+        "q": "How many derangements (permutations with no fixed point) are there of 4 elements? Use the formula D_n = n! Σ (−1)^k / k!.",
+        "steps": [
+          "List all 24 permutations of {1, 2, 3, 4} and exclude those fixing any element. By inclusion-exclusion, D_4 = 4! · (1 − 1 + 1/2! − 1/3! + 1/4!).",
+          "Compute the sum: 1 − 1 + 1/2 − 1/6 + 1/24 = 9/24.",
+          "Multiply by 4! = 24: D_4 = 24 · (9/24) = 9.",
+          "The nine derangements are 2143, 2341, 2413, 3142, 3412, 3421, 4123, 4312, 4321 — check the first: 2,1,4,3 fixes nothing."
+        ],
+        "a": "9 derangements."
+      },
+      "practice": [
+        {
+          "q": "What is the exponential generating function of the sequence a_n = 1 for all n ≥ 0?",
+          "a": "e^x, since Σ x^n / n! = e^x."
+        },
+        {
+          "q": "How many onto functions are there from a 5-element set to a 3-element set?",
+          "a": "3! · S(5, 3) = 6 · 25 = 150."
+        }
+      ],
+      "takeaway": "Exponential generating functions divide by n! so that labeled structures multiply cleanly. They are the right tool whenever the objects carry distinct labels.",
+      "module": "Generating Functions"
+    },
+    "Partition Numbers": {
+      "intro": "A partition of n is a way to write n as a sum of positive integers, ignoring order: 5 = 4 + 1 = 3 + 2 = 3 + 1 + 1 = 2 + 2 + 1 = 2 + 1 + 1 + 1 = 1 + 1 + 1 + 1 + 1, plus 5 itself — seven partitions in all. Partitions look elementary, but their theory reaches deep: Euler's generating function, Ramanujan's congruences, and the pentagonal number theorem all live here.",
+      "concepts": [
+        "Partition — a nonincreasing sequence of positive integers summing to n. p(n) counts them; p(0) = 1 by convention, p(5) = 7, p(6) = 11.",
+        "Generating function — Σ p(n) x^n = 1 / ((1 − x)(1 − x²)(1 − x³) ...). Each factor 1/(1 − x^k) accounts for using any number of parts of size k.",
+        "Partitions into distinct parts — counted by the product (1 + x)(1 + x²)(1 + x³) ...: each part size is used at most once.",
+        "Euler's theorem — the number of partitions of n into odd parts equals the number into distinct parts. For n = 4 both are 2: odd {3+1, 1+1+1+1}, distinct {4, 3+1}.",
+        "Ferrers diagrams — a partition is drawn as left-justified rows of dots; transposing the diagram (conjugate partition) swaps 'largest part' with 'number of parts'.",
+        "Pentagonal number theorem — Euler's identity Π (1 − x^k) = Σ (−1)^j x^{j(3j−1)/2} gives a recurrence computing p(n) from earlier values, fast enough for large n."
+      ],
+      "example": {
+        "q": "List all partitions of 5 and count them. Then verify Euler's theorem for n = 4.",
+        "steps": [
+          "Partitions of 5, by largest part: 5; 4+1; 3+2; 3+1+1; 2+2+1; 2+1+1+1; 1+1+1+1+1. That is 7 partitions, so p(5) = 7.",
+          "Partitions of 4 into odd parts: 3+1 and 1+1+1+1 — 2 partitions.",
+          "Partitions of 4 into distinct parts: 4 and 3+1 — 2 partitions.",
+          "The counts agree, as Euler's theorem promises; the bijection merges equal odd parts in pairs and splits even parts, matching the two families exactly."
+        ],
+        "a": "p(5) = 7; for n = 4, both the odd-part and distinct-part counts are 2."
+      },
+      "practice": [
+        {
+          "q": "Compute p(6) by listing the partitions of 6.",
+          "a": "11: 6; 5+1; 4+2; 4+1+1; 3+3; 3+2+1; 3+1+1+1; 2+2+2; 2+2+1+1; 2+1+1+1+1; 1+1+1+1+1+1."
+        },
+        {
+          "q": "How many partitions of 7 have largest part exactly 3?",
+          "a": "4: 3+3+1, 3+2+2, 3+2+1+1, 3+1+1+1+1. (Conjugating: partitions of 7 into exactly 3 parts.)"
+        }
+      ],
+      "takeaway": "Partitions count ways to split a number into summands, and their generating function is an infinite product. Conjugation and Euler's theorem reveal hidden symmetries between partition families.",
+      "module": "Generating Functions"
+    },
+    "Applications to Counting Problems": {
+      "intro": "Counting techniques earn their keep when they solve problems that look nothing like textbook exercises: distributing identical balls into distinct boxes, counting words with forbidden patterns, scheduling with constraints. The trick is always the same — translate the problem into a counting model you already know (stars and bars, inclusion-exclusion, generating functions), then compute. This lesson is a workout in that translation.",
+      "concepts": [
+        "Stars and bars — the number of nonnegative integer solutions of x1 + ... + xk = n is C(n + k − 1, k − 1). With lower bounds xi ≥ bi, substitute yi = xi − bi and count solutions of the reduced equation.",
+        "Distributions — putting n identical balls into k distinct boxes is the same stars-and-bars count; requiring each box nonempty gives C(n − 1, k − 1).",
+        "Surjections via inclusion-exclusion — the number of onto functions from an n-set to a k-set is Σ (−1)^j C(k, j) (k − j)^n, which equals k! · S(n, k).",
+        "Words with forbidden adjacencies — count with inclusion-exclusion (treat a forbidden block as a single super-letter) or with recurrence (build the word one letter at a time).",
+        "Compositions vs partitions — a composition of n is an ordered sum (2^n−1 of them); a partition is unordered (p(n) of them). Order is the only difference, and it changes the count enormously.",
+        "Choosing the model — before computing, name the model: ordered or unordered? With or without repetition? Labeled or unlabeled? The model picks the formula."
+      ],
+      "example": {
+        "q": "How many nonnegative integer solutions does x1 + x2 + x3 + x4 = 10 have? How many solutions have every xi ≥ 1?",
+        "steps": [
+          "Nonnegative solutions: stars and bars with n = 10 stars and k = 4 variables gives C(10 + 4 − 1, 4 − 1) = C(13, 3) = 286.",
+          "For xi ≥ 1, set yi = xi − 1; then y1 + y2 + y3 + y4 = 6 with yi ≥ 0, giving C(6 + 3, 3) = C(9, 3) = 84.",
+          "Equivalently, the positive solutions are counted by C(10 − 1, 4 − 1) = C(9, 3) = 84.",
+          "Check the ratio: 84 / 286 ≈ 0.29 — roughly a third of solutions have no zero coordinate, plausible for 4 variables summing to 10."
+        ],
+        "a": "286 nonnegative solutions; 84 with every xi ≥ 1."
+      },
+      "practice": [
+        {
+          "q": "How many solutions does a + b + c = 7 have with a ≥ 1 (b, c ≥ 0)?",
+          "a": "Set a' = a − 1: a' + b + c = 6, so C(8, 2) = 28 solutions."
+        },
+        {
+          "q": "In how many ways can 8 identical balls be put into 3 distinct boxes so that no box is empty?",
+          "a": "C(8 − 1, 3 − 1) = C(7, 2) = 21 ways."
+        }
+      ],
+      "takeaway": "Real counting problems are translation problems: recognize the model (stars and bars, inclusion-exclusion, onto functions), then let the formula do the work.",
+      "module": "Generating Functions"
+    },
+    "Linear Recurrences": {
+      "intro": "A recurrence defines each term from earlier ones: the Fibonacci numbers from the two before them, the Tower of Hanoi moves from the previous count, compound interest from last year's balance. Recurrences are how discrete processes actually evolve, and this lesson is about reading them: recognizing the order, the initial conditions, and what the sequence is really counting.",
+      "concepts": [
+        "Recurrence relation — an equation expressing a_n in terms of earlier terms a_{n−1}, a_{n−2}, ... . A recurrence plus enough initial values determines the whole sequence.",
+        "Order — the order is how far back the recurrence reaches: first-order (a_n from a_{n−1} only), second-order (a_n from a_{n−1} and a_{n−2}), and so on. A kth-order recurrence needs k initial values.",
+        "Linear with constant coefficients — a_n = c_1 a_{n−1} + ... + c_k a_{n−k}, with fixed numbers c_i. Fibonacci (a_n = a_{n−1} + a_{n−2}) is the classic second-order example.",
+        "Homogeneous vs nonhomogeneous — homogeneous recurrences have no extra term depending only on n; a term like +1 or +2^n makes it nonhomogeneous (Tower of Hanoi: T_n = 2T_{n−1} + 1).",
+        "Iterating by hand — small values can be computed directly from the recurrence; this is how you sanity-check any closed form you derive later.",
+        "Combinatorial meaning — every linear recurrence with constant coefficients counts something: tilings, words avoiding patterns, walks on a graph. Finding the recurrence is often the whole problem."
+      ],
+      "example": {
+        "q": "The Fibonacci sequence is defined by F_0 = 0, F_1 = 1, and F_n = F_{n−1} + F_{n−2}. Compute F_10 by iterating.",
+        "steps": [
+          "Start from the initial values: F_0 = 0, F_1 = 1.",
+          "Iterate: F_2 = 1 + 0 = 1; F_3 = 1 + 1 = 2; F_4 = 2 + 1 = 3; F_5 = 3 + 2 = 5.",
+          "Continue: F_6 = 5 + 3 = 8; F_7 = 8 + 5 = 13; F_8 = 13 + 8 = 21; F_9 = 21 + 13 = 34.",
+          "Finally F_10 = F_9 + F_8 = 34 + 21 = 55."
+        ],
+        "a": "F_10 = 55."
+      },
+      "practice": [
+        {
+          "q": "A bank account starts with $3 and doubles every year (a_n = 2a_{n−1}, a_0 = 3). What is the balance after 5 years?",
+          "a": "a_n = 3 · 2^n, so a_5 = 3 · 32 = 96."
+        },
+        {
+          "q": "The Tower of Hanoi with n disks needs T_n = 2T_{n−1} + 1 moves, with T_1 = 1. How many moves for 5 disks?",
+          "a": "T_2 = 3, T_3 = 7, T_4 = 15, T_5 = 31 moves (in general T_n = 2^n − 1)."
+        }
+      ],
+      "takeaway": "A recurrence plus initial values is a complete definition of a sequence. Iterating it by hand builds the intuition — and the test data — for the closed forms that follow.",
+      "module": "Recurrence Relations"
+    },
+    "Characteristic Equation Method": {
+      "intro": "Iterating a recurrence works, but it is slow: to find the thousandth Fibonacci number you would compute all 999 before it. The characteristic equation method solves linear recurrences with constant coefficients in closed form: guess a_n = r^n, find the roots r, and combine them to fit the initial conditions. It is the discrete twin of solving linear differential equations, and it is just as powerful.",
+      "concepts": [
+        "The guess — for a_n = c_1 a_{n−1} + c_2 a_{n−2}, try a_n = r^n. Substituting and dividing by r^{n−2} gives the characteristic equation r² − c_1 r − c_2 = 0.",
+        "Distinct roots — if the roots r_1 ≠ r_2, the general solution is a_n = A·r_1^n + B·r_2^n. The constants A and B are fixed by the initial conditions.",
+        "Repeated roots — if r is a double root, the general solution is a_n = (A + Bn)·r^n: the extra factor of n is needed because r^n alone gives only one solution.",
+        "Fibonacci closed form — the characteristic equation r² − r − 1 = 0 has roots φ = (1 + √5)/2 and ψ = (1 − √5)/2, giving Binet's formula F_n = (φ^n − ψ^n)/√5.",
+        "Nonhomogeneous recurrences — first find a particular solution (guess a constant, or a multiple of the forcing term), then add the homogeneous general solution.",
+        "Checking — always verify a closed form against the first few iterated values; a sign error in the roots shows up immediately."
+      ],
+      "example": {
+        "q": "Solve a_n = 5a_{n−1} − 6a_{n−2} with a_0 = 1 and a_1 = 4. Give a closed form and verify it for n = 2.",
+        "steps": [
+          "Try a_n = r^n: the characteristic equation is r² − 5r + 6 = 0, which factors as (r − 2)(r − 3) = 0, so r = 2 and r = 3.",
+          "The general solution is a_n = A·2^n + B·3^n.",
+          "Use a_0 = 1: A + B = 1. Use a_1 = 4: 2A + 3B = 4. Solving: from the first, A = 1 − B; substituting, 2(1 − B) + 3B = 4, so B = 2 and A = −1.",
+          "The closed form is a_n = −2^n + 2·3^n.",
+          "Verify: a_2 = −4 + 2·9 = 14, and the recurrence gives a_2 = 5·4 − 6·1 = 14. It matches."
+        ],
+        "a": "a_n = −2^n + 2·3^n (so a_2 = 14)."
+      },
+      "practice": [
+        {
+          "q": "Solve a_n = 3a_{n−1} − 2a_{n−2} with a_0 = 0 and a_1 = 1.",
+          "a": "Roots 1 and 2, so a_n = A + B·2^n. a_0 = A + B = 0 and a_1 = A + 2B = 1 give B = 1, A = −1: a_n = 2^n − 1."
+        },
+        {
+          "q": "Solve a_n = 4a_{n−1} − 4a_{n−2} with a_0 = 1 and a_1 = 4.",
+          "a": "Double root r = 2, so a_n = (A + Bn)·2^n. a_0 = A = 1 and a_1 = 2(1 + B) = 4 give B = 1: a_n = (1 + n)·2^n."
+        }
+      ],
+      "takeaway": "Guess r^n, solve the characteristic equation, combine the roots, fit the initial values. Distinct roots give exponentials; a repeated root needs an extra factor of n.",
+      "module": "Recurrence Relations"
+    },
+    "Divide-and-Conquer Recurrences": {
+      "intro": "Divide-and-conquer algorithms split a problem of size n into a smaller copies of size n/b, solve them recursively, and combine the results — and their running times satisfy recurrences like T(n) = aT(n/b) + f(n). Merge sort, binary search, and Strassen's matrix multiplication all live here. The Master Theorem reads the answer off the recurrence without unfolding it, and it is one of the most-used results in algorithm analysis.",
+      "concepts": [
+        "The shape — T(n) = a·T(n/b) + f(n): a subproblems of size n/b, plus f(n) work to divide and combine. Merge sort: T(n) = 2T(n/2) + n.",
+        "Recursion trees — unfold the recurrence level by level: level j has a^j nodes, each costing f(n/b^j). Summing the levels gives the total.",
+        "Master Theorem, case 1 — if f(n) is polynomially smaller than n^{log_b a}, then T(n) = Θ(n^{log_b a}): the leaves dominate.",
+        "Master Theorem, case 2 — if f(n) = Θ(n^{log_b a}), then T(n) = Θ(n^{log_b a} · log n): every level costs the same, and there are log_b n levels.",
+        "Master Theorem, case 3 — if f(n) is polynomially larger than n^{log_b a} (and a regularity condition holds), then T(n) = Θ(f(n)): the root dominates.",
+        "Binary search — T(n) = T(n/2) + 1 gives T(n) = Θ(log n): one subproblem, constant combine work."
+      ],
+      "example": {
+        "q": "Merge sort satisfies T(n) = 2T(n/2) + n with T(1) = 0. Use a recursion tree to find T(8) and the general form of T(n).",
+        "steps": [
+          "Level 0 (the root): one problem of size 8, costing 8. Level 1: two problems of size 4, each costing 4, total 8. Level 2: four problems of size 2, each costing 2, total 8.",
+          "Level 3: eight problems of size 1, each costing T(1) = 0, total 0.",
+          "Summing: T(8) = 8 + 8 + 8 + 0 = 24.",
+          "In general there are log₂ n levels each costing n (except the leaves), so T(n) = n·log₂ n — Master Theorem case 2, since n^{log₂ 2} = n and f(n) = n."
+        ],
+        "a": "T(8) = 24; in general T(n) = n·log₂ n."
+      },
+      "practice": [
+        {
+          "q": "Binary search on a sorted array of 1,024 elements satisfies T(n) = T(n/2) + 1 with T(1) = 1. How many steps in the worst case?",
+          "a": "T(1024) = 1 + log₂ 1024 = 1 + 10 = 11 steps."
+        },
+        {
+          "q": "Use the Master Theorem on T(n) = 3T(n/2) + n. What is the asymptotic running time?",
+          "a": "n^{log₂ 3} ≈ n^1.585 dominates f(n) = n (case 1), so T(n) = Θ(n^{log₂ 3})."
+        }
+      ],
+      "takeaway": "Divide-and-conquer recurrences are read by comparing the combine work f(n) with the leaf work n^{log_b a}. The Master Theorem turns that comparison into the running time.",
+      "module": "Recurrence Relations"
+    },
+    "Combinatorial Proofs of Identities": {
+      "intro": "An algebraic proof of a binomial identity manipulates symbols; a combinatorial proof tells a story. To prove Σ C(n, k) = 2^n, count the subsets of an n-element set two ways: directly (2^n) and by size (Σ C(n, k)). Both sides count the same thing, so they are equal — and the proof explains why the identity is true, not just that it is. This is the most satisfying style of proof in combinatorics.",
+      "concepts": [
+        "Double counting — count one set of objects in two different ways; the two counts are equal, giving an identity. The art is choosing the right set.",
+        "Committee arguments — 'choose a committee and then its chair' vs 'choose the chair and then the rest of the committee' proves Σ k·C(n, k) = n·2^{n−1}.",
+        "Pascal's identity — C(n, k) = C(n−1, k−1) + C(n−1, k): fix one element and ask whether it is in the chosen k-set. This is the combinatorial reason Pascal's triangle works.",
+        "Symmetry — C(n, k) = C(n, n−k): choosing k objects to keep is choosing n − k to leave out. The bijection is the proof.",
+        "Vandermonde's identity — C(m + n, r) = Σ C(m, k)·C(n, r − k): split an (m + n)-set into two parts and count how many chosen objects fall in each part.",
+        "Bijective proofs — a bijection between two sets proves they have the same size; the cleanest combinatorial proofs are explicit bijections, not just equal counts."
+      ],
+      "example": {
+        "q": "Prove Σ_{k=0}^n C(n, k) = 2^n with a combinatorial argument.",
+        "steps": [
+          "Consider an n-element set S, say S = {1, 2, ..., n}.",
+          "Count its subsets directly: each element is independently in or out, giving 2 choices per element, hence 2^n subsets by the multiplication principle.",
+          "Count the same subsets by size: the subsets with exactly k elements number C(n, k), for k = 0, 1, ..., n. Summing over k gives Σ C(n, k).",
+          "Both counts count the same collection, so Σ C(n, k) = 2^n.",
+          "The same trick with x = y = 1 in the binomial theorem gives the algebraic proof — but the story version shows what the identity means."
+        ],
+        "a": "Both sides count the subsets of an n-element set: 2^n directly, Σ C(n, k) by size. Hence Σ C(n, k) = 2^n."
+      },
+      "practice": [
+        {
+          "q": "Prove Σ_{k=0}^n k·C(n, k) = n·2^{n−1} by counting committees with a chair.",
+          "a": "Left side: choose a k-person committee (C(n, k) ways) then its chair (k ways), and sum over k. Right side: choose the chair first (n ways), then any subset of the remaining n − 1 people (2^{n−1} ways). Both count chaired committees."
+        },
+        {
+          "q": "Prove Pascal's identity C(n, k) = C(n−1, k−1) + C(n−1, k) by fixing one element of the n-set.",
+          "a": "Fix element x. The k-subsets containing x number C(n−1, k−1) (choose the other k − 1 from the rest); those not containing x number C(n−1, k). Every k-subset is in exactly one group, so the total is the sum."
+        }
+      ],
+      "takeaway": "To prove an identity combinatorially, find one set of objects that both sides count. A good story beats a page of algebra — and it is usually easier to remember.",
+      "module": "Recurrence Relations"
+    }
+  }
+}
