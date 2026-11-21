@@ -1,0 +1,538 @@
+{
+  "course_id": "MATH213",
+  "title": "Graph Theory",
+  "lesson_count": 16,
+  "lessons": {
+    "Graphs, Subgraphs, and Isomorphism": {
+      "intro": "A graph is the simplest possible model of a network: a set of vertices (dots) joined by edges (lines). Roads between cities, friendships in a social network, wires on a circuit board, and hyperlinks between web pages are all graphs. Graph theory asks what is true about the shape of a network regardless of what the dots and lines stand for — and the first question is always when two drawings are really the same graph in disguise.",
+      "concepts": [
+        "Graph — a pair (V, E) where V is a set of vertices and E is a set of edges, each edge joining two vertices. A simple graph has no loops (an edge from a vertex to itself) and no multiple edges between the same pair.",
+        "Order and size — the order of a graph is its number of vertices |V|; its size is its number of edges |E|. A simple graph on n vertices has at most C(n, 2) = n(n − 1)/2 edges.",
+        "Subgraph — a graph H is a subgraph of G if its vertices and edges are subsets of G's. An induced subgraph takes a subset of vertices and ALL edges of G between them; a spanning subgraph keeps all vertices but drops some edges.",
+        "Isomorphism — two graphs are isomorphic if there is a bijection between their vertex sets that preserves adjacency exactly: u and v are joined in G if and only if their images are joined in H. Isomorphic graphs are the same graph, just relabeled.",
+        "Invariants — properties shared by isomorphic graphs: order, size, degree sequence (the sorted list of vertex degrees), number of connected components, number of cycles of each length. If any invariant differs, the graphs are NOT isomorphic.",
+        "Same invariants, different graphs — matching invariants do not prove isomorphism: two non-isomorphic graphs can share a degree sequence. To prove isomorphism you must exhibit a relabeling; to disprove it, find one invariant that differs."
+      ],
+      "example": {
+        "q": "Graph G is the 4-cycle C4 (vertices a, b, c, d with edges ab, bc, cd, da). Graph H is the star K1,3 (a center vertex 1 joined to leaves 2, 3, 4). Are G and H isomorphic? Now consider graph K with vertices 1, 2, 3, 4 and edges 12, 23, 34, 41. Is K isomorphic to G?",
+        "steps": [
+          "Compare degree sequences. G = C4 has every vertex of degree 2, so its degree sequence is (2, 2, 2, 2).",
+          "H = K1,3 has one vertex of degree 3 and three of degree 1, so its degree sequence is (3, 1, 1, 1).",
+          "The degree sequences differ, and degree sequence is an invariant, so G and H are NOT isomorphic.",
+          "K has edges 12, 23, 34, 41 — a 4-cycle, just with vertices named 1, 2, 3, 4. The relabeling a→1, b→2, c→3, d→4 sends every edge of G to an edge of K, so G and K ARE isomorphic."
+        ],
+        "a": "G and H are not isomorphic (different degree sequences); G and K are isomorphic via a→1, b→2, c→3, d→4."
+      },
+      "practice": [
+        {
+          "q": "What is the maximum number of edges in a simple graph on 5 vertices?",
+          "a": "C(5, 2) = 5·4/2 = 10 edges — the complete graph K5."
+        },
+        {
+          "q": "Can a simple graph on 4 vertices have degree sequence (3, 3, 3, 1)?",
+          "a": "No. The degree sum is 3 + 3 + 3 + 1 = 10, which is odd — impossible, since the sum of all degrees is always even (see the handshaking lemma)."
+        }
+      ],
+      "takeaway": "Two graphs are the same when a relabeling of the vertices preserves every adjacency. Degree sequences and other invariants can prove graphs different, but only an explicit relabeling proves them the same.",
+      "module": "Basic Graph Concepts"
+    },
+    "Degrees and the Handshaking Lemma": {
+      "intro": "The degree of a vertex is the number of edges touching it — the number of friends a person has, the number of roads leaving a city. Add up all the degrees and you get exactly twice the number of edges, because every edge is counted once at each of its two ends. This innocent observation, the handshaking lemma, rules out whole families of impossible graphs at a glance.",
+      "concepts": [
+        "Degree — deg(v) is the number of edges incident to vertex v; a loop contributes 2 to the degree of its vertex. The minimum degree is δ(G), the maximum is Δ(G).",
+        "Handshaking lemma — in any graph, the sum of all vertex degrees equals 2|E|: Σ deg(v) = 2|E|. Every edge has two ends, so it is counted exactly twice.",
+        "Even number of odd vertices — the degree sum is even, so the number of vertices with odd degree must be even. A graph can never have exactly 1, 3, or 5 odd-degree vertices.",
+        "Regular graphs — a graph is k-regular if every vertex has degree k. A k-regular graph on n vertices has nk/2 edges, so nk must be even. K_n is (n − 1)-regular.",
+        "Degree sequence — the list of degrees, usually sorted. Not every list of numbers is a degree sequence: the sum must be even, and no degree can exceed n − 1 in a simple graph.",
+        "Counting edges from degrees — if you know all the degrees, you know the edge count: |E| = (1/2) Σ deg(v). This is the fastest way to count edges in a large graph."
+      ],
+      "example": {
+        "q": "A graph has 8 vertices with degrees 1, 2, 2, 3, 3, 4, 4, 5. How many edges does it have, and how many vertices have odd degree?",
+        "steps": [
+          "Add the degrees: 1 + 2 + 2 + 3 + 3 + 4 + 4 + 5 = 24.",
+          "By the handshaking lemma, 2|E| = 24, so |E| = 12 edges.",
+          "The odd degrees are 1, 3, 3, 5 — four vertices of odd degree.",
+          "Four is even, as the lemma requires: the number of odd-degree vertices is always even."
+        ],
+        "a": "12 edges; 4 vertices of odd degree."
+      },
+      "practice": [
+        {
+          "q": "A graph has 15 edges. What is the sum of the degrees of its vertices?",
+          "a": "2 · 15 = 30, by the handshaking lemma."
+        },
+        {
+          "q": "Can a graph have exactly 3 vertices of odd degree? Explain.",
+          "a": "No. The sum of the degrees is even, and a sum containing an odd number of odd terms is odd — so the number of odd-degree vertices must be even."
+        }
+      ],
+      "takeaway": "Every edge contributes 2 to the total degree count, so Σ deg(v) = 2|E| — and the number of odd-degree vertices is always even. Count degrees to count edges, and to rule out the impossible.",
+      "module": "Basic Graph Concepts"
+    },
+    "Paths, Cycles, and Connectivity": {
+      "intro": "A graph is connected when you can travel from any vertex to any other along edges — when the network is all one piece. Paths, cycles, and distances give a graph its shape: the shortest path between two vertices is their distance, and the longest of all shortest paths is the diameter. These ideas turn a drawing into a geometry, with its own notion of near and far.",
+      "concepts": [
+        "Walk, trail, path — a walk is a sequence of vertices joined by edges; a trail repeats no edge; a path repeats no vertex. A cycle is a closed path with at least 3 vertices and no repetition except start = end.",
+        "Connected graph — a graph is connected if there is a path between every pair of vertices. Otherwise it splits into connected components, each a maximal connected subgraph.",
+        "Distance and diameter — the distance d(u, v) is the length (number of edges) of the shortest u–v path. The diameter is the largest distance between any two vertices; the radius is the smallest eccentricity.",
+        "Bridges and cut vertices — a bridge is an edge whose removal disconnects the graph; a cut vertex is a vertex whose removal (with its edges) disconnects it. A tree has every edge a bridge.",
+        "Connectedness from edges — a connected graph on n vertices has at least n − 1 edges, with equality exactly for trees. A graph with n vertices and fewer than n − 1 edges is certainly disconnected.",
+        "Components count — adding an edge either joins two components into one or adds a cycle inside a component; it never increases the number of components."
+      ],
+      "example": {
+        "q": "Consider the 'house graph': a square with vertices A, B, C, D (edges AB, BC, CD, DA) and a roof vertex E joined to C and D. Is it connected? Find its diameter.",
+        "steps": [
+          "Every vertex reaches every other: A reaches E via A–D–E, B reaches E via B–C–E, so the graph is connected.",
+          "Distances from A: d(A, B) = 1, d(A, D) = 1, d(A, C) = 2 (via B or D), d(A, E) = 2 (via D).",
+          "Distances from B: d(B, C) = 1, d(B, E) = 2 (via C), and d(B, D) = 2 (via A or C).",
+          "No pair is at distance 3 or more, and pairs at distance 2 exist, so the diameter is 2."
+        ],
+        "a": "The house graph is connected, with diameter 2."
+      },
+      "practice": [
+        {
+          "q": "A graph has 10 vertices, 9 edges, and is connected. What kind of graph must it be?",
+          "a": "A tree: a connected graph on n vertices with n − 1 edges has no cycles, so it is a tree."
+        },
+        {
+          "q": "A graph on 6 vertices has 4 edges. Can it be connected?",
+          "a": "No. A connected graph on 6 vertices needs at least 5 edges, and 4 < 5 — so it is disconnected."
+        }
+      ],
+      "takeaway": "Connectivity is about reachability; distance is the shortest route; diameter is the worst case. A connected graph on n vertices needs at least n − 1 edges, and exactly n − 1 means it is a tree.",
+      "module": "Basic Graph Concepts"
+    },
+    "Bipartite Graphs": {
+      "intro": "Some networks split naturally into two sides: workers and jobs, students and courses, buyers and sellers. A bipartite graph is one whose vertices can be colored with two colors so that every edge joins opposite colors — no edge stays inside one side. The test for bipartiteness is beautifully simple: a graph is bipartite exactly when it contains no odd cycle.",
+      "concepts": [
+        "Bipartite graph — the vertex set splits into two parts X and Y such that every edge has one endpoint in X and one in Y. Equivalently, the graph is 2-colorable.",
+        "Complete bipartite graph — K_{m,n} has parts of sizes m and n with every cross edge present: it has mn edges. K_{3,3} is the classic 'three utilities' graph.",
+        "Odd-cycle test — a graph is bipartite if and only if it has no cycle of odd length. An odd cycle forces two adjacent vertices to share a color, which is impossible in a 2-coloring.",
+        "Bipartiteness by BFS — two-color greedily from any start vertex, alternating colors along edges. If you ever must color a vertex both colors, an odd cycle exists and the graph is not bipartite.",
+        "Bipartite and matchings — many matching and assignment problems live on bipartite graphs: jobs to workers, students to dorm rooms, tasks to machines.",
+        "Stars and trees — every tree is bipartite (a tree has no cycles at all, hence no odd cycle). Every even cycle C_{2k} is bipartite; every odd cycle C_{2k+1} is not."
+      ],
+      "example": {
+        "q": "Show that K_{3,3} is bipartite, and show that the 5-cycle C5 is not.",
+        "steps": [
+          "K_{3,3} has parts X = {x1, x2, x3} and Y = {y1, y2, y3} with every edge joining X to Y. Color X red and Y blue: every edge joins red to blue, so K_{3,3} is bipartite.",
+          "Try to 2-color C5 with vertices v1–v2–v3–v4–v5–v1. Color v1 red, then v2 must be blue, v3 red, v4 blue, and v5 red.",
+          "But v5 is adjacent to v1, and both are red — a contradiction. The odd cycle forces the clash.",
+          "So C5 has no 2-coloring: it is not bipartite, exactly as the odd-cycle test predicts."
+        ],
+        "a": "K_{3,3} is bipartite (color its two parts differently); C5 is not bipartite (its odd cycle defeats every 2-coloring)."
+      },
+      "practice": [
+        {
+          "q": "How many edges does K_{2,4} have?",
+          "a": "2 · 4 = 8 edges — every vertex of the size-2 part joins all 4 vertices of the other part."
+        },
+        {
+          "q": "Is the Petersen graph bipartite? Why or why not?",
+          "a": "No. The Petersen graph contains 5-cycles (odd cycles), so it cannot be 2-colored."
+        }
+      ],
+      "takeaway": "Bipartite means two-sided: every edge crosses between the parts. A graph is bipartite exactly when it has no odd cycle — color greedily, and an odd cycle is the only thing that can stop you.",
+      "module": "Basic Graph Concepts"
+    },
+    "Trees and Spanning Trees": {
+      "intro": "A tree is a connected graph with no cycles — the leanest connected network possible, with exactly n − 1 edges for n vertices. Remove any edge and it falls apart; add any edge and a cycle appears. Every connected graph contains a spanning tree: a tree that touches every vertex. Counting those spanning trees leads to one of the most famous formulas in mathematics.",
+      "concepts": [
+        "Tree — a connected acyclic graph. Equivalent characterizations: connected with n − 1 edges; acyclic with n − 1 edges; exactly one path between every pair of vertices; every edge is a bridge.",
+        "Leaf — a vertex of degree 1. Every tree with at least 2 vertices has at least two leaves — prune leaves one at a time and the tree shrinks to a single vertex.",
+        "Spanning tree — a subgraph that is a tree and includes every vertex of the graph. Every connected graph has at least one spanning tree (delete edges from cycles until none remain).",
+        "Cayley's formula — the complete graph K_n has exactly n^(n−2) spanning trees. K4 has 4² = 16; K5 has 5³ = 125.",
+        "Counting spanning trees — for a small graph, count edge subsets of size n − 1 and subtract those containing a cycle; for larger graphs, Kirchhoff's matrix-tree theorem computes the count from a determinant.",
+        "Rooted trees — pick a root and every vertex has a unique path from the root; parent, child, ancestor, and descendant then describe the tree's hierarchy, as in file systems and family trees."
+      ],
+      "example": {
+        "q": "How many spanning trees does K4 have? Verify the count by hand.",
+        "steps": [
+          "Cayley's formula says K_n has n^(n−2) spanning trees, so K4 has 4^(4−2) = 4² = 16.",
+          "Check by counting: K4 has 6 edges, and a spanning tree on 4 vertices needs 3 edges, so there are C(6, 3) = 20 triples of edges.",
+          "The triples that fail to be trees are exactly the triangles: a triangle uses 3 edges on 3 vertices and leaves one vertex isolated. K4 contains C(4, 3) = 4 triangles.",
+          "20 triples minus 4 triangles = 16 spanning trees, matching Cayley."
+        ],
+        "a": "K4 has 16 spanning trees."
+      },
+      "practice": [
+        {
+          "q": "A tree has 12 vertices. How many edges does it have?",
+          "a": "11 edges — a tree on n vertices always has n − 1 edges."
+        },
+        {
+          "q": "How many spanning trees does K3 have?",
+          "a": "3^(3−2) = 3 — each spanning tree is K3 with one of its 3 edges removed."
+        }
+      ],
+      "takeaway": "Trees are minimal connected graphs: n vertices, n − 1 edges, one path between any two vertices. Every connected graph has spanning trees, and K_n has exactly n^(n−2) of them.",
+      "module": "Trees and Networks"
+    },
+    "Minimum Spanning Trees: Kruskal and Prim": {
+      "intro": "Lay cable between cities as cheaply as possible, connect all computers in an office with the least wire, design a road network on a budget — every one of these is a minimum spanning tree problem: choose n − 1 edges that connect all n vertices at the smallest total cost. Kruskal's and Prim's algorithms both find it, greedily, and both are provably correct — greed works here because of the cut property.",
+      "concepts": [
+        "Weighted graph — each edge carries a cost (weight). The weight of a spanning tree is the sum of its edges' weights; the minimum spanning tree (MST) has the smallest possible total.",
+        "Kruskal's algorithm — sort all edges by weight; take them in order, adding an edge unless it would form a cycle with edges already taken. Stop after n − 1 edges.",
+        "Prim's algorithm — grow one tree: start at any vertex, repeatedly add the cheapest edge joining the tree to a vertex outside it, until all vertices are in.",
+        "Cut property — for any partition of the vertices into two sets, the cheapest edge crossing the partition belongs to some MST. This is why both greedy algorithms are correct.",
+        "Cycle property — the most expensive edge on any cycle can never belong to an MST. Kruskal's 'skip if it forms a cycle' rule is exactly this property.",
+        "Uniqueness — if all edge weights are distinct, the MST is unique. With ties, several MSTs may exist, but they all have the same total weight."
+      ],
+      "example": {
+        "q": "Find the MST of the graph on vertices A, B, C, D, E with edges AB=1, BC=2, DE=2, AC=3, BD=4, CD=5, CE=6, AE=7. Run Kruskal's algorithm and give the total weight.",
+        "steps": [
+          "Sort the edges by weight: AB=1, BC=2, DE=2, AC=3, BD=4, CD=5, CE=6, AE=7.",
+          "Take AB=1 (no cycle). Take BC=2 (no cycle). Take DE=2 (no cycle).",
+          "AC=3 would close the triangle A–B–C, so skip it (cycle property). Take BD=4 (no cycle).",
+          "Now 4 edges are taken for 5 vertices, so stop: the MST is AB, BC, DE, BD with total weight 1 + 2 + 2 + 4 = 9.",
+          "Check: CD=5 would also close a cycle (C–B–D), CE=6 would too (C–B–D–E), and AE=7 would too — every remaining edge is a cycle edge."
+        ],
+        "a": "MST edges AB, BC, BD, DE; total weight 9."
+      },
+      "practice": [
+        {
+          "q": "Run Prim's algorithm from vertex A on the graph in the example. What total weight do you get?",
+          "a": "9 — the same MST total. Prim from A takes AB=1, then BC=2, then BD=4, then DE=2 (total 9). With distinct weights the MST is unique."
+        },
+        {
+          "q": "True or false: if all edge weights in a graph are distinct, the minimum spanning tree is unique.",
+          "a": "True. With distinct weights, the cut property forces the same cheapest crossing edge at every step, so Kruskal's and Prim's choices are forced."
+        }
+      ],
+      "takeaway": "Kruskal sorts edges and skips cycle-makers; Prim grows one tree by the cheapest outward edge. Both are correct by the cut property, and with distinct weights the MST is unique.",
+      "module": "Trees and Networks"
+    },
+    "Shortest Paths: Dijkstra's Algorithm": {
+      "intro": "The cheapest route is not always the one with the fewest turns: a highway detour can beat a direct back road. Dijkstra's algorithm finds the shortest path from a start vertex to every other vertex in a graph with non-negative edge weights, and it powers everything from GPS navigation to network routing. Its secret is a simple invariant: the closest unvisited vertex is already final.",
+      "concepts": [
+        "Weighted distance — the length of a path is the sum of its edge weights. The distance from s to v is the smallest such sum over all s–v paths.",
+        "Dijkstra's algorithm — keep a tentative distance for each vertex (∞ at first, 0 at the start). Repeatedly pick the unvisited vertex with the smallest tentative distance, mark it final, and relax its edges: if going through it improves a neighbor's distance, update it.",
+        "Why it works — when the smallest tentative distance is selected, no shorter route to it can exist: any alternative route must pass through another unvisited vertex with a distance at least as large, and weights are non-negative.",
+        "Relaxation — the update dist[v] = min(dist[v], dist[u] + w(u, v)) is the heart of the algorithm; each edge is relaxed whenever its tail becomes final.",
+        "Negative weights — Dijkstra fails if any weight is negative, because a later-discovered detour through a negative edge could undercut a 'final' distance. Bellman–Ford handles negatives (but not negative cycles).",
+        "Unweighted case — when every edge has weight 1, breadth-first search finds shortest paths faster; Dijkstra with a priority queue is the weighted generalization."
+      ],
+      "example": {
+        "q": "Run Dijkstra's algorithm from S on the graph with vertices S, A, B, C, D and edges S–A=2, S–B=5, A–B=1, A–C=4, B–C=2, B–D=6, C–D=1. Give the shortest distance to each vertex and the shortest S–D path.",
+        "steps": [
+          "Start: dist(S)=0, all others ∞. Finalize S (0). Relax: A=2, B=5.",
+          "Smallest unvisited is A (2): finalize A. Relax: B = min(5, 2+1) = 3, C = 2+4 = 6.",
+          "Smallest unvisited is B (3): finalize B. Relax: C = min(6, 3+2) = 5, D = 3+6 = 9.",
+          "Smallest unvisited is C (5): finalize C. Relax: D = min(9, 5+1) = 6.",
+          "Finalize D (6). Final distances: S=0, A=2, B=3, C=5, D=6.",
+          "Trace D back: D came from C (5+1), C came from B (3+2), B came from A (2+1), A came from S. Path S–A–B–C–D, length 2+1+2+1 = 6."
+        ],
+        "a": "Distances: S=0, A=2, B=3, C=5, D=6. Shortest S–D path: S–A–B–C–D, length 6."
+      },
+      "practice": [
+        {
+          "q": "In the example graph, what is the shortest path from S to C, and why is the direct-looking route S–A–C (length 6) not the answer?",
+          "a": "S–A–B–C with length 2 + 1 + 2 = 5. The route S–A–C costs 2 + 4 = 6, one more than going through B."
+        },
+        {
+          "q": "Give one reason Dijkstra's algorithm can fail on a graph with a negative-weight edge.",
+          "a": "A vertex marked final could later be reached more cheaply via a negative edge — the 'smallest tentative distance is final' argument needs non-negative weights to hold."
+        }
+      ],
+      "takeaway": "Dijkstra finalizes vertices in order of increasing distance, relaxing edges as it goes. With non-negative weights the first time a vertex is picked, its distance is the true shortest distance.",
+      "module": "Trees and Networks"
+    },
+    "Network Flows and Max-Flow Min-Cut": {
+      "intro": "Pipes have capacities, roads have traffic limits, cables have bandwidth — how much can actually get from a source to a sink through a network? The max-flow min-cut theorem gives the answer and one of the most satisfying equalities in mathematics: the maximum flow equals the capacity of the minimum cut, the cheapest bottleneck that separates source from sink.",
+      "concepts": [
+        "Flow network — a directed graph with a source s, a sink t, and a capacity c(e) ≥ 0 on each edge. A flow assigns each edge a value f(e) between 0 and its capacity.",
+        "Flow conservation — at every vertex except s and t, flow in equals flow out. The value of a flow is the net flow out of s (equivalently, into t).",
+        "Cut — a partition of the vertices into S (containing s) and T (containing t). The capacity of the cut is the sum of capacities of edges from S to T. Every flow's value is at most every cut's capacity.",
+        "Max-flow min-cut theorem — the maximum flow value equals the minimum cut capacity. The bottleneck that limits the flow is always some cut, and some flow always saturates it.",
+        "Augmenting paths — the Ford–Fulkerson method repeatedly finds a path from s to t with spare capacity and pushes more flow along it, until no such path exists. With integer capacities, the flow stays integral.",
+        "Residual graph — after pushing flow, the leftover capacity (forward) and the ability to cancel flow (backward) define the residual network; augmenting paths are found there."
+      ],
+      "example": {
+        "q": "Find the maximum flow from s to t in the network: s→a capacity 3, s→b capacity 2, a→t capacity 2, b→t capacity 3, a→b capacity 1. Verify it with a minimum cut.",
+        "steps": [
+          "Total capacity out of s is 3 + 2 = 5, and into t is 2 + 3 = 5, so the flow cannot exceed 5.",
+          "Push flow: send 2 units s→a→t (a→t saturates at 2), then 1 unit s→a→b→t (a→b saturates at 1), then 2 units s→b→t.",
+          "Check: a receives 3 from s, sends 2 to t and 1 to b — balanced. b receives 2 from s and 1 from a, sends 3 to t — balanced. Flow value = 2 + 3 = 5 into t.",
+          "The cut {s} vs the rest has capacity 3 + 2 = 5. Flow 5 meets cut 5, so by max-flow min-cut, 5 is the maximum flow and {s} is a minimum cut."
+        ],
+        "a": "Maximum flow = 5 (e.g. s→a: 3, a→t: 2, a→b: 1, s→b: 2, b→t: 3); the cut {s} has capacity 5, proving optimality."
+      },
+      "practice": [
+        {
+          "q": "A network has edges s→a capacity 4, a→t capacity 3, and s→t capacity 2. What is the maximum s–t flow?",
+          "a": "5: push 3 through s→a→t (limited by a→t) and 2 directly s→t. The cut {s} has capacity 4 + 2 = 6 but the cut {s, a} has capacity 3 + 2 = 5, which is the binding bottleneck."
+        },
+        {
+          "q": "True or false: if all capacities are integers, there is always a maximum flow that is integer-valued.",
+          "a": "True. Ford–Fulkerson starts at zero and only ever pushes integer amounts along augmenting paths, so the resulting maximum flow is integral."
+        }
+      ],
+      "takeaway": "Flow is limited by bottlenecks: the max flow equals the min cut. Find augmenting paths until none remain, and the cut that blocks you proves you cannot do better.",
+      "module": "Trees and Networks"
+    },
+    "Vertex and Edge Coloring": {
+      "intro": "Color the vertices so neighbors always differ, or color the edges so no two edges at a vertex share a color — these are the two basic coloring problems, and they model exams, registers, radio frequencies, and schedules. The chromatic number is the fewest colors a vertex coloring needs; the chromatic index is the same for edges. Both have clean lower bounds and surprising theorems.",
+      "concepts": [
+        "Proper vertex coloring — adjacent vertices get different colors. The chromatic number χ(G) is the smallest number of colors that suffices; χ(G) = 1 exactly for edgeless graphs, χ(G) = 2 exactly for bipartite graphs with at least one edge.",
+        "Cliques as lower bounds — a clique (a set of pairwise-adjacent vertices) of size k needs k different colors, so χ(G) ≥ ω(G), the size of the largest clique. A triangle forces χ ≥ 3.",
+        "Greedy coloring — color vertices one at a time, always using the smallest available color. It never needs more than Δ + 1 colors, where Δ is the maximum degree — because a vertex has at most Δ already-colored neighbors.",
+        "Edge coloring — adjacent edges (sharing a vertex) get different colors. The chromatic index χ′(G) is at least Δ, and Vizing's theorem says χ′(G) is either Δ or Δ + 1 — never more.",
+        "Kőnig's theorem — for bipartite graphs, the edge-chromatic number is exactly Δ: a bipartite graph needs no extra color beyond its maximum degree.",
+        "Odd cycles and edge coloring — an odd cycle has Δ = 2 but needs 3 edge colors (χ′ = 3), since its edges cannot alternate between just two colors around an odd loop."
+      ],
+      "example": {
+        "q": "Find the chromatic number of the wheel graph W5 (a 4-cycle rim with a hub vertex joined to all four rim vertices), and the edge-chromatic number of C5.",
+        "steps": [
+          "W5 contains triangles (hub + two adjacent rim vertices), so χ(W5) ≥ 3.",
+          "Color the rim C4 with two colors, alternating red and blue around the cycle. The hub is adjacent to all four rim vertices — both colors appear among its neighbors — so the hub needs a third color, green.",
+          "Three colors suffice and two do not, so χ(W5) = 3.",
+          "For C5, Δ = 2, so χ′ ≥ 2. But the edges around the 5-cycle would have to alternate between two colors, which is impossible on an odd cycle: the first and last edges would clash. So χ′(C5) = 3, matching Vizing's Δ + 1 bound."
+        ],
+        "a": "χ(W5) = 3; χ′(C5) = 3."
+      },
+      "practice": [
+        {
+          "q": "What is the chromatic number of K5?",
+          "a": "5 — every pair of vertices is adjacent, so all five need different colors."
+        },
+        {
+          "q": "What is the edge-chromatic number of K_{3,3}?",
+          "a": "3. It is bipartite with Δ = 3, so by Kőnig's theorem χ′ = Δ = 3."
+        }
+      ],
+      "takeaway": "Vertex coloring needs at least the clique size and at most Δ + 1 colors; edge coloring needs Δ or Δ + 1, and exactly Δ for bipartite graphs. Odd cycles are the small cases where the extra color is forced.",
+      "module": "Graph Coloring"
+    },
+    "Chromatic Number and Brooks' Theorem": {
+      "intro": "Greedy coloring guarantees Δ + 1 colors, but usually you can do better: most graphs need only Δ. Brooks' theorem says exactly when the extra color is unavoidable — only complete graphs and odd cycles truly need Δ + 1. It is a rare theorem that is both sharp and easy to apply: compute Δ, check two exceptions, and you have a bound that is often the exact answer.",
+      "concepts": [
+        "Brooks' theorem — for a connected graph G that is neither a complete graph nor an odd cycle, χ(G) ≤ Δ(G). The greedy Δ + 1 bound can almost always be improved by one.",
+        "The exceptions — K_n needs Δ + 1 = n colors (every vertex adjacent to every other), and an odd cycle C_{2k+1} needs 3 = Δ + 1 colors. These are the only connected graphs attaining the greedy bound.",
+        "Using Brooks — to show χ(G) ≤ 3 for a graph with Δ = 3, just check it is not K4 and not an odd cycle. Combined with a lower bound (a triangle forces χ ≥ 3), this pins χ exactly.",
+        "Chromatic number vs. clique number — χ(G) ≥ ω(G) always, but the gap can be huge: there are triangle-free graphs with arbitrarily large chromatic number (Mycielski's construction). Chromatic number is not determined by local density.",
+        "Critical graphs — a graph is k-critical if χ = k but deleting any vertex or edge drops the chromatic number. Studying critical graphs is how Brooks' theorem and its relatives are proved.",
+        "Hardness — computing χ(G) exactly is NP-hard in general, which is why bounds like Brooks' and the greedy bound matter: they give useful answers without an exhaustive search."
+      ],
+      "example": {
+        "q": "The Petersen graph has maximum degree Δ = 3, is not K4, and is not an odd cycle. Use Brooks' theorem and a lower bound to find its chromatic number exactly.",
+        "steps": [
+          "Brooks' theorem applies: the Petersen graph is connected, not complete, and not an odd cycle, so χ ≤ Δ = 3.",
+          "For a lower bound, the Petersen graph contains 5-cycles — odd cycles — so it is not bipartite and χ ≥ 3.",
+          "χ ≤ 3 and χ ≥ 3 together give χ = 3.",
+          "Note the contrast with the greedy bound Δ + 1 = 4: Brooks saves one color, and the odd cycle inside the graph is what forces the third color to actually be needed."
+        ],
+        "a": "The Petersen graph has chromatic number χ = 3."
+      },
+      "practice": [
+        {
+          "q": "A connected graph has Δ = 4, is not K5, and is not an odd cycle. What does Brooks' theorem say about its chromatic number?",
+          "a": "χ ≤ 4. (It says nothing about whether 4 colors are actually needed — a lower bound like a clique would be needed for that.)"
+        },
+        {
+          "q": "What is the chromatic number of the odd cycle C7, and why is it an exception to Brooks' theorem?",
+          "a": "χ(C7) = 3 = Δ + 1 (Δ = 2). Odd cycles are the exceptions: they need Δ + 1 colors because two colors cannot alternate around an odd loop."
+        }
+      ],
+      "takeaway": "Brooks' theorem: χ ≤ Δ unless the graph is complete or an odd cycle. Pair it with a clique or odd-cycle lower bound and you often determine the chromatic number exactly.",
+      "module": "Graph Coloring"
+    },
+    "Map Coloring and the Four Color Theorem": {
+      "intro": "How many colors does a map need so that neighboring regions always differ? For a century this innocent question resisted every proof attempt, until 1976 when Appel and Haken proved it with a computer: four colors always suffice for any map drawn in the plane. It was the first major theorem whose proof needed a machine — and it remains one of the most famous results in mathematics.",
+      "concepts": [
+        "Map as a graph — put a vertex in each region and join vertices whose regions share a border (not just a point). Coloring the map is coloring this graph's vertices.",
+        "Planar graphs — a map's region graph is always planar (it can be drawn without edge crossings), and the four color theorem says every planar graph has χ ≤ 4.",
+        "Four color theorem — every planar graph is 4-colorable. The proof reduced the problem to 1,936 unavoidable configurations, each checked by computer to be reducible.",
+        "Why three colors fail — some planar maps need a fourth color. The classic example: a central region surrounded by a ring of five regions, each touching the center and its two ring neighbors.",
+        "Five colors are easy — the five color theorem has a short hand proof by induction (using the fact that every planar graph has a vertex of degree at most 5). Four colors are the hard part.",
+        "Six colors are trivial — every planar graph has a vertex of degree ≤ 5, so greedy coloring in a careful order never needs more than 6 colors. The gap from 6 to 4 took a century."
+      ],
+      "example": {
+        "q": "Draw a map with a central region R surrounded by a ring of 5 regions, each adjacent to R and to its two neighbors in the ring. Show this map needs 4 colors.",
+        "steps": [
+          "The ring of 5 regions forms a 5-cycle in the region graph: each ring region is adjacent to the next, and the cycle is odd.",
+          "An odd cycle needs 3 colors, so the ring alone needs colors 1, 2, and 3 — no 2-coloring works.",
+          "The central region R touches all five ring regions, hence touches regions of all three colors 1, 2, and 3.",
+          "So R cannot use color 1, 2, or 3 — it needs a fourth color. The map needs 4 colors in total."
+        ],
+        "a": "The map needs 4 colors: the odd 5-ring forces 3, and the central region touching all of them forces a 4th."
+      },
+      "practice": [
+        {
+          "q": "A map is drawn so that every region touches at most 3 others and no three regions meet pairwise. Can it be colored with 3 colors? Explain briefly.",
+          "a": "Not necessarily — the ring-of-5 example has every region touching at most 3 others and still needs 4 colors. The obstruction is global (the odd cycle), not local."
+        },
+        {
+          "q": "How many colors does the four color theorem guarantee for any map of the 50 US states?",
+          "a": "At most 4 — every planar map, including the US states map, is 4-colorable. (In fact the real US map needs 4.)"
+        }
+      ],
+      "takeaway": "Every planar map needs at most 4 colors — but 3 are not always enough, as a central region ringed by an odd cycle shows. The proof of the 4-color bound took a century and a computer.",
+      "module": "Graph Coloring"
+    },
+    "Scheduling Applications": {
+      "intro": "Final exams, sports fixtures, factory jobs, radio stations: whenever a set of tasks must be scheduled and some pairs conflict, the problem is a graph coloring problem. Make each task a vertex, join conflicting pairs, and a proper coloring is a conflict-free schedule — each color is a time slot. The chromatic number is the smallest number of slots that works, and coloring heuristics are what real schedulers run.",
+      "concepts": [
+        "Conflict graph — vertices are tasks (exams, matches, jobs); an edge joins two tasks that cannot share a slot (same student, same team, same machine). A proper coloring is a valid schedule.",
+        "Time slots as colors — each color class (the set of tasks sharing a color) is one time slot: no two tasks in it conflict. The chromatic number is the minimum number of slots.",
+        "Lower bounds for schedules — a clique of k mutually conflicting tasks needs k distinct slots. If 5 exams pairwise share students, you need at least 5 slots.",
+        "Greedy scheduling — schedule tasks in some order, assigning each the earliest slot that does not conflict. A good order (most-constrained first) usually gets close to optimal; the worst order can be far off.",
+        "Register allocation — in compilers, variables that are live at the same time conflict; coloring the interference graph with k colors assigns variables to k machine registers. Spilling (using memory) happens when k colors do not suffice.",
+        "Edge coloring as scheduling — scheduling matches in a round-robin tournament is an edge coloring: each round is a color class, and no team plays twice in one round. K_{2n} needs 2n − 1 rounds."
+      ],
+      "example": {
+        "q": "Five exams A, B, C, D, E have conflicts: A–B, A–C, B–C, B–D, C–D, D–E (each edge means a student takes both exams). Find a schedule using the fewest time slots.",
+        "steps": [
+          "A, B, C are pairwise conflicting — a triangle — so at least 3 slots are needed.",
+          "Color the triangle: A = slot 1, B = slot 2, C = slot 3.",
+          "D conflicts with B and C but not A, so D can take slot 1 (with A).",
+          "E conflicts only with D, so E can take slot 2 (with B).",
+          "Schedule: slot 1 = {A, D}, slot 2 = {B, E}, slot 3 = {C}. Three slots, and three is the minimum because of the triangle."
+        ],
+        "a": "3 slots suffice and are necessary: slot 1 {A, D}, slot 2 {B, E}, slot 3 {C}."
+      },
+      "practice": [
+        {
+          "q": "Six exams are pairwise conflicting (every pair shares a student). How many time slots are needed?",
+          "a": "6 — the conflict graph is K6, whose chromatic number is 6."
+        },
+        {
+          "q": "In a round-robin tournament with 6 teams, each pair of teams plays once. How many rounds are needed if no team plays twice in a round?",
+          "a": "5 rounds. This is the edge-chromatic number of K6: Δ = 5, and K6 (even order) is class 1, so χ′ = 5."
+        }
+      ],
+      "takeaway": "Scheduling is graph coloring: tasks are vertices, conflicts are edges, colors are slots. Cliques force slots; greedy coloring with most-constrained-first ordering usually finds a good schedule.",
+      "module": "Graph Coloring"
+    },
+    "Eulerian Trails and Circuits": {
+      "intro": "In 1736 Euler settled the puzzle of Königsberg's seven bridges: can you cross each bridge exactly once? His answer founded graph theory. A trail that uses every edge exactly once is Eulerian, and the condition is almost laughably simple — it depends only on how many vertices have odd degree. The same idea routes snowplows, inspects street networks, and sequences DNA.",
+      "concepts": [
+        "Eulerian trail/circuit — a trail that uses every edge of the graph exactly once. A circuit is a trail that starts and ends at the same vertex; a trail may start and end at different vertices.",
+        "Euler's theorem — a connected graph has an Eulerian circuit if and only if every vertex has even degree; it has an Eulerian trail (not a circuit) if and only if exactly two vertices have odd degree (the trail runs from one to the other).",
+        "Königsberg — the bridge graph had all four land masses of odd degree (3, 3, 3, 5), so no Eulerian trail exists: the walk Euler proved impossible.",
+        "Why it works — entering a vertex along an unused edge requires leaving along another unused edge, pairing up incident edges; only the start and end of a trail can have an unpaired edge, hence at most two odd vertices.",
+        "Fleury's algorithm — build an Eulerian trail greedily: never cross a bridge of the remaining graph unless forced. This constructs the trail Euler proved exists.",
+        "Applications — route inspection (Chinese postman: shortest route covering every street), DNA fragment assembly (Eulerian paths in de Bruijn graphs), and plotting a route that covers every edge of a network."
+      ],
+      "example": {
+        "q": "The Königsberg bridge graph has land masses with degrees 3, 3, 3, and 5. Can a walk cross each bridge exactly once? Then consider the house graph (degrees: A=2, B=2, C=3, D=3, E=2). Does it have an Eulerian trail?",
+        "steps": [
+          "Königsberg has four vertices of odd degree. An Eulerian trail needs zero or two odd-degree vertices, so no such walk exists — this is Euler's original proof.",
+          "The house graph has exactly two odd-degree vertices, C and D, and it is connected, so an Eulerian trail exists — it must start at one odd vertex and end at the other.",
+          "One Eulerian trail: C–B–A–D–C–E–D, using edges CB, BA, AD, DC, CE, ED — all six edges exactly once, from C to D."
+        ],
+        "a": "No Königsberg walk exists (four odd vertices). The house graph has an Eulerian trail from C to D, e.g. C–B–A–D–C–E–D."
+      },
+      "practice": [
+        {
+          "q": "Does K5 have an Eulerian circuit? Explain.",
+          "a": "Yes. K5 is connected and every vertex has degree 4 (even), so Euler's theorem guarantees an Eulerian circuit."
+        },
+        {
+          "q": "A connected graph has exactly 4 vertices of odd degree. Does it have an Eulerian trail?",
+          "a": "No. An Eulerian trail requires 0 or 2 odd-degree vertices; with 4, no trail can use every edge exactly once."
+        }
+      ],
+      "takeaway": "Count the odd-degree vertices: 0 means an Eulerian circuit exists, 2 means an Eulerian trail exists (between them), anything else means no Eulerian trail at all. Königsberg failed with four.",
+      "module": "Planarity, Euler, and Hamilton"
+    },
+    "Hamiltonian Cycles": {
+      "intro": "An Eulerian trail uses every edge once; a Hamiltonian cycle visits every vertex once and returns to the start. The problems look like twins, but they could hardly be more different: Euler gave a one-line test for his problem, while no simple test exists for Hamilton's — deciding whether a Hamiltonian cycle exists is NP-complete. Still, there are powerful sufficient conditions, and the classic examples are worth knowing.",
+      "concepts": [
+        "Hamiltonian cycle/path — a cycle (or path) that visits every vertex exactly once. Named for William Rowan Hamilton's 1857 'icosian game' on the dodecahedron.",
+        "Necessary condition — if G has a Hamiltonian cycle, then removing any set S of vertices leaves at most |S| components. In particular, removing one vertex must not disconnect the graph.",
+        "Dirac's theorem — if G has n ≥ 3 vertices and every vertex has degree at least n/2, then G has a Hamiltonian cycle. A strong, checkable guarantee.",
+        "Ore's theorem — if deg(u) + deg(v) ≥ n for every pair of non-adjacent vertices u, v, then G is Hamiltonian. Dirac's theorem follows from Ore's.",
+        "Petersen graph — the most famous non-Hamiltonian graph: 10 vertices, 3-regular, connected, yet no Hamiltonian cycle exists. It is the counterexample to many plausible conjectures.",
+        "Hamiltonian vs Eulerian — Eulerian is about edges and has a complete test; Hamiltonian is about vertices and is NP-complete to decide. The two problems are a standing lesson in how similar questions can have wildly different difficulty."
+      ],
+      "example": {
+        "q": "Show that K_{3,3} has a Hamiltonian cycle, and show that the 'bowtie' graph — two triangles sharing a single vertex — has none.",
+        "steps": [
+          "K_{3,3} has parts X = {x1, x2, x3} and Y = {y1, y2, y3}. Alternate sides: x1–y1–x2–y2–x3–y3–x1. Every consecutive pair is joined (all cross edges exist), and all 6 vertices appear once, so this is a Hamiltonian cycle.",
+          "The bowtie has two triangles sharing a center vertex v. Remove v: the graph falls into 2 components (the two remaining pairs of triangle vertices).",
+          "The necessary condition says a Hamiltonian cycle's graph must satisfy c(G − S) ≤ |S| for every S; here S = {v} gives c = 2 > 1 = |S|.",
+          "So the bowtie has no Hamiltonian cycle: any cycle visiting both triangles would have to pass through v twice."
+        ],
+        "a": "K_{3,3} is Hamiltonian (x1–y1–x2–y2–x3–y3–x1). The bowtie is not: removing its shared vertex leaves 2 components, violating the necessary condition."
+      },
+      "practice": [
+        {
+          "q": "Does every complete graph K_n with n ≥ 3 have a Hamiltonian cycle?",
+          "a": "Yes — list the vertices in any order and return to the start; every consecutive pair is adjacent in a complete graph."
+        },
+        {
+          "q": "A graph on 8 vertices has minimum degree 4. Does Dirac's theorem guarantee a Hamiltonian cycle?",
+          "a": "Yes: n = 8, so n/2 = 4, and δ = 4 ≥ n/2 meets Dirac's condition."
+        }
+      ],
+      "takeaway": "A Hamiltonian cycle visits every vertex once. Dirac's degree condition guarantees one; the cut condition (removing S leaves at most |S| pieces) can rule one out — as the bowtie shows.",
+      "module": "Planarity, Euler, and Hamilton"
+    },
+    "Planar Graphs and Euler's Formula": {
+      "intro": "Draw a graph in the plane without any edges crossing and you have a planar graph — a map, a circuit layout, a road network. Euler discovered the invariant that governs them all: vertices minus edges plus faces always equals 2. That single equation limits how many edges a planar graph can have, proves K5 and K3,3 are non-planar, and opens the door to the four color theorem.",
+      "concepts": [
+        "Planar graph — a graph that can be drawn in the plane with no edge crossings (a planar embedding). The drawing divides the plane into faces, including the unbounded outer face.",
+        "Euler's formula — for a connected planar graph, V − E + F = 2, where V is vertices, E is edges, and F is faces. It holds for every planar drawing of the graph.",
+        "Edge bound — in a simple planar graph with V ≥ 3, every face has at least 3 edges and each edge borders 2 faces, so 3F ≤ 2E; combined with Euler this gives E ≤ 3V − 6.",
+        "Bipartite bound — if the graph is bipartite (no triangles), every face has at least 4 edges, giving E ≤ 2V − 4, a stronger bound that kills K_{3,3}.",
+        "K5 is non-planar — K5 has V = 5, E = 10, but 3V − 6 = 9 < 10, violating the edge bound. No crossing-free drawing of K5 exists.",
+        "K_{3,3} is non-planar — K_{3,3} has V = 6, E = 9, but the bipartite bound allows at most 2V − 4 = 8 edges. Again the bound is violated, so no planar drawing exists."
+      ],
+      "example": {
+        "q": "Verify Euler's formula for the cube graph, and use the edge bound to prove K5 is non-planar.",
+        "steps": [
+          "The cube graph has V = 8 vertices and E = 12 edges. Its faces are the 6 squares of the cube (5 bounded faces plus the outer face when drawn flat), so F = 6.",
+          "V − E + F = 8 − 12 + 6 = 2, exactly as Euler's formula promises.",
+          "For K5: V = 5 and E = 10. A simple planar graph with V ≥ 3 must satisfy E ≤ 3V − 6 = 3·5 − 6 = 9.",
+          "But 10 > 9, so K5 violates the bound — K5 cannot be drawn without crossings."
+        ],
+        "a": "Cube: 8 − 12 + 6 = 2. K5 has 10 edges but a planar graph on 5 vertices has at most 9, so K5 is non-planar."
+      },
+      "practice": [
+        {
+          "q": "What is the maximum number of edges in a simple planar graph on 10 vertices?",
+          "a": "3·10 − 6 = 24 edges."
+        },
+        {
+          "q": "A connected planar graph has 6 vertices and 9 edges. How many faces does it have?",
+          "a": "F = 2 − V + E = 2 − 6 + 9 = 5 faces."
+        }
+      ],
+      "takeaway": "V − E + F = 2 for every connected planar drawing. From it, E ≤ 3V − 6 (and E ≤ 2V − 4 when bipartite) — the bounds that prove K5 and K_{3,3} can never be drawn without crossings.",
+      "module": "Planarity, Euler, and Hamilton"
+    },
+    "Kuratowski's Theorem": {
+      "intro": "K5 and K_{3,3} are the only obstructions to planarity — that is the astonishing content of Kuratowski's theorem. A graph is non-planar exactly when it contains a subdivision of K5 or of K_{3,3}: one of those two graphs, possibly with extra vertices inserted along its edges. Every non-planar graph, no matter how large or tangled, hides one of these two inside it.",
+      "concepts": [
+        "Subdivision — subdividing an edge means inserting a new vertex in its middle, splitting one edge into two. A subdivision of a graph is what you get by subdividing edges any number of times.",
+        "Kuratowski's theorem — a graph is planar if and only if it contains no subdivision of K5 and no subdivision of K_{3,3}. These two graphs are the forbidden minors of planarity (also phrased with minors instead of subdivisions, in Wagner's version).",
+        "Why subdivisions — inserting a degree-2 vertex along an edge changes nothing about crossings: a subdivision is planar exactly when the original is. So the obstruction survives stretching.",
+        "Finding the obstruction — to prove a graph non-planar, exhibit the K5 or K_{3,3} subdivision inside it. The Petersen graph, for instance, contains a subdivision of K_{3,3}.",
+        "Planarity testing — Kuratowski's theorem underlies linear-time planarity tests: an algorithm either produces a planar embedding or a Kuratowski subdivision as a certificate of non-planarity.",
+        "Beyond the plane — the same idea generalizes: for every surface (torus, etc.) there is a finite list of forbidden minors. For the plane the list has just two members — the smallest possible."
+      ],
+      "example": {
+        "q": "Use the edge bounds to show K_{3,3} is non-planar, and explain what Kuratowski's theorem says about the Petersen graph.",
+        "steps": [
+          "K_{3,3} is bipartite with V = 6 vertices and E = 9 edges. In a bipartite planar graph every face has at least 4 edges, so 4F ≤ 2E, i.e. F ≤ E/2.",
+          "Euler's formula gives F = 2 − V + E = 2 − 6 + 9 = 5. But the bipartite bound requires F ≤ 9/2 = 4.5, and 5 > 4.5 — contradiction.",
+          "Equivalently, E ≤ 2V − 4 = 8, but K_{3,3} has 9 edges. So K_{3,3} is non-planar (and it is its own Kuratowski obstruction).",
+          "The Petersen graph is non-planar, so by Kuratowski's theorem it must contain a subdivision of K5 or K_{3,3}. It contains a subdivision of K_{3,3}: delete one vertex's 'spokes' appropriately and the remaining structure stretches into K_{3,3}."
+        ],
+        "a": "K_{3,3} violates E ≤ 2V − 4 (9 > 8), so it is non-planar. The Petersen graph is non-planar, so Kuratowski guarantees it hides a K5 or K_{3,3} subdivision — in fact a K_{3,3} one."
+      },
+      "practice": [
+        {
+          "q": "True or false: every subgraph of a planar graph is planar.",
+          "a": "True. Take a planar drawing of the whole graph and erase the extra vertices and edges — what remains is a planar drawing of the subgraph."
+        },
+        {
+          "q": "Show K6 is non-planar using the edge bound.",
+          "a": "K6 has V = 6, E = 15. A planar graph on 6 vertices has at most 3·6 − 6 = 12 edges, and 15 > 12, so K6 is non-planar (it contains K5 as a subgraph, too)."
+        }
+      ],
+      "takeaway": "A graph is planar exactly when it contains no subdivision of K5 or K_{3,3}. Those two graphs are the only obstructions — find one inside a graph and you have proved it non-planar.",
+      "module": "Planarity, Euler, and Hamilton"
+    }
+  }
+}
