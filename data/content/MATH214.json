@@ -1,0 +1,539 @@
+{
+  "course_id": "MATH214",
+  "title": "Foundations of Geometry",
+  "lesson_count": 16,
+  "lessons": {
+    "Euclid's Postulates and Hilbert's Axioms": {
+      "intro": "Every geometry starts with a handful of sentences you agree to take on trust, and then everything else is earned by proof. Euclid's Elements (c. 300 BCE) was the first great attempt: five postulates from which all of plane geometry was supposed to follow. For two thousand years it stood as the model of rigorous reasoning — until mathematicians noticed gaps in Euclid's arguments and David Hilbert rebuilt the foundations in 1899 with undefined terms and twenty axioms that leave nothing to chance.",
+      "concepts": [
+        "Undefined terms — point, line, and plane are never defined; they are only described by how they behave. Trying to define 'point' in terms of simpler ideas leads to circular definitions, so geometry starts by declaring the players and the rules instead.",
+        "Euclid's five postulates — (1) a straight line can be drawn between any two points; (2) a line can be extended indefinitely; (3) a circle can be drawn with any center and radius; (4) all right angles are equal; (5) the parallel postulate: if a line crossing two lines makes interior angles on one side sum to less than two right angles, the two lines meet on that side.",
+        "Hilbert's axiom groups — incidence (which points lie on which lines), order (betweenness), congruence (of segments and angles), parallels (Playfair's form), and continuity (Archimedes' axiom and completeness). Twenty axioms in all, grouped by what they govern.",
+        "Playfair's axiom — through a point not on a given line there is exactly one line parallel to the given line. It is logically equivalent to Euclid's fifth postulate once the other axioms are assumed, but it states the uniqueness idea far more cleanly.",
+        "Models — an axiom system is consistent if it has a model: a concrete interpretation of 'point' and 'line' (for example, points as ordered pairs of real numbers) that makes every axiom true. Euclidean geometry is consistent exactly when real-number arithmetic is.",
+        "The axiomatic method — a theorem is a statement proved from the axioms by pure logic, with no appeal to pictures. Diagrams guide intuition, but the proof must stand on the axioms alone; that discipline is what lets geometry later be rebuilt on entirely different axioms."
+      ],
+      "example": {
+        "q": "Using only Hilbert's incidence axioms — in particular I1: through any two distinct points there is exactly one line — prove that two distinct lines can meet in at most one point.",
+        "steps": [
+          "Suppose, for contradiction, that two distinct lines l and m meet in two distinct points A and B.",
+          "By axiom I1, through the two distinct points A and B there is exactly one line.",
+          "But both l and m are lines through A and B, so l and m are both 'the' line of I1 — hence l = m.",
+          "This contradicts the assumption that l and m are distinct. So the assumption that they share two points is false."
+        ],
+        "a": "Two distinct lines meet in at most one point; if they shared two, I1 would force them to be the same line."
+      },
+      "practice": [
+        {
+          "q": "How many lines pass through two distinct points, according to Hilbert's axiom I1?",
+          "a": "Exactly one."
+        },
+        {
+          "q": "State Playfair's axiom and explain how it differs in form from Euclid's fifth postulate.",
+          "a": "Playfair: through a point not on a given line there is exactly one line parallel to the given line. Euclid's fifth is stated in terms of interior angles summing to less than two right angles; the two are logically equivalent given the other postulates, but Playfair states uniqueness directly."
+        }
+      ],
+      "takeaway": "Geometry begins with undefined terms and axioms, not definitions. From Hilbert's incidence axiom alone it already follows that two distinct lines meet at most once.",
+      "module": "Foundations of Euclidean Geometry"
+    },
+    "Congruence and Similarity": {
+      "intro": "When are two figures 'the same'? Geometry gives two answers. Congruent figures are identical in every measurement — one can be moved onto the other exactly. Similar figures have the same shape but possibly different size — one can be scaled onto the other. The triangle congruence criteria (SSS, SAS, ASA, AAS) and the similarity criteria (AA, SSS, SAS) turn these philosophical questions into quick checks on three numbers.",
+      "concepts": [
+        "Congruence — two figures are congruent if an isometry (a distance-preserving motion: translation, rotation, reflection, or a combination) carries one onto the other. Congruent figures have equal side lengths, equal angles, and equal area.",
+        "SSS, SAS, ASA, AAS — if three sides match, or two sides and the included angle, or two angles and a side, the triangles are congruent. (SSA is NOT a criterion: it can give two different triangles — the ambiguous case.)",
+        "Similarity — two figures are similar if one can be carried to the other by a similarity transformation: an isometry followed by a scaling. Similar figures have equal angles and proportional sides.",
+        "AA similarity — two triangles with two matching angles are automatically similar, since the third angle is forced by the 180-degree angle sum. One angle plus proportional adjacent sides (SAS similarity) also suffices.",
+        "Scale factor — if similar figures have linear scale factor k, every length is multiplied by k, every area by k squared, and (in three dimensions) every volume by k cubed.",
+        "Ratios in similar figures — corresponding sides are in proportion: a/a' = b/b' = c/c'. Checking one ratio is never enough; all three must agree."
+      ],
+      "example": {
+        "q": "Triangle ABC has sides 3, 4, 5. Triangle DEF has sides 6, 8, 10. Are the triangles similar? Congruent? What is the ratio of their areas?",
+        "steps": [
+          "Compare corresponding sides in order: 6/3 = 2, 8/4 = 2, 10/5 = 2. All three ratios are equal, so the triangles are similar by SSS similarity, with scale factor k = 2.",
+          "They are not congruent: congruent triangles have equal side lengths, and 6 is not 3.",
+          "Area scales by k squared: the area of DEF is 2 squared = 4 times the area of ABC.",
+          "Check directly: ABC is a 3-4-5 right triangle, area = (1/2)(3)(4) = 6. DEF is a 6-8-10 right triangle, area = (1/2)(6)(8) = 24 = 4 x 6."
+        ],
+        "a": "Similar with scale factor 2, not congruent; the area ratio is 4:1."
+      },
+      "practice": [
+        {
+          "q": "A photograph 4 inches by 6 inches is enlarged so the short side becomes 10 inches. How long is the long side?",
+          "a": "The scale factor is 10/4 = 2.5, so the long side is 6 x 2.5 = 15 inches."
+        },
+        {
+          "q": "Two similar rectangles have linear scale factor 3. The smaller has area 5 square units. What is the larger rectangle's area?",
+          "a": "Area scales by 3 squared = 9, so the larger area is 5 x 9 = 45 square units."
+        }
+      ],
+      "takeaway": "Congruence means same size and shape; similarity means same shape with proportional sides. Lengths scale by k, areas by k squared.",
+      "module": "Foundations of Euclidean Geometry"
+    },
+    "Triangles, Circles, and Quadrilaterals": {
+      "intro": "Three families of figures carry most of classical geometry: triangles, whose angle sum is fixed at 180 degrees; circles, where every angle fact is secretly a fact about arcs; and quadrilaterals, whose 360-degree angle sum hides a family of special cases — parallelograms, rectangles, rhombi, trapezoids — each with its own symmetry. Master these three and you can measure almost any flat shape.",
+      "concepts": [
+        "Triangle angle sum — the interior angles of any triangle sum to 180 degrees. A consequence is the exterior angle theorem: an exterior angle equals the sum of the two remote interior angles.",
+        "Circle vocabulary — radius, diameter (twice the radius), chord (a segment joining two points on the circle), secant, tangent (a line touching at exactly one point), arc, and sector.",
+        "Central and inscribed angles — a central angle has its vertex at the center; an inscribed angle has its vertex on the circle. An inscribed angle subtending an arc is exactly half the central angle subtending the same arc.",
+        "Thales' theorem — an angle inscribed in a semicircle is a right angle. It is the inscribed-angle theorem with a central angle of 180 degrees.",
+        "Quadrilateral angle sum — the interior angles of any quadrilateral sum to 360 degrees, because a diagonal splits it into two triangles of 180 degrees each.",
+        "Parallelogram properties — opposite sides are equal and parallel, opposite angles are equal, consecutive angles are supplementary, and the diagonals bisect each other. A rectangle adds equal diagonals; a rhombus adds perpendicular diagonals."
+      ],
+      "example": {
+        "q": "In a circle with center O, chord AB subtends a central angle AOB of 80 degrees. A point C lies on the major arc AB. What is the measure of angle ACB?",
+        "steps": [
+          "Angle ACB is an inscribed angle subtending the same chord AB as the central angle AOB.",
+          "The inscribed angle theorem says an inscribed angle is half the central angle subtending the same arc: angle ACB = (1/2) x 80 degrees.",
+          "So angle ACB = 40 degrees.",
+          "As a check, the inscribed angle subtending the same chord from the minor arc would be half of (360 - 80) = 140 degrees, and 40 + 140 = 180, as it must be for a cyclic quadrilateral."
+        ],
+        "a": "40 degrees."
+      },
+      "practice": [
+        {
+          "q": "The angles of a triangle are in the ratio 2:3:4. What is the largest angle?",
+          "a": "The parts sum to 9, so each part is 180/9 = 20 degrees. The largest angle is 4 x 20 = 80 degrees."
+        },
+        {
+          "q": "A quadrilateral has three angles measuring 90, 90, and 100 degrees. What is the fourth angle?",
+          "a": "The angles sum to 360 degrees, so the fourth is 360 - 90 - 90 - 100 = 80 degrees."
+        }
+      ],
+      "takeaway": "Triangles sum to 180 degrees, quadrilaterals to 360, and an inscribed angle is always half the central angle on the same arc.",
+      "module": "Foundations of Euclidean Geometry"
+    },
+    "Area and the Pythagorean Theorem": {
+      "intro": "Area is the bridge between geometry and arithmetic: every area formula is a recipe for counting unit squares. The Pythagorean theorem is the most famous such recipe — in a right triangle, the square on the hypotenuse equals the sum of the squares on the legs — and it quietly powers the distance formula, the circle equation, and the first steps of trigonometry.",
+      "concepts": [
+        "Area formulas — rectangle: base x height. Parallelogram: base x height (same base, same height as the rectangle it shears into). Triangle: (1/2) x base x height. Trapezoid: (1/2) x (sum of the two parallel sides) x height. Circle: pi x r squared.",
+        "Pythagorean theorem — in a right triangle with legs a and b and hypotenuse c, a squared + b squared = c squared. There are hundreds of proofs; Euclid's proof in the Elements compares areas of squares.",
+        "Converse — if a triangle satisfies a squared + b squared = c squared, then it is a right triangle with the right angle opposite side c. This is how builders test for square corners (the 3-4-5 rule).",
+        "Pythagorean triples — integer solutions such as (3, 4, 5), (5, 12, 13), (8, 15, 17), and (7, 24, 25). Any multiple of a triple is a triple: (6, 8, 10) is a 3-4-5 triangle doubled.",
+        "Distance formula — the distance between (x1, y1) and (x2, y2) is the square root of (x2 - x1) squared + (y2 - y1) squared: Pythagoras applied to the horizontal and vertical gaps.",
+        "Dissection proofs — area is preserved when a figure is cut into pieces and rearranged. Many area formulas (triangle, trapezoid) are proved by dissecting the figure into rectangles."
+      ],
+      "example": {
+        "q": "A 10-foot ladder leans against a vertical wall. Its foot is 6 feet from the base of the wall. How high up the wall does the ladder reach?",
+        "steps": [
+          "The ladder, the wall, and the ground form a right triangle: hypotenuse 10 feet, one leg 6 feet, the other leg h (the height reached).",
+          "By the Pythagorean theorem: 6 squared + h squared = 10 squared.",
+          "So h squared = 100 - 36 = 64, and h = 8 feet (taking the positive root, since h is a length).",
+          "This is the 6-8-10 triangle, a doubled 3-4-5 triple — a good sanity check."
+        ],
+        "a": "8 feet up the wall."
+      },
+      "practice": [
+        {
+          "q": "A right triangle has legs 5 and 12. What is the hypotenuse?",
+          "a": "The square root of (25 + 144) = the square root of 169 = 13."
+        },
+        {
+          "q": "What is the area of a circle of radius 3?",
+          "a": "pi x 3 squared = 9 pi, about 28.27 square units."
+        }
+      ],
+      "takeaway": "In a right triangle a squared + b squared = c squared. Area formulas all reduce to counting unit squares, and Pythagoras is the distance formula in disguise.",
+      "module": "Foundations of Euclidean Geometry"
+    },
+    "Compass-and-Straightedge Constructions": {
+      "intro": "The Greeks asked what can be built with only two tools: an unmarked straightedge for drawing lines through two points, and a compass for drawing circles of a given radius. No measuring, no marking — just lines and circles, repeated as often as you like. The surprising fact is how much this allows: angle bisectors, perpendiculars, parallels, regular polygons — and the equally surprising fact is what it forbids, which the next lessons take up.",
+      "concepts": [
+        "The rules — a straightedge draws the line through two known points; a compass draws a circle with a known center through a known point. A new point is 'known' only when it appears as an intersection of lines and circles already drawn.",
+        "Perpendicular bisector — draw two circles of equal radius centered at the segment's endpoints; their two intersection points are each equidistant from both endpoints, so the line through them is the perpendicular bisector.",
+        "Angle bisector — draw an arc centered at the vertex cutting both rays, then two equal arcs centered at those cut points; their intersection with the vertex defines the bisector.",
+        "Copying a segment or angle — a segment is copied by carrying its length on the compass; an angle is copied by transferring the chord between two points on its rays to the new location.",
+        "Perpendicular through a point — from a point P on a line, equal arcs on either side of P give two points; the perpendicular bisector of those two points is the perpendicular through P.",
+        "Parallel through a point — copy the angle a transversal makes with the line to the point: equal corresponding angles force the new line parallel to the old one."
+      ],
+      "example": {
+        "q": "Given segment AB, construct its perpendicular bisector with compass and straightedge, and prove the construction is correct.",
+        "steps": [
+          "Draw a circle centered at A with radius AB, and a circle centered at B with radius AB. They intersect at two points, call them P and Q.",
+          "Because P lies on the circle centered at A, PA = AB; because P lies on the circle centered at B, PB = AB. So PA = PB: P is equidistant from A and B.",
+          "The same argument gives QA = QB, so Q is also equidistant from A and B.",
+          "The set of points equidistant from A and B is exactly the perpendicular bisector of AB, and two points determine a line — so line PQ is the perpendicular bisector of AB."
+        ],
+        "a": "Line PQ is the perpendicular bisector: it cuts AB at its midpoint at a right angle."
+      },
+      "practice": [
+        {
+          "q": "How do you copy angle ABC to a new vertex B'?",
+          "a": "Draw an arc centered at B cutting both rays; draw the same-radius arc centered at B'; measure the chord between the two cut points with the compass and transfer it to the new arc. The ray from B' through the transferred point makes the copied angle."
+        },
+        {
+          "q": "You have a right angle and need a 45-degree angle. What single construction does it?",
+          "a": "Bisect the right angle: an arc across its rays, then two equal arcs from the cut points, and the ray through their intersection splits 90 degrees into 45 and 45."
+        }
+      ],
+      "takeaway": "With only a straightedge and compass you can bisect segments and angles, copy lengths and angles, and drop perpendiculars and parallels — all by intersecting lines and circles.",
+      "module": "Geometric Constructions"
+    },
+    "Constructible Numbers": {
+      "intro": "Every construction builds lengths, and lengths can be added, subtracted, multiplied, divided, and square-rooted with compass and straightedge. So the constructible lengths form a number system — a field, closed under all four operations plus square roots. The deep question is which real numbers live in that system: the answer, that a number is constructible exactly when it sits at the top of a tower of square-root extensions, is what makes the impossible constructions provably impossible.",
+      "concepts": [
+        "Constructible length — starting from a unit segment, a length is constructible if it can be produced in finitely many straightedge-and-compass steps. A number is constructible if a segment of that length is.",
+        "A field — the constructible numbers are closed under addition, subtraction, multiplication, and division (nonzero divisor). Addition and subtraction are segment arithmetic; multiplication and division use similar triangles and the intercept theorem.",
+        "Square roots are constructible — the geometric mean construction: on a segment of length 1 + x, erect a semicircle and the perpendicular at the join; the altitude has length the square root of x. So square root of 2, square root of 3, and every square root of a constructible number is constructible.",
+        "Quadratic towers — each construction step adjoins at most a square root, so every constructible number lies in a tower of fields Q = F0, F1, ..., Fn, where each step has degree 2 over the last. Hence every constructible number has degree over Q equal to a power of 2.",
+        "Rational numbers are constructible — any fraction p/q comes from dividing a segment into q equal parts (intercept theorem) and copying the unit p times.",
+        "Degree test — if a number's minimal polynomial over Q has degree that is not a power of 2, the number cannot be constructible. This one test settles all three classical impossibilities."
+      ],
+      "example": {
+        "q": "Starting from a unit segment, construct segments of length square root of 2 and square root of 3, and give their approximate values.",
+        "steps": [
+          "Square root of 2: build a right triangle with both legs of length 1. By Pythagoras its hypotenuse is the square root of (1 + 1) = square root of 2, about 1.414.",
+          "Square root of 3: build a right triangle with legs 1 and square root of 2 (the segment just constructed). Its hypotenuse is the square root of (1 + 2) = square root of 3, about 1.732.",
+          "Equivalently, square root of 3 is the altitude of an equilateral triangle of side 2: the altitude splits the base into 1 and 1, so its length is the square root of (4 - 1) = square root of 3.",
+          "Both numbers are reached by adjoining one square root at a time, so both lie in a quadratic tower and are constructible."
+        ],
+        "a": "Square root of 2 is about 1.414 and square root of 3 is about 1.732; both are constructible by right triangles."
+      },
+      "practice": [
+        {
+          "q": "Is the length 1/3 constructible from a unit segment? Why?",
+          "a": "Yes. The intercept theorem divides a segment into any number of equal parts, so 1/3 is constructible — in fact every rational number is."
+        },
+        {
+          "q": "Is the cube root of 2 constructible? (Hint: think about its degree over Q.)",
+          "a": "No. Its minimal polynomial is x cubed - 2, irreducible by Eisenstein, so it has degree 3 over Q — and 3 is not a power of 2. See the next lesson."
+        }
+      ],
+      "takeaway": "Constructible numbers form a field closed under square roots, and every one has degree a power of 2 over the rationals — the test that decides what can and cannot be built.",
+      "module": "Geometric Constructions"
+    },
+    "Impossible Constructions: Trisection and Doubling the Cube": {
+      "intro": "For two thousand years, geometers tried to trisect an arbitrary angle, double a cube, and square a circle with straightedge and compass — and failed. The failures were not a lack of cleverness: in the 19th century, Wantzel and Lindemann proved the tasks impossible. The proofs run through the degree test of the last lesson: each problem demands a number whose degree over the rationals is not a power of 2.",
+      "concepts": [
+        "The three classical problems — trisect an arbitrary angle; double the cube (build a cube with twice a given cube's volume); square the circle (build a square with the same area as a given circle).",
+        "Wantzel's theorem (1837) — a number is constructible only if its degree over Q is a power of 2. This single theorem kills the first two problems.",
+        "Doubling the cube — a cube of side 1 has volume 1; double the volume needs side the cube root of 2, whose minimal polynomial x cubed - 2 has degree 3. Since 3 is not a power of 2, the cube cannot be doubled.",
+        "Angle trisection — trisecting 60 degrees would produce 20 degrees, and cos 20 degrees satisfies 8x cubed - 6x + 1 = 0, an irreducible cubic, so cos 20 degrees has degree 3 over Q. No general trisection construction exists.",
+        "Some angles CAN be trisected — 90 degrees trisects to 30 degrees, which is constructible directly. The theorem says there is no single method for every angle, not that no angle can be trisected.",
+        "Squaring the circle — the side of the required square is the square root of pi, so the problem needs pi itself. Lindemann proved in 1882 that pi is transcendental (not the root of any polynomial with rational coefficients), so it lies in no finite tower at all."
+      ],
+      "example": {
+        "q": "Prove that doubling the cube with straightedge and compass is impossible.",
+        "steps": [
+          "Take a cube of side 1, so its volume is 1. A cube of twice the volume has volume 2, so its side must be the cube root of 2.",
+          "The minimal polynomial of the cube root of 2 over Q is x cubed - 2. It is irreducible by Eisenstein's criterion with prime 2, so the cube root of 2 has degree 3 over Q.",
+          "By Wantzel's theorem, every constructible number has degree over Q equal to a power of 2: 1, 2, 4, 8, ...",
+          "3 is not a power of 2, so the cube root of 2 is not constructible, and no straightedge-and-compass construction can double the cube."
+        ],
+        "a": "Impossible: doubling the cube needs the cube root of 2, which has degree 3 over Q, not a power of 2."
+      },
+      "practice": [
+        {
+          "q": "Can a 90-degree angle be trisected with straightedge and compass? Explain.",
+          "a": "Yes — trisecting 90 degrees means constructing 30 degrees, and 30 degrees is directly constructible (bisect 60 degrees, which comes from an equilateral triangle). The impossibility is about a general method for arbitrary angles."
+        },
+        {
+          "q": "Why is squaring the circle impossible even in principle, not just unproven?",
+          "a": "It would require constructing the square root of pi, hence pi itself. Lindemann proved pi is transcendental, so it is not algebraic at all — it sits in no finite tower of square-root extensions."
+        }
+      ],
+      "takeaway": "Wantzel's degree test settles two millennia of trying: doubling the cube needs degree 3, trisecting 60 degrees needs degree 3, and squaring the circle needs pi, which is transcendental.",
+      "module": "Geometric Constructions"
+    },
+    "Origami Constructions": {
+      "intro": "Fold a sheet of paper and you get a new tool: a crease. Paper folding can do something straightedge and compass cannot — a single fold can solve a cubic equation. That is why origami trisects angles and doubles cubes, the very tasks that defeated the Greeks. The mathematics of folding, the Huzita–Hatori axioms, turns a craft into a construction system strictly more powerful than Euclid's.",
+      "concepts": [
+        "Huzita–Hatori axioms — seven basic folds: fold a point to a point, a line to a line, a point to a line, and so on. Every origami construction is a sequence of these folds, just as every Euclidean construction is a sequence of lines and circles.",
+        "The Beloch fold — fold so that two given points land simultaneously on two given lines. One fold imposes two conditions at once, and the crease satisfies a cubic equation — that is the extra power folding has over circles and lines.",
+        "Trisection by folding — Abe's method trisects any angle with a few folds: fold the angle's sides into alignment, then use the crease pattern to divide the angle into three equal parts.",
+        "Haga's theorem — fold a corner of a square to the midpoint of the opposite edge; the folded edge crosses the adjacent edge exactly one-third of the way up. Folding trisects a segment, no measuring needed.",
+        "Origami doubles the cube — the Beloch fold constructs the cube root of 2 (about 1.2599), the length straightedge and compass cannot produce. Paper beats the Greeks.",
+        "Origami numbers — the set of lengths foldable from a unit square is closed under cube roots as well as square roots, so origami solves general cubic equations with rational coefficients."
+      ],
+      "example": {
+        "q": "Take a square sheet of side 6 cm. Fold the bottom-left corner up to the midpoint of the top edge. Where does the folded bottom edge cross the right edge? And what length would a Beloch fold need to produce to double a unit cube?",
+        "steps": [
+          "Put the square on coordinates (0,0) to (6,6). The fold sends the corner (0,0) to the midpoint of the top edge, (3,6).",
+          "The fold line is the perpendicular bisector of the segment from (0,0) to (3,6); reflecting the bottom-right corner (6,0) across it lands at (6.6,1.2).",
+          "The folded bottom edge runs from (3,6) to (6.6,1.2). It reaches x = 6 when t = (6-3)/3.6 = 5/6 of the way along, at y = 6 + (1.2-6) x (5/6) = 6 - 4 = 2 cm.",
+          "So the crease pattern marks the right edge at 2 cm — exactly one-third of the 6 cm side. This is Haga's theorem: the fold trisects the edge.",
+          "Doubling a unit cube needs a side of the cube root of 2, about 1.2599. Check: 1.2599 cubed = 1.9999, essentially 2 — the Beloch fold produces this length, which compass and straightedge cannot."
+        ],
+        "a": "The folded edge crosses the right edge at 2 cm up (one-third of the side); doubling the cube needs a segment of length about 1.2599."
+      },
+      "practice": [
+        {
+          "q": "Fold a unit square in half along its diagonal. How long is the crease?",
+          "a": "The diagonal of a unit square: the square root of (1 + 1) = the square root of 2, about 1.414."
+        },
+        {
+          "q": "A cube has side 1.26 cm. What is its volume, and how close is that to doubling a unit cube?",
+          "a": "1.26 cubed = 2.000376, about 2.000 — within 0.02 percent of exactly double the unit volume of 1."
+        }
+      ],
+      "takeaway": "One fold can solve a cubic: origami trisects angles, trisects segments (Haga), and constructs the cube root of 2 — everything the straightedge and compass could not.",
+      "module": "Geometric Constructions"
+    },
+    "Isometries of the Plane": {
+      "intro": "An isometry is a motion that changes nothing measurable: distances stay the same, angles stay the same, area stays the same. Every rigid motion of the plane — every way of picking a figure up and putting it down elsewhere — is built from just four types. Classifying them is the first step toward symmetry, crystallography, and the group theory that describes them.",
+      "concepts": [
+        "Isometry — a map of the plane to itself that preserves distance: the distance between the images of any two points equals the distance between the points. Isometries automatically preserve angles, area, collinearity, and betweenness.",
+        "The four types — translation (slide by a vector), rotation (turn about a fixed center), reflection (flip across a line), and glide reflection (reflect across a line, then slide along it). Every isometry of the plane is one of these.",
+        "Direct vs. opposite — translations and rotations preserve orientation (a clockwise triangle stays clockwise); reflections and glide reflections reverse it. Orientation is the fingerprint that tells the types apart.",
+        "Fixed points — a translation has none (unless the vector is zero), a rotation fixes its center, a reflection fixes its whole mirror line, a glide reflection fixes nothing.",
+        "Composition — the composition of two isometries is an isometry. Two translations compose to a translation; a rotation followed by a translation is a rotation about a different center (or a translation).",
+        "Three reflections suffice — every isometry of the plane is a composition of at most three reflections. Translations take two (parallel mirrors), rotations take two (intersecting mirrors), glide reflections take three."
+      ],
+      "example": {
+        "q": "Take point P = (3, 4). First reflect it across the y-axis, then rotate the result 90 degrees counterclockwise about the origin. Where does P end up? Verify the distance from the origin is unchanged.",
+        "steps": [
+          "Reflect (3, 4) across the y-axis: the x-coordinate changes sign, giving (-3, 4).",
+          "Rotate 90 degrees counterclockwise about the origin: the rule is (x, y) -> (-y, x), so (-3, 4) goes to (-4, -3).",
+          "Check the distance from the origin: the original point is at distance the square root of (9 + 16) = 5.",
+          "The final point (-4, -3) is at distance the square root of (16 + 9) = 5. The distance is preserved, as an isometry requires."
+        ],
+        "a": "P ends at (-4, -3), still 5 units from the origin."
+      },
+      "practice": [
+        {
+          "q": "Translate the point (2, 5) by the vector (-1, 3). Where does it go?",
+          "a": "(2 - 1, 5 + 3) = (1, 8)."
+        },
+        {
+          "q": "A glide reflection reflects across the x-axis and then translates by (2, 0). What is the image of (1, 3)?",
+          "a": "Reflect across the x-axis: (1, -3). Then translate by (2, 0): (3, -3)."
+        }
+      ],
+      "takeaway": "Every rigid motion is a translation, rotation, reflection, or glide reflection — distance-preserving, and built from at most three reflections.",
+      "module": "Transformations"
+    },
+    "Reflections, Rotations, and Translations": {
+      "intro": "The three basic motions each have a simple coordinate rule and a simple geometric meaning, and their combinations explain the rest. Two reflections across parallel lines make a translation; two across intersecting lines make a rotation, through twice the angle between the mirrors. Once you see that, a kaleidoscope, a frieze pattern, and a rotation in a video game are all the same idea.",
+      "concepts": [
+        "Reflection across a line — the mirror line is the perpendicular bisector of the segment joining each point to its image. Points on the mirror stay put; everything else flips to the other side.",
+        "Rotation about a center — every point moves along a circle centered at the rotation center, through the same angle. A 90-degree counterclockwise rotation about the origin sends (x, y) to (-y, x); a 180-degree rotation sends (x, y) to (-x, -y).",
+        "Translation by a vector — every point moves by the same displacement (a, b): (x, y) -> (x + a, y + b). Translations have no fixed points and preserve direction.",
+        "Two parallel mirrors — reflecting across two parallel lines a distance d apart is a translation by 2d perpendicular to the mirrors. (The factor of 2 is the same doubling you see in a pair of facing mirrors.)",
+        "Two intersecting mirrors — reflecting across two lines meeting at angle theta is a rotation about their intersection through angle 2 x theta, in the direction from the first mirror to the second.",
+        "Composition order matters — reflecting across line l then line m is generally different from m then l; the rotation direction reverses. Isometries do not commute in general."
+      ],
+      "example": {
+        "q": "Reflect the point (5, 2) across the line y = x, then reflect the result across the x-axis. Where does it end? Explain the composition as a single rotation.",
+        "steps": [
+          "Reflect (5, 2) across y = x: coordinates swap, giving (2, 5).",
+          "Reflect (2, 5) across the x-axis: the y-coordinate changes sign, giving (2, -5).",
+          "The two mirror lines y = x and y = 0 meet at the origin at 45 degrees, so the composition is a rotation about the origin through twice 45 degrees = 90 degrees.",
+          "Check: a 90-degree clockwise rotation sends (x, y) to (y, -x); applied to (5, 2) it gives (2, -5), matching the two-step result."
+        ],
+        "a": "(2, -5) — the composition is a 90-degree clockwise rotation about the origin."
+      },
+      "practice": [
+        {
+          "q": "Rotate the point (1, 0) by 90 degrees counterclockwise about the origin. Where does it go?",
+          "a": "(0, 1)."
+        },
+        {
+          "q": "Two parallel mirrors are 3 units apart. A point is reflected across the first mirror, then the second. How far does it move, and in which direction?",
+          "a": "It moves 6 units — twice the mirror separation — perpendicular to the mirrors, in the direction from the first mirror toward the second."
+        }
+      ],
+      "takeaway": "Two reflections make a translation (parallel mirrors) or a rotation through twice the angle between them (intersecting mirrors) — the whole isometry zoo comes from mirrors.",
+      "module": "Transformations"
+    },
+    "Similarity Transformations": {
+      "intro": "An isometry preserves size; a dilation changes it. Combine the two and you get the similarity transformations — the maps that preserve shape while scaling size. They are the mathematics of maps, models, photographs, and perspective drawing: every statement about similar figures is a statement about one of these maps.",
+      "concepts": [
+        "Dilation (homothety) — pick a center C and a scale factor k: every point P moves along the ray from C so that CP' = k x CP. For k > 1 the figure grows; for 0 < k < 1 it shrinks; for k negative it flips through the center as well.",
+        "Similarity transformation — any composition of a dilation with an isometry. Two figures are similar exactly when a similarity transformation carries one onto the other.",
+        "Lengths scale by k — every distance in the image is k times the original distance. Angles do not change at all: similarity preserves shape by definition.",
+        "Areas scale by k squared — a square of side s has area s squared; scaled by k it has side k x s and area k squared x s squared. The same k-squared rule holds for any figure, by dissecting it into tiny squares.",
+        "Volumes scale by k cubed — in three dimensions, a similarity with factor k multiplies every volume by k cubed. A model at 1:24 scale has 1/13,824 the volume of the real object.",
+        "Center of dilation — for two similar figures in the same orientation, the lines joining corresponding points all meet at the center of dilation. This is how a photocopier's scaling, or a shadow's projection, is located."
+      ],
+      "example": {
+        "q": "Triangle T has vertices (0, 0), (4, 0), (0, 3). Dilate T by factor 1/2 about the origin, then translate it by (1, 1). What are the new vertices, and what is the new area?",
+        "steps": [
+          "Dilate by 1/2 about the origin: multiply each coordinate by 1/2, giving (0, 0), (2, 0), (0, 1.5).",
+          "Translate by (1, 1): add 1 to each coordinate, giving (1, 1), (3, 1), (1, 2.5).",
+          "The original triangle is right-angled at the origin with legs 4 and 3, so its area is (1/2) x 4 x 3 = 6.",
+          "Area scales by k squared = (1/2) squared = 1/4, so the new area is 6/4 = 1.5. Check: the new triangle has legs 2 and 1.5, area (1/2) x 2 x 1.5 = 1.5."
+        ],
+        "a": "Vertices (1, 1), (3, 1), (1, 2.5); area 1.5 square units."
+      },
+      "practice": [
+        {
+          "q": "A model car is built at 1:24 scale. The real car is 4.8 meters long. How long is the model?",
+          "a": "4.8 / 24 = 0.2 meters = 20 centimeters."
+        },
+        {
+          "q": "A photograph is enlarged by a linear factor of 3. The original area is 12 square centimeters. What is the enlarged area?",
+          "a": "Area scales by 3 squared = 9, so the new area is 12 x 9 = 108 square centimeters."
+        }
+      ],
+      "takeaway": "A dilation scales lengths by k, areas by k squared, and volumes by k cubed — the whole theory of similar figures in one rule.",
+      "module": "Transformations"
+    },
+    "Introduction to Symmetry Groups": {
+      "intro": "A symmetry of a figure is a motion that leaves the figure looking exactly the same — a rotation of a snowflake by 60 degrees, a flip of a square across its diagonal. Collect all the symmetries of one figure and they form a group: you can combine two symmetries, undo any symmetry, and doing nothing is always allowed. Group theory was born in geometry, and symmetry groups are still its most concrete face.",
+      "concepts": [
+        "Symmetry — an isometry that maps a figure onto itself. A scalene triangle has only the identity symmetry; a circle has infinitely many.",
+        "Group axioms — the symmetries of a figure satisfy closure (combining two symmetries is a symmetry), associativity, an identity (do nothing), and inverses (every symmetry can be undone). Any set with an operation obeying these four rules is a group.",
+        "Dihedral group D_n — the symmetry group of a regular n-gon has 2n elements: n rotations (through multiples of 360/n degrees) and n reflections. The square's group D4 has 8 elements; the equilateral triangle's D3 has 6.",
+        "Cyclic group C_n — the rotations alone form a smaller group with n elements: the rotations of the regular n-gon, with no reflections. The symmetries of a pinwheel are cyclic.",
+        "Composing symmetries — reflecting a square across its vertical midline and then rotating 90 degrees equals a single reflection across a diagonal. The group table records every such combination.",
+        "Beyond polygons — frieze groups (7 types) classify repeating border patterns; wallpaper groups (17 types) classify repeating tilings of the plane. The same group idea governs crystals and, in physics, conservation laws."
+      ],
+      "example": {
+        "q": "List all the symmetries of a square and count them. Show that reflecting across the vertical midline and then rotating 90 degrees clockwise is a reflection across a diagonal.",
+        "steps": [
+          "Rotations about the center: 0 degrees (identity), 90, 180, and 270 degrees — 4 rotations.",
+          "Reflections: across the two diagonals, and across the vertical and horizontal midlines — 4 reflections.",
+          "Total: 4 + 4 = 8 symmetries. This is the dihedral group D4.",
+          "Label the corners clockwise A (top-left), B (top-right), C (bottom-right), D (bottom-left). The vertical-midline reflection swaps A with B and D with C.",
+          "A 90-degree clockwise rotation then sends top-right to bottom-right, bottom-right to bottom-left, bottom-left to top-left, and top-left to top-right. Follow corner A: reflection moves it to the top-right, rotation moves it to the bottom-right — A's place is now C's corner. Follow corner B: reflection moves it to the top-left, rotation moves it back to the top-right — B is fixed. Similarly D is fixed and C swaps with A.",
+          "A symmetry fixing exactly the corners B and D and swapping A with C is precisely the reflection across the diagonal through B and D."
+        ],
+        "a": "8 symmetries (D4): 4 rotations and 4 reflections. Vertical flip then 90-degree rotation equals reflection across the diagonal through the fixed corners."
+      },
+      "practice": [
+        {
+          "q": "How many symmetries does a regular hexagon have, and what is its symmetry group called?",
+          "a": "12 symmetries: 6 rotations and 6 reflections. Its group is the dihedral group D6."
+        },
+        {
+          "q": "An equilateral triangle has 6 symmetries. List the rotations.",
+          "a": "Rotations through 0 degrees (identity), 120 degrees, and 240 degrees about the center; the other 3 symmetries are reflections across the three medians."
+        }
+      ],
+      "takeaway": "The symmetries of a figure form a group; a regular n-gon has 2n of them — n rotations and n reflections — the dihedral group D_n.",
+      "module": "Transformations"
+    },
+    "The Parallel Postulate Problem": {
+      "intro": "Euclid's fifth postulate never sat comfortably. The first four postulates are short, obvious, and self-evident; the fifth is long, complicated, and reads like a theorem begging for a proof. For two thousand years the best minds in mathematics tried to prove it from the other four — Proclus, Saccheri, Lambert, Legendre — and every attempt failed in a revealing way. The failure was the discovery: the postulate is independent, and denying it opens new geometries.",
+      "concepts": [
+        "The fifth postulate — if a line crossing two lines makes the interior angles on one side sum to less than two right angles, the two lines meet on that side. It is the only postulate that asserts something about what happens far away.",
+        "Saccheri's quadrilateral — a quadrilateral with two equal sides perpendicular to the base. Its summit angles are equal, and exactly one holds: they are right angles (Euclidean), acute angles, or obtuse angles.",
+        "The three hypotheses — Saccheri set out to destroy the acute and obtuse hypotheses by deriving contradictions. The obtuse hypothesis does contradict the other axioms (it forces lines to meet twice); the acute hypothesis produced no contradiction, only stranger and stranger theorems.",
+        "Legendre's attempts — Legendre proved that the angle sum of a triangle cannot exceed 180 degrees, and that if one triangle has angle sum 180 then all do. He never proved any triangle does.",
+        "Saccheri's verdict — after deriving dozens of theorems from the acute hypothesis without contradiction, Saccheri declared it 'repugnant to the nature of the straight line' and claimed a contradiction that was not one. The acute hypothesis was consistent all along.",
+        "Independence — the fifth postulate cannot be proved from the others: there are consistent geometries (hyperbolic geometry) in which the first four postulates hold and the fifth fails. Euclid's geometry is one choice among several."
+      ],
+      "example": {
+        "q": "Assume the acute-angle hypothesis: in a Saccheri quadrilateral the summit angles are acute. What does this imply about the angle sum of a triangle? Illustrate with a triangle whose angles sum to 170 degrees.",
+        "steps": [
+          "Under the acute hypothesis, Saccheri proved that the angle sum of every triangle is strictly less than 180 degrees.",
+          "Take a triangle with angles 60, 60, and 50 degrees: the sum is 170 degrees, which is less than 180.",
+          "The difference, 180 - 170 = 10 degrees, is called the defect of the triangle. Under the acute hypothesis every triangle has positive defect.",
+          "No contradiction follows from this: a geometry with defect is perfectly consistent, and the defect turns out to measure area — the key fact of hyperbolic geometry."
+        ],
+        "a": "Under the acute hypothesis every triangle has angle sum below 180 degrees; a 60-60-50 triangle has defect 10 degrees and is perfectly consistent."
+      },
+      "practice": [
+        {
+          "q": "Why did Saccheri's attempt to prove the parallel postulate fail?",
+          "a": "He derived no contradiction from the acute hypothesis — only theorems that seemed strange. His claimed contradiction was an aesthetic objection ('repugnant to the nature of the straight line'), not a logical one."
+        },
+        {
+          "q": "What does it mean to say the parallel postulate is independent of the other axioms?",
+          "a": "It cannot be proved from them: there are consistent models (hyperbolic geometry) where the other axioms hold and the parallel postulate is false."
+        }
+      ],
+      "takeaway": "Two thousand years of failed proofs ended in a discovery: the parallel postulate is independent, and denying it gives a consistent geometry of its own.",
+      "module": "Non-Euclidean Geometry"
+    },
+    "Hyperbolic Geometry and Models": {
+      "intro": "Deny the parallel postulate the other way — through a point off a line, let there be infinitely many lines that never meet it — and you get hyperbolic geometry: a world where triangles are thin, parallel lines diverge, and the area of a triangle is decided by its angles alone. For decades it was doubted as a real geometry, until Beltrami, Poincaré, and Klein built models of it inside ordinary Euclidean space.",
+      "concepts": [
+        "The hyperbolic parallel property — given a line l and a point P not on l, there are infinitely many lines through P that never meet l. Exactly two of them are 'limiting parallels'; the rest are ultraparallel.",
+        "Angle sum and defect — every triangle has angle sum below 180 degrees. The defect, 180 degrees minus the angle sum, is proportional to the triangle's area (Gauss–Bonnet): area = defect x R squared, where R sets the curvature scale.",
+        "Poincaré disk model — the hyperbolic plane is the interior of a disk; 'lines' are diameters and circular arcs meeting the boundary circle at right angles; angles are true Euclidean angles (the model is conformal), but distances blow up near the boundary, which is infinitely far away.",
+        "Upper half-plane model — the hyperbolic plane is the set of points with y > 0; 'lines' are vertical rays and semicircles centered on the x-axis. Same geometry, different picture; maps between models are isometries.",
+        "Geodesics — the shortest paths in hyperbolic geometry are the model's 'lines': in the disk, arcs orthogonal to the boundary. Two points determine a unique geodesic, just as in Euclid.",
+        "Ideal triangles — a triangle whose vertices lie on the boundary has all angles zero and the maximum possible area, pi x R squared. No triangle in hyperbolic geometry can be larger."
+      ],
+      "example": {
+        "q": "A hyperbolic triangle has angles 50, 60, and 40 degrees, in a geometry with curvature scale R = 1. What is its angle sum, its defect, and its area?",
+        "steps": [
+          "The angle sum is 50 + 60 + 40 = 150 degrees, less than 180, as hyperbolic geometry requires.",
+          "The defect is 180 - 150 = 30 degrees. Convert to radians: 30 degrees = pi/6 radians, about 0.524.",
+          "Area equals defect (in radians) times R squared: area = (pi/6) x 1 squared = pi/6, about 0.524 square units.",
+          "For comparison, a Euclidean triangle with the same angles would have area determined by its side lengths, not its angles — in hyperbolic geometry the angles alone fix the area."
+        ],
+        "a": "Angle sum 150 degrees, defect 30 degrees (pi/6 radians), area pi/6, about 0.524 square units."
+      },
+      "practice": [
+        {
+          "q": "A hyperbolic triangle has angles 30, 45, and 60 degrees (R = 1). What is its defect and its area?",
+          "a": "Angle sum 135 degrees, so the defect is 180 - 135 = 45 degrees = pi/4 radians. Area = pi/4, about 0.785 square units."
+        },
+        {
+          "q": "In the Poincaré disk model, why do two 'parallel' lines appear to meet at the boundary circle?",
+          "a": "The boundary is infinitely far away in hyperbolic distance, so lines that never meet in the hyperbolic plane can approach the same boundary point asymptotically; they meet only at infinity, never in the plane itself."
+        }
+      ],
+      "takeaway": "In hyperbolic geometry infinitely many parallels pass through a point, triangles have angle sum below 180 degrees, and a triangle's area equals its angular defect.",
+      "module": "Non-Euclidean Geometry"
+    },
+    "Elliptic and Spherical Geometry": {
+      "intro": "Deny the parallel postulate in the other direction — through a point off a line, let there be NO parallel at all — and you get elliptic geometry. Its model is the sphere: 'lines' are great circles, and any two of them meet. Triangle angles sum to more than 180 degrees, and the excess over 180 measures area. Every airline route and every GPS calculation lives in this geometry.",
+      "concepts": [
+        "No parallels — in elliptic geometry, any two lines meet. On a sphere, two great circles always intersect at two antipodal points.",
+        "Great circles as lines — the 'straight lines' of spherical geometry are the great circles: circles whose center is the sphere's center, like the equator and the meridians. The shortest path between two points on a sphere is the minor arc of the great circle through them.",
+        "Antipodal points — two points opposite each other on the sphere are joined by infinitely many great circles, so Euclid's 'exactly one line through two points' fails there. True elliptic geometry identifies antipodal points into one to repair this.",
+        "Angle sum and excess — every spherical triangle has angle sum above 180 degrees. The excess, angle sum minus 180 degrees, is proportional to area: Girard's formula says area = excess (in radians) x R squared.",
+        "Lunes — a lune is the region between two great semicircles meeting at angle theta; its area is 2 x theta x R squared. Girard's formula is proved by adding and subtracting lunes.",
+        "Navigation — great-circle routes are why flights from New York to Tokyo pass near Alaska: the shortest path on a sphere curves toward the pole, not along the parallel of latitude."
+      ],
+      "example": {
+        "q": "Take the spherical triangle with vertices at the North Pole and two points on the equator 90 degrees of longitude apart — one-eighth of the sphere. What are its angles, its excess, and its area on Earth (R = 6371 km)?",
+        "steps": [
+          "The two meridian sides meet at the pole at a 90-degree angle, and each meridian meets the equator at a right angle: all three angles are 90 degrees.",
+          "The angle sum is 90 + 90 + 90 = 270 degrees, so the excess is 270 - 180 = 90 degrees = pi/2 radians.",
+          "By Girard's formula, area = excess x R squared = (pi/2) x 6371 squared.",
+          "6371 squared = 40,589,641, and (pi/2) x 40,589,641 is about 63,758,059 square kilometers.",
+          "Check: this triangle is exactly one-eighth of the sphere, and Earth's total surface 4 x pi x R squared is about 510,064,472 square kilometers; one-eighth of that is about 63,758,059 — matching."
+        ],
+        "a": "Three right angles, excess 90 degrees, area about 63.8 million square kilometers — one-eighth of Earth's surface."
+      },
+      "practice": [
+        {
+          "q": "A spherical triangle on a unit sphere (R = 1) has angles 100, 80, and 90 degrees. What is its area?",
+          "a": "Excess = 100 + 80 + 90 - 180 = 90 degrees = pi/2 radians. Area = (pi/2) x 1 squared = pi/2, about 1.571 square units."
+        },
+        {
+          "q": "On a sphere, what is the 'line' through two given points, and when is it not unique?",
+          "a": "The great circle through them — the shortest path. It is not unique when the points are antipodal (opposite ends of a diameter), since infinitely many great circles pass through both."
+        }
+      ],
+      "takeaway": "On a sphere, lines are great circles, any two lines meet, and a triangle's area equals its angular excess times R squared.",
+      "module": "Non-Euclidean Geometry"
+    },
+    "Geometry and Relativity (Preview)": {
+      "intro": "Geometry does not stop at the plane, the sphere, or the disk. In the twentieth century it became physics: Einstein's relativity says that space and time together form a four-dimensional geometry, and that mass curves it. The shortest paths in that curved geometry are the orbits of planets and the paths of falling apples. This lesson previews the geometry behind relativity — the full story belongs to MATH440 and MATH441.",
+      "concepts": [
+        "Spacetime — relativity merges three dimensions of space with one of time into a four-dimensional manifold. An event is a point in spacetime, specified by where and when.",
+        "The Minkowski interval — in flat spacetime, the invariant 'distance' between two events is s squared = c squared x t squared - x squared - y squared - z squared, where c is the speed of light. Unlike Euclidean distance, it has a minus sign, and it is the same for all observers.",
+        "Lightlike, timelike, spacelike — if s squared = 0 the events can be joined by a light ray; if s squared > 0 they can be joined by a slower-than-light traveler; if s squared < 0 no signal can connect them — they are causally separate.",
+        "Geodesics are free fall — in general relativity, a freely falling object follows a geodesic: the straightest possible path through curved spacetime. Gravity is not a force pulling things; it is the curvature of the geometry they move through.",
+        "Mass curves spacetime — the Einstein field equations relate the curvature of spacetime to the mass and energy inside it. Near Earth the curvature is tiny but measurable; near a black hole it dominates.",
+        "GPS needs relativity — satellite clocks run fast by about 45 microseconds per day from weaker gravity (general relativity) and slow by about 7 microseconds per day from their speed (special relativity). Uncorrected, the net 38 microseconds per day would throw positions off by over 11 kilometers per day."
+      ],
+      "example": {
+        "q": "GPS satellites gain about 45 microseconds per day from general relativity and lose about 7 microseconds per day from special relativity. What is the net clock drift, and how far off would a GPS position be after one day if it were ignored?",
+        "steps": [
+          "Net drift = 45 - 7 = 38 microseconds per day: the satellite clocks run fast by 38 microseconds daily.",
+          "GPS positions come from timing light signals, and light travels at c = 3 x 10^8 meters per second.",
+          "Distance error = c x time error = 3 x 10^8 x 38 x 10^-6 seconds = 11,400 meters.",
+          "So after a single day without relativistic corrections, positions would be off by about 11.4 kilometers — and the error would grow by that much every day."
+        ],
+        "a": "Net +38 microseconds per day; ignoring it gives a position error of about 11.4 km after one day."
+      },
+      "practice": [
+        {
+          "q": "A light signal is emitted at one event and received at another 3 x 10^8 meters away, one second later. What is the spacetime interval between the two events?",
+          "a": "s squared = c squared x t squared - x squared = (3 x 10^8)^2 x 1 - (3 x 10^8)^2 = 0. The interval is zero: the events are lightlike separated."
+        },
+        {
+          "q": "Why is the shortest flight path between two cities a great-circle arc rather than a line of constant latitude?",
+          "a": "The great-circle arc is the geodesic — the shortest path — in the sphere's geometry. A line of latitude (other than the equator) is not a great circle, so it is longer."
+        }
+      ],
+      "takeaway": "Relativity is geometry: spacetime has an invariant interval, free fall follows geodesics, mass curves the geometry, and GPS only works because engineers correct for both relativistic effects.",
+      "module": "Non-Euclidean Geometry"
+    }
+  }
+}
