@@ -1,0 +1,935 @@
+{
+  "course_id": "MATH301",
+  "title": "Real Analysis I",
+  "lesson_count": 29,
+  "lessons": {
+    "Axioms of a Field": {
+      "intro": "Real analysis begins by pinning down exactly what the real numbers are: a field, which means addition and multiplication obey a short list of rules — associativity, commutativity, identities, inverses, and distributivity. Every later proof leans on these axioms, so we learn to use them precisely.",
+      "concepts": [
+        "Field axioms — for all a, b, c in R: (a + b) + c = a + (b + c) and (ab)c = a(bc); a + b = b + a and ab = ba; there are elements 0 and 1 with a + 0 = a and a · 1 = a; every a has −a with a + (−a) = 0 and every a ≠ 0 has a⁻¹ with a · a⁻¹ = 1; and a(b + c) = ab + ac.",
+        "Uniqueness of identities and inverses — the axioms force 0 and 1 to be the only additive and multiplicative identities, and each inverse to be unique, so we may speak of the negative and the reciprocal.",
+        "Consequences are proved, not assumed — facts such as 0 · a = 0 and (−1) · a = −a are theorems deduced from the axioms, and analysis proofs cite them.",
+        "Cancellation — if a + c = b + c then a = b, and if ac = bc with c ≠ 0 then a = b; both follow by adding or multiplying by the inverse."
+      ],
+      "example": {
+        "q": "Using only the field axioms, prove that (−1) · a = −a for every real number a.",
+        "steps": [
+          "Add a to (−1) · a and use distributivity backwards: a + (−1) · a = 1 · a + (−1) · a = (1 + (−1)) · a.",
+          "Since 1 + (−1) = 0 by definition of the additive inverse, the right side is 0 · a. And 0 · a = 0, because 0 · a = (0 + 0) · a = 0 · a + 0 · a, so cancelling 0 · a from both sides leaves 0 · a = 0.",
+          "So a + (−1) · a = 0. But the additive inverse of a is unique: the only number that added to a gives 0 is −a.",
+          "Therefore (−1) · a must be −a."
+        ],
+        "a": "(−1) · a = −a, proved from the field axioms alone."
+      },
+      "practice": [
+        {
+          "q": "Prove from the field axioms that 0 · a = 0 for every real a.",
+          "a": "0 · a = (0 + 0) · a = 0 · a + 0 · a by distributivity; adding −(0 · a) to both sides gives 0 = 0 · a."
+        },
+        {
+          "q": "Prove that if ab = 0 then a = 0 or b = 0.",
+          "a": "If a ≠ 0, multiply both sides by a⁻¹: b = a⁻¹ · (ab) = a⁻¹ · 0 = 0. So either a = 0 or b = 0."
+        }
+      ],
+      "takeaway": "The field axioms are the whole algebraic foundation: every familiar arithmetic fact is a theorem proved from them, and real analysis proves things rather than assuming them.",
+      "module": "The Real Number System"
+    },
+    "Order Properties": {
+      "intro": "A field alone is not enough: the rationals are also a field. What makes R special for analysis is its order — a notion of 'less than' that interacts cleanly with addition and multiplication, letting us compare sizes and take limits.",
+      "concepts": [
+        "Order axioms — R has a set P of positive numbers closed under addition and multiplication, and for every a exactly one of a ∈ P, −a ∈ P, or a = 0 holds; we write a < b when b − a ∈ P.",
+        "Adding preserves order — if a < b then a + c < b + c for any c; inequalities can be shifted freely.",
+        "Multiplying by a positive preserves order, multiplying by a negative reverses it — if a < b and c > 0 then ac < bc; if c < 0 then ac > bc.",
+        "Squares are non-negative — a² ≥ 0 for every real a, and a² = 0 only when a = 0; in particular 1 > 0.",
+        "Absolute value — |a| = a if a ≥ 0 and −a if a < 0; the triangle inequality |a + b| ≤ |a| + |b| is the workhorse estimate of analysis."
+      ],
+      "example": {
+        "q": "Suppose a < b and c < 0. Prove that ac > bc, and check it numerically with a = −2, b = 3, c = −1.",
+        "steps": [
+          "Since a < b, the difference b − a is positive. Since c < 0, the number −c is positive.",
+          "The product of two positives is positive, so (b − a)(−c) > 0, which expands to −bc + ac > 0.",
+          "Adding bc to both sides gives ac > bc: multiplying by a negative reverses the inequality.",
+          "Numerical check: a = −2 < 3 = b and c = −1 < 0; ac = (−2)(−1) = 2 and bc = 3(−1) = −3, and indeed 2 > −3."
+        ],
+        "a": "ac > bc; numerically 2 > −3."
+      },
+      "practice": [
+        {
+          "q": "Prove that a² ≥ 0 for every real number a.",
+          "a": "If a ≥ 0 then a · a ≥ 0 by closure of positives. If a < 0 then −a > 0, and a² = (−a)(−a) ≥ 0. Either way a² ≥ 0."
+        },
+        {
+          "q": "Prove that 1 > 0.",
+          "a": "1 = 1² ≥ 0 by the previous result, and 1 ≠ 0, so 1 > 0."
+        }
+      ],
+      "takeaway": "Order and algebra fit together: adding shifts inequalities, multiplying by a positive preserves them, multiplying by a negative flips them — and squares are never negative.",
+      "module": "The Real Number System"
+    },
+    "Completeness Axiom": {
+      "intro": "The rationals satisfy the field and order axioms too, yet they have gaps — there is no rational number whose square is 2. The completeness axiom fills every gap: any nonempty set bounded above has a least upper bound in R. This single axiom is what makes calculus work.",
+      "concepts": [
+        "Upper bound and supremum — u is an upper bound of S if s ≤ u for all s in S; the supremum sup S is the least such u, if it exists.",
+        "The completeness axiom — every nonempty subset of R that is bounded above has a supremum in R; equivalently, every nonempty set bounded below has an infimum.",
+        "Why Q fails — the set {x ∈ Q : x² < 2} is bounded above in Q but has no least upper bound in Q, because no rational squares to 2.",
+        "Supremum need not belong to the set — sup{x : x < 3} = 3 even though 3 is not in the set; the supremum is the tightest ceiling, not necessarily a member.",
+        "Completeness powers everything — the monotone convergence theorem, the intermediate value theorem, and the existence of roots all trace back to this axiom."
+      ],
+      "example": {
+        "q": "Show that there is no rational number r with r² = 2, so the set S = {x ∈ Q : x² < 2, x > 0} has no supremum inside Q.",
+        "steps": [
+          "Suppose r = p/q in lowest terms (p, q integers, q > 0, gcd(p, q) = 1) satisfies r² = 2, so p² = 2q².",
+          "Then p² is even, so p is even (the square of an odd number is odd): write p = 2k.",
+          "Substituting gives 4k² = 2q², so q² = 2k², hence q is even too.",
+          "But p and q were in lowest terms — they cannot both be even. Contradiction, so no such rational r exists.",
+          "Hence S is bounded above in Q (by 2, say) but has no least upper bound in Q: any rational upper bound can be improved, since the 'gap' at √2 is missing from Q."
+        ],
+        "a": "No rational squares to 2, so S has no supremum in Q — Q is incomplete, while R fills the gap with √2."
+      },
+      "practice": [
+        {
+          "q": "Show that sup{1 − 1/n : n ∈ N} = 1.",
+          "a": "Each term 1 − 1/n < 1, so 1 is an upper bound. If u < 1, choose n > 1/(1 − u); then 1 − 1/n > u, so u is not an upper bound. Hence 1 is the least upper bound."
+        },
+        {
+          "q": "Does the set {x ∈ R : x² < 2} have a supremum in R? What is it?",
+          "a": "Yes — by completeness it has a supremum, namely √2, the unique positive real with (√2)² = 2."
+        }
+      ],
+      "takeaway": "Completeness is the axiom that separates R from Q: every bounded-above set has a least upper bound, so the number line has no holes.",
+      "module": "The Real Number System"
+    },
+    "Archimedean Property and Density of Rationals/Irrationals": {
+      "intro": "Completeness has immediate consequences: no matter how large a real number is, some natural number exceeds it (the Archimedean property), and between any two reals there sits both a rational and an irrational number (density). The line is simultaneously unbounded and finely packed.",
+      "concepts": [
+        "Archimedean property — for any real x there is a natural number n with n > x; equivalently, for any ε > 0 there is n with 1/n < ε. There are no infinitely large or infinitesimally small reals.",
+        "Proof idea — if N were bounded above, its supremum s would satisfy s − 1 < n for some n, giving n + 1 > s, a contradiction.",
+        "Density of Q — between any two reals a < b there is a rational number; choose n with 1/n < b − a, then some multiple m/n lands strictly between a and b.",
+        "Density of irrationals — between any two reals there is also an irrational: take a rational r strictly between a and b, then r + √2/k for large k stays between them and is irrational.",
+        "Consequence — every real number is a limit of rationals (and of irrationals): decimal approximations converge to their target."
+      ],
+      "example": {
+        "q": "Find a natural number n with 1/n < 0.001, and find a rational number strictly between √2 ≈ 1.4142 and 1.5.",
+        "steps": [
+          "1/n < 0.001 means n > 1/0.001 = 1000, so n = 1001 works: 1/1001 ≈ 0.000999 < 0.001.",
+          "For the rational between √2 and 1.5, note the gap is about 1.5 − 1.4142 = 0.0858, so a step of 0.01 is fine enough.",
+          "Try 1.42 = 71/50: it is rational, and 1.4142 < 1.42 < 1.5, since √2 < 1.42 (because 1.42² = 2.0164 > 2) and 1.42 < 1.5.",
+          "So 71/50 sits strictly between √2 and 1.5, as density promises."
+        ],
+        "a": "n = 1001 gives 1/1001 < 0.001; the rational 71/50 = 1.42 lies between √2 and 1.5."
+      },
+      "practice": [
+        {
+          "q": "Find a rational number strictly between 0.123 and 0.124.",
+          "a": "0.1235 = 247/2000: 0.123 < 0.1235 < 0.124."
+        },
+        {
+          "q": "Find an irrational number strictly between 1.4 and 1.5.",
+          "a": "√2 ≈ 1.4142 lies between 1.4 and 1.5 and is irrational."
+        }
+      ],
+      "takeaway": "The reals are unbounded yet densely packed: any ε can be beaten by 1/n, and any interval, however small, contains both rationals and irrationals.",
+      "module": "The Real Number System"
+    },
+    "Suprema and Infima": {
+      "intro": "Suprema and infima are the analysis replacements for maxima and minima: they exist far more often, because they need not be attained. Learning to compute them — and to prove a candidate really is the least upper bound — is a core skill of the course.",
+      "concepts": [
+        "Definitions — sup S is the least upper bound of S (if S is bounded above and nonempty); inf S is the greatest lower bound; either may lie outside S.",
+        "Approximation property — if s = sup S, then for every ε > 0 there is x in S with s − ε < x ≤ s: the set comes arbitrarily close to its supremum from below.",
+        "Supremum vs maximum — a maximum is a supremum that belongs to the set; a supremum may be unattained, as sup{x : x < 3} = 3 shows.",
+        "Monotone link — the supremum of a bounded increasing sequence's range is its limit, which is why suprema drive the monotone convergence theorem.",
+        "Computing suprema — guess the candidate from the pattern, verify it is an upper bound, then verify no smaller number works (usually via the approximation property)."
+      ],
+      "example": {
+        "q": "Find sup and inf of S = {1 − 1/n : n ∈ N} = {0, 1/2, 2/3, 3/4, …}.",
+        "steps": [
+          "Every term 1 − 1/n is less than 1, and the terms increase toward 1, so 1 is an upper bound and the natural candidate for the supremum.",
+          "Approximation: for any ε > 0, choose n > 1/ε; then 1 − 1/n > 1 − ε, so no number below 1 can be an upper bound. Hence sup S = 1 (not attained, since 1 − 1/n < 1 always).",
+          "The smallest term is at n = 1, giving 0, and every term is ≥ 0, so 0 is a lower bound that belongs to S.",
+          "Hence inf S = 0, and it is also the minimum of S."
+        ],
+        "a": "sup S = 1 (not attained), inf S = 0 (attained at n = 1)."
+      },
+      "practice": [
+        {
+          "q": "Find sup and inf of {n/(n+1) : n ∈ N} = {1/2, 2/3, 3/4, …}.",
+          "a": "sup = 1 (terms increase toward 1, never reaching it); inf = 1/2, attained at n = 1, the minimum."
+        },
+        {
+          "q": "Find sup and inf of {(−1)^n + 1/n : n ∈ N}.",
+          "a": "Even terms 1 + 1/n decrease to 1 with maximum 3/2 at n = 2; odd terms −1 + 1/n increase to −1 from above. So sup = 3/2 (attained) and inf = −1 (not attained)."
+        }
+      ],
+      "takeaway": "To find a supremum, guess the tightest ceiling, prove it bounds the set, then prove nothing smaller does — the approximation property does the second half.",
+      "module": "The Real Number System"
+    },
+    "Convergent Sequences": {
+      "intro": "A sequence converges to L when its terms eventually stay arbitrarily close to L — the epsilon-N definition that makes 'approaches' rigorous. Everything in analysis, from continuity to integrals, is built on this one definition.",
+      "concepts": [
+        "Epsilon-N definition — a_n → L means: for every ε > 0 there is an N such that n ≥ N implies |a_n − L| < ε. The challenger picks ε; we must answer with N.",
+        "Uniqueness of limits — a convergent sequence has exactly one limit; if a_n → L and a_n → M then L = M.",
+        "Boundedness — every convergent sequence is bounded, though boundedness alone does not imply convergence.",
+        "Reading the definition — 'eventually' means all terms past some index, not just infinitely many; a_n = (−1)^n fails because it keeps leaving any small interval around either candidate.",
+        "Scratch work first — to find N, solve |a_n − L| < ε for n, then simplify the bound (often by replacing a messy denominator with a smaller one)."
+      ],
+      "example": {
+        "q": "Prove that a_n = (2n + 1)/(n + 3) converges to 2, and find an N that works for ε = 0.01.",
+        "steps": [
+          "Compute the distance to the limit: |a_n − 2| = |(2n + 1 − 2n − 6)/(n + 3)| = 5/(n + 3).",
+          "Since n + 3 > n, we have 5/(n + 3) < 5/n. So it suffices to make 5/n < ε, i.e. n > 5/ε.",
+          "Given any ε > 0, take N > 5/ε (for instance N = ⌈5/ε⌉ + 1). Then for n ≥ N, |a_n − 2| < 5/n ≤ 5/N < ε.",
+          "For ε = 0.01, N > 5/0.01 = 500 works: any N ≥ 501 guarantees |a_n − 2| < 0.01 for all later terms."
+        ],
+        "a": "a_n → 2; for ε = 0.01, any N ≥ 501 works."
+      },
+      "practice": [
+        {
+          "q": "Prove that (3n − 1)/(2n + 5) converges to 3/2.",
+          "a": "|(3n−1)/(2n+5) − 3/2| = 17/(4n + 10) < 17/(4n); given ε > 0, take N > 17/(4ε), and all later terms are within ε of 3/2."
+        },
+        {
+          "q": "Prove that n²/(n² + 1) converges to 1.",
+          "a": "|n²/(n²+1) − 1| = 1/(n²+1) < 1/n²; given ε > 0, take N > 1/√ε, and all later terms are within ε of 1."
+        }
+      ],
+      "takeaway": "Convergence is a promise: however small ε you name, the terms eventually stay within ε of L — and the proof exhibits the N that keeps it.",
+      "module": "Sequences and Series of Real Numbers"
+    },
+    "Limit Theorems for Sequences": {
+      "intro": "Once a few limits are known, the limit theorems let us combine them: sums, products, quotients, and squeezing all preserve convergence. These are the tools that turn epsilon-N proofs into routine algebra.",
+      "concepts": [
+        "Algebra of limits — if a_n → a and b_n → b, then a_n + b_n → a + b, a_n b_n → ab, and a_n/b_n → a/b (when b ≠ 0 and b_n ≠ 0 eventually).",
+        "Squeeze theorem — if a_n ≤ b_n ≤ c_n and a_n, c_n → L, then b_n → L; used whenever a direct estimate is hard.",
+        "Divide by the highest power — for rational functions of n, dividing numerator and denominator by the dominant power exposes the limit immediately.",
+        "Reciprocals and roots — if a_n → a > 0 then √a_n → √a; if a_n → ∞ then 1/a_n → 0.",
+        "Warning — the theorems need the individual limits to exist first; ∞ − ∞ and 0/0 forms must be simplified before applying them."
+      ],
+      "example": {
+        "q": "Find lim (3n² + 2n)/(n² − 1) as n → ∞.",
+        "steps": [
+          "Divide numerator and denominator by n², the highest power: the expression becomes (3 + 2/n)/(1 − 1/n²).",
+          "By the limit theorems, 2/n → 0 and 1/n² → 0, so the numerator tends to 3 and the denominator tends to 1.",
+          "The quotient theorem then gives the limit 3/1 = 3.",
+          "Sanity check: for n = 100, the value is (30000 + 200)/9999 ≈ 3.0203, already close to 3."
+        ],
+        "a": "3"
+      },
+      "practice": [
+        {
+          "q": "Find lim (n³ + 1)/(2n³ − n) as n → ∞.",
+          "a": "Divide by n³: (1 + 1/n³)/(2 − 1/n²) → 1/2."
+        },
+        {
+          "q": "Find lim (√(n² + 1) − n) as n → ∞.",
+          "a": "Multiply by the conjugate: the expression equals 1/(√(n²+1) + n) ≤ 1/(2n) → 0 by the squeeze theorem."
+        }
+      ],
+      "takeaway": "Divide by the dominant power, apply the algebra of limits term by term, and squeeze when a direct computation is awkward.",
+      "module": "Sequences and Series of Real Numbers"
+    },
+    "Monotone Sequences": {
+      "intro": "A monotone bounded sequence always converges — this is completeness in sequence form, and it is how analysis proves that limits like e actually exist. Monotonicity plus a bound is a convergence guarantee with no epsilon work needed.",
+      "concepts": [
+        "Monotone convergence theorem — every increasing sequence bounded above converges to its supremum; every decreasing sequence bounded below converges to its infimum.",
+        "Why it needs completeness — the limit is the supremum of the terms, which exists only because R is complete; in Q the theorem fails.",
+        "Typical proof pattern — show the sequence is monotone (compare a_{n+1} with a_n, often by induction) and bounded, then find the limit by passing to the limit in a recurrence.",
+        "Recursive sequences — a_{n+1} = f(a_n) with f continuous: if the sequence converges, its limit L satisfies L = f(L), which often determines L exactly.",
+        "Classic example — (1 + 1/n)^n is increasing and bounded above (by 3), so it converges; its limit is the number e."
+      ],
+      "example": {
+        "q": "Let a₁ = 1 and a_{n+1} = √(2 + a_n). Show the sequence converges and find its limit.",
+        "steps": [
+          "Show by induction that a_n is increasing and bounded above by 2: a₁ = 1 < √3 = a₂ < 2, and if a_n < a_{n+1} < 2 then a_{n+1} = √(2 + a_n) < √(2 + a_{n+1}) = a_{n+2} < √(2 + 2) = 2.",
+          "By the monotone convergence theorem, a_n converges to some L ≤ 2, and L is the supremum of the terms.",
+          "Pass to the limit in the recurrence: L = √(2 + L), so L² = 2 + L, i.e. L² − L − 2 = 0, giving L = 2 or L = −1.",
+          "Since all terms are positive, L ≥ 0, so L = 2."
+        ],
+        "a": "The sequence increases to 2."
+      },
+      "practice": [
+        {
+          "q": "Show that a_n = 1 + 1/2 + 1/4 + ⋯ + 1/2^n converges and find its limit.",
+          "a": "The partial sums increase and are bounded above by 2, since the sum equals 2 − 1/2^n; the limit is 2."
+        },
+        {
+          "q": "Show that a_n = n/(n + 1) converges and find its limit.",
+          "a": "a_{n+1} − a_n = 1/((n+1)(n+2)) > 0, so the sequence increases; it is bounded above by 1, and a_n = 1 − 1/(n+1) → 1."
+        }
+      ],
+      "takeaway": "Monotone plus bounded means convergent — and the limit is the supremum (or infimum) of the terms, found by passing to the limit in the recurrence.",
+      "module": "Sequences and Series of Real Numbers"
+    },
+    "Cauchy Sequences": {
+      "intro": "A Cauchy sequence is one whose terms eventually bunch together, with no mention of a limit. In R, Cauchy and convergent are the same thing — this is completeness again, in its most useful form, because it lets us prove convergence without knowing the limit in advance.",
+      "concepts": [
+        "Definition — (a_n) is Cauchy if for every ε > 0 there is N such that m, n ≥ N implies |a_m − a_n| < ε: far-out terms are close to each other.",
+        "Cauchy implies bounded — a Cauchy sequence is bounded, since all but finitely many terms lie within distance 1 of a_{N}.",
+        "Cauchy implies convergent in R — every Cauchy sequence of reals converges to a real limit; this is the completeness axiom in sequence form.",
+        "Why Q fails — the decimal approximations 1, 1.4, 1.41, 1.414, … of √2 form a Cauchy sequence in Q with no limit in Q.",
+        "Using Cauchy — to show a series converges, show its partial sums are Cauchy; this is how the convergence of Σ 1/n² is proved without knowing its sum."
+      ],
+      "example": {
+        "q": "Prove that a_n = 1/n is a Cauchy sequence.",
+        "steps": [
+          "Let ε > 0 be given. We need N such that m, n ≥ N implies |1/m − 1/n| < ε.",
+          "By the triangle inequality, |1/m − 1/n| ≤ 1/m + 1/n ≤ 2/min(m, n).",
+          "Choose N > 2/ε. Then for m, n ≥ N, we have |1/m − 1/n| ≤ 2/N < ε.",
+          "So the sequence is Cauchy — and indeed it converges to 0, as the completeness of R guarantees."
+        ],
+        "a": "a_n = 1/n is Cauchy (it converges to 0)."
+      },
+      "practice": [
+        {
+          "q": "Show that a_n = (n + 1)/n is Cauchy.",
+          "a": "a_n = 1 + 1/n, so |a_m − a_n| = |1/m − 1/n| ≤ 2/min(m, n); choose N > 2/ε as above. It converges to 1."
+        },
+        {
+          "q": "Show that a_n = (−1)^n is NOT Cauchy.",
+          "a": "For any m, n of opposite parity, |a_m − a_n| = 2. Taking ε = 1, no N works, since consecutive terms always differ by 2."
+        }
+      ],
+      "takeaway": "Cauchy means the terms cluster together on their own — in R that is enough to guarantee a limit exists, even before you know what it is.",
+      "module": "Sequences and Series of Real Numbers"
+    },
+    "Subsequences": {
+      "intro": "A subsequence picks out infinitely many terms in order, like every other term or every tenth. Subsequences are the microscope of analysis: a sequence converges exactly when all its subsequences share one limit, so a single pair of disagreeing subsequences proves divergence.",
+      "concepts": [
+        "Definition — a subsequence is a_{n_k} where n_1 < n_2 < ⋯ is a strictly increasing sequence of indices.",
+        "Subsequences inherit limits — if a_n → L then every subsequence a_{n_k} → L as well.",
+        "Divergence test — if two subsequences converge to different limits, the original sequence diverges; this is the standard way to prove divergence.",
+        "Bolzano–Weierstrass preview — every bounded sequence has a convergent subsequence, so bounded sequences always contain a convergent 'thread'.",
+        "Subsequence vs subset — order matters: a subsequence keeps the original order and is infinite; a finite selection of terms tells you nothing about the limit."
+      ],
+      "example": {
+        "q": "Show that a_n = (−1)^n diverges, using subsequences.",
+        "steps": [
+          "The even subsequence a_{2k} = (−1)^{2k} = 1 for every k, so it converges to 1.",
+          "The odd subsequence a_{2k+1} = (−1)^{2k+1} = −1 for every k, so it converges to −1.",
+          "If the whole sequence converged to some L, both subsequences would have to converge to that same L.",
+          "But 1 ≠ −1, so no such L exists: the sequence diverges."
+        ],
+        "a": "a_n diverges: its even subsequence tends to 1 and its odd subsequence to −1."
+      },
+      "practice": [
+        {
+          "q": "Show that a_n = sin(nπ/2) diverges.",
+          "a": "The subsequence at n = 4k is sin(2kπ) = 0 → 0, while at n = 4k + 1 it is sin(2kπ + π/2) = 1 → 1. Two subsequences, two limits, so the sequence diverges."
+        },
+        {
+          "q": "If a_n → 0, what is the limit of the subsequence a_{2n} = 1/(2n) when a_n = 1/n?",
+          "a": "0 — every subsequence of a convergent sequence converges to the same limit, and 1/(2n) → 0."
+        }
+      ],
+      "takeaway": "One limit for every subsequence means convergence; two different subsequence limits means divergence — subsequences are the cleanest divergence test there is.",
+      "module": "Sequences and Series of Real Numbers"
+    },
+    "Series and Convergence Tests": {
+      "intro": "A series is the limit of its partial sums, and deciding convergence is the central computational problem of analysis. A small toolkit — the divergence test, geometric series, p-series, comparison, ratio and root tests — settles nearly every series a course throws at you.",
+      "concepts": [
+        "Definition — Σ a_n converges when the partial sums s_N = a_1 + ⋯ + a_N converge; the sum is the limit of the partial sums.",
+        "Divergence test — if a_n does not tend to 0, Σ a_n diverges; but a_n → 0 is necessary, not sufficient (the harmonic series diverges).",
+        "Geometric series — Σ_{n=0}^∞ r^n converges to 1/(1 − r) when |r| < 1 and diverges otherwise; it is the benchmark for the comparison tests.",
+        "p-series — Σ 1/n^p converges exactly when p > 1; p = 1 is the harmonic series, which diverges (slowly).",
+        "Ratio and root tests — if lim |a_{n+1}/a_n| < 1 (or lim |a_n|^{1/n} < 1) the series converges absolutely; if the limit exceeds 1 it diverges; a limit of 1 is inconclusive.",
+        "Absolute convergence — if Σ |a_n| converges then Σ a_n converges; absolutely convergent series can be rearranged freely, conditionally convergent ones cannot."
+      ],
+      "example": {
+        "q": "Determine whether Σ_{n=1}^∞ n/2^n converges, and evaluate Σ_{n=1}^∞ (1/2)^n.",
+        "steps": [
+          "For Σ n/2^n, apply the ratio test: |a_{n+1}/a_n| = ((n+1)/2^{n+1}) · (2^n/n) = (n+1)/(2n) = (1 + 1/n)/2 → 1/2.",
+          "Since 1/2 < 1, the ratio test says Σ n/2^n converges absolutely.",
+          "For the geometric series Σ_{n=1}^∞ (1/2)^n, the first term is 1/2 and the ratio is 1/2, so the sum is (1/2)/(1 − 1/2) = 1.",
+          "Check: partial sums are 1/2, 3/4, 7/8, 15/16, … approaching 1, as expected."
+        ],
+        "a": "Σ n/2^n converges (ratio → 1/2); Σ_{n=1}^∞ (1/2)^n = 1."
+      },
+      "practice": [
+        {
+          "q": "Does Σ_{n=1}^∞ 1/n² converge? Does Σ_{n=1}^∞ 1/n converge?",
+          "a": "Σ 1/n² converges by the p-series test (p = 2 > 1). Σ 1/n, the harmonic series, diverges (p = 1); grouping terms shows the partial sums exceed 1 + k/2 after 2^k terms."
+        },
+        {
+          "q": "Does Σ_{n=1}^∞ n/(n+1) converge?",
+          "a": "No — the terms tend to 1, not 0, so the series diverges by the divergence test."
+        }
+      ],
+      "takeaway": "First check the terms go to 0; then reach for geometric, p-series, comparison, or ratio/root tests — and remember that a_n → 0 alone never proves convergence.",
+      "module": "Sequences and Series of Real Numbers"
+    },
+    "Open and Closed Sets": {
+      "intro": "Topology studies sets through their neighborhoods: a set is open when every point has breathing room inside it, closed when it contains all its limit points. On the real line these two notions are the language in which continuity and compactness are written.",
+      "concepts": [
+        "Open set — U is open if for every x in U there is δ > 0 with (x − δ, x + δ) ⊆ U; every point is an interior point.",
+        "Closed set — F is closed if its complement is open, equivalently if F contains every limit point of every sequence in F.",
+        "Intervals — (a, b) is open, [a, b] is closed, (a, b] is neither, and R and the empty set are both open and closed.",
+        "Unions and intersections — any union of open sets is open, and any finite intersection of open sets is open; dually, any intersection of closed sets is closed and any finite union of closed sets is closed.",
+        "Limit points — x is a limit point of S if every neighborhood of x contains a point of S other than x; 0 is a limit point of {1/n}, and of (0, 1]."
+      ],
+      "example": {
+        "q": "Prove that the interval (0, 1) is open and that [0, 1] is closed.",
+        "steps": [
+          "Take any x in (0, 1). Let δ = min(x, 1 − x), which is positive since 0 < x < 1.",
+          "Then (x − δ, x + δ) ⊆ (0, 1): the left end x − δ ≥ x − x = 0 and the right end x + δ ≤ x + (1 − x) = 1. So every point of (0, 1) is interior, and (0, 1) is open.",
+          "The complement of [0, 1] is (−∞, 0) ∪ (1, ∞), a union of two open intervals, hence open.",
+          "A set whose complement is open is closed, so [0, 1] is closed. Equivalently, any sequence in [0, 1] converging in R has its limit in [0, 1]."
+        ],
+        "a": "(0, 1) is open; [0, 1] is closed."
+      },
+      "practice": [
+        {
+          "q": "Is (0, 1] open, closed, both, or neither? Explain.",
+          "a": "Neither. It is not open because no neighborhood of 1 fits inside it; it is not closed because 0 is a limit point (1/n → 0) that lies outside it."
+        },
+        {
+          "q": "Is the set {1/n : n ∈ N} ∪ {0} closed? Is {1/n : n ∈ N} alone closed?",
+          "a": "{1/n} ∪ {0} is closed: its only limit point is 0, which is included. {1/n} alone is not closed, since 0 is a limit point outside the set."
+        }
+      ],
+      "takeaway": "Open means room to breathe at every point; closed means no limit point escapes — and a set can be one, both, or neither.",
+      "module": "Topology of the Real Line"
+    },
+    "Compact Sets": {
+      "intro": "Compactness is the property that makes the real line behave like a finite set: every open cover has a finite subcover, and every sequence has a convergent subsequence inside the set. It is the hypothesis behind the extreme value theorem and uniform continuity.",
+      "concepts": [
+        "Open cover definition — K is compact if every collection of open sets covering K has a finite subcollection that still covers K.",
+        "Sequential compactness — in R, K is compact exactly when every sequence in K has a subsequence converging to a point of K.",
+        "Heine–Borel — in R, compact is the same as closed and bounded; this is the practical test we actually use.",
+        "Why (0, 1) fails — the cover by (1/n, 1) for n = 1, 2, … has no finite subcover, since any finite subcollection misses points near 0.",
+        "Compactness is preserved — continuous images of compact sets are compact, and closed subsets of compact sets are compact."
+      ],
+      "example": {
+        "q": "Show that (0, 1) is not compact, using the open cover U_n = (1/n, 1).",
+        "steps": [
+          "The sets U_n = (1/n, 1) are open, and their union is (0, 1): every x in (0, 1) lies in U_n for any n > 1/x.",
+          "Suppose finitely many of them, U_{n_1}, …, U_{n_k}, covered (0, 1). Let N be the largest of the chosen indices.",
+          "Then the union of the chosen sets is just U_N = (1/N, 1), since the U_n are nested and increasing with n.",
+          "But the point 1/(2N) lies in (0, 1) and is not in (1/N, 1), so the finite subcollection fails to cover (0, 1). No finite subcover exists, so (0, 1) is not compact."
+        ],
+        "a": "(0, 1) is not compact: the cover (1/n, 1) has no finite subcover."
+      },
+      "practice": [
+        {
+          "q": "Is [−3, 7] compact? Is (0, ∞) compact? Explain.",
+          "a": "[−3, 7] is closed and bounded, hence compact by Heine–Borel. (0, ∞) is neither closed nor bounded, so it is not compact."
+        },
+        {
+          "q": "Is the set {1/n : n ∈ N} ∪ {0} compact?",
+          "a": "Yes: it is bounded (inside [0, 1]) and closed (its only limit point, 0, is included), so Heine–Borel applies."
+        }
+      ],
+      "takeaway": "Compact means every cover thins to a finite one — on the line, that is exactly closed and bounded, and it is what lets maxima be attained.",
+      "module": "Topology of the Real Line"
+    },
+    "Connected Sets": {
+      "intro": "A set is connected when it cannot be split into two separated pieces — intuitively, it is all one piece. On the real line the connected sets are exactly the intervals, and connectedness is what makes the intermediate value theorem true.",
+      "concepts": [
+        "Definition — S is disconnected if S = A ∪ B where A and B are nonempty, disjoint, and separated (each disjoint from the other's closure); otherwise S is connected.",
+        "Intervals are connected — every interval (open, closed, half-open, infinite) is connected, and these are the only connected subsets of R.",
+        "Why Q is disconnected — Q splits as (Q ∩ (−∞, √2)) ∪ (Q ∩ (√2, ∞)): two nonempty disjoint relatively open pieces, separated by the irrational gap at √2.",
+        "Continuous images — the continuous image of a connected set is connected; this is the engine of the intermediate value theorem.",
+        "Connected vs compact — the two notions are independent: (0, 1) is connected but not compact, while [0, 1] ∪ [2, 3] is compact but not connected."
+      ],
+      "example": {
+        "q": "Show that (0, 1) ∪ (2, 3) is disconnected.",
+        "steps": [
+          "Write the set as A ∪ B with A = (0, 1) and B = (2, 3). Both are nonempty and disjoint.",
+          "Each is open in the whole set: A is the intersection of the set with the open set (0, 1), and B with (2, 3).",
+          "Neither piece meets the other's closure: the closure of A is [0, 1], which misses B, and the closure of B is [2, 3], which misses A.",
+          "So the set splits into two separated nonempty pieces — it is disconnected, as the visible gap between 1 and 2 suggests."
+        ],
+        "a": "(0, 1) ∪ (2, 3) is disconnected, split at the gap between 1 and 2."
+      },
+      "practice": [
+        {
+          "q": "Show that Q is disconnected.",
+          "a": "Q = (Q ∩ (−∞, √2)) ∪ (Q ∩ (√2, ∞)): both pieces are nonempty (1 and 2 lie in them), disjoint, and relatively open in Q, so Q splits into two separated pieces."
+        },
+        {
+          "q": "Is the singleton {5} connected? Is the empty set connected?",
+          "a": "Yes to both: a singleton cannot be split into two nonempty pieces, and the empty set is connected vacuously (it has no separation)."
+        }
+      ],
+      "takeaway": "Connected means one piece with no gap: on the line, the connected sets are exactly the intervals — and that fact is the intermediate value theorem in disguise.",
+      "module": "Topology of the Real Line"
+    },
+    "Heine-Borel Theorem": {
+      "intro": "The Heine–Borel theorem is the great simplification of one-dimensional topology: a subset of R is compact exactly when it is closed and bounded. It turns the hard covering definition of compactness into a two-second check.",
+      "concepts": [
+        "Statement — K ⊆ R is compact if and only if K is closed and bounded.",
+        "One direction is easy — compact sets are always closed and bounded (a compact set cannot escape to infinity, and limit points cannot leak out).",
+        "The hard direction — a closed bounded set sits inside some [−M, M], and a nested-interval argument shows every open cover of [−M, M] has a finite subcover.",
+        "Why it matters — to prove a set is compact, just check closed and bounded; the extreme value theorem and uniform continuity then apply for free.",
+        "Beyond R — Heine–Borel holds in R^n but fails in infinite-dimensional spaces, where closed bounded sets need not be compact."
+      ],
+      "example": {
+        "q": "Use Heine–Borel to decide whether these sets are compact: [−2, 5], (0, 1], {x : x² ≤ 4}, [0, ∞).",
+        "steps": [
+          "[−2, 5] is closed (it contains its endpoints) and bounded (inside [−2, 5]), so it is compact.",
+          "(0, 1] is bounded but not closed — 0 is a limit point outside the set — so it is not compact.",
+          "{x : x² ≤ 4} is the interval [−2, 2], closed and bounded, hence compact.",
+          "[0, ∞) is closed but unbounded, so it is not compact."
+        ],
+        "a": "Compact: [−2, 5] and {x : x² ≤ 4} = [−2, 2]. Not compact: (0, 1] and [0, ∞)."
+      },
+      "practice": [
+        {
+          "q": "Is the finite set {1, 2, 3} compact? Is the set of all integers Z compact?",
+          "a": "{1, 2, 3} is closed (finite sets contain all their limit points — they have none) and bounded, so it is compact. Z is closed but unbounded, so it is not compact."
+        },
+        {
+          "q": "Is [0, 1] ∪ [2, 3] compact? Is it connected?",
+          "a": "Yes, compact: it is a finite union of closed bounded sets. No, not connected: it splits into the two separated pieces [0, 1] and [2, 3]."
+        }
+      ],
+      "takeaway": "In R, compact = closed + bounded — the theorem that turns an abstract covering property into a routine two-part check.",
+      "module": "Topology of the Real Line"
+    },
+    "Bolzano-Weierstrass Theorem": {
+      "intro": "Every bounded sequence of reals has a convergent subsequence — the Bolzano–Weierstrass theorem. It is the reason bounded sequences always contain a convergent thread, and it is the engine behind the extreme value theorem and the sequential form of compactness.",
+      "concepts": [
+        "Statement — every bounded sequence in R has a subsequence that converges to a real limit.",
+        "Proof idea — repeatedly halve a bounding interval: at each step one half contains infinitely many terms; the nested intervals shrink to a point, and picking one term from each gives a convergent subsequence.",
+        "Peak argument — an alternative proof: a 'peak' is a term larger than all later terms; if there are infinitely many peaks they form a decreasing subsequence, and otherwise the sequence eventually climbs, giving an increasing subsequence.",
+        "Consequence — a set is (sequentially) compact exactly when every sequence in it has a subsequence converging inside it; combined with Heine–Borel this closes the circle.",
+        "Failure without boundedness — the sequence 1, 2, 3, … has no convergent subsequence, because any subsequence is still unbounded."
+      ],
+      "example": {
+        "q": "Find a convergent subsequence of a_n = (−1)^n + 1/n, and state its limit.",
+        "steps": [
+          "The sequence is bounded: |(−1)^n + 1/n| ≤ 2 for all n, so Bolzano–Weierstrass guarantees a convergent subsequence.",
+          "Take the even terms: a_{2k} = 1 + 1/(2k), which converges to 1 as k → ∞.",
+          "Take the odd terms: a_{2k+1} = −1 + 1/(2k+1), which converges to −1.",
+          "So the sequence has (at least) two convergent subsequences, with limits 1 and −1 — which is also why the full sequence diverges."
+        ],
+        "a": "The even subsequence converges to 1 and the odd subsequence to −1."
+      },
+      "practice": [
+        {
+          "q": "The sequence a_n = sin n is bounded. What does Bolzano–Weierstrass say about it?",
+          "a": "It has a convergent subsequence: some subsequence sin(n_k) converges to a limit in [−1, 1]. (The theorem guarantees existence, not the value.)"
+        },
+        {
+          "q": "Does the unbounded sequence a_n = n have a convergent subsequence?",
+          "a": "No — every subsequence of (n) is unbounded, hence divergent. Boundedness is essential in Bolzano–Weierstrass."
+        }
+      ],
+      "takeaway": "Bounded sequences always hide a convergent subsequence — halve the interval again and again, and the nested intervals squeeze out a limit.",
+      "module": "Topology of the Real Line"
+    },
+    "Limits of Functions": {
+      "intro": "The epsilon-delta definition turns 'f(x) approaches L as x approaches a' into a precise challenge-response game. It is the rigorous version of the sequence limit, and it is the foundation of continuity, derivatives, and integrals.",
+      "concepts": [
+        "Epsilon-delta definition — lim_{x→a} f(x) = L means: for every ε > 0 there is δ > 0 such that 0 < |x − a| < δ implies |f(x) − L| < ε.",
+        "The point itself doesn't count — the condition 0 < |x − a| excludes x = a, so the limit depends only on nearby values, never on f(a).",
+        "One-sided limits — the left-hand and right-hand limits must agree for the two-sided limit to exist; a jump discontinuity is exactly a mismatch.",
+        "Sequential characterization — lim_{x→a} f(x) = L exactly when f(x_n) → L for every sequence x_n → a with x_n ≠ a.",
+        "Strategy — to find δ, bound |f(x) − L| by a constant times |x − a| (first restricting x to a small neighborhood to control the constant), then set δ = ε/constant."
+      ],
+      "example": {
+        "q": "Prove with epsilon-delta that lim_{x→2} (x² − 4)/(x − 2) = 4.",
+        "steps": [
+          "For x ≠ 2, simplify: (x² − 4)/(x − 2) = (x − 2)(x + 2)/(x − 2) = x + 2. So |f(x) − 4| = |x + 2 − 4| = |x − 2|.",
+          "Given ε > 0, choose δ = ε. Then 0 < |x − 2| < δ implies |f(x) − 4| = |x − 2| < ε.",
+          "That is exactly the epsilon-delta requirement, so the limit is 4 — even though f(2) is undefined.",
+          "Note the cancellation is legal because the definition never evaluates at x = 2."
+        ],
+        "a": "The limit is 4, with δ = ε."
+      },
+      "practice": [
+        {
+          "q": "Prove with epsilon-delta that lim_{x→3} (2x + 1) = 7.",
+          "a": "|(2x + 1) − 7| = 2|x − 3|; given ε > 0, take δ = ε/2, and then |x − 3| < δ gives |f(x) − 7| < ε."
+        },
+        {
+          "q": "Evaluate lim_{x→0} x · sin(1/x) and justify it.",
+          "a": "The limit is 0 by the squeeze theorem: |x · sin(1/x)| ≤ |x| → 0, since |sin(1/x)| ≤ 1."
+        }
+      ],
+      "takeaway": "Epsilon-delta is a game: given any ε, produce a δ that keeps f(x) within ε of L — and factoring or bounding usually reveals the δ.",
+      "module": "Limits and Continuity of Functions"
+    },
+    "Continuous Functions": {
+      "intro": "A function is continuous at a point when its limit there equals its value — no jump, no hole, no blow-up. Continuity is the regularity that makes the big theorems (intermediate value, extreme value) work, and most functions you meet are continuous wherever they are defined.",
+      "concepts": [
+        "Definition — f is continuous at a if lim_{x→a} f(x) = f(a); equivalently, for every ε > 0 there is δ > 0 with |x − a| < δ implying |f(x) − f(a)| < ε.",
+        "Continuity on a set — f is continuous on an interval if it is continuous at every point of the interval (with one-sided limits at endpoints).",
+        "Sequential test — f is continuous at a exactly when x_n → a implies f(x_n) → f(a), for every sequence x_n.",
+        "Removable vs jump vs essential — a discontinuity is removable if the limit exists but differs from (or the function lacks) the value; a jump has different one-sided limits; anything wilder is essential.",
+        "Polynomials and friends — polynomials, rational functions (away from zeros of the denominator), sin, cos, exp, and log are continuous on their domains."
+      ],
+      "example": {
+        "q": "Prove that f(x) = x² is continuous at x = 2, using epsilon-delta.",
+        "steps": [
+          "We need: given ε > 0, find δ > 0 such that |x − 2| < δ implies |x² − 4| < ε.",
+          "Factor: |x² − 4| = |x − 2| · |x + 2|. The factor |x + 2| must be controlled, so first require |x − 2| < 1, which forces 1 < x < 3 and hence |x + 2| < 5.",
+          "Then |x² − 4| < 5|x − 2|. Choose δ = min(1, ε/5): if |x − 2| < δ then |x² − 4| < 5 · (ε/5) = ε.",
+          "So f is continuous at 2 — and the same argument works at any point."
+        ],
+        "a": "f(x) = x² is continuous at 2, with δ = min(1, ε/5)."
+      },
+      "practice": [
+        {
+          "q": "Show that f(x) = √x is continuous at 0 (from the right).",
+          "a": "For x ≥ 0, |√x − 0| = √x < ε exactly when x < ε², so δ = ε² works."
+        },
+        {
+          "q": "Where is f(x) = 1/x discontinuous, and of what type?",
+          "a": "At x = 0, where f is undefined and |f(x)| → ∞ on both sides: an essential (infinite) discontinuity. It is continuous at every x ≠ 0."
+        }
+      ],
+      "takeaway": "Continuous at a point means limit equals value — and the epsilon-delta proof usually just needs factoring plus a first step that bounds the extra factor.",
+      "module": "Limits and Continuity of Functions"
+    },
+    "Properties of Continuous Functions": {
+      "intro": "Continuity is preserved by the operations you actually use: sums, products, quotients, and composition of continuous functions stay continuous. This is why you can declare a complicated formula continuous at a glance, once its pieces are.",
+      "concepts": [
+        "Algebra — if f and g are continuous at a, so are f + g, f − g, f · g, and f/g (when g(a) ≠ 0).",
+        "Composition — if g is continuous at a and f is continuous at g(a), then f ∘ g is continuous at a.",
+        "Building blocks — constants, the identity, and hence all polynomials are continuous everywhere; sin, cos, and exp are continuous everywhere.",
+        "Consequences — a continuous function on a closed bounded interval is bounded and attains its max and min (extreme value theorem); the sum of two continuous functions inherits every regularity the pieces share.",
+        "Watch the domain — 1/x is continuous on its domain R ∖ {0}; 'continuous' always means continuous at every point where the function is defined."
+      ],
+      "example": {
+        "q": "Show that f(x) = x³ − 2x + 1 is continuous on all of R.",
+        "steps": [
+          "The identity function x ↦ x is continuous everywhere, and the constant function x ↦ 1 is continuous everywhere.",
+          "By the product rule for continuous functions, x³ = x · x · x is continuous everywhere, and 2x is continuous everywhere.",
+          "By the sum and difference rules, x³ − 2x + 1 is continuous everywhere.",
+          "Hence f is continuous on R — no epsilon-delta work needed beyond the building blocks and the algebra theorems."
+        ],
+        "a": "f is continuous on R, as a sum and product of continuous pieces."
+      },
+      "practice": [
+        {
+          "q": "Show that g(x) = sin(x²) is continuous on R.",
+          "a": "x² is continuous (a polynomial) and sin is continuous everywhere, so their composition sin(x²) is continuous by the composition theorem."
+        },
+        {
+          "q": "Show that h(x) = |x − 3|/(x² + 1) is continuous on R.",
+          "a": "|x − 3| and x² + 1 are continuous everywhere, and x² + 1 ≥ 1 never vanishes, so the quotient is continuous on R."
+        }
+      ],
+      "takeaway": "Continuity composes: build from continuous blocks with +, −, ×, ÷, and ∘, and the result is continuous wherever it is defined.",
+      "module": "Limits and Continuity of Functions"
+    },
+    "Uniform Continuity": {
+      "intro": "Ordinary continuity lets δ depend on the point; uniform continuity demands one δ that works everywhere in the domain. It is the stronger regularity that continuous functions on compact intervals always enjoy — and that x² on the whole line lacks.",
+      "concepts": [
+        "Definition — f is uniformly continuous on D if for every ε > 0 there is δ > 0 such that |x − y| < δ (with x, y in D) implies |f(x) − f(y)| < ε. The δ may depend on ε but not on the location.",
+        "Uniform implies continuous — uniform continuity at every point follows immediately, but the converse fails in general.",
+        "Heine–Cantor theorem — every continuous function on a compact (closed and bounded) interval is uniformly continuous there.",
+        "Why x² fails on R — points n and n + 1/n get arbitrarily close while their squares stay about 2 apart, so no single δ works for ε = 1.",
+        "Lipschitz implies uniform — if |f(x) − f(y)| ≤ K|x − y| for all x, y, then δ = ε/K works everywhere; this covers x² on [0, 1] with K = 2."
+      ],
+      "example": {
+        "q": "Show that f(x) = x² is uniformly continuous on [0, 1] but NOT uniformly continuous on R.",
+        "steps": [
+          "On [0, 1]: |x² − y²| = |x − y| · |x + y| ≤ 2|x − y|, since x + y ≤ 2. Given ε > 0, take δ = ε/2; then |x − y| < δ gives |f(x) − f(y)| < ε. So f is uniformly continuous on [0, 1].",
+          "On R, take ε = 1 and suppose some δ > 0 worked. Choose n > 1/δ, and set x = n, y = n + 1/n.",
+          "Then |x − y| = 1/n < δ, but |x² − y²| = (n + 1/n)² − n² = 2 + 1/n² > 2 > 1 = ε.",
+          "So no δ works for ε = 1: f is not uniformly continuous on R. The slope grows without bound, so a fixed δ cannot control the outputs."
+        ],
+        "a": "Uniformly continuous on [0, 1] (δ = ε/2); not uniformly continuous on R."
+      },
+      "practice": [
+        {
+          "q": "Show that f(x) = √x is uniformly continuous on [0, ∞).",
+          "a": "For x > y ≥ 0, |√x − √y| = (x − y)/(√x + √y) ≤ √(x − y): since √x + √y ≥ √(x − y). So δ = ε² works: |x − y| < ε² gives |√x − √y| < ε."
+        },
+        {
+          "q": "Show that f(x) = 1/x is not uniformly continuous on (0, 1].",
+          "a": "Take x = 1/n and y = 1/(2n): |x − y| = 1/(2n) → 0, but |f(x) − f(y)| = |n − 2n| = n → ∞, so no single δ works for ε = 1."
+        }
+      ],
+      "takeaway": "Uniform continuity is one δ for the whole domain — compact intervals always give it, but functions whose slope blows up, like x² on R, do not.",
+      "module": "Limits and Continuity of Functions"
+    },
+    "Intermediate Value Theorem (Rigorous Proof)": {
+      "intro": "A continuous function cannot jump over values: if it goes from below to above, it must pass through everything in between. The intermediate value theorem is completeness wearing a function's clothes, and its proof — by bisection and the supremum — is a model of analysis reasoning.",
+      "concepts": [
+        "Statement — if f is continuous on [a, b] and f(a) < 0 < f(b) (or the reverse), then there is c in (a, b) with f(c) = 0; more generally f takes every value between f(a) and f(b).",
+        "Supremum proof — let S = {x in [a, b] : f(x) < 0}; its supremum c exists by completeness, and continuity forces f(c) = 0 (if f(c) < 0 the set extends past c; if f(c) > 0 the supremum could be smaller).",
+        "Bisection proof — repeatedly halve the interval, keeping the half whose endpoints straddle 0; nested intervals converge to a point c, and continuity gives f(c) = 0.",
+        "Why continuity is essential — a jump function can skip values entirely; the theorem fails the moment continuity is dropped.",
+        "Uses — proving equations have solutions, locating roots numerically (bisection), and showing continuous images of intervals are intervals."
+      ],
+      "example": {
+        "q": "Prove that the equation x³ − x − 1 = 0 has a solution in the interval (1, 2).",
+        "steps": [
+          "Let f(x) = x³ − x − 1. It is a polynomial, hence continuous on all of R, in particular on [1, 2].",
+          "Evaluate the endpoints: f(1) = 1 − 1 − 1 = −1 < 0, and f(2) = 8 − 2 − 1 = 5 > 0.",
+          "By the intermediate value theorem, since f is continuous on [1, 2] and changes sign, there is c in (1, 2) with f(c) = 0.",
+          "So c is a root of x³ − x − 1 = 0 lying between 1 and 2 (numerically c ≈ 1.3247)."
+        ],
+        "a": "A root exists in (1, 2): f(1) = −1 < 0 < 5 = f(2)."
+      },
+      "practice": [
+        {
+          "q": "Show that x⁵ − 3x + 1 = 0 has a root in (0, 1).",
+          "a": "f(x) = x⁵ − 3x + 1 is continuous; f(0) = 1 > 0 and f(1) = 1 − 3 + 1 = −1 < 0, so the IVT gives a root in (0, 1)."
+        },
+        {
+          "q": "Show that cos x = x has a solution in (0, π/2).",
+          "a": "Let g(x) = cos x − x, continuous on [0, π/2]. g(0) = 1 > 0 and g(π/2) = 0 − π/2 < 0, so the IVT gives c in (0, π/2) with cos c = c."
+        }
+      ],
+      "takeaway": "Continuous functions take every intermediate value — to prove an equation has a solution, find a sign change and let the IVT do the work.",
+      "module": "Limits and Continuity of Functions"
+    },
+    "The Derivative": {
+      "intro": "The derivative is the limit of the difference quotient — the instantaneous rate of change, and the slope of the tangent line. Differentiability is stronger than continuity, and its definition as a limit is what makes the rules of differentiation theorems rather than recipes.",
+      "concepts": [
+        "Definition — f'(a) = lim_{h→0} (f(a + h) − f(a))/h, when this limit exists; then f is differentiable at a.",
+        "Differentiable implies continuous — if the difference quotient has a limit, then f(a + h) → f(a), so differentiability is strictly stronger than continuity.",
+        "Rules — the sum, product, quotient, and chain rules are all proved by passing to the limit in the difference quotient.",
+        "Non-differentiable examples — |x| at 0 (left and right quotients disagree: −1 vs 1) and x^{1/3} at 0 (the quotient blows up) show continuity does not imply differentiability.",
+        "Geometric meaning — f'(a) is the slope of the tangent line y = f(a) + f'(a)(x − a), the best linear approximation to f near a."
+      ],
+      "example": {
+        "q": "Compute f'(3) for f(x) = x² directly from the limit definition.",
+        "steps": [
+          "Form the difference quotient at a = 3: (f(3 + h) − f(3))/h = ((3 + h)² − 9)/h.",
+          "Expand: (9 + 6h + h² − 9)/h = (6h + h²)/h = 6 + h, for h ≠ 0.",
+          "Take the limit as h → 0: 6 + h → 6. So f'(3) = 6.",
+          "This agrees with the power rule f'(x) = 2x, which gives f'(3) = 6 — but here we proved it from the definition."
+        ],
+        "a": "f'(3) = 6"
+      },
+      "practice": [
+        {
+          "q": "Compute f'(2) for f(x) = x³ directly from the limit definition.",
+          "a": "((2+h)³ − 8)/h = (12h + 6h² + h³)/h = 12 + 6h + h² → 12, so f'(2) = 12."
+        },
+        {
+          "q": "Compute f'(2) for f(x) = 1/x directly from the limit definition.",
+          "a": "(1/(2+h) − 1/2)/h = (−h/(2(2+h)))/h = −1/(2(2+h)) → −1/4, so f'(2) = −1/4."
+        }
+      ],
+      "takeaway": "The derivative is a limit of difference quotients — differentiability implies continuity, and the familiar rules are theorems proved from this definition.",
+      "module": "Differentiation"
+    },
+    "Mean Value Theorem (Rigorous Proof)": {
+      "intro": "The mean value theorem says a differentiable function on [a, b] has some point where the instantaneous rate equals the average rate over the interval. It is the bridge from local derivative information to global behavior — and the proof runs through Rolle's theorem and the extreme value theorem.",
+      "concepts": [
+        "Rolle's theorem — if f is continuous on [a, b], differentiable on (a, b), and f(a) = f(b), then some c in (a, b) has f'(c) = 0; the proof finds an interior max or min and uses Fermat's theorem.",
+        "Fermat's theorem — if f has a local extremum at an interior point c and f'(c) exists, then f'(c) = 0.",
+        "Mean value theorem — under the same hypotheses, some c in (a, b) satisfies f'(c) = (f(b) − f(a))/(b − a); proved by applying Rolle to g(x) = f(x) − ((f(b) − f(a))/(b − a)) · x.",
+        "Consequences — if f' = 0 on an interval then f is constant; if f' > 0 then f is increasing; the MVT gives error bounds like |sin x − sin y| ≤ |x − y|.",
+        "Why the hypotheses matter — continuity on the closed interval (for the extreme value theorem) and differentiability on the open interval are both used; |x| on [−1, 1] shows the conclusion can fail without differentiability."
+      ],
+      "example": {
+        "q": "Verify the mean value theorem for f(x) = x³ on [0, 2] and find the point c it guarantees.",
+        "steps": [
+          "f(x) = x³ is continuous on [0, 2] and differentiable on (0, 2), so the MVT applies.",
+          "The average rate of change is (f(2) − f(0))/(2 − 0) = (8 − 0)/2 = 4.",
+          "The MVT promises c in (0, 2) with f'(c) = 4. Since f'(x) = 3x², solve 3c² = 4, giving c = 2/√3.",
+          "Check: 2/√3 ≈ 1.1547, which indeed lies in (0, 2)."
+        ],
+        "a": "c = 2/√3 ≈ 1.155"
+      },
+      "practice": [
+        {
+          "q": "Verify the mean value theorem for f(x) = √x on [1, 4] and find c.",
+          "a": "Average rate: (2 − 1)/(4 − 1) = 1/3. f'(x) = 1/(2√x), so 1/(2√c) = 1/3 gives √c = 3/2, hence c = 9/4 = 2.25, which lies in (1, 4)."
+        },
+        {
+          "q": "Use the mean value theorem to prove |sin x − sin y| ≤ |x − y| for all real x, y.",
+          "a": "By the MVT, sin x − sin y = cos(c)(x − y) for some c between x and y; taking absolute values and using |cos c| ≤ 1 gives |sin x − sin y| ≤ |x − y|."
+        }
+      ],
+      "takeaway": "Somewhere inside, the instantaneous rate equals the average rate — and that single fact turns derivative information into global conclusions about the function.",
+      "module": "Differentiation"
+    },
+    "L'Hôpital's Rule": {
+      "intro": "Indeterminate forms like 0/0 and ∞/∞ cannot be evaluated by the limit laws — but L'Hôpital's rule says that for such forms, the limit of the ratio equals the limit of the ratio of the derivatives. It is the mean value theorem applied to a race between numerator and denominator.",
+      "concepts": [
+        "Statement — if f, g are differentiable near a, g'(x) ≠ 0, and f(x), g(x) → 0 (or both → ±∞) as x → a, then lim f(x)/g(x) = lim f'(x)/g'(x), whenever the latter limit exists.",
+        "Proof idea — Cauchy's mean value theorem writes f(x)/g(x) as f'(c)/g'(c) for some c between a and x; as x → a, so does c.",
+        "Forms it handles — 0/0 and ∞/∞ directly; 0 · ∞, ∞ − ∞, 0⁰, 1^∞, ∞⁰ after rewriting (often with logarithms).",
+        "When it fails — the rule needs the derivative ratio's limit to exist; if lim f'/g' does not exist, the original limit may still exist (try another method).",
+        "Common mistakes — checking the indeterminate form first is mandatory; applying it to a non-indeterminate ratio gives wrong answers."
+      ],
+      "example": {
+        "q": "Evaluate lim_{x→0} (e^x − 1)/x and lim_{x→∞} (ln x)/x.",
+        "steps": [
+          "For lim_{x→0} (e^x − 1)/x: substituting gives 0/0, an indeterminate form, so L'Hôpital applies. Differentiate: (e^x)/1 → e⁰/1 = 1.",
+          "So lim_{x→0} (e^x − 1)/x = 1 — this is the familiar fact that e^x has slope 1 at 0.",
+          "For lim_{x→∞} (ln x)/x: substituting gives ∞/∞, so L'Hôpital applies. Differentiate: (1/x)/1 = 1/x → 0.",
+          "So ln x grows more slowly than x: the limit is 0."
+        ],
+        "a": "lim_{x→0} (e^x − 1)/x = 1; lim_{x→∞} (ln x)/x = 0."
+      },
+      "practice": [
+        {
+          "q": "Evaluate lim_{x→0} (sin x)/x.",
+          "a": "0/0 form: L'Hôpital gives lim (cos x)/1 = cos 0 = 1."
+        },
+        {
+          "q": "Evaluate lim_{x→0+} x · ln x.",
+          "a": "Rewrite as (ln x)/(1/x), an ∞/∞ form. L'Hôpital gives (1/x)/(−1/x²) = −x → 0, so the limit is 0."
+        }
+      ],
+      "takeaway": "For 0/0 or ∞/∞, differentiate top and bottom and try again — but always verify the indeterminate form first, and repeat only while the form persists.",
+      "module": "Differentiation"
+    },
+    "Taylor's Theorem": {
+      "intro": "Taylor's theorem says a smooth function is approximated by its Taylor polynomial, with an error controlled by the next derivative. It turns local derivative data into quantitative approximations — the foundation of numerical analysis and of series expansions.",
+      "concepts": [
+        "Statement — if f is n + 1 times differentiable near a, then f(x) = P_n(x) + R_n(x), where P_n(x) = Σ_{k=0}^n f^{(k)}(a)(x − a)^k/k! and the Lagrange remainder is R_n(x) = f^{(n+1)}(c)(x − a)^{n+1}/(n+1)! for some c between a and x.",
+        "Remainder bound — if |f^{(n+1)}| ≤ M on the interval, then |R_n(x)| ≤ M|x − a|^{n+1}/(n+1)!: the error shrinks factorially fast as n grows.",
+        "Classic expansions — e^x = 1 + x + x²/2! + x³/3! + ⋯, sin x = x − x³/3! + x⁵/5! − ⋯, ln(1 + x) = x − x²/2 + x³/3 − ⋯ (for |x| < 1).",
+        "Taylor vs Taylor series — the theorem is a finite statement with an error term; the infinite series equals the function only when the remainder tends to 0.",
+        "Uses — approximating functions, evaluating limits, proving inequalities like e^x ≥ 1 + x, and deriving numerical methods."
+      ],
+      "example": {
+        "q": "Approximate e^0.5 using the degree-3 Taylor polynomial of e^x at 0, and bound the error.",
+        "steps": [
+          "The derivatives of e^x are all e^x, so f^{(k)}(0) = 1 for every k. The degree-3 polynomial is P₃(x) = 1 + x + x²/2 + x³/6.",
+          "At x = 0.5: P₃(0.5) = 1 + 0.5 + 0.25/2 + 0.125/6 = 1 + 0.5 + 0.125 + 0.020833… = 1.645833….",
+          "The Lagrange remainder is R₃ = e^c · (0.5)⁴/4! for some c in (0, 0.5). Since e^c ≤ e^0.5 ≈ 1.6487, the error is at most 1.6487 · 0.0625/24 ≈ 0.0043.",
+          "The true value is e^0.5 ≈ 1.648721, so the actual error is about 0.0029 — comfortably inside the bound 0.0043."
+        ],
+        "a": "P₃(0.5) ≈ 1.6458, with error at most 0.0043 (actual error ≈ 0.0029)."
+      },
+      "practice": [
+        {
+          "q": "Approximate sin(0.1) with the degree-3 Taylor polynomial at 0, and estimate the error.",
+          "a": "sin x ≈ x − x³/6, so sin(0.1) ≈ 0.1 − 0.001/6 ≈ 0.0998333. The true value is 0.0998334, an error of about 10⁻⁷ (the next term is x⁵/120 ≈ 8 × 10⁻⁸)."
+        },
+        {
+          "q": "Approximate ln(1.2) with the degree-2 Taylor polynomial of ln(1 + x) at 0.",
+          "a": "ln(1 + x) ≈ x − x²/2, so ln(1.2) ≈ 0.2 − 0.02 = 0.18. The true value is ≈ 0.18232, an error of about 0.0023."
+        }
+      ],
+      "takeaway": "Taylor polynomials approximate with a guaranteed error bound — derivatives at one point control the function nearby, with factorial accuracy.",
+      "module": "Differentiation"
+    },
+    "The Riemann Integral": {
+      "intro": "The Riemann integral makes 'area under a curve' rigorous: chop the interval into subintervals, approximate the area by rectangles, and take the limit as the chops get finer. A function is integrable when the upper and lower approximations squeeze together.",
+      "concepts": [
+        "Partitions and sums — a partition P splits [a, b] into subintervals; the upper sum U(f, P) uses suprema on each piece and the lower sum L(f, P) uses infima.",
+        "Integrability — f is Riemann integrable when sup L(f, P) = inf U(f, P) over all partitions; the common value is ∫_a^b f(x) dx.",
+        "Which functions qualify — continuous functions are integrable, as are monotone functions and functions with finitely many discontinuities; the Dirichlet function (1 on rationals, 0 on irrationals) is not.",
+        "Riemann sums — with sample points x_k*, Σ f(x_k*) Δx_k converges to the integral as the mesh (largest subinterval width) tends to 0; right-endpoint sums are the usual computational route.",
+        "Geometric meaning — for f ≥ 0 the integral is the area under the graph; signed area when f dips below the axis."
+      ],
+      "example": {
+        "q": "Compute ∫₀¹ x² dx using right-endpoint Riemann sums and a limit.",
+        "steps": [
+          "Partition [0, 1] into n equal subintervals of width 1/n; the right endpoints are k/n for k = 1, …, n.",
+          "The Riemann sum is Σ_{k=1}^n (k/n)² · (1/n) = (1/n³) Σ_{k=1}^n k².",
+          "The sum of squares formula gives Σ_{k=1}^n k² = n(n + 1)(2n + 1)/6, so the sum equals (2n³ + 3n² + n)/(6n³) = 1/3 + 1/(2n) + 1/(6n²).",
+          "As n → ∞, the extra terms vanish, leaving 1/3. Since x² is continuous it is integrable, so the integral equals 1/3."
+        ],
+        "a": "∫₀¹ x² dx = 1/3"
+      },
+      "practice": [
+        {
+          "q": "Compute ∫₀¹ x dx using right-endpoint Riemann sums.",
+          "a": "The sum is Σ (k/n)(1/n) = (1/n²)·n(n+1)/2 = 1/2 + 1/(2n) → 1/2, so the integral is 1/2."
+        },
+        {
+          "q": "Compute ∫₀² 1 dx. Why is this immediate from the definition?",
+          "a": "Every upper and lower sum equals 2 · 1 = 2 (the function is constant), so the integral is 2 — the area of a 2-by-1 rectangle."
+        }
+      ],
+      "takeaway": "The integral is the limit of rectangle approximations — and for continuous functions the upper and lower sums always squeeze to the same number.",
+      "module": "Riemann Integration"
+    },
+    "Properties of the Riemann Integral": {
+      "intro": "Once the integral exists, it behaves the way area should: it is linear, respects order, adds over adjacent intervals, and obeys the triangle inequality. These properties are the everyday tools for estimating and splitting integrals.",
+      "concepts": [
+        "Linearity — ∫ (αf + βg) = α∫f + β∫g; constants pull out and sums split apart.",
+        "Additivity over intervals — ∫_a^b f = ∫_a^c f + ∫_c^b f for a < c < b; integrals chain across adjacent intervals.",
+        "Monotonicity — if f ≤ g on [a, b] then ∫f ≤ ∫g; in particular, if m ≤ f ≤ M then m(b − a) ≤ ∫f ≤ M(b − a).",
+        "Absolute value — |∫f| ≤ ∫|f|: the integral of the absolute value dominates the absolute value of the integral.",
+        "Mean value theorem for integrals — if f is continuous on [a, b], some c in [a, b] has f(c) = (1/(b − a))∫_a^b f: the average value is attained."
+      ],
+      "example": {
+        "q": "Evaluate ∫₀² (3x + 1) dx using linearity, and check it against the area of a trapezoid.",
+        "steps": [
+          "By linearity, ∫₀² (3x + 1) dx = 3∫₀² x dx + ∫₀² 1 dx.",
+          "∫₀² x dx is the area of a triangle with base 2 and height 2, equal to 2; more precisely, by the Riemann-sum computation it is 2²/2 = 2.",
+          "∫₀² 1 dx = 2 · 1 = 2, the area of a 2-by-1 rectangle.",
+          "Total: 3 · 2 + 2 = 8. As a check, the region under y = 3x + 1 from 0 to 2 is a trapezoid with heights 1 and 7 and width 2: area = (1 + 7)/2 · 2 = 8. They agree."
+        ],
+        "a": "8"
+      },
+      "practice": [
+        {
+          "q": "Evaluate ∫₀¹ (x² + 2x) dx using linearity.",
+          "a": "∫₀¹ x² dx = 1/3 and ∫₀¹ 2x dx = 2 · (1/2) = 1, so the total is 1/3 + 1 = 4/3."
+        },
+        {
+          "q": "Use monotonicity to compare ∫₀¹ x² dx and ∫₀¹ x dx.",
+          "a": "On [0, 1], x² ≤ x, so ∫₀¹ x² dx ≤ ∫₀¹ x dx; indeed 1/3 ≤ 1/2."
+        }
+      ],
+      "takeaway": "Integrals are linear, additive over intervals, and order-preserving — split, scale, and bound them freely, and the average value is always attained somewhere.",
+      "module": "Riemann Integration"
+    },
+    "Fundamental Theorem of Calculus (Rigorous Proof)": {
+      "intro": "The fundamental theorem is the climax of the course: differentiation and integration are inverse operations. Part 1 says the integral as a function of its upper limit is an antiderivative; Part 2 says definite integrals are computed by antiderivatives. Its proof runs through the mean value theorem for integrals.",
+      "concepts": [
+        "Part 1 — if f is continuous on [a, b] and F(x) = ∫_a^x f(t) dt, then F is differentiable and F'(x) = f(x): the area function differentiates back to the integrand.",
+        "Part 2 — if f is continuous on [a, b] and G is any antiderivative of f, then ∫_a^b f = G(b) − G(a): definite integrals need only an antiderivative.",
+        "Proof sketch of Part 1 — (F(x + h) − F(x))/h = (1/h)∫_x^{x+h} f = f(c_h) for some c_h between x and x + h (mean value theorem for integrals); as h → 0, c_h → x and continuity gives f(c_h) → f(x).",
+        "Why continuity matters — Part 1 needs f continuous at x for f(c_h) → f(x); a jump in f makes F non-differentiable at the jump.",
+        "Computational power — Part 2 reduces every definite integral to finding an antiderivative: ∫₁² 3x² dx = [x³]₁² = 7 in one line."
+      ],
+      "example": {
+        "q": "Use the fundamental theorem to compute ∫₁² 3x² dx, and find d/dx ∫₀^x t² dt.",
+        "steps": [
+          "An antiderivative of 3x² is x³, since d/dx (x³) = 3x². By Part 2, ∫₁² 3x² dx = [x³]₁² = 8 − 1 = 7.",
+          "For the derivative of the area function, Part 1 applies directly: d/dx ∫₀^x t² dt = x², since t² is continuous.",
+          "Check the second by Part 2: ∫₀^x t² dt = x³/3, and d/dx (x³/3) = x². The two parts agree, as they must."
+        ],
+        "a": "∫₁² 3x² dx = 7; d/dx ∫₀^x t² dt = x²."
+      },
+      "practice": [
+        {
+          "q": "Compute ∫₀^π sin x dx.",
+          "a": "An antiderivative is −cos x, so the integral is [−cos x]₀^π = (−cos π) − (−cos 0) = 1 + 1 = 2."
+        },
+        {
+          "q": "Find d/dx ∫₁^x ln t dt and evaluate it at x = e.",
+          "a": "By Part 1, the derivative is ln x; at x = e it equals ln e = 1."
+        }
+      ],
+      "takeaway": "Differentiation undoes integration and integration undoes differentiation — the two halves of calculus are one theorem, proved via the integral mean value theorem.",
+      "module": "Riemann Integration"
+    },
+    "Improper Integrals (Rigorous Approach)": {
+      "intro": "Riemann integration needs a bounded function on a closed interval. Improper integrals extend it by limits: let the endpoint run to infinity, or approach a singularity, and ask whether the limit exists. Convergence of the limit is the whole question.",
+      "concepts": [
+        "Infinite interval — ∫_a^∞ f(x) dx = lim_{b→∞} ∫_a^b f(x) dx, when the limit exists; otherwise the integral diverges.",
+        "Unbounded integrand — ∫_a^b f(x) dx with f blowing up at a is lim_{c→a+} ∫_c^b f(x) dx, when that limit exists.",
+        "p-test for improper integrals — ∫₁^∞ 1/x^p dx converges exactly when p > 1; ∫₀¹ 1/x^p dx converges exactly when p < 1; the two regimes are complementary.",
+        "Comparison test — if 0 ≤ f ≤ g and ∫g converges, then ∫f converges; if ∫f diverges, then ∫g diverges; this settles most improper integrals without computing them.",
+        "Absolute convergence — if ∫|f| converges then ∫f converges; conditionally convergent improper integrals (like ∫₁^∞ (sin x)/x dx) need care."
+      ],
+      "example": {
+        "q": "Evaluate ∫₁^∞ 1/x² dx and ∫₀¹ 1/√x dx, and state whether each converges.",
+        "steps": [
+          "For ∫₁^∞ 1/x² dx, integrate to a finite b first: ∫₁^b 1/x² dx = [−1/x]₁^b = 1 − 1/b.",
+          "Let b → ∞: 1 − 1/b → 1. So the improper integral converges to 1 — the tail beyond b contributes only 1/b.",
+          "For ∫₀¹ 1/√x dx, the integrand blows up at 0, so integrate from c > 0: ∫_c¹ x^{−1/2} dx = [2√x]_c¹ = 2 − 2√c.",
+          "Let c → 0+: 2 − 2√c → 2. So this improper integral converges to 2 as well — the singularity is mild enough to have finite area."
+        ],
+        "a": "∫₁^∞ 1/x² dx = 1 and ∫₀¹ 1/√x dx = 2; both converge."
+      },
+      "practice": [
+        {
+          "q": "Does ∫₁^∞ 1/x dx converge or diverge?",
+          "a": "It diverges: ∫₁^b 1/x dx = ln b → ∞ as b → ∞. This is the borderline p = 1 case of the p-test."
+        },
+        {
+          "q": "Evaluate ∫₀^∞ e^{−x} dx.",
+          "a": "∫₀^b e^{−x} dx = [−e^{−x}]₀^b = 1 − e^{−b} → 1 as b → ∞, so the integral converges to 1."
+        }
+      ],
+      "takeaway": "Improper integrals are limits of ordinary ones — a tail like 1/x² or a mild singularity like 1/√x has finite area, but 1/x does not.",
+      "module": "Riemann Integration"
+    }
+  }
+}
