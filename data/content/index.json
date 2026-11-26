@@ -11,7 +11,8 @@
     "MATH212",
     "MATH213",
     "MATH214",
-    "MATH301"
+    "MATH301",
+    "MATH302"
   ],
   "counts": {
     "MATH101": 24,
@@ -25,7 +26,8 @@
     "MATH212": 16,
     "MATH213": 16,
     "MATH214": 16,
-    "MATH301": 29
+    "MATH301": 29,
+    "MATH302": 22
   },
   "note": "Courses listed here have full written lesson content (intro, concepts, worked example, practice with answers, takeaway) for every lesson in their outline."
 }

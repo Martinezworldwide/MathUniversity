@@ -1,0 +1,702 @@
+{
+  "course_id": "MATH302",
+  "title": "Abstract Algebra I",
+  "lesson_count": 22,
+  "lessons": {
+    "Binary Operations": {
+      "intro": "Abstract algebra starts by stripping arithmetic down to its skeleton: a binary operation is just a rule for combining two elements of a set to get a third element of the same set. Before we can talk about groups, we need to know exactly what counts as a valid operation — and which familiar rules (associativity, identity, inverses) a given operation does or does not satisfy.",
+      "concepts": [
+        "Definition — a binary operation * on a set S is a function S x S -> S: it takes any ordered pair (a, b) and returns a single element a * b that is still in S. The 'still in S' part is called closure, and it is part of the definition.",
+        "Closure can fail — subtraction is a binary operation on Z but not on N = {1, 2, 3, ...}, because 2 - 5 = -3 is not in N. Division is not a binary operation on Z (1/2 is not an integer) or even on R (division by zero is undefined).",
+        "Associativity — an operation is associative when (a * b) * c = a * (b * c) for all a, b, c. Addition and multiplication of numbers are associative; subtraction and exponentiation are not.",
+        "Identity element — e is an identity for * when a * e = e * a = a for every a in S. An operation has at most one identity: if e and e' both work, then e = e * e' = e'.",
+        "Inverse element — if * has identity e, then b is an inverse of a when a * b = b * a = e. Not every element need have one: in (Z, .) only 1 and -1 have multiplicative inverses."
+      ],
+      "example": {
+        "q": "Define * on Z by a * b = a + b + 1. Show * is a binary operation, check whether it is associative, and find its identity element and the inverse of a general element a.",
+        "steps": [
+          "Closure: if a and b are integers, then a + b + 1 is an integer, so a * b is in Z. It is a binary operation on Z.",
+          "Associativity: (a * b) * c = (a + b + 1) * c = (a + b + 1) + c + 1 = a + b + c + 2. And a * (b * c) = a * (b + c + 1) = a + (b + c + 1) + 1 = a + b + c + 2. The two sides agree, so * is associative.",
+          "Identity: we need e with a * e = a for all a, i.e. a + e + 1 = a, so e = -1. Check: a * (-1) = a + (-1) + 1 = a, and (-1) * a = -1 + a + 1 = a. So -1 is the identity.",
+          "Inverse: given a, we need a' with a * a' = -1, i.e. a + a' + 1 = -1, so a' = -a - 2. Check: a * (-a - 2) = a + (-a - 2) + 1 = -1. So every a has inverse -a - 2."
+        ],
+        "a": "* is associative with identity -1, and the inverse of a is -a - 2. (In fact (Z, *) is a group — it is just (Z, +) in disguise, shifted by 1.)"
+      },
+      "practice": [
+        {
+          "q": "Show that subtraction on Z is not associative by computing (5 - 3) - 2 and 5 - (3 - 2).",
+          "a": "(5 - 3) - 2 = 2 - 2 = 0, but 5 - (3 - 2) = 5 - 1 = 4. Since 0 != 4, subtraction is not associative."
+        },
+        {
+          "q": "Define * on R by a * b = (a + b)/2 (the average). Is * associative? Compute (1 * 2) * 3 and 1 * (2 * 3).",
+          "a": "(1 * 2) * 3 = 1.5 * 3 = (1.5 + 3)/2 = 2.25, while 1 * (2 * 3) = 1 * 2.5 = (1 + 2.5)/2 = 1.75. Since 2.25 != 1.75, * is not associative."
+        }
+      ],
+      "takeaway": "A binary operation must stay inside its set; associativity, identity, and inverses are separate properties to check one at a time — and checking them on examples is how you learn to spot them.",
+      "module": "Introduction to Groups"
+    },
+    "Definition of a Group": {
+      "intro": "A group is the simplest algebraic structure with real power: one set, one operation, and four axioms. Those four axioms are enough to prove a whole theory — cancellation, unique solutions to equations, the structure of symmetries — and the same axioms describe integers under addition, permutations under composition, and matrices under multiplication.",
+      "concepts": [
+        "The four axioms — (G, *) is a group when: (G1) * is a binary operation on G (closure); (G2) * is associative; (G3) there is an identity e with a * e = e * a = a for all a; (G4) every a has an inverse a' with a * a' = a' * a = e.",
+        "Abelian groups — a group is abelian (or commutative) when a * b = b * a for all a, b. (Z, +) is abelian; the group of permutations S_3 is not.",
+        "Order of a group — the number of elements |G|; a group is finite when |G| is finite. The order of an element a is the smallest positive n with a^n = e, or infinite if no such n exists.",
+        "Notation — we usually write the operation as multiplication (ab, a^n, a^{-1}) even when the group is not numbers; for abelian groups we often write addition (a + b, na, -a) instead.",
+        "Checking is work — to show something is a group you must verify all four axioms; to show it is not, one counterexample to one axiom is enough."
+      ],
+      "example": {
+        "q": "Prove that (Z, +) is a group, and explain why (Z, .) is not a group.",
+        "steps": [
+          "Closure: the sum of two integers is an integer. Associativity: (a + b) + c = a + (b + c) for integers. Identity: 0 satisfies a + 0 = 0 + a = a. Inverses: for each a, the integer -a satisfies a + (-a) = 0. All four axioms hold, so (Z, +) is a group — abelian, of infinite order.",
+          "Now (Z, .): closure and associativity hold, and 1 is a multiplicative identity. But the inverse axiom fails: the element 2 would need an integer b with 2b = 1, and no such integer exists.",
+          "One failing axiom is enough: (Z, .) is not a group. (In fact only 1 and -1 have inverses in (Z, .).)"
+        ],
+        "a": "(Z, +) is an abelian group; (Z, .) is not a group because most elements lack multiplicative inverses."
+      },
+      "practice": [
+        {
+          "q": "Show that (R*, .) — the nonzero reals under multiplication — is a group. What are the identity and the inverse of a?",
+          "a": "Closure and associativity hold for nonzero reals; the identity is 1; every a != 0 has inverse 1/a, which is also nonzero. So (R*, .) is an abelian group."
+        },
+        {
+          "q": "Is (N, +) with N = {1, 2, 3, ...} a group? Give the first axiom that fails.",
+          "a": "No. There is no identity element: no n in N satisfies a + n = a for all a (0 is not in N). The identity axiom already fails — and no element has an inverse either."
+        }
+      ],
+      "takeaway": "Four axioms — closure, associativity, identity, inverses — define a group; one counterexample kills a candidate, and the same axioms cover wildly different-looking examples.",
+      "module": "Introduction to Groups"
+    },
+    "Examples of Groups (integers, permutations, matrices)": {
+      "intro": "The group axioms look abstract until you meet the examples: integers under addition, residues mod n, permutations of a set, invertible matrices, and symmetries of a shape. Each one satisfies the same four axioms, so every theorem we prove about groups applies to all of them at once — that is the whole point of abstraction.",
+      "concepts": [
+        "(Z_n, +) — the residues {0, 1, ..., n-1} under addition mod n form a group of order n: the identity is 0 and the inverse of a is n - a. For example, in Z_6, 4 + 5 = 9 = 3 (mod 6) and the inverse of 4 is 2.",
+        "Symmetric group S_n — the set of all permutations of {1, ..., n} under composition is a group of order n!; the identity is the permutation that moves nothing. S_3 has 6 elements and is the smallest non-abelian group.",
+        "General linear group GL(n, R) — the invertible n x n real matrices under matrix multiplication form a group; the identity is I_n and inverses are matrix inverses. GL(2, R) is non-abelian.",
+        "Klein four-group V_4 — the symmetries of a rectangle: {e, horizontal flip, vertical flip, 180-degree rotation}. Every non-identity element has order 2, and the group is abelian.",
+        "Same axioms, different worlds — a theorem proved from the axioms alone (like uniqueness of inverses) is true in Z, in S_n, in GL(n, R), and in every group yet to be discovered."
+      ],
+      "example": {
+        "q": "In GL(2, R), find the inverse of A = [[1, 2], [3, 4]] and verify by multiplication that A * A^{-1} = I.",
+        "steps": [
+          "det A = 1*4 - 2*3 = 4 - 6 = -2, which is nonzero, so A is invertible.",
+          "For a 2x2 matrix [[a, b], [c, d]], the inverse is (1/(ad - bc)) [[d, -b], [-c, a]]. So A^{-1} = (1/-2) [[4, -2], [-3, 1]] = [[-2, 1], [3/2, -1/2]].",
+          "Multiply: A * A^{-1} = [[1, 2], [3, 4]] [[-2, 1], [3/2, -1/2]] = [[1*(-2) + 2*(3/2), 1*1 + 2*(-1/2)], [3*(-2) + 4*(3/2), 3*1 + 4*(-1/2)]] = [[-2 + 3, 1 - 1], [-6 + 6, 3 - 2]] = [[1, 0], [0, 1]] = I."
+        ],
+        "a": "A^{-1} = [[-2, 1], [3/2, -1/2]], and A * A^{-1} = I as required."
+      },
+      "practice": [
+        {
+          "q": "In Z_6 under addition mod 6, compute 4 + 5 and find the inverse of 5. Is (Z_6, +) abelian?",
+          "a": "4 + 5 = 9 = 3 (mod 6). The inverse of 5 is 1, since 5 + 1 = 6 = 0 (mod 6). Yes, (Z_6, +) is abelian — addition mod n always commutes."
+        },
+        {
+          "q": "Let A = [[1, 2], [0, 1]] in GL(2, R). Compute A^2 and A^3. What is the order of A?",
+          "a": "A^2 = [[1, 4], [0, 1]] and A^3 = [[1, 6], [0, 1]]; in general A^n = [[1, 2n], [0, 1]], which is never I for n != 0. So A has infinite order."
+        }
+      ],
+      "takeaway": "Z_n, S_n, GL(n, R), and symmetry groups all satisfy the same four axioms — the group concept unifies arithmetic, permutations, matrices, and geometry.",
+      "module": "Introduction to Groups"
+    },
+    "Basic Properties of Groups": {
+      "intro": "Once the axioms are in place, the basic facts fall out quickly — and they are exactly the facts you use every day without thinking: identities are unique, inverses are unique, you can cancel, and equations like ax = b have exactly one solution. Proving them from the axioms teaches the style of argument the whole course runs on.",
+      "concepts": [
+        "Uniqueness of the identity — if e and e' are both identities, then e = e * e' = e'. So we may speak of the identity of G.",
+        "Uniqueness of inverses — if b and c are both inverses of a, then b = b * e = b * (a * c) = (b * a) * c = e * c = c. So each a has exactly one inverse, written a^{-1}.",
+        "Cancellation — if ab = ac then b = c (multiply on the left by a^{-1}); if ba = ca then b = c. Cancellation works in every group — unlike in (Z, .), where 2 * 0 = 3 * 0 but 2 is not 3.",
+        "Inverse of a product — (ab)^{-1} = b^{-1} a^{-1}: check (b^{-1} a^{-1})(ab) = b^{-1} (a^{-1} a) b = b^{-1} b = e. Note the order reverses — like taking off shoes before socks.",
+        "Solving equations — ax = b has the unique solution x = a^{-1} b, and xa = b has the unique solution x = b a^{-1}. In an abelian group these coincide."
+      ],
+      "example": {
+        "q": "In S_3, solve (1 2) x = (1 2 3) for x. (Compose right to left, as functions.)",
+        "steps": [
+          "Multiply on the left by (1 2)^{-1}. Since a transposition is its own inverse, (1 2)^{-1} = (1 2), so x = (1 2)(1 2 3).",
+          "Compute the product right to left: (1 2 3) sends 1 -> 2, then (1 2) sends 2 -> 1, so 1 -> 1. It sends 2 -> 3, then (1 2) fixes 3, so 2 -> 3. It sends 3 -> 1, then (1 2) sends 1 -> 2, so 3 -> 2.",
+          "So x is the permutation fixing 1 and swapping 2 and 3: x = (2 3).",
+          "Check: (1 2)(2 3) sends 1 -> 1 -> 2, 2 -> 3 -> 3, 3 -> 2 -> 1, which is (1 2 3). Correct."
+        ],
+        "a": "x = (2 3)."
+      },
+      "practice": [
+        {
+          "q": "In S_3, let a = (1 2) and b = (2 3). Compute ab, (ab)^{-1}, and b^{-1} a^{-1}, and verify (ab)^{-1} = b^{-1} a^{-1}.",
+          "a": "ab = (1 2)(2 3) = (1 2 3), so (ab)^{-1} = (1 3 2). And b^{-1} a^{-1} = (2 3)(1 2) = (1 3 2). They agree: (ab)^{-1} = b^{-1} a^{-1}."
+        },
+        {
+          "q": "Prove that if a^2 = a in a group G, then a = e.",
+          "a": "Multiply both sides on the left by a^{-1}: a^{-1} a^2 = a^{-1} a, so (a^{-1} a) a = e, i.e. e a = e, so a = e."
+        }
+      ],
+      "takeaway": "Identities and inverses are unique, cancellation always works, (ab)^{-1} = b^{-1} a^{-1}, and ax = b has exactly one solution — the basic toolkit for everything that follows.",
+      "module": "Introduction to Groups"
+    },
+    "Definition and Examples": {
+      "intro": "A subgroup is a group living inside a group: a subset H of G that is itself a group under the same operation. Subgroups are everywhere — the even integers inside Z, the rotations inside the symmetries of a square, the matrices of determinant 1 inside GL(n, R) — and the subgroup test gives a quick way to recognize them.",
+      "concepts": [
+        "Definition — H is a subgroup of G (written H <= G) when H is nonempty, closed under the operation (a, b in H implies ab in H), and closed under inverses (a in H implies a^{-1} in H). These three imply H is a group.",
+        "The subgroup test — to check H <= G it is enough to show H is nonempty and that a, b in H implies a b^{-1} in H (one-step test); the two-step test (closure + inverses) is often easier in practice.",
+        "Trivial subgroups — every group G has the trivial subgroup {e} and itself as subgroups; any other subgroup is called nontrivial, and a subgroup other than G is called proper.",
+        "Examples in Z — the multiples of n, nZ = {..., -2n, -n, 0, n, 2n, ...}, are subgroups of (Z, +); in fact every subgroup of Z is nZ for some n. The even integers 2Z are a subgroup, but the odd integers are not (not closed: 1 + 3 = 4).",
+        "SL(n, R) — the matrices of determinant 1 form a subgroup of GL(n, R), called the special linear group, because det(AB) = det(A) det(B) = 1 and det(A^{-1}) = 1/det(A) = 1."
+      ],
+      "example": {
+        "q": "Show that the set H = {A in GL(2, R) : det A = 1} (the group SL(2, R)) is a subgroup of GL(2, R).",
+        "steps": [
+          "H is nonempty: the identity matrix I has det I = 1, so I is in H.",
+          "Closure: if A, B are in H, then det(AB) = det(A) det(B) = 1 * 1 = 1, so AB is in H.",
+          "Inverses: if A is in H, then det(A^{-1}) = 1/det(A) = 1/1 = 1, so A^{-1} is in H.",
+          "By the subgroup test, H <= GL(2, R)."
+        ],
+        "a": "SL(2, R) is a subgroup of GL(2, R)."
+      },
+      "practice": [
+        {
+          "q": "Is the set of odd integers a subgroup of (Z, +)? Why or why not?",
+          "a": "No. It is not closed under addition: 1 + 3 = 4 is even, not odd. It also contains no identity (0 is even). So it fails the subgroup test."
+        },
+        {
+          "q": "Show that the center Z(G) = {z in G : zg = gz for all g in G} is a subgroup of G.",
+          "a": "e is in Z(G) since eg = ge. If x, y are in Z(G), then (xy)g = x(yg) = x(gy) = (xg)y = (gx)y = g(xy), so xy is in Z(G). If x is in Z(G), then xg = gx for all g; multiplying by x^{-1} on both sides gives g x^{-1} = x^{-1} g, so x^{-1} is in Z(G). Hence Z(G) <= G."
+        }
+      ],
+      "takeaway": "A subgroup is a subset that is a group in its own right; the one-step test (nonempty + ab^{-1} in H) is the fast way to check, and nZ, SL(n, R), and the center are the model examples.",
+      "module": "Subgroups"
+    },
+    "Cyclic Subgroups": {
+      "intro": "The simplest subgroups are the cyclic ones: take one element a and collect all its powers. The result, <a>, is always a subgroup — and in the integers, every subgroup is cyclic. Cyclic groups are the atoms of group theory: every group is built out of them, and their structure is completely understood.",
+      "concepts": [
+        "Definition — the cyclic subgroup generated by a is <a> = {a^n : n in Z} = {..., a^{-2}, a^{-1}, e, a, a^2, ...}. It is the smallest subgroup of G containing a.",
+        "Cyclic groups — G is cyclic when G = <a> for some a, called a generator. (Z, +) is cyclic, generated by 1 (and by -1); Z_n is cyclic, generated by 1; S_3 is not cyclic.",
+        "Order formula in Z_n — in the additive group Z_n, the subgroup generated by a has order n / gcd(n, a). For instance, in Z_12, <4> has order 12 / gcd(12, 4) = 12/4 = 3.",
+        "Subgroups of cyclic groups are cyclic — every subgroup of a cyclic group is cyclic. In particular, every subgroup of Z is nZ for some n >= 0.",
+        "Orders of powers — if a has finite order m, then a^k has order m / gcd(m, k). This tells you exactly which powers of a generate the whole group <a>: those with gcd(m, k) = 1."
+      ],
+      "example": {
+        "q": "In the additive group Z_12, list the subgroup <4> and find its order. Which elements of Z_12 generate the whole group?",
+        "steps": [
+          "<4> consists of the multiples of 4 mod 12: 0, 4, 8, then 12 = 0 again. So <4> = {0, 4, 8}, of order 3.",
+          "This matches the formula: order = 12 / gcd(12, 4) = 12/4 = 3.",
+          "An element a generates Z_12 when |<a>| = 12, i.e. when 12 / gcd(12, a) = 12, i.e. when gcd(12, a) = 1.",
+          "The numbers 1..11 coprime to 12 are 1, 5, 7, 11. So Z_12 is generated by 1, 5, 7, and 11 — four generators, matching phi(12) = 4."
+        ],
+        "a": "<4> = {0, 4, 8} has order 3; the generators of Z_12 are 1, 5, 7, 11."
+      },
+      "practice": [
+        {
+          "q": "In Z_10, list <2> and find its order using the formula n / gcd(n, a).",
+          "a": "<2> = {0, 2, 4, 6, 8}, of order 10 / gcd(10, 2) = 10/2 = 5."
+        },
+        {
+          "q": "In Z_9, list <6> and find its order.",
+          "a": "<6> = {0, 6, 3} (since 6 + 6 = 12 = 3 mod 9, then 3 + 6 = 9 = 0), of order 9 / gcd(9, 6) = 9/3 = 3."
+        }
+      ],
+      "takeaway": "Cyclic subgroups <a> are the powers of a single element; in Z_n the order of <a> is n/gcd(n, a), and the generators of Z_n are exactly the numbers coprime to n.",
+      "module": "Subgroups"
+    },
+    "Lagrange's Theorem": {
+      "intro": "Lagrange's theorem is the first great counting theorem of group theory: the order of any subgroup divides the order of the whole group. It turns subgroup-hunting into arithmetic — a group of order 15 can only have subgroups of orders 1, 3, 5, and 15 — and it is the key that unlocks the structure of finite groups.",
+      "concepts": [
+        "The theorem — if G is finite and H <= G, then |H| divides |G|. Equivalently, |G| = |H| * [G : H], where [G : H] is the index: the number of distinct cosets of H.",
+        "Why it works — the left cosets of H partition G into equal-sized pieces, each of size |H|, so |G| is |H| times the number of pieces.",
+        "Element orders divide |G| — the order of any element a divides |G|, because |<a>| divides |G|. So in a group of order 12, every element has order 1, 2, 3, 4, 6, or 12.",
+        "Groups of prime order are cyclic — if |G| = p is prime, any non-identity element a has order p (it must divide p and is not 1), so <a> = G. Every group of prime order is cyclic.",
+        "Converse fails — Lagrange says subgroups can only have orders dividing |G|, not that every divisor occurs: A_4 has order 12 but no subgroup of order 6."
+      ],
+      "example": {
+        "q": "Let G = S_3 (order 6) and H = <(1 2 3)> = {e, (1 2 3), (1 3 2)}. Verify Lagrange's theorem: find |H|, the index [G : H], and check |G| = |H| * [G : H].",
+        "steps": [
+          "|H| = 3, since (1 2 3) has order 3: (1 2 3)^2 = (1 3 2) and (1 2 3)^3 = e.",
+          "The left cosets of H are H itself and (1 2)H = {(1 2), (1 2)(1 2 3), (1 2)(1 3 2)} = {(1 2), (1 3), (2 3)}. These two cosets are disjoint and cover all 6 elements of S_3.",
+          "So the index [G : H] = 2, and indeed |G| = 6 = 3 * 2 = |H| * [G : H]. And 3 divides 6, as Lagrange promises."
+        ],
+        "a": "|H| = 3, [G : H] = 2, and 6 = 3 * 2."
+      },
+      "practice": [
+        {
+          "q": "A group G has order 15. List all possible orders of subgroups of G, and explain why G has no subgroup of order 6.",
+          "a": "Subgroup orders must divide 15, so the only possibilities are 1, 3, 5, and 15. Since 6 does not divide 15, no subgroup of order 6 can exist."
+        },
+        {
+          "q": "Let G be a group of order 20 and H <= G with |H| = 5. What is the index [G : H]? If a is an element of G, which orders can a have?",
+          "a": "The index is [G : H] = 20/5 = 4. The order of a divides 20, so it can be 1, 2, 4, 5, 10, or 20."
+        }
+      ],
+      "takeaway": "Subgroup orders divide the group order — Lagrange turns subgroup questions into divisibility questions, and forces groups of prime order to be cyclic.",
+      "module": "Subgroups"
+    },
+    "Cosets": {
+      "intro": "Cosets are the translates of a subgroup: shift H by multiplying every element by a fixed g. They slice the group into equal pieces, and counting the pieces proves Lagrange's theorem. Left and right cosets can differ — and that difference is exactly what makes a subgroup normal or not.",
+      "concepts": [
+        "Definition — for H <= G and g in G, the left coset is gH = {gh : h in H} and the right coset is Hg = {hg : h in H}. Every coset has exactly |H| elements.",
+        "Partition — the left cosets of H partition G: every element lies in exactly one left coset, and two left cosets are either identical or disjoint. The number of left cosets is the index [G : H].",
+        "When cosets coincide — aH = bH exactly when a^{-1} b is in H (equivalently b is in aH). This is the practical test for whether two cosets are the same.",
+        "Left vs right — gH and Hg need not be equal. In S_3 with H = {e, (1 2)}, the left coset (1 3)H = {(1 3), (1 2 3)} differs from the right coset H(1 3) = {(1 3), (1 3 2)}.",
+        "Cosets and Lagrange — since G is the disjoint union of [G : H] cosets each of size |H|, we get |G| = |H| * [G : H], which is Lagrange's theorem."
+      ],
+      "example": {
+        "q": "In the additive group Z_12, let H = <4> = {0, 4, 8}. List all the cosets of H and find the index [Z_12 : H].",
+        "steps": [
+          "Cosets in additive notation are translates: g + H = {g, g + 4, g + 8} (mod 12).",
+          "0 + H = {0, 4, 8}. 1 + H = {1, 5, 9}. 2 + H = {2, 6, 10}. 3 + H = {3, 7, 11}.",
+          "4 + H = {4, 8, 0} = 0 + H again — the cosets repeat after 4 translates, since 4 is in H.",
+          "There are exactly 4 distinct cosets, each of size 3, partitioning the 12 elements. So [Z_12 : H] = 4 = 12/3, as Lagrange requires."
+        ],
+        "a": "The cosets are {0,4,8}, {1,5,9}, {2,6,10}, {3,7,11}; the index is 4."
+      },
+      "practice": [
+        {
+          "q": "In S_3, let H = {e, (1 2)}. List the three left cosets of H.",
+          "a": "eH = {e, (1 2)}; (1 3)H = {(1 3), (1 2 3)}; (2 3)H = {(2 3), (1 3 2)}. Three cosets of size 2, partitioning the 6 elements of S_3."
+        },
+        {
+          "q": "In S_3 with H = {e, (1 2)}, compute the right coset H(1 3) and compare it with the left coset (1 3)H. Are they equal?",
+          "a": "H(1 3) = {(1 3), (1 2)(1 3)} = {(1 3), (1 3 2)}, while (1 3)H = {(1 3), (1 2 3)}. They are not equal, so H is not normal in S_3."
+        }
+      ],
+      "takeaway": "Cosets partition the group into equal pieces of size |H|; the number of pieces is the index, and left vs right cosets already detect whether a subgroup is normal.",
+      "module": "Subgroups"
+    },
+    "Definition of a Homomorphism": {
+      "intro": "A homomorphism is a map between groups that respects the operation: it sends products to products. Homomorphisms are how groups talk to each other — they let us compare groups, collapse a group onto a simpler image, and measure the difference with the kernel. Isomorphisms, the bijective homomorphisms, are the precise notion of 'same group, different labels.'",
+      "concepts": [
+        "Definition — a map phi: G -> G' is a homomorphism when phi(ab) = phi(a) phi(b) for all a, b in G. It preserves the operation, and from that everything else follows.",
+        "Examples — the reduction map Z -> Z_n, phi(k) = k mod n, is a homomorphism of additive groups; the determinant det: GL(n, R) -> R* is a homomorphism of multiplicative groups; the exponential x |-> 2^x is a homomorphism (R, +) -> (R*, .).",
+        "Kernel and image — the kernel ker phi = {g in G : phi(g) = e'} is a subgroup of G; the image im phi = {phi(g) : g in G} is a subgroup of G'. The kernel measures how far phi is from being injective.",
+        "Injectivity test — phi is injective exactly when ker phi = {e}: if phi(a) = phi(b) then phi(a^{-1} b) = e', so a^{-1} b is in the kernel.",
+        "Composition — the composite of two homomorphisms is a homomorphism, and the identity map is one. Homomorphisms are the structure-preserving maps of group theory, the way linear maps are for vector spaces."
+      ],
+      "example": {
+        "q": "Show that phi: (Z, +) -> (Z_6, +), phi(n) = n mod 6, is a homomorphism. Compute phi(7), phi(8), and phi(7 + 8), and verify phi(7 + 8) = phi(7) + phi(8).",
+        "steps": [
+          "phi(a + b) = (a + b) mod 6, while phi(a) + phi(b) = (a mod 6) + (b mod 6) mod 6. These are equal, since reducing mod 6 before or after adding gives the same residue. So phi is a homomorphism.",
+          "phi(7) = 7 mod 6 = 1. phi(8) = 8 mod 6 = 2. phi(7 + 8) = phi(15) = 15 mod 6 = 3.",
+          "And phi(7) + phi(8) = 1 + 2 = 3 (mod 6). They agree: phi(7 + 8) = phi(7) + phi(8)."
+        ],
+        "a": "phi is a homomorphism; phi(7) = 1, phi(8) = 2, phi(15) = 3 = 1 + 2."
+      },
+      "practice": [
+        {
+          "q": "Show that psi: (Z, +) -> (Z, +), psi(n) = 2n, is a homomorphism. Is it surjective? Is it injective?",
+          "a": "psi(a + b) = 2(a + b) = 2a + 2b = psi(a) + psi(b), so it is a homomorphism. It is injective (2a = 2b implies a = b) but not surjective: odd integers are never hit."
+        },
+        {
+          "q": "Show that det: GL(2, R) -> R* is a homomorphism, and compute det([[2, 1], [3, 4]]).",
+          "a": "det(AB) = det(A) det(B) for matrices, so det is a homomorphism. det([[2, 1], [3, 4]]) = 2*4 - 1*3 = 8 - 3 = 5."
+        }
+      ],
+      "takeaway": "A homomorphism preserves products; its kernel measures injectivity and its image is a subgroup — the two objects that organize the whole theory of group maps.",
+      "module": "Homomorphisms and Isomorphisms"
+    },
+    "Properties of Homomorphisms": {
+      "intro": "Once a map preserves products, everything else follows for free: it must send the identity to the identity, inverses to inverses, and powers to powers. These little facts are the workhorses of the subject — they are how you compute with homomorphisms, and how the kernel and image earn their keep.",
+      "concepts": [
+        "Identity — phi(e) = e': since phi(e) = phi(e * e) = phi(e) phi(e), cancelling phi(e) in G' gives phi(e) = e'.",
+        "Inverses and powers — phi(a^{-1}) = phi(a)^{-1}, and phi(a^n) = phi(a)^n for every integer n. A homomorphism respects the whole algebraic structure, not just single products.",
+        "Kernel is a subgroup — ker phi <= G: it contains e (since phi(e) = e'), is closed under products, and contains inverses. It is also normal, which we use in the next module.",
+        "Image is a subgroup — im phi <= G': it contains e' = phi(e), and phi(a) phi(b) = phi(ab), phi(a)^{-1} = phi(a^{-1}).",
+        "First glimpse of the isomorphism theorems — phi is injective iff ker phi = {e}, and phi is surjective iff im phi = G'. The kernel and image completely describe how much phi collapses and how much it covers."
+      ],
+      "example": {
+        "q": "For phi: (Z, +) -> (Z_6, +), phi(n) = n mod 6, find the kernel and the image, and check the properties above.",
+        "steps": [
+          "Kernel: phi(n) = 0 in Z_6 exactly when 6 divides n. So ker phi = 6Z = {..., -12, -6, 0, 6, 12, ...}, a subgroup of Z.",
+          "Image: every residue 0..5 is hit (phi(k) = k for k = 0..5), so im phi = all of Z_6. The map is surjective.",
+          "Identity check: phi(0) = 0, as required. Inverse check: phi(-3) = -3 mod 6 = 3, and phi(3) = 3; in Z_6, -3 = 3, and indeed phi(-3) = -phi(3) = -3 = 3 (mod 6).",
+          "The kernel is far bigger than {e}, so phi is not injective — as expected, since phi(0) = phi(6) = 0."
+        ],
+        "a": "ker phi = 6Z, im phi = Z_6; phi is surjective but not injective."
+      },
+      "practice": [
+        {
+          "q": "Let phi: (R*, .) -> (R*, .), phi(x) = x^2. Find ker phi and im phi. Is phi injective? Surjective?",
+          "a": "ker phi = {x : x^2 = 1} = {1, -1}. im phi = {x^2 : x in R*} = the positive reals. phi is neither injective (phi(1) = phi(-1)) nor surjective (negatives are missed)."
+        },
+        {
+          "q": "Suppose phi: G -> G' is a homomorphism and a in G has order 3. What can you say about the order of phi(a)?",
+          "a": "phi(a)^3 = phi(a^3) = phi(e) = e', so the order of phi(a) divides 3: it is 1 or 3. (It is 1 exactly when a is in the kernel.)"
+        }
+      ],
+      "takeaway": "Homomorphisms send e to e', inverses to inverses, powers to powers; the kernel is a subgroup that detects injectivity and the image is a subgroup that detects surjectivity.",
+      "module": "Homomorphisms and Isomorphisms"
+    },
+    "Isomorphisms": {
+      "intro": "Two groups are isomorphic when a bijective homomorphism matches them up element by element — same multiplication table, different labels. Isomorphic groups are the same group for all algebraic purposes, so classifying groups up to isomorphism is the central goal of the subject: (R, +) and (R>0, .) are the same group in disguise, while Z_4 and the Klein four-group are genuinely different.",
+      "concepts": [
+        "Definition — phi: G -> G' is an isomorphism when it is a bijective homomorphism. Then its inverse is automatically a homomorphism too, and we write G ~= G'.",
+        "Isomorphic groups share everything algebraic — order, abelianness, element orders, number of subgroups, cyclicity. If one group has an element of order 4 and the other does not, they cannot be isomorphic.",
+        "The exponential isomorphism — exp: (R, +) -> (R>0, .) with exp(x) = e^x is an isomorphism: it is a homomorphism (e^{x+y} = e^x e^y), bijective, with inverse ln. Addition of reals is multiplication of positive reals in disguise.",
+        "Z_4 vs V_4 — Z_4 has an element of order 4 (namely 1), while every non-identity element of the Klein four-group has order 2. So Z_4 and V_4 are not isomorphic, even though both have order 4.",
+        "Classification mindset — there is exactly one group of order 2 and one of order 3 up to isomorphism (both cyclic), two of order 4 (Z_4 and V_4), and two of order 6 (Z_6 and S_3)."
+      ],
+      "example": {
+        "q": "Show that exp: (R, +) -> (R>0, .) is an isomorphism, and use it to translate the equation e^x = 8 into additive language.",
+        "steps": [
+          "Homomorphism: exp(x + y) = e^{x+y} = e^x e^y = exp(x) exp(y).",
+          "Bijective: exp is strictly increasing, hence injective, and every positive real y is e^{ln y}, hence surjective. Its inverse is ln: (R>0, .) -> (R, +).",
+          "So exp is an isomorphism: (R, +) ~= (R>0, .).",
+          "Translating e^x = 8: apply ln to both sides to get x = ln 8 = 3 ln 2. Multiplication of exponentials is addition of exponents — the isomorphism turns hard multiplicative questions into easy additive ones."
+        ],
+        "a": "exp is an isomorphism with inverse ln; e^x = 8 becomes x = ln 8 = 3 ln 2."
+      },
+      "practice": [
+        {
+          "q": "Show that (R, +) and (R*, .) are NOT isomorphic.",
+          "a": "In (R*, .), the element -1 has order 2: (-1)^2 = 1. In (R, +), the only element of finite order is 0 (nx = 0 implies x = 0). An isomorphism preserves element orders, so no isomorphism can exist."
+        },
+        {
+          "q": "Show that Z_4 and V_4 are not isomorphic.",
+          "a": "Z_4 is cyclic: 1 has order 4. In V_4 every non-identity element has order 2, so V_4 has no element of order 4. Isomorphisms preserve element orders, so Z_4 is not isomorphic to V_4."
+        }
+      ],
+      "takeaway": "Isomorphic groups are the same group under relabeling; to prove two groups are not isomorphic, find an algebraic property — like an element order — that one has and the other lacks.",
+      "module": "Homomorphisms and Isomorphisms"
+    },
+    "Automorphisms": {
+      "intro": "An automorphism is an isomorphism from a group to itself — a symmetry of the group's own structure. The collection of all automorphisms forms a group, Aut(G), and studying it reveals the group's internal symmetries: Aut(Z_n) is the units mod n, and conjugation gives the inner automorphisms that will drive the theory of normal subgroups.",
+      "concepts": [
+        "Definition — an automorphism of G is an isomorphism phi: G -> G. The set Aut(G) of all automorphisms is itself a group under composition, with identity id_G.",
+        "Aut(Z_n) — an automorphism of the additive group Z_n is determined by where it sends 1, and 1 must go to a generator, i.e. a unit mod n. So Aut(Z_n) ~= Z_n^* (the units mod n under multiplication).",
+        "Aut(Z_6) — the units mod 6 are {1, 5}, so Aut(Z_6) has order 2: the identity and the map n |-> 5n (which sends 1 to 5, 2 to 4, 3 to 3, 4 to 2, 5 to 1).",
+        "Aut(Z) — the only automorphisms of (Z, +) are the identity and n |-> -n, since 1 must go to a generator and the only generators of Z are 1 and -1. So |Aut(Z)| = 2.",
+        "Inner automorphisms — for fixed g in G, the conjugation map c_g(x) = g x g^{-1} is an automorphism. In an abelian group every inner automorphism is the identity; in S_3 conjugation permutes the transpositions among themselves."
+      ],
+      "example": {
+        "q": "Find Aut(Z_5): list its elements, find its order, and compute the order of the automorphism phi(n) = 2n.",
+        "steps": [
+          "An automorphism of Z_5 sends 1 to a generator of Z_5. Every nonzero element generates Z_5 (5 is prime), so 1 can go to 1, 2, 3, or 4: four automorphisms, phi_k(n) = kn mod 5.",
+          "So |Aut(Z_5)| = 4, matching the units mod 5: {1, 2, 3, 4}.",
+          "phi(n) = 2n: its powers send 1 to 2, then 4, then 3, then 1: phi^1(1) = 2, phi^2(1) = 4, phi^3(1) = 8 = 3, phi^4(1) = 6 = 1. So phi has order 4, and it generates Aut(Z_5) — Aut(Z_5) is cyclic of order 4."
+        ],
+        "a": "Aut(Z_5) = {phi_1, phi_2, phi_3, phi_4} has order 4, and phi(n) = 2n has order 4."
+      },
+      "practice": [
+        {
+          "q": "Find the order of Aut(Z_6) and describe its non-identity element.",
+          "a": "The units mod 6 are {1, 5}, so |Aut(Z_6)| = 2. The non-identity automorphism is phi(n) = 5n mod 6: it fixes 0 and 3 and swaps 1 with 5 and 2 with 4."
+        },
+        {
+          "q": "Show that conjugation c_g(x) = g x g^{-1} is an automorphism of G.",
+          "a": "c_g(xy) = gxy g^{-1} = (gx g^{-1})(gy g^{-1}) = c_g(x) c_g(y), so it is a homomorphism; it has inverse c_{g^{-1}}, so it is bijective. Hence c_g is in Aut(G)."
+        }
+      ],
+      "takeaway": "Aut(G) is the symmetry group of G itself; Aut(Z_n) is the units mod n, and conjugation gives the inner automorphisms — the bridge to normal subgroups.",
+      "module": "Homomorphisms and Isomorphisms"
+    },
+    "Normal Subgroups": {
+      "intro": "Most subgroups are not well-behaved enough to divide by: their left and right cosets disagree, so no sensible quotient group exists. Normal subgroups are the well-behaved ones — invariant under conjugation, with matching left and right cosets — and they are exactly the subgroups that arise as kernels of homomorphisms. They are the gateway to quotient groups and the isomorphism theorems.",
+      "concepts": [
+        "Definition — H <= G is normal (written H ⊲ G) when gH = Hg for every g in G, equivalently gHg^{-1} = H for every g, equivalently ghg^{-1} is in H for all g in G and h in H.",
+        "Index 2 is always normal — any subgroup of index 2 is normal: its only cosets are H and its complement, on the left and on the right alike. In particular A_3 ⊲ S_3 and every subgroup of index 2 is normal.",
+        "Kernels are normal — the kernel of any homomorphism is a normal subgroup: if phi(h) = e' then phi(ghg^{-1}) = phi(g) e' phi(g)^{-1} = e'. Conversely every normal subgroup is some homomorphism's kernel.",
+        "Normal in abelian groups — every subgroup of an abelian group is normal, since ghg^{-1} = h. The interesting theory is in non-abelian groups.",
+        "Testing normality — to show H is not normal, one conjugation is enough: find g in G and h in H with ghg^{-1} not in H."
+      ],
+      "example": {
+        "q": "Show that H = <(1 2)> = {e, (1 2)} is NOT normal in S_3, but A_3 is normal in S_3.",
+        "steps": [
+          "Conjugate (1 2) by (1 3): (1 3)(1 2)(1 3)^{-1} = (1 3)(1 2)(1 3). Conjugation sends a cycle to the cycle of the images: (1 2) becomes ((1 3)(1) (1 3)(2)) = (3 2) = (2 3).",
+          "(2 3) is not in H = {e, (1 2)}, so (1 3) H (1 3)^{-1} is not contained in H. Hence H is not normal.",
+          "A_3 = {e, (1 2 3), (1 3 2)} has index 2 in S_3 (6/3 = 2), and every subgroup of index 2 is normal. So A_3 ⊲ S_3."
+        ],
+        "a": "H = <(1 2)> is not normal, since conjugating (1 2) by (1 3) gives (2 3), outside H; A_3 is normal by index 2."
+      },
+      "practice": [
+        {
+          "q": "Show that the center Z(G) is always a normal subgroup of G.",
+          "a": "Z(G) is a subgroup (shown earlier). For any g in G and z in Z(G), gzg^{-1} = z g g^{-1} = z, using zg = gz; so gzg^{-1} = z is in Z(G). Hence Z(G) is normal."
+        },
+        {
+          "q": "Is every subgroup of S_3 normal? List the subgroups of S_3 and say which are normal.",
+          "a": "No. S_3 has subgroups {e}, the three order-2 subgroups <(1 2)>, <(1 3)>, <(2 3)>, A_3 (order 3), and S_3 itself. Only {e}, A_3, and S_3 are normal — the order-2 subgroups are not, since conjugation permutes the three transpositions."
+        }
+      ],
+      "takeaway": "Normal means invariant under conjugation (gH = Hg); kernels are normal, index-2 subgroups are normal, and normality is exactly what a subgroup needs to support a quotient group.",
+      "module": "Normal Subgroups and Factor Groups"
+    },
+    "Factor Groups (Quotient Groups)": {
+      "intro": "When H is normal, the cosets themselves form a group — the factor group G/H, where you multiply whole cosets at once. Factor groups collapse a group by 'modding out' a normal subgroup: Z/6Z is just Z_6, S_3/A_3 is a group of order 2, and every homomorphism's image is a factor group of its domain.",
+      "concepts": [
+        "Definition — if H ⊲ G, the factor group G/H is the set of cosets of H with operation (aH)(bH) = abH. Normality is what makes this well defined: if aH = a'H and bH = b'H, then abH = a'b'H.",
+        "Why normality matters — without it, (aH)(bH) = abH depends on the chosen representatives, so the operation is not even defined. The whole construction rests on gH = Hg.",
+        "Order — |G/H| = [G : H] = |G| / |H| for finite G. The factor group is smaller than G by exactly the size of H.",
+        "Examples — Z/6Z ~= Z_6 (cosets are the residues mod 6); S_3/A_3 has order 2, so it is isomorphic to Z_2; G/{e} ~= G and G/G is the trivial group.",
+        "Coset arithmetic — in additive notation, (a + H) + (b + H) = (a + b) + H. In Z/4Z: (2 + 4Z) + (3 + 4Z) = 5 + 4Z = 1 + 4Z, since 5 = 1 mod 4."
+      ],
+      "example": {
+        "q": "In Z/12Z, let H = <4> = {0, 4, 8}. Describe the factor group (Z/12Z)/H: list its elements and identify the group it is isomorphic to.",
+        "steps": [
+          "H has order 3, so the factor group has order 12/3 = 4. Its elements are the four cosets: 0 + H = {0, 4, 8}, 1 + H = {1, 5, 9}, 2 + H = {2, 6, 10}, 3 + H = {3, 7, 11}.",
+          "Addition of cosets: (1 + H) + (1 + H) = 2 + H; (1 + H) + (1 + H) + (1 + H) = 3 + H; four copies give 4 + H = 0 + H.",
+          "So the coset 1 + H has order 4 in the factor group, which therefore has an element of order equal to the group order — it is cyclic of order 4.",
+          "Hence (Z/12Z)/H ~= Z_4."
+        ],
+        "a": "The factor group has 4 elements {0+H, 1+H, 2+H, 3+H} and is isomorphic to Z_4, generated by 1 + H."
+      },
+      "practice": [
+        {
+          "q": "Compute (2 + 4Z) + (3 + 4Z) in Z/4Z, and list all elements of Z/4Z.",
+          "a": "(2 + 4Z) + (3 + 4Z) = 5 + 4Z = 1 + 4Z. The elements are 0 + 4Z, 1 + 4Z, 2 + 4Z, 3 + 4Z."
+        },
+        {
+          "q": "Let H = <3> in Z/12Z. Find |H|, the order of (Z/12Z)/H, and identify the factor group up to isomorphism.",
+          "a": "H = {0, 3, 6, 9} has order 4, so the factor group has order 12/4 = 3. A group of order 3 is cyclic, so (Z/12Z)/H ~= Z_3."
+        }
+      ],
+      "takeaway": "When H is normal, the cosets form the factor group G/H of order |G|/|H| — division for groups, built on coset arithmetic.",
+      "module": "Normal Subgroups and Factor Groups"
+    },
+    "The Isomorphism Theorems": {
+      "intro": "The isomorphism theorems are the payoff of the whole module: they say every homomorphism factors through a quotient, and they relate the subgroups of a group to the subgroups of its quotients. The first isomorphism theorem — G/ker(phi) is isomorphic to im(phi) — is the single most used theorem in algebra.",
+      "concepts": [
+        "First isomorphism theorem — for any homomorphism phi: G -> G', the map G/ker phi -> im phi sending g ker phi to phi(g) is an isomorphism. So G/ker phi ~= im phi: the image is the domain with the kernel collapsed.",
+        "Why it works — phi(a) = phi(b) exactly when a^{-1} b is in ker phi, i.e. exactly when a ker phi = b ker phi. So the cosets of the kernel are in bijection with the values of phi.",
+        "Second isomorphism theorem — if H <= G and N ⊲ G, then HN <= G, H ∩ N ⊲ H, and H/(H ∩ N) ~= HN/N.",
+        "Third isomorphism theorem — if N ⊲ G and K ⊲ G with N <= K, then (G/N)/(K/N) ~= G/K. Quotients of quotients collapse to a single quotient.",
+        "Using the first theorem — to identify a factor group, find a surjective homomorphism with the right kernel: Z/6Z ~= Z_6 comes from phi(n) = n mod 6 with kernel 6Z."
+      ],
+      "example": {
+        "q": "Use the first isomorphism theorem to show Z/6Z ~= Z_6, and R*/{1, -1} ~= R>0 (positive reals under multiplication).",
+        "steps": [
+          "Let phi: Z -> Z_6, phi(n) = n mod 6. It is a surjective homomorphism with ker phi = 6Z. By the first isomorphism theorem, Z/ker phi = Z/6Z ~= im phi = Z_6.",
+          "Let psi: R* -> R>0, psi(x) = x^2. It is a homomorphism: psi(xy) = (xy)^2 = x^2 y^2. Its image is all positive reals (every y > 0 is (sqrt(y))^2), and its kernel is {x : x^2 = 1} = {1, -1}.",
+          "By the first isomorphism theorem, R*/ker psi = R*/{1, -1} ~= im psi = R>0."
+        ],
+        "a": "Z/6Z ~= Z_6 and R*/{1, -1} ~= R>0, both by the first isomorphism theorem."
+      },
+      "practice": [
+        {
+          "q": "Let phi: (R, +) -> (C*, .), phi(x) = e^{2 pi i x}. Find ker phi and im phi, and state what the first isomorphism theorem gives.",
+          "a": "ker phi = {x : e^{2 pi i x} = 1} = Z, and im phi = the unit circle {z : |z| = 1}. The first isomorphism theorem gives R/Z ~= the circle group."
+        },
+        {
+          "q": "Use the first isomorphism theorem on det: GL(2, R) -> R* to identify GL(2, R)/SL(2, R).",
+          "a": "det is surjective with kernel SL(2, R), so GL(2, R)/SL(2, R) ~= im det = R*."
+        }
+      ],
+      "takeaway": "G/ker(phi) is isomorphic to im(phi) — every homomorphic image is a factor group, and the isomorphism theorems turn quotient questions into homomorphism questions.",
+      "module": "Normal Subgroups and Factor Groups"
+    },
+    "Permutations": {
+      "intro": "Permutations are the original groups: the symmetries of a finite set under composition. Every finite group sits inside some symmetric group (Cayley's theorem), so understanding permutations — their cycle structure, their order, their parity — is understanding finite groups in miniature.",
+      "concepts": [
+        "Definition — a permutation of {1, ..., n} is a bijection from the set to itself. The set of all of them, S_n, is a group under composition, of order n! (so |S_5| = 120).",
+        "One-line notation — write sigma as [sigma(1), sigma(2), ..., sigma(n)]. For example, sigma = [2, 3, 1, 5, 4] sends 1 -> 2, 2 -> 3, 3 -> 1, 4 -> 5, 5 -> 4.",
+        "Composition order — we compose right to left, as functions: (sigma tau)(i) = sigma(tau(i)). For example, (1 2)(2 3) = (1 2 3): 1 -> 1 -> 2, 2 -> 3 -> 3, 3 -> 2 -> 1.",
+        "Cycle notation — every permutation is a product of disjoint cycles, uniquely up to order: [2, 3, 1, 5, 4] = (1 2 3)(4 5). Disjoint cycles commute with each other.",
+        "Order from cycles — the order of a permutation is the least common multiple of its cycle lengths: (1 2 3)(4 5) has order lcm(3, 2) = 6."
+      ],
+      "example": {
+        "q": "Write sigma = [2, 3, 1, 5, 4] in S_5 in cycle notation, find its order, and compute sigma^2 and sigma^3.",
+        "steps": [
+          "Cycle notation: follow 1 -> 2 -> 3 -> 1, giving the 3-cycle (1 2 3); and 4 -> 5 -> 4, giving (4 5). So sigma = (1 2 3)(4 5).",
+          "Order: lcm of the cycle lengths 3 and 2 is 6. So sigma has order 6; sigma^6 = e.",
+          "sigma^2 = (1 2 3)^2 (4 5)^2 = (1 3 2) * e = (1 3 2). sigma^3 = (1 2 3)^3 (4 5)^3 = e * (4 5) = (4 5)."
+        ],
+        "a": "sigma = (1 2 3)(4 5), of order 6; sigma^2 = (1 3 2) and sigma^3 = (4 5)."
+      },
+      "practice": [
+        {
+          "q": "How many permutations are in S_4 with no fixed points (derangements)? List the cycle types that occur.",
+          "a": "There are 9 derangements of 4 elements: the 6 four-cycles (e.g. (1 2 3 4)) and the 3 double transpositions (1 2)(3 4), (1 3)(2 4), (1 4)(2 3). Total 6 + 3 = 9."
+        },
+        {
+          "q": "How many 3-cycles are in S_5?",
+          "a": "Choose the 3 elements moved: C(5, 3) = 10 choices; each set of 3 supports 2 distinct 3-cycles. So 10 * 2 = 20 three-cycles."
+        }
+      ],
+      "takeaway": "Permutations decompose uniquely into disjoint cycles; the order is the lcm of the cycle lengths, and S_n has order n! — the universal home of finite groups.",
+      "module": "Permutation Groups and Cayley's Theorem"
+    },
+    "Cycles and Transpositions": {
+      "intro": "Every permutation is built from transpositions — 2-cycles that swap two elements. Writing a permutation as a product of transpositions is never unique, but the parity (even or odd number of transpositions) always is. That single invariant splits S_n in half and defines the alternating group.",
+      "concepts": [
+        "Transpositions — a 2-cycle (a b) swaps a and b and fixes everything else. Every cycle is a product of transpositions: (a1 a2 ... ak) = (a1 ak) ... (a1 a3)(a1 a2), using k - 1 transpositions.",
+        "Parity is well defined — a permutation written as a product of transpositions always uses an even number or always an odd number, never both. This is a theorem (proved by counting inversions or by the sign homomorphism).",
+        "Sign — the sign of sigma is +1 if sigma is even and -1 if odd; sign(sigma tau) = sign(sigma) sign(tau). A k-cycle has sign (-1)^{k-1}: 3-cycles are even, 4-cycles are odd.",
+        "Order and parity together — the order of a permutation depends only on cycle lengths, while parity depends on the sum of (length - 1) over cycles. A permutation's order and parity are independent facts.",
+        "Computing parity fast — count the transpositions in any decomposition, or count inversions: sigma is odd exactly when the number of pairs i < j with sigma(i) > sigma(j) is odd."
+      ],
+      "example": {
+        "q": "Write (1 2 3 4) as a product of transpositions, determine its parity, and find the order of (1 2 3)(4 5 6 7) in S_7.",
+        "steps": [
+          "(1 2 3 4) = (1 4)(1 3)(1 2): three transpositions, so it is odd (sign -1). Check: 1 -> 2 -> 2 -> 2, 2 -> 1 -> 3 -> 3, 3 -> 3 -> 1 -> 4, 4 -> 4 -> 4 -> 1. Correct.",
+          "The order of a product of disjoint cycles is the lcm of the lengths: lcm(3, 4) = 12. So (1 2 3)(4 5 6 7) has order 12.",
+          "Its parity: a 3-cycle is even (2 transpositions) and a 4-cycle is odd (3 transpositions), so the product is odd (2 + 3 = 5 transpositions)."
+        ],
+        "a": "(1 2 3 4) = (1 4)(1 3)(1 2), odd; (1 2 3)(4 5 6 7) has order 12 and is odd."
+      },
+      "practice": [
+        {
+          "q": "Is (1 2)(3 4) even or odd? Write it as a product of transpositions.",
+          "a": "It is already a product of two transpositions, so it is even (sign +1)."
+        },
+        {
+          "q": "Find the order and the parity of (1 2 3 4 5) in S_5.",
+          "a": "A 5-cycle has order 5 and is the product of 4 transpositions, so it is even (sign +1)."
+        }
+      ],
+      "takeaway": "Transpositions generate S_n; parity is well defined, so every permutation is even or odd — and that split is the alternating group.",
+      "module": "Permutation Groups and Cayley's Theorem"
+    },
+    "Alternating Groups": {
+      "intro": "Half of all permutations are even, and the even ones form a group of their own: the alternating group A_n. It is the kernel of the sign homomorphism, always normal in S_n, and for n >= 5 it is simple — the fact that makes the quintic unsolvable by radicals and drives the whole theory of group simplicity.",
+      "concepts": [
+        "Definition — A_n is the set of even permutations in S_n. It is a subgroup of index 2, so |A_n| = n!/2: |A_4| = 12 and |A_5| = 60.",
+        "Kernel of sign — the sign map sgn: S_n -> {1, -1} is a homomorphism, and A_n = ker(sgn). As a kernel, A_n is normal in S_n, and S_n/A_n ~= Z_2.",
+        "Elements of A_4 — the identity, the three double transpositions (1 2)(3 4), (1 3)(2 4), (1 4)(2 3), and the eight 3-cycles: 1 + 3 + 8 = 12 elements.",
+        "A_3 — A_3 = {e, (1 2 3), (1 3 2)} is cyclic of order 3, isomorphic to Z_3.",
+        "Simplicity — A_n is simple (no nontrivial proper normal subgroups) for n >= 5. A_5, of order 60, is the smallest non-abelian simple group; A_4 is not simple, since the Klein four-group of double transpositions is normal in it."
+      ],
+      "example": {
+        "q": "List all 12 elements of A_4 and verify the count 4!/2 = 12.",
+        "steps": [
+          "Even permutations are products of an even number of transpositions. The identity (0 transpositions) is even.",
+          "The 3-cycles are even: each is 2 transpositions. There are 8 of them: (1 2 3), (1 3 2), (1 2 4), (1 4 2), (1 3 4), (1 4 3), (2 3 4), (2 4 3).",
+          "The double transpositions are even: (1 2)(3 4), (1 3)(2 4), (1 4)(2 3) — three of them.",
+          "Total: 1 + 8 + 3 = 12 = 24/2. The remaining 12 permutations of S_4 (the six transpositions and six 4-cycles) are odd."
+        ],
+        "a": "A_4 has 12 elements: the identity, eight 3-cycles, and three double transpositions."
+      },
+      "practice": [
+        {
+          "q": "Is (1 2 3 4 5) in A_5? What is its sign?",
+          "a": "A 5-cycle is a product of 4 transpositions, so it is even: sign +1, and (1 2 3 4 5) is in A_5."
+        },
+        {
+          "q": "Show that A_3 is isomorphic to Z_3.",
+          "a": "A_3 = {e, (1 2 3), (1 3 2)} has order 3, and (1 2 3) generates it: (1 2 3)^2 = (1 3 2), (1 2 3)^3 = e. A cyclic group of order 3 is isomorphic to Z_3."
+        }
+      ],
+      "takeaway": "A_n is the even half of S_n, of order n!/2, normal as the kernel of sign — and for n >= 5 it is simple, the smallest non-abelian simple group being A_5.",
+      "module": "Permutation Groups and Cayley's Theorem"
+    },
+    "Cayley's Theorem": {
+      "intro": "Cayley's theorem says every group is a group of permutations: any group G embeds into the symmetric group on its own underlying set. Abstract groups are not more general than permutation groups — they are permutation groups in disguise. It is the theorem that justifies studying S_n as the universal example.",
+      "concepts": [
+        "The theorem — every group G is isomorphic to a subgroup of S_G, the symmetric group on the set G. If |G| = n, then G embeds into S_n.",
+        "The embedding — for each g in G, left multiplication L_g(x) = gx is a permutation of G (its inverse is L_{g^{-1}}), and the map g |-> L_g is an injective homomorphism G -> S_G.",
+        "Why injective — if L_g = L_h, then applying both to e gives g = h. Distinct group elements give distinct permutations, so the map is an embedding.",
+        "Example: Z_3 in S_3 — left multiplication by 1 on Z_3 = {0, 1, 2} sends 0 -> 1, 1 -> 2, 2 -> 0, the 3-cycle (0 1 2). The image is {e, (0 1 2), (0 2 1)} ~= Z_3.",
+        "Not the smallest embedding — Cayley embeds G into S_{|G|}, but often a smaller symmetric group works: S_3 embeds into S_3 itself, and V_4 embeds into S_4 by its action on its four elements, though smaller embeddings exist too."
+      ],
+      "example": {
+        "q": "Embed Z_3 = {0, 1, 2} (additive) into S_3 via left multiplication, and write down the permutation corresponding to each element.",
+        "steps": [
+          "Left multiplication by 0 is the identity: L_0 = e.",
+          "Left multiplication by 1 sends x to x + 1 mod 3: 0 -> 1, 1 -> 2, 2 -> 0. As a permutation of {0, 1, 2} this is the cycle (0 1 2).",
+          "Left multiplication by 2 sends x to x + 2 mod 3: 0 -> 2, 2 -> 1, 1 -> 0, the cycle (0 2 1) = (0 1 2)^2.",
+          "The image {e, (0 1 2), (0 2 1)} is a subgroup of S_3 isomorphic to Z_3. So Z_3 sits inside S_3 as the rotations of a triangle."
+        ],
+        "a": "0 |-> e, 1 |-> (0 1 2), 2 |-> (0 2 1); the image is a subgroup of S_3 isomorphic to Z_3."
+      },
+      "practice": [
+        {
+          "q": "Cayley's theorem embeds a group of order 4 into which symmetric group? Name one group of order 4 and describe its image's generators.",
+          "a": "A group of order 4 embeds into S_4. For V_4 = {e, a, b, ab} with a^2 = b^2 = e, left multiplication by a and by b give two commuting double transpositions in S_4, e.g. a |-> (1 2)(3 4) and b |-> (1 3)(2 4) under a suitable labelling."
+        },
+        {
+          "q": "Why is the map g |-> L_g injective? (What happens if L_g = L_h?)",
+          "a": "If L_g = L_h as functions, evaluate at e: L_g(e) = ge = g and L_h(e) = h, so g = h. Hence distinct elements give distinct permutations."
+        }
+      ],
+      "takeaway": "Every group is a permutation group: left multiplication embeds G into S_G, so S_n is the universal example and permutation intuition applies everywhere.",
+      "module": "Permutation Groups and Cayley's Theorem"
+    },
+    "External Direct Products": {
+      "intro": "The direct product builds a new group out of old ones by pairing elements: G x H consists of ordered pairs with componentwise operation. It is how you assemble big groups from small ones — Z_2 x Z_3 is secretly Z_6, while Z_2 x Z_2 is the Klein four-group — and the order of a pair is the lcm of the orders of its components.",
+      "concepts": [
+        "Definition — G x H = {(g, h) : g in G, h in H} with (g1, h1)(g2, h2) = (g1 g2, h1 h2). The identity is (e_G, e_H), inverses are componentwise, and |G x H| = |G| * |H|.",
+        "Order of an element — the order of (g, h) is lcm(|g|, |h|). So (1, 1) in Z_2 x Z_3 has order lcm(2, 3) = 6, while (1, 1) in Z_2 x Z_2 has order lcm(2, 2) = 2.",
+        "Z_2 x Z_3 ~= Z_6 — since (1, 1) has order 6 = |Z_2 x Z_3|, it generates the whole product, which is therefore cyclic. In general Z_m x Z_n is cyclic exactly when gcd(m, n) = 1.",
+        "Z_2 x Z_2 is not cyclic — its largest element order is 2, so it is not isomorphic to Z_4. It is the Klein four-group V_4.",
+        "Products of more factors — the construction extends to G1 x G2 x ... x Gk, with order the product of the orders; finite abelian groups are exactly the products of cyclic groups of prime power order."
+      ],
+      "example": {
+        "q": "In Z_4 x Z_6, find the order of (2, 3). Then show that (1, 1) generates Z_2 x Z_3, so Z_2 x Z_3 ~= Z_6.",
+        "steps": [
+          "In Z_4, the element 2 has order 2 (2 + 2 = 0 mod 4). In Z_6, the element 3 has order 2 (3 + 3 = 0 mod 6).",
+          "The order of (2, 3) is lcm(2, 2) = 2. Check: 2 * (2, 3) = (4, 6) = (0, 0) in Z_4 x Z_6. Correct.",
+          "In Z_2 x Z_3: the order of (1, 1) is lcm(2, 3) = 6, which equals |Z_2 x Z_3| = 6. So (1, 1) generates the whole group.",
+          "A cyclic group of order 6 is isomorphic to Z_6, so Z_2 x Z_3 ~= Z_6. Its powers are (1,1), (0,2), (1,0), (0,1), (1,2), (0,0) — all six elements."
+        ],
+        "a": "(2, 3) has order 2 in Z_4 x Z_6; (1, 1) generates Z_2 x Z_3, so Z_2 x Z_3 ~= Z_6."
+      },
+      "practice": [
+        {
+          "q": "Is Z_4 x Z_6 cyclic? Find the maximum order of an element.",
+          "a": "No. The maximum element order is lcm(4, 6) = 12, but |Z_4 x Z_6| = 24, so no element generates the group. (Indeed gcd(4, 6) = 2 != 1.)"
+        },
+        {
+          "q": "Show that Z_2 x Z_2 is not isomorphic to Z_4.",
+          "a": "Every non-identity element of Z_2 x Z_2 has order 2 (lcm(2, 2) = 2), while Z_4 has an element of order 4. Isomorphisms preserve element orders, so they are not isomorphic."
+        }
+      ],
+      "takeaway": "G x H multiplies componentwise; element orders are lcms, and Z_m x Z_n is cyclic exactly when m and n are coprime.",
+      "module": "Direct Products and Finitely Generated Abelian Groups"
+    },
+    "Internal Direct Products": {
+      "intro": "Sometimes a group is already a direct product on the inside: two subgroups H and K that meet only at the identity, commute with each other, and together fill the group. Then G is the internal direct product of H and K, isomorphic to the external product H x K. Z_6 splits this way into pieces of order 3 and 2; S_3 does not split at all.",
+      "concepts": [
+        "Definition — G is the internal direct product of subgroups H and K when (i) H and K are normal in G, (ii) H ∩ K = {e}, and (iii) HK = G. Then every g in G writes uniquely as g = hk, and G ~= H x K.",
+        "Why it works — normality makes hk = kh for h in H, k in K (the commutator hkh^{-1}k^{-1} lies in both H and K, hence is e), so the map H x K -> G, (h, k) |-> hk, is a homomorphism, and (ii) + (iii) make it an isomorphism.",
+        "Z_6 splits — in additive Z_6, H = <2> = {0, 2, 4} (order 3) and K = <3> = {0, 3} (order 2): H ∩ K = {0}, H + K = Z_6 (0, 2, 4, 3, 5, 1), and Z_6 is abelian so both are normal. Hence Z_6 ~= Z_3 x Z_2.",
+        "Uniqueness of the decomposition — in an internal direct product, every element has exactly one expression hk; this mirrors the uniqueness of coordinates in an external product.",
+        "S_3 does not split — S_3 has a normal subgroup A_3 of order 3, but no normal subgroup of order 2 (its order-2 subgroups are not normal), so S_3 is not an internal direct product of nontrivial subgroups."
+      ],
+      "example": {
+        "q": "Show that Z_6 is the internal direct product of H = <2> and K = <3>, and write 5 in Z_6 as h + k with h in H, k in K.",
+        "steps": [
+          "H = {0, 2, 4} has order 3 and K = {0, 3} has order 2; both are subgroups, and in the abelian group Z_6 every subgroup is normal.",
+          "H ∩ K = {0}: the only element in both is 0. H + K = {0+0, 0+3, 2+0, 2+3, 4+0, 4+3} = {0, 3, 2, 5, 4, 1} = all of Z_6.",
+          "So Z_6 is the internal direct product of H and K, and Z_6 ~= H x K ~= Z_3 x Z_2.",
+          "Decompose 5: 5 = 2 + 3, with 2 in H and 3 in K. (Also 5 = 4 + 1? No — 1 is not in K. The decomposition is unique: 5 = 2 + 3.)"
+        ],
+        "a": "Z_6 = H + K with H ∩ K = {0}, so Z_6 ~= Z_3 x Z_2; and 5 = 2 + 3 uniquely."
+      },
+      "practice": [
+        {
+          "q": "In Z_12, let H = <3> = {0, 3, 6, 9} and K = <4> = {0, 4, 8}. Is Z_12 the internal direct product of H and K? Check the three conditions.",
+          "a": "H ∩ K = {0} (0 is the only common element), and H + K has 4 * 3 = 12 elements, so H + K = Z_12; Z_12 is abelian so both are normal. Yes: Z_12 ~= Z_4 x Z_3 ~= Z_12, consistent with gcd(4, 3) = 1."
+        },
+        {
+          "q": "Explain why S_3 cannot be written as an internal direct product of two nontrivial subgroups.",
+          "a": "A splitting would need a normal subgroup of order 2 or 3 to pair with a complementary normal subgroup. S_3 has exactly one nontrivial proper normal subgroup, A_3 of order 3; its order-2 subgroups <(1 2)>, <(1 3)>, <(2 3)> are not normal, so no complementary normal subgroup of order 2 exists."
+        }
+      ],
+      "takeaway": "A group is an internal direct product when normal subgroups meet trivially and fill the group — Z_6 splits as Z_3 x Z_2, but S_3 does not split at all.",
+      "module": "Direct Products and Finitely Generated Abelian Groups"
+    },
+    "Fundamental Theorem of Finitely Generated Abelian Groups": {
+      "intro": "The fundamental theorem is the complete classification of finitely generated abelian groups: every one is a direct product of cyclic groups, in essentially one way. It turns the classification problem into arithmetic — counting partitions of exponents — and it is the model for what a classification theorem looks like in algebra.",
+      "concepts": [
+        "The theorem — every finitely generated abelian group G is isomorphic to Z^r x Z_{n1} x Z_{n2} x ... x Z_{ns}, where r >= 0 is the rank (free part) and n1 | n2 | ... | ns are the invariant factors (torsion part). The decomposition is unique.",
+        "Finite case — a finite abelian group has r = 0, so it is a product of cyclic groups of prime power order: the primary decomposition. The number of groups of a given order is counted by partitions.",
+        "Counting by partitions — for order p^k, the groups correspond to partitions of k. For order 8 = 2^3, partitions of 3 are 3, 2+1, 1+1+1, giving Z_8, Z_4 x Z_2, Z_2 x Z_2 x Z_2: three groups.",
+        "Order 36 — 36 = 2^2 * 3^2. Partitions of 2: 2 and 1+1 (two choices for the 2-part, two for the 3-part), so 2 * 2 = 4 abelian groups: Z_4 x Z_9, Z_4 x Z_3 x Z_3, Z_2 x Z_2 x Z_9, Z_2 x Z_2 x Z_3 x Z_3.",
+        "Beyond finite — Z itself is finitely generated abelian of rank 1 (Z^1); Z x Z_6 has rank 1 with torsion Z_6. The rank counts the infinite directions, the invariant factors the finite torsion."
+      ],
+      "example": {
+        "q": "Classify all abelian groups of order 36 up to isomorphism, using the fundamental theorem.",
+        "steps": [
+          "36 = 2^2 * 3^2. By the primary decomposition, a group of order 36 is (2-part) x (3-part), where the 2-part has order 4 and the 3-part has order 9.",
+          "The 2-part is an abelian group of order 4: either Z_4 (partition 2) or Z_2 x Z_2 (partition 1+1).",
+          "The 3-part is an abelian group of order 9: either Z_9 (partition 2) or Z_3 x Z_3 (partition 1+1).",
+          "Combining independently gives 2 * 2 = 4 groups: Z_4 x Z_9 ~= Z_36, Z_4 x Z_3 x Z_3, Z_2 x Z_2 x Z_9, Z_2 x Z_2 x Z_3 x Z_3. Only the first is cyclic."
+        ],
+        "a": "Four abelian groups of order 36: Z_36, Z_4 x Z_3 x Z_3, Z_2 x Z_2 x Z_9, Z_2 x Z_2 x Z_3 x Z_3."
+      },
+      "practice": [
+        {
+          "q": "Classify all abelian groups of order 8 up to isomorphism.",
+          "a": "8 = 2^3; partitions of 3 are 3, 2+1, 1+1+1, giving Z_8, Z_4 x Z_2, and Z_2 x Z_2 x Z_2 — three groups, only Z_8 cyclic."
+        },
+        {
+          "q": "How many abelian groups of order 72 are there (up to isomorphism)?",
+          "a": "72 = 2^3 * 3^2. Partitions of 3 give 3 choices for the 2-part; partitions of 2 give 2 choices for the 3-part. Total 3 * 2 = 6 groups."
+        }
+      ],
+      "takeaway": "Every finitely generated abelian group is Z^r times cyclic groups of prime power order, uniquely — and counting groups of a given order is counting partitions of exponents.",
+      "module": "Direct Products and Finitely Generated Abelian Groups"
+    }
+  }
+}
