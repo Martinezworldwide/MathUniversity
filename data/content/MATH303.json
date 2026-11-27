@@ -1,0 +1,703 @@
+{
+  "course_id": "MATH303",
+  "title": "Complex Analysis",
+  "lesson_count": 22,
+  "lessons": {
+    "Complex Numbers and the Complex Plane": {
+      "intro": "Complex analysis begins where real analysis stops: by adjoining a square root of -1, called i, the real line becomes the complex plane, and every polynomial suddenly has roots. A complex number z = x + iy is a point (x, y) in the plane, and the geometry of that plane — distance, angle, rotation — turns out to be the key to everything that follows.",
+      "concepts": [
+        "Algebraic form — every complex number is z = x + iy with x, y real; x = Re(z) is the real part and y = Im(z) the imaginary part. Addition and multiplication follow the rule i^2 = -1: (a + bi)(c + di) = (ac - bd) + (ad + bc)i.",
+        "Modulus and conjugate — the modulus |z| = sqrt(x^2 + y^2) is the distance from z to the origin, and the conjugate z-bar = x - iy reflects z across the real axis. Key identities: z * z-bar = |z|^2 and |zw| = |z||w|.",
+        "Polar form — writing z = r(cos theta + i sin theta) = r e^{i theta} makes multiplication geometric: moduli multiply and arguments add. The argument arg(z) = theta is the angle from the positive real axis, defined up to multiples of 2pi.",
+        "Division via the conjugate — to divide, multiply top and bottom by the conjugate of the denominator: 1/(a + bi) = (a - bi)/(a^2 + b^2). The denominator is real because (a + bi)(a - bi) = a^2 + b^2.",
+        "Triangle inequality — |z + w| <= |z| + |w|, with equality exactly when z and w point in the same direction. It says the shortest path between two points is a straight line, and it is the workhorse estimate of the whole course."
+      ],
+      "example": {
+        "q": "Let z = 3 + 4i and w = 1 - 2i. Compute zw, z/w, |z|, and the polar form of z.",
+        "steps": [
+          "Multiply: zw = (3 + 4i)(1 - 2i) = 3 - 6i + 4i - 8i^2 = 3 - 2i + 8 = 11 - 2i, using i^2 = -1.",
+          "Divide: z/w = (3 + 4i)/(1 - 2i). Multiply top and bottom by the conjugate 1 + 2i: (3 + 4i)(1 + 2i)/(1 + 4) = (3 + 6i + 4i + 8i^2)/5 = (-5 + 10i)/5 = -1 + 2i.",
+          "Modulus: |z| = sqrt(3^2 + 4^2) = sqrt(25) = 5.",
+          "Polar form: r = |z| = 5, and theta = arctan(4/3) (first quadrant, since x, y > 0), so z = 5 e^{i arctan(4/3)} = 5(cos theta + i sin theta) with theta approx 0.9273 radians."
+        ],
+        "a": "zw = 11 - 2i, z/w = -1 + 2i, |z| = 5, and z = 5 e^{i theta} with theta = arctan(4/3) (about 53.13 degrees)."
+      },
+      "practice": [
+        {
+          "q": "Compute (1 + i)^2 and (1 + i)^4. What pattern do you see?",
+          "a": "(1 + i)^2 = 1 + 2i + i^2 = 2i. Then (1 + i)^4 = (2i)^2 = -4. In polar form, 1 + i = sqrt(2) e^{i pi/4}, so (1 + i)^4 = 4 e^{i pi} = -4 — powers multiply the modulus and add the argument."
+        },
+        {
+          "q": "Find 1/(2 + 3i) in the form a + bi, and check that |1/(2 + 3i)| = 1/|2 + 3i|.",
+          "a": "1/(2 + 3i) = (2 - 3i)/(4 + 9) = 2/13 - (3/13)i. Its modulus is sqrt(4 + 9)/13 = sqrt(13)/13 = 1/sqrt(13), and |2 + 3i| = sqrt(13), so the reciprocal relation holds."
+        }
+      ],
+      "takeaway": "A complex number is a point in a plane: algebra gives the arithmetic, polar form gives the geometry, and the conjugate is the tool that makes division work.",
+      "module": "Complex Numbers and Functions"
+    },
+    "Functions of a Complex Variable": {
+      "intro": "A function of a complex variable takes a complex number in and returns a complex number out: f(z) = u(x, y) + i v(x, y), where u and v are real functions of two real variables. The graph no longer fits in three dimensions, so we study f by what it does to regions — and the first question is always the same as in real calculus: does the limit exist?",
+      "concepts": [
+        "Real and imaginary parts — writing z = x + iy, every f has u(x, y) = Re f and v(x, y) = Im f. For example, f(z) = z^2 has u = x^2 - y^2 and v = 2xy.",
+        "Limits — lim z->z0 f(z) = L means f(z) gets arbitrarily close to L as z approaches z0 from ANY direction in the plane. A limit that depends on the direction of approach does not exist.",
+        "Continuity — f is continuous at z0 when lim z->z0 f(z) = f(z0). Polynomials are continuous everywhere; rational functions are continuous wherever the denominator is nonzero.",
+        "Two-path test — to show a limit does NOT exist, find two paths to z0 giving different limits. The classic example is f(z) = z-bar/z at z0 = 0: along the real axis it equals 1, along the imaginary axis it equals -1.",
+        "Domains and neighborhoods — an open disk |z - z0| < r is the complex version of an open interval; f is defined on a domain (an open connected set) when it makes sense at every point of it."
+      ],
+      "example": {
+        "q": "Let f(z) = z^2. Find f(1 + i), write f in terms of u and v, and show that lim z->0 of z-bar/z does not exist.",
+        "steps": [
+          "Evaluate: f(1 + i) = (1 + i)^2 = 1 + 2i + i^2 = 2i.",
+          "Real and imaginary parts: with z = x + iy, z^2 = (x + iy)^2 = x^2 - y^2 + 2xy i, so u(x, y) = x^2 - y^2 and v(x, y) = 2xy.",
+          "For the limit of g(z) = z-bar/z at 0, approach along the real axis: z = x (real), so z-bar/z = x/x = 1 for x != 0, and the limit along this path is 1.",
+          "Approach along the imaginary axis: z = iy, so z-bar/z = (-iy)/(iy) = -1 for y != 0, and the limit along this path is -1.",
+          "Two paths give different limits (1 vs -1), so lim z->0 z-bar/z does not exist — even though |g(z)| = 1 everywhere."
+        ],
+        "a": "f(1 + i) = 2i with u = x^2 - y^2, v = 2xy; the limit of z-bar/z at 0 does not exist because it equals 1 on the real axis and -1 on the imaginary axis."
+      },
+      "practice": [
+        {
+          "q": "Write f(z) = 1/z (for z != 0) as u + iv with u and v in terms of x and y.",
+          "a": "1/z = 1/(x + iy) = (x - iy)/(x^2 + y^2), so u = x/(x^2 + y^2) and v = -y/(x^2 + y^2)."
+        },
+        {
+          "q": "Does lim z->0 of Re(z)/|z| exist? Test the real and imaginary axes.",
+          "a": "No. On the real axis z = x, Re(z)/|z| = x/|x| = 1 for x > 0. On the imaginary axis z = iy, Re(z)/|z| = 0/|y| = 0. Different paths, different limits, so the limit does not exist."
+        }
+      ],
+      "takeaway": "In the complex plane a limit must be direction-independent — one bad path is enough to kill it, and the two-path test is the fastest way to prove non-existence.",
+      "module": "Complex Numbers and Functions"
+    },
+    "Analytic Functions": {
+      "intro": "The derivative of a complex function is defined exactly as in real calculus — the limit of the difference quotient — but because z can approach from any direction, that limit is far more demanding. Functions that survive it are called analytic (or holomorphic), and they are the heroes of this course: infinitely differentiable, locally given by power series, and rigid in ways real functions never are.",
+      "concepts": [
+        "Complex derivative — f'(z0) = lim h->0 (f(z0 + h) - f(z0))/h, where h is a complex number tending to 0 from any direction. If this limit exists, f is differentiable at z0.",
+        "Analytic (holomorphic) — f is analytic at z0 if it is differentiable in some neighborhood of z0; analytic on a domain if it is differentiable at every point there. Polynomials are analytic everywhere (entire); 1/z is analytic on C minus {0}.",
+        "Differentiation rules — the sum, product, quotient, and chain rules all carry over unchanged from real calculus. So (z^n)' = n z^{n-1} and the derivative of a polynomial is computed exactly as you would expect.",
+        "Non-examples — f(z) = z-bar is differentiable NOWHERE: the difference quotient along real h is 1, along imaginary h is -1. Similarly |z|^2 and Re(z) fail to be differentiable except possibly at isolated points.",
+        "Analytic implies smooth — one of the great theorems of the course (proved later via the Cauchy integral formula) is that an analytic function is automatically infinitely differentiable. Differentiable once means differentiable forever."
+      ],
+      "example": {
+        "q": "Show that f(z) = z^2 is analytic everywhere with f'(z) = 2z, and show that g(z) = |z|^2 is differentiable only at z = 0.",
+        "steps": [
+          "Difference quotient for f: (f(z + h) - f(z))/h = ((z + h)^2 - z^2)/h = (2zh + h^2)/h = 2z + h. As h -> 0 this tends to 2z, regardless of direction. So f'(z) = 2z everywhere and f is entire.",
+          "For g(z) = |z|^2 = z * z-bar, the difference quotient at z0 is ((z0 + h)(z0-bar + h-bar) - z0 z0-bar)/h = z0-bar + z0 (h-bar/h) + h-bar.",
+          "Along real h (h = t real), h-bar/h = 1, so the quotient tends to z0-bar + z0 = 2 Re(z0). Along imaginary h (h = it), h-bar/h = -1, so it tends to z0-bar - z0 = -2i Im(z0).",
+          "These agree only when 2 Re(z0) = -2i Im(z0), i.e. when z0 = 0 (since the left side is real and the right side is purely imaginary, both must be 0). So g is differentiable only at 0, and analytic nowhere — a single point of differentiability is not enough."
+        ],
+        "a": "f(z) = z^2 has f'(z) = 2z everywhere, so it is entire; g(z) = |z|^2 is differentiable only at z = 0, hence analytic nowhere."
+      },
+      "practice": [
+        {
+          "q": "Find the derivative of h(z) = z^3 - 2z + 1 and evaluate h'(1 + i).",
+          "a": "h'(z) = 3z^2 - 2, so h'(1 + i) = 3(1 + i)^2 - 2 = 3(2i) - 2 = -2 + 6i."
+        },
+        {
+          "q": "Show that f(z) = z-bar is differentiable nowhere, using the difference quotient along real and imaginary h.",
+          "a": "The quotient is (z0-bar + h-bar - z0-bar)/h = h-bar/h, which is 1 for real h and -1 for imaginary h. The limit depends on direction, so f'(z0) does not exist at any z0."
+        }
+      ],
+      "takeaway": "Analytic means differentiable in a whole neighborhood, not just at a point — and the difference quotient must be direction-independent, which is why z-bar and |z|^2 fail while polynomials pass.",
+      "module": "Complex Numbers and Functions"
+    },
+    "Cauchy-Riemann Equations": {
+      "intro": "The Cauchy-Riemann equations are the bridge between complex differentiability and real calculus: if f(z) = u + iv is differentiable, then u and v must satisfy u_x = v_y and u_y = -v_x. These two partial differential equations are the practical test for analyticity — and, with a continuity condition, they are also sufficient.",
+      "concepts": [
+        "The equations — if f = u + iv is differentiable at z0, then u_x = v_y and u_y = -v_x at (x0, y0). They come from computing the difference quotient along the real direction (giving u_x + i v_x) and the imaginary direction (giving v_y - i u_y) and equating them.",
+        "Sufficiency — if u and v have continuous first partial derivatives in a neighborhood and satisfy the Cauchy-Riemann equations there, then f is analytic there. Continuity of the partials is essential: CR alone at a single point does not imply differentiability.",
+        "The derivative formula — when f is differentiable, f'(z) = u_x + i v_x = v_y - i u_y. Either form computes the derivative from the real and imaginary parts.",
+        "Test for non-analyticity — if the Cauchy-Riemann equations fail at a point, f is not differentiable there. For f(z) = z-bar, u = x and v = -y, so u_x = 1 but v_y = -1: CR fails everywhere.",
+        "Polar form — in polar coordinates (r, theta), the equations become u_r = (1/r) v_theta and v_r = -(1/r) u_theta, which is often handier for functions given in terms of r and theta."
+      ],
+      "example": {
+        "q": "Show that f(z) = e^z = e^x (cos y + i sin y) satisfies the Cauchy-Riemann equations everywhere, and find f'(z).",
+        "steps": [
+          "Identify u = e^x cos y and v = e^x sin y.",
+          "Compute partials: u_x = e^x cos y, u_y = -e^x sin y, v_x = e^x sin y, v_y = e^x cos y.",
+          "Check CR: u_x = e^x cos y = v_y, and u_y = -e^x sin y = -v_x. Both equations hold everywhere, and the partials are continuous, so f is analytic on all of C.",
+          "Derivative: f'(z) = u_x + i v_x = e^x cos y + i e^x sin y = e^x (cos y + i sin y) = e^z."
+        ],
+        "a": "e^z satisfies the Cauchy-Riemann equations everywhere, so it is entire, and (e^z)' = e^z — just as in real calculus."
+      },
+      "practice": [
+        {
+          "q": "Use the Cauchy-Riemann equations to show f(z) = x^2 - y^2 + 2xy i is analytic and find f'(z).",
+          "a": "u = x^2 - y^2, v = 2xy: u_x = 2x = v_y and u_y = -2y = -v_x, so CR hold. f'(z) = u_x + i v_x = 2x + 2yi = 2z — indeed f(z) = z^2."
+        },
+        {
+          "q": "Show that f(z) = x + 2yi is differentiable nowhere.",
+          "a": "u = x, v = 2y: u_x = 1 but v_y = 2, so u_x != v_y and CR fail at every point. Hence f is differentiable nowhere."
+        }
+      ],
+      "takeaway": "The Cauchy-Riemann equations turn 'differentiable' into two checkable PDEs — and they explain exactly why the exponential is analytic while the conjugate is not.",
+      "module": "Cauchy-Riemann Equations and Elementary Functions"
+    },
+    "Harmonic Functions": {
+      "intro": "A harmonic function is a real function of two variables satisfying Laplace's equation, u_xx + u_yy = 0. They are the real and imaginary parts of analytic functions, and they model steady-state heat, electrostatics, and ideal fluid flow. Every analytic function hands you two harmonic functions for free — and conversely, every harmonic function on a simply connected domain is the real part of some analytic function.",
+      "concepts": [
+        "Laplace's equation — u is harmonic on a domain if u_xx + u_yy = 0 (with continuous second partials). Examples: x^2 - y^2, e^x cos y, ln(x^2 + y^2) (away from the origin).",
+        "Real and imaginary parts are harmonic — if f = u + iv is analytic, then u and v are both harmonic: differentiate CR (u_x = v_y) in x and (u_y = -v_x) in y and add. The Laplacian of u is v_yx - v_xy = 0.",
+        "Harmonic conjugates — v is a harmonic conjugate of u when u + iv is analytic, i.e. when CR hold: v_y = u_x and v_x = -u_y. Given u, you can recover v (up to an additive constant) by integrating these.",
+        "Mean value property — a harmonic function equals the average of its values on any circle around a point: u(z0) = (1/2pi) integral_0^{2pi} u(z0 + r e^{i theta}) d theta. Averages cannot create new extremes.",
+        "Maximum principle — a nonconstant harmonic function cannot attain a maximum or minimum inside its domain; extremes occur only on the boundary. This is why steady-state temperature is controlled by the boundary values."
+      ],
+      "example": {
+        "q": "Show u(x, y) = x^3 - 3x y^2 is harmonic and find its harmonic conjugate v (with v(0, 0) = 0), hence the analytic function f = u + iv.",
+        "steps": [
+          "Check harmonicity: u_x = 3x^2 - 3y^2, u_xx = 6x; u_y = -6xy, u_yy = -6x. So u_xx + u_yy = 6x - 6x = 0: u is harmonic.",
+          "Harmonic conjugate: CR require v_y = u_x = 3x^2 - 3y^2 and v_x = -u_y = 6xy.",
+          "Integrate v_y in y: v = 3x^2 y - y^3 + g(x) for some function g of x alone.",
+          "Differentiate in x: v_x = 6xy + g'(x). Comparing with v_x = 6xy gives g'(x) = 0, so g is constant; v(0, 0) = 0 forces g = 0. Hence v = 3x^2 y - y^3.",
+          "So f = u + iv = (x^3 - 3xy^2) + i(3x^2 y - y^3) = (x + iy)^3 = z^3, which confirms the answer."
+        ],
+        "a": "u is harmonic (Laplacian 0), its harmonic conjugate is v = 3x^2 y - y^3, and u + iv = z^3."
+      },
+      "practice": [
+        {
+          "q": "Show u(x, y) = e^x cos y is harmonic and find its harmonic conjugate.",
+          "a": "u_xx = e^x cos y, u_yy = -e^x cos y, so u_xx + u_yy = 0. CR give v_y = e^x cos y and v_x = e^x sin y, so v = e^x sin y (up to a constant): u + iv = e^z."
+        },
+        {
+          "q": "Is u(x, y) = x^2 + y^2 harmonic? Why or why not?",
+          "a": "No: u_xx = 2 and u_yy = 2, so u_xx + u_yy = 4 != 0. It cannot be the real part of any analytic function."
+        }
+      ],
+      "takeaway": "Harmonic functions are exactly the real (and imaginary) parts of analytic functions — find one, and the Cauchy-Riemann equations hand you the other.",
+      "module": "Cauchy-Riemann Equations and Elementary Functions"
+    },
+    "Exponential and Logarithmic Functions": {
+      "intro": "The complex exponential e^z = e^x (cos y + i sin y) extends the real exponential and inherits its key property, (e^z)' = e^z — but it is periodic in the imaginary direction, e^{z + 2pi i} = e^z, which makes it many-to-one. Its inverse, the complex logarithm, is therefore multi-valued: log z = ln|z| + i arg z, and choosing a branch is the price of making it a function.",
+      "concepts": [
+        "Definition — e^z = e^x (cos y + i sin y) for z = x + iy. It satisfies e^{z + w} = e^z e^w, |e^z| = e^x, and arg(e^z) = y (mod 2pi).",
+        "Periodicity — e^z is periodic with period 2pi i: e^{z + 2pi i} = e^z. So e^z = 1 exactly when z = 2pi i k for integer k, and e^z is never 0.",
+        "Complex logarithm — log z = ln|z| + i Arg(z) + 2pi i k (k any integer) is the multi-valued inverse of exp: e^{log z} = z. The principal branch Log z = ln|z| + i Arg(z) with Arg in (-pi, pi] is analytic on C minus the nonpositive real axis (the branch cut).",
+        "Branch cut — Log z is discontinuous across its cut: approaching -1 from above gives Log -> i pi, from below gives -i pi. No single branch of log is analytic on all of C minus {0}.",
+        "Complex powers — z^a = e^{a Log z} (principal value) for z != 0. Multi-valued in general: i^i = e^{i Log i} = e^{i (i pi/2)} = e^{-pi/2}, a real number (principal value), since Log i = i pi/2."
+      ],
+      "example": {
+        "q": "Compute e^{2 + 3i} (modulus and argument), Log(1 + i), and the principal value of i^i.",
+        "steps": [
+          "e^{2 + 3i} = e^2 (cos 3 + i sin 3). Its modulus is e^2 (about 7.389) and its argument is 3 radians (mod 2pi). Numerically, cos 3 is about -0.9900 and sin 3 is about 0.1411, so e^{2 + 3i} is about -7.315 + 1.043i.",
+          "Log(1 + i): |1 + i| = sqrt(2) and Arg(1 + i) = pi/4, so Log(1 + i) = ln sqrt(2) + i pi/4 = (1/2) ln 2 + i pi/4, about 0.3466 + 0.7854i.",
+          "i^i: the principal value is e^{i Log i}. Since Log i = ln 1 + i pi/2 = i pi/2, we get i^i = e^{i (i pi/2)} = e^{-pi/2}, about 0.2079 — a real number."
+        ],
+        "a": "e^{2+3i} has modulus e^2 (about 7.389) and argument 3; Log(1 + i) = (1/2) ln 2 + i pi/4 (about 0.3466 + 0.7854i); the principal value of i^i is e^{-pi/2} (about 0.2079)."
+      },
+      "practice": [
+        {
+          "q": "Find Log(-i) and all values of log(-i).",
+          "a": "|-i| = 1 and Arg(-i) = -pi/2, so Log(-i) = -i pi/2. All values are log(-i) = -i pi/2 + 2pi i k = i pi (2k - 1/2) for integer k."
+        },
+        {
+          "q": "Solve e^z = -1 for all complex z.",
+          "a": "e^z = -1 = e^{i pi} requires e^x = 1 (so x = 0) and y = pi + 2pi k. Hence z = i pi (2k + 1) for any integer k."
+        }
+      ],
+      "takeaway": "The exponential is entire and periodic; its inverse, the logarithm, is multi-valued, so a branch cut is the price of a single-valued analytic log.",
+      "module": "Cauchy-Riemann Equations and Elementary Functions"
+    },
+    "Trigonometric and Hyperbolic Functions": {
+      "intro": "The complex sine and cosine are defined through the exponential — sin z = (e^{iz} - e^{-iz})/(2i) and cos z = (e^{iz} + e^{-iz})/2 — which makes them entire and keeps all the familiar identities (sin^2 + cos^2 = 1, double-angle formulas) true. But unlike their real versions they are unbounded: sin(iy) = i sinh y grows exponentially, so the complex sine takes every value infinitely often.",
+      "concepts": [
+        "Definitions — sin z = (e^{iz} - e^{-iz})/(2i), cos z = (e^{iz} + e^{-iz})/2. Both are entire, with (sin z)' = cos z and (cos z)' = -sin z, exactly as in real calculus.",
+        "Real-imaginary split — sin(x + iy) = sin x cosh y + i cos x sinh y, and cos(x + iy) = cos x cosh y - i sin x sinh y. The real part oscillates while the imaginary part grows with y.",
+        "Unbounded — on the real axis |sin x| <= 1, but sin(iy) = i sinh y has modulus sinh y, which grows like e^{|y|}/2. So sin z is unbounded on C and has no finite maximum.",
+        "Zeros — sin z = 0 exactly at z = n pi (real integers only), and cos z = 0 exactly at z = pi/2 + n pi. Despite being unbounded, their zeros stay on the real axis.",
+        "Hyperbolic functions — sinh z = (e^z - e^{-z})/2 and cosh z = (e^z + e^{-z})/2 are entire, with cosh^2 z - sinh^2 z = 1 and (sinh z)' = cosh z. Note sin(iz) = i sinh z and cos(iz) = cosh z."
+      ],
+      "example": {
+        "q": "Compute sin(1 + i) and cos(i), giving both exact forms and decimal approximations.",
+        "steps": [
+          "Use sin(x + iy) = sin x cosh y + i cos x sinh y with x = 1, y = 1: sin(1 + i) = sin 1 cosh 1 + i cos 1 sinh 1.",
+          "Numerically sin 1 is about 0.8415, cosh 1 is about 1.5431, cos 1 is about 0.5403, sinh 1 is about 1.1752. So sin(1 + i) is about 0.8415 x 1.5431 + i (0.5403 x 1.1752) = 1.2985 + 0.6350i.",
+          "cos(i): use cos(iy) = cosh y, so cos(i) = cosh 1 = (e + e^{-1})/2, about 1.5431 — a real number bigger than 1, impossible for real cosine but routine for complex cosine."
+        ],
+        "a": "sin(1 + i) = sin 1 cosh 1 + i cos 1 sinh 1, about 1.2985 + 0.6350i; cos(i) = cosh 1, about 1.5431."
+      },
+      "practice": [
+        {
+          "q": "Compute sin(i) and sinh(i), exactly and approximately.",
+          "a": "sin(i) = i sinh 1, about 1.1752i; sinh(i) = i sin 1, about 0.8415i. Both are purely imaginary."
+        },
+        {
+          "q": "Show that |sin z| can exceed 1 by finding sin(2i) and its modulus.",
+          "a": "sin(2i) = i sinh 2 = i (e^2 - e^{-2})/2, about 3.6269i, so |sin(2i)| = sinh 2 is about 3.627 — far above 1."
+        }
+      ],
+      "takeaway": "Complex trig keeps every familiar identity but drops boundedness: the imaginary direction turns sines into growing exponentials.",
+      "module": "Cauchy-Riemann Equations and Elementary Functions"
+    },
+    "Contour Integrals": {
+      "intro": "A contour integral integrates a complex function along a curve in the plane: integral_C f(z) dz = integral (u dx - v dy) + i integral (v dx + u dy), computed by parametrizing the curve. Unlike real integrals, the value depends on the path — and that dependence is the whole story of the course: for analytic functions the path stops mattering, and the residue theorem turns path integrals into arithmetic.",
+      "concepts": [
+        "Parametrization — a contour C is a curve z(t) = x(t) + i y(t) for a <= t <= b. Then integral_C f(z) dz = integral_a^b f(z(t)) z'(t) dt: substitute and integrate a complex-valued function of a real variable.",
+        "Reversing and splitting — reversing the contour negates the integral, and splitting a contour at a point splits the integral into a sum. The integral of f over C is the sum of the integrals over its pieces.",
+        "ML estimate — if |f(z)| <= M on a contour of length L, then |integral_C f(z) dz| <= M L. This is the main tool for showing integrals are small (e.g. integrals over large semicircles that vanish as the radius grows).",
+        "Path dependence — in general integral_C f(z) dz depends on the path, not just the endpoints. For example, integral of z-bar dz from 0 to 1 + i is (1 + i)/2 along the straight line but 1 along the two-segment path via 1 — z-bar is not analytic, so no shortcut exists.",
+        "Antiderivative shortcut — if f = F' on a domain and C runs from a to b, then integral_C f(z) dz = F(b) - F(a), independent of path. This works for z^n (n != -1) everywhere, and for e^z, sin z, cos z."
+      ],
+      "example": {
+        "q": "Evaluate the integral of f(z) = z^2 along the straight line from 0 to 1 + i, and verify the answer using the antiderivative.",
+        "steps": [
+          "Parametrize the line: z(t) = (1 + i) t for 0 <= t <= 1, so z'(t) = 1 + i and z^2 = (1 + i)^2 t^2 = 2i t^2.",
+          "The integral is integral_0^1 2i t^2 (1 + i) dt = 2i(1 + i) integral_0^1 t^2 dt = 2i(1 + i)/3 = (-2 + 2i)/3.",
+          "Check by antiderivative: z^2 has antiderivative z^3/3, so the integral from 0 to 1 + i is (1 + i)^3/3. Compute (1 + i)^3 = (1 + i)(2i) = 2i + 2i^2 = -2 + 2i. Dividing by 3 gives (-2 + 2i)/3 — the same answer, as expected since z^2 is entire."
+        ],
+        "a": "The integral is (-2 + 2i)/3, confirmed both by parametrization and by the antiderivative z^3/3."
+      },
+      "practice": [
+        {
+          "q": "Evaluate the integral of 1/z around the unit circle |z| = 1 (counterclockwise).",
+          "a": "Parametrize z = e^{it}, dz = i e^{it} dt: the integral is integral_0^{2pi} (1/e^{it}) i e^{it} dt = integral_0^{2pi} i dt = 2pi i. Note 1/z has no antiderivative on C minus {0}, so this nonzero answer is no contradiction."
+        },
+        {
+          "q": "Evaluate the integral of z dz around the unit circle |z| = 1 (counterclockwise).",
+          "a": "With z = e^{it}, the integral is integral_0^{2pi} e^{it} i e^{it} dt = i integral_0^{2pi} e^{2it} dt = 0, since e^{2it} completes two full periods. (Antiderivative z^2/2 also gives 0 around a closed contour.)"
+        }
+      ],
+      "takeaway": "Parametrize, substitute, integrate — and remember the ML estimate: the modulus of an integral is at most the maximum of |f| times the length of the path.",
+      "module": "Complex Integration"
+    },
+    "Cauchy-Goursat Theorem": {
+      "intro": "The Cauchy-Goursat theorem is the first great payoff of analyticity: if f is analytic on and inside a simple closed contour C, then the integral of f around C is zero. The path integral collapses — not because the integrand is small, but because analyticity makes the contributions around any closed loop cancel exactly. Everything in the rest of the course flows from this one fact.",
+      "concepts": [
+        "Theorem — if f is analytic in a simply connected domain D and C is a simple closed contour in D, then integral_C f(z) dz = 0. (Goursat's version needs only analyticity, not continuity of f'.)",
+        "Simply connected — a domain with no holes. The theorem fails on a domain with a hole: integral of 1/z around the unit circle is 2pi i, not 0, because 1/z is not analytic at the hole z = 0 inside the circle.",
+        "Deformation principle — if f is analytic between two closed contours C1 and C2 (one inside the other), the integrals are equal: you can deform the contour freely without changing the integral, as long as you never cross a singularity.",
+        "Path independence — in a simply connected domain, the integral of an analytic f between two points is independent of the path, so f has an antiderivative there: F(z) = integral from a fixed z0 to z of f.",
+        "Morera's theorem (converse) — if f is continuous on a domain and its integral around every closed contour is 0, then f is analytic. Zero loop integrals characterize analytic functions."
+      ],
+      "example": {
+        "q": "Evaluate the integral of e^z around the unit circle, and the integral of 1/z^2 around the unit circle. Then explain why the integral of 1/z around the same circle is NOT zero.",
+        "steps": [
+          "e^z is entire, so by Cauchy-Goursat its integral around any closed contour is 0 — in particular around the unit circle.",
+          "1/z^2 is analytic on C minus {0}, and the unit circle lies in that domain... but the domain is not simply connected. However 1/z^2 has antiderivative -1/z on C minus {0}, so its integral around any closed contour not passing through 0 is 0 by the antiderivative theorem. Direct check: with z = e^{it}, the integral is integral_0^{2pi} e^{-2it} i e^{it} dt = i integral_0^{2pi} e^{-it} dt = 0.",
+          "1/z is the exception: it has NO antiderivative on C minus {0} (its would-be antiderivative, log z, is multi-valued), so neither theorem applies — and indeed the integral is 2pi i, as computed in the previous lesson."
+        ],
+        "a": "Both integrals are 0 (e^z by Cauchy-Goursat, 1/z^2 by its antiderivative); 1/z integrates to 2pi i because it has no single-valued antiderivative on the punctured plane."
+      },
+      "practice": [
+        {
+          "q": "Evaluate the integral of z^3 + sin z around the circle |z| = 3.",
+          "a": "0. The integrand is entire, so Cauchy-Goursat gives zero around any closed contour."
+        },
+        {
+          "q": "Why can't Cauchy-Goursat be applied to the integral of 1/(z - 1) around the circle |z| = 2?",
+          "a": "Because 1/(z - 1) is not analytic at z = 1, which lies INSIDE the circle |z| = 2. The theorem requires analyticity on and inside the contour; here there is a singularity inside. (The integral is 2pi i.)"
+        }
+      ],
+      "takeaway": "Analytic on and inside a closed contour means the loop integral is zero — and when the answer isn't zero, look for the singularity hiding inside.",
+      "module": "Complex Integration"
+    },
+    "Cauchy Integral Formula": {
+      "intro": "The Cauchy integral formula is the most powerful tool in complex analysis: the values of an analytic function inside a region are completely determined by its values on the boundary. For f analytic inside and on a positively oriented simple closed contour C, f(z0) = (1/2pi i) integral_C f(z)/(z - z0) dz for every z0 inside C. The boundary knows everything about the interior.",
+      "concepts": [
+        "Formula — f(z0) = (1/(2pi i)) integral_C f(z)/(z - z0) dz, where C is positively oriented (counterclockwise) and z0 is inside C. The integrand has a simple pole at z0, and the integral extracts exactly the value f(z0).",
+        "Why it works — deform C to a tiny circle around z0 (allowed by the deformation principle); on that circle f(z) is nearly f(z0), and the integral of f(z0)/(z - z0) is f(z0) times 2pi i, while the error term vanishes as the circle shrinks.",
+        "Computing contour integrals — the formula turns hard integrals into evaluations: integral_C f(z)/(z - z0) dz = 2pi i f(z0) whenever z0 is inside C and f is analytic. If z0 is outside C, the integral is 0 by Cauchy-Goursat.",
+        "Mean value property — taking C to be a circle of radius r around z0 gives f(z0) = (1/2pi) integral_0^{2pi} f(z0 + r e^{i theta}) d theta: the value at the center is the average of the values on the circle.",
+        "Maximum modulus principle — a nonconstant analytic function cannot attain its maximum modulus at an interior point: if |f| peaks inside, the mean value property forces f constant. Maxima live on the boundary."
+      ],
+      "example": {
+        "q": "Evaluate the integral of e^z/(z - 1) around the circle |z| = 2 (counterclockwise), and the integral of cos z/(z - i/2) around the circle |z| = 1.",
+        "steps": [
+          "First integral: f(z) = e^z is entire and z0 = 1 lies inside |z| = 2. By the Cauchy integral formula, the integral equals 2pi i f(1) = 2pi i e, about 17.079i.",
+          "Second integral: f(z) = cos z is entire and z0 = i/2 lies inside |z| = 1 (since |i/2| = 1/2 < 1). The integral equals 2pi i cos(i/2).",
+          "cos(i/2) = cosh(1/2) = (e^{1/2} + e^{-1/2})/2, about 1.1276. So the integral is 2pi i x 1.1276, about 7.085i."
+        ],
+        "a": "The first integral is 2pi i e (about 17.079i); the second is 2pi i cosh(1/2) (about 7.085i)."
+      },
+      "practice": [
+        {
+          "q": "Evaluate the integral of 1/(z - 2) around the circle |z| = 1.",
+          "a": "0. Here f(z) = 1 is analytic and z0 = 2 lies OUTSIDE the circle |z| = 1, so the integrand 1/(z - 2) is analytic on and inside the contour and Cauchy-Goursat gives 0."
+        },
+        {
+          "q": "Use the mean value property to find the average of e^z on the circle |z| = 1.",
+          "a": "The average equals f(0) = e^0 = 1: (1/2pi) integral_0^{2pi} e^{e^{i theta}} d theta = 1."
+        }
+      ],
+      "takeaway": "The boundary determines the interior: one integral around a contour recovers the value of an analytic function at any point inside it.",
+      "module": "Complex Integration"
+    },
+    "Derivatives of Analytic Functions": {
+      "intro": "Differentiating the Cauchy integral formula gives a formula for every derivative: f^{(n)}(z0) = (n!/(2pi i)) integral_C f(z)/(z - z0)^{n+1} dz. Two consequences change everything: analytic functions are infinitely differentiable, and their derivatives are bounded by their boundary values — the Cauchy estimates — which lead straight to Liouville's theorem and the fundamental theorem of algebra.",
+      "concepts": [
+        "Derivative formula — f^{(n)}(z0) = (n!/(2pi i)) integral_C f(z)/(z - z0)^{n+1} dz for z0 inside C. It follows by differentiating under the integral sign in the Cauchy integral formula.",
+        "Infinitely differentiable — an analytic function has derivatives of all orders, and every derivative is itself analytic. This is a purely complex phenomenon: real differentiable functions need not be twice differentiable.",
+        "Cauchy estimates — if |f(z)| <= M on the circle |z - z0| = R, then |f^{(n)}(z0)| <= n! M / R^n. The ML estimate applied to the derivative formula gives these bounds directly.",
+        "Liouville's theorem — a bounded entire function is constant. Proof: for any z0, the Cauchy estimate with R -> infinity gives |f'(z0)| <= M/R -> 0, so f' = 0 everywhere.",
+        "Fundamental theorem of algebra — every nonconstant polynomial has a root in C. Proof: if p has no root, 1/p is entire and bounded (since |p(z)| -> infinity), so by Liouville 1/p is constant — a contradiction."
+      ],
+      "example": {
+        "q": "Evaluate the integral of sin z/(z - pi/6)^2 around the circle |z| = 2, and use a Cauchy estimate to bound |f'(0)| for an analytic f with |f(z)| <= 3 on |z| = 2.",
+        "steps": [
+          "By the derivative formula with n = 1: integral_C f(z)/(z - z0)^2 dz = 2pi i f'(z0). Here f(z) = sin z and z0 = pi/6, which lies inside |z| = 2.",
+          "f'(z) = cos z, so f'(pi/6) = cos(pi/6) = sqrt(3)/2. The integral is 2pi i x sqrt(3)/2 = pi i sqrt(3), about 5.441i.",
+          "Cauchy estimate: |f'(0)| <= 1! x M / R = 3/2 = 1.5, using M = 3 and R = 2."
+        ],
+        "a": "The integral is pi i sqrt(3) (about 5.441i); the Cauchy estimate gives |f'(0)| <= 1.5."
+      },
+      "practice": [
+        {
+          "q": "Evaluate the integral of e^z/(z - 1)^3 around the circle |z| = 3.",
+          "a": "By the formula with n = 2: the integral is 2pi i f''(1)/2! where f(z) = e^z, so f''(1) = e and the integral is 2pi i e / 2 = pi i e, about 8.540i."
+        },
+        {
+          "q": "Prove that a nonconstant polynomial p(z) of degree n has exactly n roots in C, counting multiplicity.",
+          "a": "The fundamental theorem of algebra gives one root a1; factor p(z) = (z - a1) q(z) with q of degree n - 1, and repeat. After n steps, p(z) = c (z - a1)...(z - an)."
+        }
+      ],
+      "takeaway": "Analytic once means analytic forever — and Cauchy estimates turn boundary bounds into derivative bounds, which is how Liouville and the fundamental theorem of algebra fall out.",
+      "module": "Complex Integration"
+    },
+    "Sequences and Series of Functions": {
+      "intro": "A power series is an infinite polynomial, sum a_n (z - z0)^n, and its behavior is governed by a single number: the radius of convergence R. Inside |z - z0| < R it converges absolutely and defines an analytic function; outside it diverges; on the boundary anything can happen. Uniform convergence on smaller disks is what lets us differentiate and integrate term by term.",
+      "concepts": [
+        "Radius of convergence — for sum a_n (z - z0)^n, R = 1 / lim sup |a_n|^{1/n} (root test) or lim |a_n / a_{n+1}| when the limit exists (ratio test). The series converges absolutely for |z - z0| < R and diverges for |z - z0| > R.",
+        "Geometric series — sum z^n = 1/(1 - z) for |z| < 1, with R = 1. It diverges for |z| >= 1 (except the terms do not even tend to 0). This is the prototype for all power series.",
+        "Uniform convergence — on any closed disk |z - z0| <= r < R, a power series converges uniformly (Weierstrass M-test: |a_n (z - z0)^n| <= |a_n| r^n, and sum |a_n| r^n converges). Uniform convergence justifies term-by-term integration and differentiation.",
+        "Term-by-term operations — a power series can be differentiated and integrated term by term inside its disk of convergence, and the resulting series has the same radius R. So the sum is analytic, with derivative sum n a_n (z - z0)^{n-1}.",
+        "Sequences of functions — a sequence f_n converges pointwise if f_n(z) -> f(z) at each z; it converges uniformly if the worst-case error sup |f_n - f| -> 0. Uniform limits of analytic functions are analytic (Weierstrass theorem)."
+      ],
+      "example": {
+        "q": "Find the radius of convergence of sum n z^n and of sum z^n / n!, and determine where each converges.",
+        "steps": [
+          "For sum n z^n: ratio test gives |a_{n+1}/a_n| = (n + 1)/n -> 1, so R = 1/1 = 1. It converges absolutely for |z| < 1 and diverges for |z| > 1 (terms do not tend to 0).",
+          "On |z| = 1 the terms n z^n have modulus n, which does not tend to 0, so it diverges everywhere on the boundary too.",
+          "For sum z^n / n!: ratio test gives |a_{n+1}/a_n| = 1/(n + 1) -> 0, so R = infinity. It converges absolutely for every z in C — as it must, since it is the Taylor series of e^z."
+        ],
+        "a": "sum n z^n has radius 1 (converges for |z| < 1, diverges on and outside the unit circle); sum z^n/n! has infinite radius and converges everywhere."
+      },
+      "practice": [
+        {
+          "q": "Find the radius of convergence of sum z^n / n^2 and say what happens on |z| = 1.",
+          "a": "Ratio test: |a_{n+1}/a_n| = n^2/(n+1)^2 -> 1, so R = 1. On |z| = 1 the series sum 1/n^2 converges absolutely (p-series, p = 2), so it converges at every point of the unit circle."
+        },
+        {
+          "q": "Show that sum z^n / n converges for |z| < 1 but diverges at z = 1.",
+          "a": "Ratio test gives R = 1. At z = 1 the series is the harmonic series sum 1/n, which diverges. (At z = -1 it converges conditionally by the alternating series test.)"
+        }
+      ],
+      "takeaway": "One number — the radius of convergence — controls a power series: inside it, term-by-term calculus is legal and the sum is analytic.",
+      "module": "Series"
+    },
+    "Taylor Series": {
+      "intro": "Every analytic function is locally a power series: if f is analytic in the disk |z - z0| < R, then f(z) = sum (f^{(n)}(z0)/n!) (z - z0)^n there, and the radius is at least the distance from z0 to the nearest singularity. Taylor series turn analytic functions into algebra — you can add, multiply, and compose them by manipulating coefficients.",
+      "concepts": [
+        "Taylor's theorem — if f is analytic in |z - z0| < R, then f(z) = sum_{n=0}^infty a_n (z - z0)^n with a_n = f^{(n)}(z0)/n!, converging for |z - z0| < R. The proof differentiates the Cauchy integral formula.",
+        "Radius and singularities — the Taylor series converges up to (but not past) the nearest singularity of f. So 1/(1 + z) about 0 has R = 1 (singularity at -1), even though the function is analytic on a much bigger region.",
+        "Standard series — e^z = sum z^n/n! (R = infinity), sin z = z - z^3/3! + z^5/5! - ... (R = infinity), cos z = 1 - z^2/2! + z^4/4! - ... (R = infinity), 1/(1 - z) = sum z^n (R = 1), log(1 + z) = z - z^2/2 + z^3/3 - ... (R = 1).",
+        "Uniqueness — if two power series agree on a set with a limit point, their coefficients are equal. So a function's Taylor series is the ONLY power series representing it near z0.",
+        "Computing by algebra — new Taylor series come from old ones by substitution and multiplication: e^{z^2} = 1 + z^2 + z^4/2! + ..., and 1/(1 - z^2) = 1 + z^2 + z^4 + ... for |z| < 1."
+      ],
+      "example": {
+        "q": "Find the Taylor series of f(z) = 1/(1 + z) about z0 = 0, state its radius of convergence, and use it to find the series for 1/(1 + z)^2.",
+        "steps": [
+          "Substitute -z into the geometric series 1/(1 - w) = sum w^n (|w| < 1): with w = -z, f(z) = 1/(1 + z) = sum_{n=0}^infty (-1)^n z^n = 1 - z + z^2 - z^3 + ..., valid for |z| < 1.",
+          "The radius is 1: f has a singularity at z = -1, distance 1 from 0, so the series cannot converge beyond |z| = 1.",
+          "Differentiate term by term: f'(z) = -1/(1 + z)^2 = sum_{n=1}^infty (-1)^n n z^{n-1} = -1 + 2z - 3z^2 + 4z^3 - ..., so 1/(1 + z)^2 = 1 - 2z + 3z^2 - 4z^3 + ... for |z| < 1."
+        ],
+        "a": "1/(1 + z) = sum (-1)^n z^n with radius 1; differentiating gives 1/(1 + z)^2 = 1 - 2z + 3z^2 - 4z^3 + ... for |z| < 1."
+      },
+      "practice": [
+        {
+          "q": "Find the coefficient of z^3 in the Taylor series of sin z about 0.",
+          "a": "sin z = z - z^3/3! + z^5/5! - ..., so the coefficient of z^3 is -1/6."
+        },
+        {
+          "q": "Find the first four nonzero terms of the Taylor series of e^{z^2} about 0.",
+          "a": "e^w = 1 + w + w^2/2! + w^3/3! + ... with w = z^2 gives e^{z^2} = 1 + z^2 + z^4/2 + z^6/6 + ... (radius infinity)."
+        }
+      ],
+      "takeaway": "Analytic functions ARE power series near every point — and the nearest singularity sets the radius, so the series knows about singularities it never reaches.",
+      "module": "Series"
+    },
+    "Laurent Series": {
+      "intro": "Taylor series only work where a function is analytic — but near an isolated singularity we need negative powers too. A Laurent series, sum_{n=-infty}^{infty} a_n (z - z0)^n, represents f in an annulus r < |z - z0| < R, and its coefficient a_{-1} — the residue — will turn out to compute contour integrals. Laurent series are how we classify singularities.",
+      "concepts": [
+        "Annulus of convergence — if f is analytic in the annulus r < |z - z0| < R, then f(z) = sum_{n=-infty}^{infty} a_n (z - z0)^n there, with a_n = (1/2pi i) integral_C f(zeta)/(zeta - z0)^{n+1} d zeta around any circle in the annulus.",
+        "Principal part — the terms with n < 0 form the principal part; the rest is the analytic part. The principal part is what makes the singularity a singularity.",
+        "Geometric-series trick — Laurent series are usually computed by algebraic manipulation, not by the coefficient integral: write 1/(1 - w) as sum w^n and substitute w = 1/z (for |z| > 1) or w = z (for |z| < 1) to get the right expansion for the region.",
+        "Same function, different series — 1/(z(z - 1)) has one Laurent series in 0 < |z| < 1 and a different one in |z| > 1, because the annulus determines which geometric expansions converge.",
+        "Residue preview — the coefficient a_{-1} is called the residue of f at z0. It is the only coefficient that survives integration around a closed loop, since integral of (z - z0)^n around a circle is 2pi i for n = -1 and 0 otherwise."
+      ],
+      "example": {
+        "q": "Find the Laurent series of f(z) = 1/(z(z - 1)) valid in the annulus 0 < |z| < 1, and state its residue at z = 0.",
+        "steps": [
+          "Partial fractions: 1/(z(z - 1)) = 1/(z - 1) - 1/z.",
+          "For |z| < 1, expand 1/(z - 1) = -1/(1 - z) = -(1 + z + z^2 + ...) = -1 - z - z^2 - ....",
+          "So f(z) = (-1 - z - z^2 - ...) - 1/z = -1/z - 1 - z - z^2 - ... in 0 < |z| < 1.",
+          "The coefficient of 1/z is -1, so Res(f, 0) = -1."
+        ],
+        "a": "In 0 < |z| < 1, f(z) = -1/z - 1 - z - z^2 - ..., and the residue at 0 is -1."
+      },
+      "practice": [
+        {
+          "q": "Find the Laurent series of e^{1/z} about z = 0 and the residue at 0.",
+          "a": "e^w = sum w^n/n! with w = 1/z gives e^{1/z} = 1 + 1/z + 1/(2! z^2) + 1/(3! z^3) + ... for z != 0. The coefficient of 1/z is 1, so Res(e^{1/z}, 0) = 1."
+        },
+        {
+          "q": "Find the Laurent series of 1/(z(z - 1)) valid for |z| > 1.",
+          "a": "Write f = 1/z^2 x 1/(1 - 1/z) = (1/z^2)(1 + 1/z + 1/z^2 + ...) = 1/z^2 + 1/z^3 + 1/z^4 + ... for |z| > 1. There is no 1/z term, so the residue at infinity-side expansion has a_{-1} = 0."
+        }
+      ],
+      "takeaway": "Laurent series add negative powers to reach past singularities — and the coefficient of 1/z, the residue, is the one number a contour integral can see.",
+      "module": "Series"
+    },
+    "Zeros of Analytic Functions": {
+      "intro": "The zeros of an analytic function are surprisingly well-behaved: each zero has a finite order, zeros cannot accumulate inside the domain unless the function is identically zero, and a function is determined everywhere by its values on any set with a limit point. This rigidity — the identity theorem — is what makes analytic functions so different from smooth real functions.",
+      "concepts": [
+        "Order of a zero — if f is analytic and f(z0) = 0, then f(z) = (z - z0)^m g(z) near z0 with g(z0) != 0; m is the order (multiplicity) of the zero. Simple zero: m = 1; double zero: m = 2.",
+        "Isolated zeros — the zeros of a non-identically-zero analytic function are isolated: every zero has a neighborhood containing no other zero. This follows from the Taylor expansion: if f is not identically zero near z0, some Taylor coefficient is nonzero.",
+        "Identity theorem — if two analytic functions agree on a set with a limit point in a domain, they agree everywhere in that domain. In particular, if f is analytic and f(z) = 0 on a sequence converging inside the domain, then f is identically zero.",
+        "Zeros determine the function — an analytic function is determined by its values on any tiny arc or any convergent sequence. There is no 'bump function' in complex analysis: you cannot change f in one place and leave it alone elsewhere.",
+        "Argument principle (preview) — the number of zeros minus poles inside a contour equals (1/2pi i) integral_C f'(z)/f(z) dz, which counts how many times f(C) winds around the origin. Zeros are counted with multiplicity."
+      ],
+      "example": {
+        "q": "Find all zeros of f(z) = (z - 1)^2 (z + 2) and their orders, and find the zeros of sin z and their orders.",
+        "steps": [
+          "f(z) = (z - 1)^2 (z + 2) is a polynomial, so its zeros are z = 1 (from the squared factor, order 2) and z = -2 (order 1). The orders add to 3, the degree, as the fundamental theorem of algebra requires.",
+          "sin z: write sin z = 0 via the exponential definition, or use sin(x + iy) = sin x cosh y + i cos x sinh y. This is 0 exactly when sin x cosh y = 0 and cos x sinh y = 0.",
+          "Since cosh y >= 1 is never 0, the first equation needs sin x = 0, so x = n pi. Then cos x = (-1)^n != 0, so the second equation needs sinh y = 0, i.e. y = 0. Hence the zeros are exactly z = n pi for integer n — all on the real axis.",
+          "Each zero is simple: (sin z)' = cos z, and cos(n pi) = (-1)^n != 0, so the derivative is nonzero at every zero, meaning order 1."
+        ],
+        "a": "f has a double zero at 1 and a simple zero at -2; sin z has simple zeros exactly at z = n pi for integer n."
+      },
+      "practice": [
+        {
+          "q": "Find the zeros of f(z) = z^3 - z and their orders.",
+          "a": "z^3 - z = z(z - 1)(z + 1), so the zeros are 0, 1, -1, each simple (order 1)."
+        },
+        {
+          "q": "Suppose f is analytic on C and f(1/n) = 0 for every positive integer n. What can you conclude about f?",
+          "a": "The zeros 1/n converge to 0, a limit point inside C, so by the identity theorem f is identically zero on all of C."
+        }
+      ],
+      "takeaway": "Zeros of analytic functions are isolated and counted with multiplicity — and a function that vanishes on a convergent sequence vanishes everywhere.",
+      "module": "Series"
+    },
+    "Isolated Singularities": {
+      "intro": "An isolated singularity is a point z0 where f is not defined (or not analytic) but is analytic in some punctured neighborhood 0 < |z - z0| < r. There are exactly three kinds: removable (the function can be fixed by filling in one value), poles (the function blows up like 1/(z - z0)^m), and essential (wild behavior in every neighborhood). The Laurent series tells you which kind you have at a glance.",
+      "concepts": [
+        "Removable singularity — the Laurent series has no negative powers: f is bounded near z0 and extends to an analytic function by setting f(z0) = lim f(z). Example: sin z / z at 0, with limit 1.",
+        "Pole of order m — the principal part is finite and nonzero: f(z) = a_{-m}/(z - z0)^m + ... + a_{-1}/(z - z0) + (analytic part), with a_{-m} != 0. Then |f(z)| -> infinity as z -> z0, and 1/f has a zero of order m at z0.",
+        "Essential singularity — the principal part has infinitely many nonzero terms. Example: e^{1/z} at 0. By the Casorati-Weierstrass theorem, f comes arbitrarily close to every complex value in every punctured neighborhood of an essential singularity.",
+        "Riemann's removable singularity theorem — if f is analytic and bounded in a punctured neighborhood of z0, the singularity is removable. Boundedness is the test: poles and essential singularities are both unbounded near z0.",
+        "Classification by limits — removable: lim f(z) exists and is finite; pole: lim |f(z)| = infinity; essential: the limit does not exist in either sense. Check the limit first; the Laurent series confirms it."
+      ],
+      "example": {
+        "q": "Classify the singularity of f(z) = (sin z)/z at z = 0, of g(z) = 1/(z - 1)^2 at z = 1, and of h(z) = e^{1/z} at z = 0.",
+        "steps": [
+          "f(z) = sin z / z: sin z = z - z^3/3! + ..., so sin z / z = 1 - z^2/3! + z^4/5! - ..., which has no negative powers. The limit as z -> 0 is 1, so the singularity is removable; setting f(0) = 1 makes it entire.",
+          "g(z) = 1/(z - 1)^2: as z -> 1, |g(z)| -> infinity, and the Laurent series is exactly (z - 1)^{-2} — one negative term. So z = 1 is a pole of order 2.",
+          "h(z) = e^{1/z} = 1 + 1/z + 1/(2! z^2) + ..., with infinitely many negative powers and no finite or infinite limit as z -> 0. So z = 0 is an essential singularity."
+        ],
+        "a": "sin z / z has a removable singularity at 0 (value 1); 1/(z - 1)^2 has a pole of order 2 at 1; e^{1/z} has an essential singularity at 0."
+      },
+      "practice": [
+        {
+          "q": "Classify the singularity of f(z) = (1 - cos z)/z^2 at z = 0.",
+          "a": "1 - cos z = z^2/2! - z^4/4! + ..., so f(z) = 1/2 - z^2/4! + ... has no negative powers: the singularity is removable, with limit 1/2."
+        },
+        {
+          "q": "Classify the singularity of f(z) = z/(z^2 + 1) at z = i.",
+          "a": "z^2 + 1 = (z - i)(z + i), so near z = i, f behaves like i/(2i (z - i)) = 1/(2(z - i)): a simple pole (order 1) at z = i."
+        }
+      ],
+      "takeaway": "Read the Laurent series: no negative powers means removable, finitely many means a pole, infinitely many means essential — and the limit test usually tells you first.",
+      "module": "Residues and Poles"
+    },
+    "Residues": {
+      "intro": "The residue of f at an isolated singularity z0 is the coefficient a_{-1} of 1/(z - z0) in its Laurent series — the one coefficient that a contour integral can detect. Residues can be computed without finding the whole series: at a simple pole, Res(f, z0) = lim (z - z0) f(z); at a pole of order m, differentiate m - 1 times. Master these formulas and the residue theorem does the rest.",
+      "concepts": [
+        "Definition — Res(f, z0) = a_{-1}, the coefficient of (z - z0)^{-1} in the Laurent expansion of f about z0. Equivalently, Res(f, z0) = (1/2pi i) integral_C f(z) dz around any small circle C about z0.",
+        "Simple pole — if z0 is a simple pole, Res(f, z0) = lim_{z->z0} (z - z0) f(z). For f = p/q with p(z0) != 0 and q having a simple zero at z0, this becomes Res = p(z0)/q'(z0).",
+        "Higher-order pole — if z0 is a pole of order m, Res(f, z0) = (1/(m - 1)!) lim_{z->z0} d^{m-1}/dz^{m-1} [(z - z0)^m f(z)]. For a double pole, that is the derivative of (z - z0)^2 f(z) at z0.",
+        "Removable singularity — the residue is 0, since the Laurent series has no negative powers at all. Essential singularities need the series: e.g. Res(e^{1/z}, 0) = 1 from the coefficient of 1/z.",
+        "Residue at infinity — Res(f, infinity) = -a_{-1} in the Laurent expansion valid for large |z|; the sum of ALL residues of a rational function (including infinity) is 0, a useful check."
+      ],
+      "example": {
+        "q": "Compute the residues of f(z) = 1/(z^2 + 1) at z = i and z = -i, and of g(z) = e^z / z^2 at z = 0.",
+        "steps": [
+          "f(z) = 1/(z^2 + 1) = 1/((z - i)(z + i)). Both poles are simple. At z = i: Res = lim_{z->i} (z - i) f(z) = 1/(i + i) = 1/(2i) = -i/2.",
+          "At z = -i: Res = lim_{z->-i} (z + i) f(z) = 1/(-i - i) = 1/(-2i) = i/2. (Equivalently, p/q' with q(z) = z^2 + 1 gives 1/(2z) at z = i and z = -i.)",
+          "g(z) = e^z / z^2 has a pole of order 2 at 0. Use the double-pole formula: Res = lim_{z->0} d/dz [z^2 g(z)] = lim_{z->0} d/dz [e^z] = lim_{z->0} e^z = 1.",
+          "Check by series: e^z/z^2 = (1 + z + z^2/2 + ...)/z^2 = 1/z^2 + 1/z + 1/2 + ..., and the coefficient of 1/z is indeed 1."
+        ],
+        "a": "Res(1/(z^2+1), i) = -i/2, Res(1/(z^2+1), -i) = i/2, and Res(e^z/z^2, 0) = 1."
+      },
+      "practice": [
+        {
+          "q": "Find the residues of f(z) = 1/(z(z - 1)) at z = 0 and z = 1.",
+          "a": "Both poles are simple. At 0: lim z f(z) = lim 1/(z - 1) = -1. At 1: lim (z - 1) f(z) = lim 1/z = 1. So the residues are -1 and 1."
+        },
+        {
+          "q": "Find the residue of f(z) = z/(z - 2)^2 at z = 2.",
+          "a": "Double pole: Res = d/dz [(z - 2)^2 f(z)] at z = 2 = d/dz [z] at z = 2 = 1."
+        }
+      ],
+      "takeaway": "The residue is the 1/(z - z0) coefficient — compute it with the simple-pole limit, the p/q' shortcut, or the derivative formula for higher-order poles.",
+      "module": "Residues and Poles"
+    },
+    "Residue Theorem": {
+      "intro": "The residue theorem is the engine of the course: if f is analytic inside and on a positively oriented simple closed contour C except for finitely many isolated singularities inside, then the integral of f around C is 2pi i times the sum of the residues at those singularities. Contour integration becomes arithmetic — find the poles inside, add their residues, multiply by 2pi i.",
+      "concepts": [
+        "Theorem — integral_C f(z) dz = 2pi i sum Res(f, z_k), where the sum runs over all singularities z_k inside C. It follows from the Cauchy integral formula applied to the Laurent expansion at each singularity.",
+        "Only the inside counts — singularities outside C contribute nothing. Always sketch the contour and mark which poles lie inside before computing anything.",
+        "Only a_{-1} survives — the integral of (z - z0)^n around a closed loop is 2pi i when n = -1 and 0 otherwise, which is why the residue is the only Laurent coefficient that matters for integration.",
+        "Orientation matters — the formula assumes C is positively oriented (counterclockwise). A clockwise contour gives -2pi i times the sum of residues.",
+        "Combining with deformation — a complicated contour can be deformed into small circles around each singularity (where the integral is 2pi i times the residue), which is the proof of the theorem and a mental model for using it."
+      ],
+      "example": {
+        "q": "Evaluate the integral of f(z) = z/(z^2 + 1) around the circle |z| = 2 (counterclockwise).",
+        "steps": [
+          "Factor: f(z) = z/((z - i)(z + i)). The singularities are simple poles at z = i and z = -i, both inside |z| = 2 (since |i| = |-i| = 1 < 2).",
+          "Residues: at z = i, Res = lim (z - i) f(z) = i/(i + i) = i/(2i) = 1/2. At z = -i, Res = lim (z + i) f(z) = (-i)/(-i - i) = (-i)/(-2i) = 1/2.",
+          "Sum of residues inside: 1/2 + 1/2 = 1. By the residue theorem, the integral is 2pi i x 1 = 2pi i.",
+          "Sanity check: the integrand is odd-ish in a symmetric way and the residues are equal, so a nonzero answer is plausible — and the same integral around |z| = 1/2 would be 0, since neither pole lies inside."
+        ],
+        "a": "The integral is 2pi i: both poles (i and -i) lie inside |z| = 2, each with residue 1/2."
+      },
+      "practice": [
+        {
+          "q": "Evaluate the integral of 1/(z^2 + 1) around the circle |z| = 2.",
+          "a": "The residues at i and -i are -i/2 and i/2, summing to 0, so the integral is 2pi i x 0 = 0."
+        },
+        {
+          "q": "Evaluate the integral of e^z/(z - 1) around the circle |z| = 2.",
+          "a": "The only singularity inside is the simple pole at z = 1 with residue e^1 = e, so the integral is 2pi i e (about 17.079i) — the Cauchy integral formula as a special case."
+        }
+      ],
+      "takeaway": "Find the poles inside, add their residues, multiply by 2pi i — that is the whole residue theorem, and it turns contour integrals into algebra.",
+      "module": "Residues and Poles"
+    },
+    "Applications of the Residue Theorem": {
+      "intro": "The residue theorem's real payoff is outside complex analysis: it evaluates real integrals that resist every real method. The recipe is always the same — extend the integrand to the complex plane, integrate around a cleverly chosen closed contour, show the extra pieces vanish or simplify, and read off the real integral from the residues. Improper integrals, trigonometric integrals, and Fourier-type integrals all fall to it.",
+      "concepts": [
+        "Improper integrals — to compute integral_{-infty}^{infty} f(x) dx for rational f decaying fast enough, integrate f(z) around a large semicircle in the upper half-plane; the arc integral vanishes as R -> infinity (ML estimate), and the real line becomes the diameter, so the integral equals 2pi i times the sum of residues in the upper half-plane.",
+        "Trigonometric integrals — for integral_0^{2pi} R(cos theta, sin theta) d theta, set z = e^{i theta}: cos theta = (z + z^{-1})/2, sin theta = (z - z^{-1})/(2i), d theta = dz/(iz), and the integral becomes a contour integral around the unit circle.",
+        "Fourier-type integrals — integral_{-infty}^{infty} e^{iax}/(x^2 + 1) dx is computed with a semicircle in the upper half-plane when a > 0 (Jordan's lemma controls the arc); the real and imaginary parts give the cosine and sine integrals.",
+        "Indented contours — when a pole sits ON the contour (e.g. on the real axis), indent the contour with a small semicircle around it; the indentation contributes half the residue (pi i Res) in the limit.",
+        "Keyhole contours — for integrals involving x^a or log x on (0, infinity), a keyhole contour around the positive real axis exploits the jump of the logarithm across its branch cut to produce the real integral."
+      ],
+      "example": {
+        "q": "Use the residue theorem to evaluate the integral from -infinity to infinity of dx/(x^2 + 1).",
+        "steps": [
+          "Consider f(z) = 1/(z^2 + 1) = 1/((z - i)(z + i)), integrated around the contour consisting of the real segment [-R, R] plus the semicircle |z| = R in the upper half-plane.",
+          "The only singularity inside is the simple pole at z = i (z = -i is in the lower half-plane). Its residue is 1/(2i) = -i/2, so the contour integral is 2pi i x (-i/2) = pi.",
+          "On the semicircle, |f(z)| <= 1/(R^2 - 1) and the length is pi R, so the arc integral is at most pi R/(R^2 - 1) -> 0 as R -> infinity.",
+          "Letting R -> infinity, the contour integral becomes exactly integral_{-infty}^{infty} dx/(x^2 + 1) = pi."
+        ],
+        "a": "The integral from -infinity to infinity of dx/(x^2 + 1) is pi (and so the integral from 0 to infinity is pi/2)."
+      },
+      "practice": [
+        {
+          "q": "Evaluate the integral from -infinity to infinity of dx/(x^2 + 4).",
+          "a": "The pole in the upper half-plane is at z = 2i with residue 1/(4i) = -i/4, so the integral is 2pi i x (-i/4) = pi/2. (In general integral dx/(x^2 + a^2) = pi/a.)"
+        },
+        {
+          "q": "Evaluate the integral from -infinity to infinity of cos x/(x^2 + 1) dx.",
+          "a": "Integrate e^{iz}/(z^2 + 1) over the upper semicircle; the residue at i is e^{-1}/(2i), giving integral e^{ix}/(x^2 + 1) dx = pi/e. Taking real parts, the cosine integral is pi/e (about 1.1557); the sine integral is 0 by oddness."
+        }
+      ],
+      "takeaway": "Close the contour, collect the residues in the upper half-plane, let the arc vanish — that is how complex analysis evaluates real integrals.",
+      "module": "Residues and Poles"
+    },
+    "Geometric Interpretation of Functions": {
+      "intro": "A complex function is a map from the plane to the plane, and its geometry is visible in what it does to curves and regions: z^2 squares the modulus and doubles the angle, e^z wraps horizontal strips into annuli, 1/z inverts the plane through the unit circle. Understanding these pictures is what makes conformal mapping — and the applications in the next lessons — intuitive.",
+      "concepts": [
+        "Amplification and rotation — near z0, an analytic f with f'(z0) != 0 behaves like multiplication by f'(z0): it scales distances by |f'(z0)| and rotates directions by arg f'(z0). This local linear approximation is the geometric meaning of the derivative.",
+        "z^2 — maps the ray at angle theta to the ray at angle 2 theta, and the circle |z| = r to the circle |w| = r^2. The upper half-plane maps onto the whole plane minus the positive real axis; the map is 2-to-1 except at 0.",
+        "e^z — maps the horizontal strip 0 < Im(z) < 2pi onto the plane minus the positive real axis (the image of the strip's boundary). Vertical lines x = const map to circles |w| = e^x; horizontal lines y = const map to rays at angle y.",
+        "1/z — inversion in the unit circle composed with reflection across the real axis: 1/(r e^{i theta}) = (1/r) e^{-i theta}. The inside of the unit disk maps to the outside, and circles/lines not through the origin map to circles.",
+        "Images of regions — to find the image of a region, parametrize its boundary and track where the boundary goes; for analytic maps the interior follows the boundary (the image of a region bounded by a curve is the region bounded by the image curve, when the map is one-to-one)."
+      ],
+      "example": {
+        "q": "Describe the image of the vertical line x = 1 under w = e^z, and the image of the unit circle |z| = 1 under w = z^2.",
+        "steps": [
+          "Under w = e^z, points with x = 1 are z = 1 + iy, mapping to w = e (cos y + i sin y). As y runs over all reals, w traces the circle |w| = e infinitely many times — the whole circle of radius e, wound around once per 2pi of y.",
+          "Under w = z^2, points on |z| = 1 are z = e^{i theta}, mapping to w = e^{2i theta}. As theta runs from 0 to 2pi, w runs around the unit circle |w| = 1 twice.",
+          "So e^z turns a vertical line into a circle (traversed infinitely often), and z^2 turns the unit circle into itself traversed twice — both maps are many-to-one, which is why neither has a global inverse."
+        ],
+        "a": "x = 1 maps under e^z to the circle |w| = e (traversed repeatedly); |z| = 1 maps under z^2 to the unit circle |w| = 1, traversed twice."
+      },
+      "practice": [
+        {
+          "q": "What is the image of the upper half-plane Im(z) > 0 under w = z^2?",
+          "a": "Points with 0 < theta < pi map to angles 0 < 2 theta < 2pi, i.e. the whole plane minus the nonnegative real axis (the image of the boundary rays theta = 0 and theta = pi)."
+        },
+        {
+          "q": "What is the image of the line Re(z) = 1 under w = 1/z?",
+          "a": "Write z = 1 + iy; then 1/z = (1 - iy)/(1 + y^2), so u = 1/(1 + y^2) and v = -y/(1 + y^2). Eliminating y gives (u - 1/2)^2 + v^2 = 1/4: the circle of diameter [0, 1] on the real axis (minus the origin)."
+        }
+      ],
+      "takeaway": "Read a complex map by its action on curves: e^z wraps strips into annuli, z^2 doubles angles, and 1/z turns lines into circles.",
+      "module": "Conformal Mappings"
+    },
+    "Conformal Mappings": {
+      "intro": "A map is conformal at z0 if it preserves angles between curves through z0 — and every analytic function with nonzero derivative is conformal. Conformal maps are the tools for solving Laplace's equation on awkward domains: map the awkward domain conformally onto a simple one (a disk, a half-plane), solve the easy problem there, and pull the solution back. The Riemann mapping theorem guarantees the map exists.",
+      "concepts": [
+        "Angle preservation — if f is analytic with f'(z0) != 0, then f preserves the angle (and orientation) between any two curves through z0: the tangent vectors are both rotated by arg f'(z0) and scaled by |f'(z0)|. At a critical point where f'(z0) = 0, angles are multiplied by the order of the zero of f'.",
+        "Mobius transformations — w = (az + b)/(cz + d) with ad - bc != 0 are the conformal maps of the extended plane (the Riemann sphere) to itself. They map circles and lines to circles and lines, and are determined by the images of any three points.",
+        "Riemann mapping theorem — every simply connected domain (other than the whole plane) can be mapped conformally onto the unit disk. The map is unique once you fix the image of one interior point and the direction of one tangent.",
+        "Solving Laplace's equation — if u is harmonic on a domain D and phi maps D conformally onto the unit disk, then u composed with phi^{-1} is harmonic on the disk, where the Dirichlet problem is solved by the Poisson integral formula. Pull back to get u on D.",
+        "Joukowsky map — w = z + 1/z maps the exterior of the unit circle conformally onto the plane minus the segment [-2, 2]; it is the classical map for airfoil design, sending circles to wing-shaped profiles."
+      ],
+      "example": {
+        "q": "Show that w = (z - i)/(z + i) maps the upper half-plane onto the unit disk, and find where the real axis goes.",
+        "steps": [
+          "Let Im(z) > 0. Then |w| < 1 is equivalent to |z - i| < |z + i|. Squaring: |z - i|^2 = (x^2 + (y - 1)^2) and |z + i|^2 = (x^2 + (y + 1)^2), where z = x + iy.",
+          "The inequality x^2 + (y - 1)^2 < x^2 + (y + 1)^2 simplifies to -2y < 2y, i.e. y > 0 — exactly the upper half-plane. So Im(z) > 0 iff |w| < 1.",
+          "Conversely, given any w with |w| < 1, solving for z gives z = i(1 + w)/(1 - w), which has positive imaginary part — so the map is onto the disk.",
+          "The boundary: for z real (y = 0), |z - i| = |z + i|, so |w| = 1. The real axis maps onto the unit circle, and z = i (the center of the half-plane) maps to w = 0 (the center of the disk)."
+        ],
+        "a": "w = (z - i)/(z + i) maps the upper half-plane onto the unit disk, the real axis onto the unit circle, and i to 0."
+      },
+      "practice": [
+        {
+          "q": "Show that f(z) = z^2 is conformal at every z != 0 but not at z = 0, and say what happens to angles at 0.",
+          "a": "f'(z) = 2z is nonzero for z != 0, so f is conformal there. At z = 0, f'(0) = 0 and angles are doubled: the map is 2-to-1 near 0, so the angle between two curves through 0 is multiplied by 2."
+        },
+        {
+          "q": "Find a Mobius transformation mapping the unit disk onto the upper half-plane.",
+          "a": "The inverse of the example: z = i(1 + w)/(1 - w) maps the unit disk |w| < 1 onto Im(z) > 0 (and the unit circle onto the real axis)."
+        }
+      ],
+      "takeaway": "Analytic with nonzero derivative means angle-preserving — and Mobius maps plus the Riemann mapping theorem turn hard domains into easy ones.",
+      "module": "Conformal Mappings"
+    },
+    "Schwarz-Christoffel Transformation": {
+      "intro": "The Schwarz-Christoffel formula is the explicit conformal map from the upper half-plane onto any polygon: f(z) = A integral product (zeta - x_k)^{alpha_k/pi - 1} d zeta + B, where alpha_k are the polygon's interior angles and x_k are their prevertices on the real axis. It is the workhorse of applied conformal mapping — channel flows, electrostatics, heat conduction in polygonal regions — because polygons are the shapes engineering actually uses.",
+      "concepts": [
+        "The formula — f(z) = A integral_{z0}^z product_{k=1}^n (zeta - x_k)^{alpha_k/pi - 1} d zeta + B maps the upper half-plane onto a polygon with interior angles alpha_k at vertices f(x_k). A is a complex scale/rotation, B a translation; three prevertices x_k can be chosen freely (e.g. 0, 1, infinity).",
+        "Exponents — each factor (zeta - x_k)^{alpha_k/pi - 1} turns the image direction by alpha_k - pi as zeta passes x_k: the boundary direction rotates by the exterior angle pi - alpha_k at each vertex. For a right angle (alpha = pi/2) the exponent is -1/2; for a straight angle (alpha = pi) it is 0 (no turn).",
+        "Triangle example — mapping the upper half-plane onto an equilateral triangle (all angles pi/3) uses exponents -2/3: f(z) = integral_0^z zeta^{-2/3} (zeta - 1)^{-2/3} d zeta, with prevertices 0, 1, infinity. The integral is not elementary — triangle maps involve hypergeometric functions.",
+        "Rectangle and the strip — mapping onto a rectangle gives elliptic integrals; mapping onto an infinite strip (a degenerate polygon with two vertices at infinity) reduces to the logarithm. The Schwarz-Christoffel map to a strip is the bridge between the half-plane and the strip used for channel flow.",
+        "Applications — once the map is known, Laplace's equation on the polygon is solved by pulling back to the half-plane: potential flow around a polygonal obstacle, the electric field in a polygonal capacitor, and steady heat flow in a wedge all reduce to half-plane problems."
+      ],
+      "example": {
+        "q": "For a Schwarz-Christoffel map onto a rectangle, what are the interior angles and the exponents? For the map onto an equilateral triangle with prevertices 0, 1, and infinity, write the integral and the exponents.",
+        "steps": [
+          "A rectangle has four interior angles, each alpha = pi/2. The exponent at each prevertex is alpha/pi - 1 = 1/2 - 1 = -1/2.",
+          "So the rectangle map is f(z) = A integral product_{k=1}^4 (zeta - x_k)^{-1/2} d zeta + B — an elliptic integral, not expressible in elementary functions.",
+          "An equilateral triangle has three interior angles, each alpha = pi/3, so each exponent is (pi/3)/pi - 1 = 1/3 - 1 = -2/3.",
+          "With prevertices 0, 1, infinity (the vertex at infinity contributes no factor), the map is f(z) = A integral_0^z zeta^{-2/3} (zeta - 1)^{-2/3} d zeta + B, which sends 0, 1, infinity to the three vertices of the triangle."
+        ],
+        "a": "Rectangle: four angles of pi/2, exponents -1/2 (elliptic integral). Equilateral triangle: exponents -2/3, f(z) = A integral_0^z zeta^{-2/3}(zeta - 1)^{-2/3} d zeta + B."
+      },
+      "practice": [
+        {
+          "q": "What exponent appears at a vertex of a Schwarz-Christoffel map where the polygon has interior angle 3pi/4?",
+          "a": "alpha/pi - 1 = (3pi/4)/pi - 1 = 3/4 - 1 = -1/4."
+        },
+        {
+          "q": "A polygon has a 'slit' vertex with interior angle 2pi (a full turn, the boundary folds back on itself). What exponent appears there?",
+          "a": "alpha/pi - 1 = 2 - 1 = 1: the factor is (zeta - x_k)^1, which is analytic there — the map turns around the slit tip smoothly."
+        }
+      ],
+      "takeaway": "Schwarz-Christoffel turns polygons into integrals: the exponent alpha/pi - 1 at each prevertex encodes the interior angle, and the map makes polygonal domains as tractable as disks.",
+      "module": "Conformal Mappings"
+    }
+  }
+}
